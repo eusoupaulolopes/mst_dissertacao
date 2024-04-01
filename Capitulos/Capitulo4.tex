@@ -2,7 +2,7 @@
 \chapter{Taxonomia}
 \label{cap:cap4}
 
-Seguindo a análise dos trabalhos mencionados no Capítulo \ref{cap:cap3}, percebeu a necessidade de classificar dos conceitos mais recorrentes atrelados ao uso do padrão \textit{throttling} em ambientes IoT com características fortes de limitação energética. Além disso, é preciso levar em consideração a orientação do trabalho junto aos critérios de disponibilidade definidos por \cite{avizienis_basic_2004}, base para categorização dos elementos propostos nesta taxonomia. 
+Seguindo a análise dos trabalhos mencionados no Capítulo \ref{cap:cap3}, verifica-se a necessidade de classificar dos conceitos mais recorrentes atrelados ao uso do padrão \textit{throttling} em redes IoT com dirigidas energética. Além disso, é preciso levar em consideração a orientação do trabalho junto aos critérios de disponibilidade definidos por \cite{avizienis_basic_2004}, base para categorização dos elementos propostos nesta taxonomia. 
 
 \section{Organização}
 
@@ -16,17 +16,19 @@ Inicialmente, as classes foram distribuídos acomodando os elementos envolvidos 
 \centering
 \end{figure}
 
-Nas ramificações à esquerda, encontram-se categorias que representam as características relacionadas aos elementos presentes em ambientes IoT com restrições significativas de energia. Em \cite{kansal_power_2007}  percebe-se a necessidade de classificar os elementos dispostos como nodes pertencentes uma rede IoT em relação primária aos recursos dispostos, como os energéticos. Além disso, na taxonomia de \cite{avizienis_basic_2004} há também uma divisão clara entre os agentes envolvidos e sua natureza: Um grupo denominado usuários ou clientes, que atua de forma ativa ou passiva solicitando ou quando notificado, consumindo os recursos ofertados do segundo grupo, os provedores. Aos nodes provedores cabe a responsabilidade de compartilhar seus recursos com os nodes consumidores. Toda interação entre nodes, deve seguir algum padrão de operação, esta é realizada de acordo com o qual se destina, um padrão visto no trabalho de \cite{khairnar_discrete-rate_2015} é apresentado a medida que as operações entre nodes ocorrem enquanto há troca de mensagens. Sendo assim, nestas ramificações estão os seguintes elementos envolvidos, acomodados aos critérios de classificação: \textit{Agentes}, \textit{Recursos} e \textit{Operações}.
+Nas ramificações à esquerda, encontram-se categorias que representam as características principais relacionadas aos elementos presentes em ambientes \acf{IoT} com restrições significativas de energia. Em \cite{kansal_power_2007}  percebeu-se a necessidade de classificar estes elementos como pertencentes a uma relação de compartilhamento dos recursos disponíveis, sensores, atuadores e até mesmo os energéticos. Para isto, na taxonomia de \cite{avizienis_basic_2004} há uma divisão clara entre os agentes envolvidos e sua natureza em dois agrupamentos principais: um grupo denominado usuários ou clientes, que atua ativamente ou de forma passiva solicitando recursos ou quando notificado, consumindo os estados ofertados do segundo grupo, os provedores. Aos nodes provedores, cabe a responsabilidade de compartilhar seus recursos com os nodes consumidores através de uma interface conhecida de acordo com o protocolo de comunicação pré-estabelecido entre as partes.
 
-Ademais, à direita, acomodam-se os elementos envolvidos no processo de adequação do comportamento da aplicação através da adoção do padrão \textit{throttling}. Nestas, dois ramos principais são apresentados, \textit{Atuação} e \textit{Implementação}. Sobre \textit{Atuação}, agrupa-se os elementos envolvidos no processo de controle de consumo de recursos do node: Limiar - \textit{Thresholding}, \textit{Ciclos de Carga} e \textit{Meios} relacionados à ação de limitar a taxa de resposta dos serviços,  \cite{khairnar_discrete-rate_2015}, \cite{khan_energy_2015} e \cite{sudevalayam_energy_2011} abordam questões particularmente observadas para os elementos orientados energeticamente. Implementação e Atuação são sugeridos de maneira à assegurar que o critério \textit{Disponibilidade} seja requisito observável no processo de restrição às operações entre nodes produtores e consumidores.
+Toda interação deve seguir um padrão de operação, esta é realizada de acordo com o qual se destina, como visto no trabalho de \cite{khairnar_discrete-rate_2015} é apresentado uma operação como a medida pelas quais mensagens são trocadas entre nodes para um determinado fim. Sendo assim, os elementos classificadores encontrados são: \textit{Agentes}, \textit{Recursos} e \textit{Operações}.
+
+Ademais, à direita, acomoda-se os elementos envolvidos no processo de adequação do comportamento da de um node através da adoção do padrão \textit{Throttling}. Nesta, dois ramos principais são apresentados, \textit{Atuação} e \textit{Implementação} respectivamente. Sobre \textit{Atuação}, agrupa-se os elementos envolvidos no processo de controle do consumo dos recursos do node: \textit{Limiar} - \textit{Thresholding}, \textit{Ciclos de Carga} e \textit{Meios} estado diretamente relacionados à ação de limitar a taxa de resposta dos serviços,  \cite{khairnar_discrete-rate_2015}, \cite{khan_energy_2015} e \cite{sudevalayam_energy_2011} abordam questões que podem particularmente serem observadas para os elementos orientados energeticamente. A \textit{Implementação} é sugerida de maneira à assegurar que os critérios  \textit{Observáveis} e seus \textit{Motivadores} sejam agentes orientadores no processo de restrição às operações e incremento da disponibilidade do node. 
 
 
 \section{Taxonomia Proposta}
-A Figura apresenta uma taxonomia com os pontos abordados no processo de sugestão do padrão \textit{throttling} como alternativa para garantir disponibilidade para uma rede IoT com dirigida a energia. O objetivo principal é dispor dos elementos ligados ao tema de maneira visual e contemplar a organização dos tópicos envolvidos. Com isso, obtemos:
+A Figura apresenta em resumo a taxonomia proposta e os pontos abordados no processo de sugestão do padrão \textit{throttling} como alternativa para garantir disponibilidade nos nodes presentes em uma rede \acs{IoT} dirigida a energia. O objetivo principal é dispor os elementos ligados ao tema de maneira visual e contemplar a organização dos tópicos envolvidos. Com isso, obter:
 
 \begin{enumerate}
-    \item Visão sobre os elementos envolvidos em uma rede \acs{IoT} dirigida a energia e apresentar o \textit{Throttling} como mecanismo regulador energético;
-    \item Organização as classes relacionadas acomodando de acordo com o contexto de inserção;
+    \item Visão sobre os elementos envolvidos em uma rede \acs{IoT} dirigida a energia e apresentar o \textit{Throttling} como mecanismo regulador do comportamento observando suas características energéticas;
+    \item Organizar as classes de conhecimento relacionadas acomodando-as de acordo com o contexto de inserção;
     \item Suporte às definições de uso do padrão \textit{Throttling} ligados ao contexto de redes \acs{IoT} dirigida a energia. 
 \end{enumerate}
 
@@ -40,11 +42,11 @@ A Figura apresenta uma taxonomia com os pontos abordados no processo de sugestã
 A taxonomia detalhada apresenta suas classes nos termos em que foram encontrados na literatura dentro campo de estudo, conforme Figura \ref{fig:taxonomia_detalhada}.
 
 \section{Agentes \acs{IoT}}
-Todo agente (node) presente é uma entidade computacional que carrega a capacidade intrínseca de interagir com outros agentes, que por definição possuem propriedades fundamentais como: funcionalidade, performance, dependabilidade e segurança, definição encontrada em \cite{avizienis_basic_2004}. Dado cada contexto, para um ambiente IoT é fundamental considerar também a capacidade comunicar-se com outras entidades, almejando o compartilhamento de recursos \cite{li_internet_2015}, além de suas características energéticas. 
+Todo agente (node) presente é uma entidade computacional que carrega a capacidade intrínseca de interagir com outros agentes, que por definição possuem propriedades fundamentais como: funcionalidade, performance, dependabilidade e segurança como a definição já encontrada em \cite{avizienis_basic_2004}. Dado contexto, para um ambiente \acp{IoT} é fundamental considerar também a capacidade comunicar-se com outras entidades, almejando o compartilhamento de recursos \cite{li_internet_2015}, observando, além disso, suas características energéticas. 
 
 
 \subsection{Node Provedor}
-Qualquer entidade computacional no momento que oferta ou atende uma solicitação de serviço pode ser considerada provedor. Em geral, um provedor ofertará mais de uma funcionalidade através de serviços, sendo cada funcionalidade atendida mediante o uso de recursos durante a progressão de estados internos do provedor e seu resultado percebido como estado externo, disponível através de uma interface na forma de eventos ou a contraparte das solicitações de nodes clientes.
+Qualquer entidade computacional no momento em que oferta um recurso ou atende uma solicitação de serviço pode ser considerada provedor. Em geral, um provedor poderá ofertar mais de uma funcionalidade através de seus serviços, sendo cada uma atendida mediante o uso de recursos durante a progressão de estados internos do provedor e seu resultado percebido como estado externo (recurso), disponível através de uma interface na forma de eventos ou a contraparte das solicitações de nodes clientes.
 
 \noindent\includegraphics[width=3cm]{example-image} 
 

@@ -27,7 +27,7 @@
 \contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase []{Taxonomia}}{17}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Organização}{17}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Taxonomia Proposta}{18}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Agentes \acs {IoT}}{18}{section.4.3}%
+\contentsline {section}{\numberline {4.3}Agentes \acs {IoT}}{19}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Node Provedor}{19}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Node Cliente}{19}{subsection.4.3.2}%
 \contentsline {section}{\numberline {4.4}Operações}{19}{section.4.4}%
@@ -38,19 +38,19 @@
 \contentsline {section}{\numberline {4.6}\textit {Throttling}}{23}{section.4.6}%
 \contentsline {subsection}{\numberline {4.6.1}Atuação: Limiar, Carga e Meios}{24}{subsection.4.6.1}%
 \contentsline {subsection}{\numberline {4.6.2}Implementação: Observáveis e Motivadores}{25}{subsection.4.6.2}%
-\contentsline {chapter}{Capítulo 5}{26}{subsection.4.6.2}%
+\contentsline {chapter}{Capítulo 5}{27}{subsection.4.6.2}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase []{Fundamentação Teórica}}{27}{chapter.5}%
+\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase []{Fundamentação Teórica}}{28}{chapter.5}%
 \vspace {\cftbeforechapterskip }
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\MakeTextUppercase []{Refer\^encias}}{29}{section*.19}%
+\contentsline {chapter}{\MakeTextUppercase []{Refer\^encias}}{30}{section*.19}%
 \cftinsert {AAA}
 \renewcommand *{\cftappendixname }{ANEXO \space }
 \setlength {\cftpartindent }{\cftlastnumwidth } \setlength {\cftpartnumwidth }{2em}
 \cftinsert {A}
-\contentsline {part}{\uppercase {Anexos}}{31}{section*.20}%
+\contentsline {part}{\uppercase {Anexos}}{32}{section*.20}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \cftinsert {A}
-\contentsline {appendix}{\chapternumberline {A}\MakeTextUppercase []{Titulo deste anexo}}{32}{appendix.anexochapback.1}%
+\contentsline {appendix}{\chapternumberline {A}\MakeTextUppercase []{Titulo deste anexo}}{33}{appendix.anexochapback.1}%

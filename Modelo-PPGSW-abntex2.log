@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.1)  1 APR 2024 12:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.1)  1 APR 2024 18:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1283,6 +1283,8 @@ File: example-image.pdf Graphic file (type pdf)
 <use example-image.pdf>
 Package pdftex.def Info: example-image.pdf  used on input line 13.
 (pdftex.def)             Requested size: 85.35826pt x 64.0183pt.
+Package acronym Info: Label `acro:IoT' newly defined as it shall be overridden
+although it is yet undefined on input line 19.
  [17
 
 
@@ -1290,40 +1292,38 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1})
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.22 
+l.24 
       <c:/texlive/2024/texmf-dist/tex/latex/mwe/example-image.pdf>]
 File: example-image.pdf Graphic file (type pdf)
 <use example-image.pdf>
-Package pdftex.def Info: example-image.pdf  used on input line 34.
+Package pdftex.def Info: example-image.pdf  used on input line 36.
 (pdftex.def)             Requested size: 85.35826pt x 64.0183pt.
  [18
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.44 
+l.46 
      ]
 File: example-image.pdf Graphic file (type pdf)
 <use example-image.pdf>
-Package pdftex.def Info: example-image.pdf  used on input line 49.
+Package pdftex.def Info: example-image.pdf  used on input line 51.
 (pdftex.def)             Requested size: 85.35826pt x 64.0183pt.
  [19]
 Package acronym Info: Label `acro:EN' newly defined as it shall be overridden
-although it is yet undefined on input line 75.
+although it is yet undefined on input line 77.
  [20]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 8
-3.
+5.
  (c:/texlive/2024/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
-LaTeX Warning: Citation `Lee2018-iz' on page 21 undefined on input line 84.
+LaTeX Warning: Citation `Lee2018-iz' on page 21 undefined on input line 86.
 
-Package acronym Info: Label `acro:IoT' newly defined as it shall be overridden
-although it is yet undefined on input line 84.
 File: example-image.pdf Graphic file (type pdf)
 <use example-image.pdf>
-Package pdftex.def Info: example-image.pdf  used on input line 89.
+Package pdftex.def Info: example-image.pdf  used on input line 91.
 (pdftex.def)             Requested size: 85.35826pt x 64.0183pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1331,22 +1331,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [21{c:/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
 Package acronym Info: Label `acro:RFID' newly defined as it shall be overridden
 
-although it is yet undefined on input line 104.
+although it is yet undefined on input line 106.
  [22
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.111 
-      ]
+l.112 É
+         bem conhecido que o fator energético é um desafio para redes com ...
+]
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <17.28> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 122.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 124.
 Package acronym Info: Label `acro:SLA' newly defined as it shall be overridden
-although it is yet undefined on input line 125.
+although it is yet undefined on input line 127.
  [23] [24]
 File: example-image.pdf Graphic file (type pdf)
 <use example-image.pdf>
-Package pdftex.def Info: example-image.pdf  used on input line 147.
+Package pdftex.def Info: example-image.pdf  used on input line 149.
 (pdftex.def)             Requested size: 85.35826pt x 64.0183pt.
  [25
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.4}) 
@@ -1356,8 +1357,8 @@ has been already used, duplicate ignored
 l.160 
       ]
 Package acronym Info: Label `acro:MDP' newly defined as it shall be overridden
-although it is yet undefined on input line 163.
-) (./Capitulos/Capitulo5.tex [26])
+although it is yet undefined on input line 165.
+ [26]) (./Capitulos/Capitulo5.tex [27])
 
 Package blindtext Warning: brazil not defined, using English instead.
 (blindtext)                 on input line 180.
@@ -1378,7 +1379,7 @@ Package blindtext Warning: brazil not defined, using English instead.
 Package blindtext Warning: brazil not defined, using English instead.
 (blindtext)                 on input line 180.
 
-[27
+[28
 
 ]
 
@@ -1389,15 +1390,15 @@ Package blindtext Warning: brazil not defined, using English instead.
 \tf@brf=\write5
 \openout5 = `Modelo-PPGSW-abntex2.brf'.
 
- [28]
+ [29]
 bibitemlist
-[29
+[30
 
-]) (./Includes/Anexos.tex [30] [31
+]) (./Includes/Anexos.tex [31] [32
 
 
 ]
-<Anexos/exemplo.pdf, id=388, 597.19106pt x 845.07718pt>
+<Anexos/exemplo.pdf, id=395, 597.19106pt x 845.07718pt>
 File: Anexos/exemplo.pdf Graphic file (type pdf)
 <use Anexos/exemplo.pdf>
 Package pdftex.def Info: Anexos/exemplo.pdf  used on input line 8.
@@ -1406,31 +1407,31 @@ File: Anexos/exemplo.pdf Graphic file (type pdf)
 <use Anexos/exemplo.pdf>
 Package pdftex.def Info: Anexos/exemplo.pdf  used on input line 8.
 (pdftex.def)             Requested size: 597.1896pt x 845.07512pt.
-<Anexos/exemplo.pdf, id=391, page=1, 597.19106pt x 845.07718pt>
+<Anexos/exemplo.pdf, id=398, page=1, 597.19106pt x 845.07718pt>
 File: Anexos/exemplo.pdf Graphic file (type pdf)
 <use Anexos/exemplo.pdf, page 1>
 Package pdftex.def Info: Anexos/exemplo.pdf , page1 used on input line 8.
 (pdftex.def)             Requested size: 597.1896pt x 845.07512pt.
-File: Anexos/exemplo.pdf Graphic file (type pdf)
-<use Anexos/exemplo.pdf, page 1>
-Package pdftex.def Info: Anexos/exemplo.pdf , page1 used on input line 8.
-(pdftex.def)             Requested size: 597.21693pt x 845.1138pt.
- [32
-
-]
-File: Anexos/exemplo.pdf Graphic file (type pdf)
-<use Anexos/exemplo.pdf, page 1>
-Package pdftex.def Info: Anexos/exemplo.pdf , page1 used on input line 8.
-(pdftex.def)             Requested size: 597.21693pt x 845.1138pt.
-File: Anexos/exemplo.pdf Graphic file (type pdf)
-<use Anexos/exemplo.pdf, page 1>
-Package pdftex.def Info: Anexos/exemplo.pdf , page1 used on input line 8.
-(pdftex.def)             Requested size: 597.21693pt x 845.1138pt.
 File: Anexos/exemplo.pdf Graphic file (type pdf)
 <use Anexos/exemplo.pdf, page 1>
 Package pdftex.def Info: Anexos/exemplo.pdf , page1 used on input line 8.
 (pdftex.def)             Requested size: 597.21693pt x 845.1138pt.
  [33
+
+]
+File: Anexos/exemplo.pdf Graphic file (type pdf)
+<use Anexos/exemplo.pdf, page 1>
+Package pdftex.def Info: Anexos/exemplo.pdf , page1 used on input line 8.
+(pdftex.def)             Requested size: 597.21693pt x 845.1138pt.
+File: Anexos/exemplo.pdf Graphic file (type pdf)
+<use Anexos/exemplo.pdf, page 1>
+Package pdftex.def Info: Anexos/exemplo.pdf , page1 used on input line 8.
+(pdftex.def)             Requested size: 597.21693pt x 845.1138pt.
+File: Anexos/exemplo.pdf Graphic file (type pdf)
+<use Anexos/exemplo.pdf, page 1>
+Package pdftex.def Info: Anexos/exemplo.pdf , page1 used on input line 8.
+(pdftex.def)             Requested size: 597.21693pt x 845.1138pt.
+ [34
 
  <./Anexos/exemplo.pdf
 
@@ -1462,22 +1463,17 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
-
-Package rerunfilecheck Warning: File `Modelo-PPGSW-abntex2.brf' has changed.
-(rerunfilecheck)                Rerun to get bibliographical references right.
-
-Package rerunfilecheck Info: Checksums for `Modelo-PPGSW-abntex2.brf':
-(rerunfilecheck)             Before: B45EDEC6BDC984F16B88E3BD38F961D1;1458
-(rerunfilecheck)             After:  71694E4E14A03B10C447F9594613E17B;1458.
+Package rerunfilecheck Info: File `Modelo-PPGSW-abntex2.brf' has not changed.
+(rerunfilecheck)             Checksum: 7BD7F33B83D50C5A6E8351EC00A74303;1458.
  ) 
 Here is how much of TeX's memory you used:
- 22545 strings out of 476003
- 364293 string characters out of 5791369
+ 22546 strings out of 476003
+ 364302 string characters out of 5791369
  1943496 words of memory out of 5000000
  43878 multiletter control sequences out of 15000+600000
  681367 words of font info for 220 fonts, out of 8000000 for 9000
  38 hyphenation exceptions out of 8191
- 99i,17n,107p,1362b,771s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,17n,107p,1326b,771s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2024
 /texmf-dist/fonts/type1/public/lm/lmbxi10.pfb><c:/texlive/2024/texmf-dist/fonts
 /type1/public/lm/lmcsc10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/lm/
@@ -1489,10 +1485,10 @@ c/lm/lmss10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/lm/lmss12.pfb><c
 mf-dist/fonts/type1/public/lm/lmssbo10.pfb><c:/texlive/2024/texmf-dist/fonts/ty
 pe1/public/lm/lmssbx10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/lm/lm
 sso17.pfb>
-Output written on Modelo-PPGSW-abntex2.pdf (34 pages, 464444 bytes).
+Output written on Modelo-PPGSW-abntex2.pdf (35 pages, 465465 bytes).
 PDF statistics:
- 585 PDF objects out of 1000 (max. 8388607)
- 505 compressed objects within 6 object streams
- 107 named destinations out of 1000 (max. 500000)
+ 592 PDF objects out of 1000 (max. 8388607)
+ 511 compressed objects within 6 object streams
+ 108 named destinations out of 1000 (max. 500000)
  71964 words of extra memory for PDF output out of 74296 (max. 10000000)
 
