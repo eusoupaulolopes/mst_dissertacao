@@ -1,0 +1,71 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Modelo-PPGSW-abntex2.aux
+A level-1 auxiliary file: Includes/Resumo.aux
+A level-1 auxiliary file: Includes/Abstract.aux
+A level-1 auxiliary file: Includes/Sumario.aux
+The style file: abntex2-alf.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Database file #1: abntex2-options.bib
+Database file #2: referencias.bib
+Warning--I didn't find a database entry for "xiao_study_2011"
+Warning--I didn't find a database entry for "Lee2018-iz"
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
++---------------------------------------------------------+
+| Estilo bibliográfico abntex2-alf.bst versão v-1.9.7           |
+| Em caso de dúvidas ou problemas com este estilo procure |
+| http://www.abntex.net.br/                               |
++---------------------------------------------------------+
+You've used 16 entries,
+            6714 wiz_defined-function locations,
+            1316 strings with 13527 characters,
+and the built_in function-call counts, 34197 in all, are:
+= -- 4335
+> -- 576
+< -- 1080
++ -- 1297
+- -- 169
+* -- 2163
+:= -- 4090
+add.period$ -- 71
+call.type$ -- 16
+change.case$ -- 194
+chr.to.int$ -- 52
+cite$ -- 15
+duplicate$ -- 3742
+empty$ -- 888
+format.name$ -- 825
+if$ -- 6540
+int.to.chr$ -- 0
+int.to.str$ -- 0
+missing$ -- 281
+newline$ -- 108
+num.names$ -- 75
+pop$ -- 365
+preamble$ -- 1
+purify$ -- 71
+quote$ -- 0
+skip$ -- 3810
+stack$ -- 1
+substring$ -- 1585
+swap$ -- 1390
+text.length$ -- 48
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 132
+width$ -- 0
+write$ -- 277
+(There were 2 warnings)
