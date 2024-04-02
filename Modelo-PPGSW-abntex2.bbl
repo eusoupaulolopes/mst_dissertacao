@@ -89,6 +89,15 @@ Dispon{\'\i}vel em: \url{http://ieeexplore.ieee.org/document/7435327/}.}
 Dispon{\'\i}vel em:
   \url{https://learn.microsoft.com/en-us/azure/architecture/patterns/throttling}.}
 
+\bibitem[Merrett e Al-Hashimi 2017]{merrett_energy-driven_2017}
+\abntrefinfo{Merrett e Al-Hashimi}{MERRETT; AL-HASHIMI}{2017}
+{MERRETT, G.~V.; AL-HASHIMI, B.~M. Energy-driven computing: {Rethinking} the
+  design of energy harvesting systems. In:  \emph{Design, {Automation} \&
+  {Test} in {Europe} {Conference} \& {Exhibition} ({DATE}), 2017}. Lausanne,
+  Switzerland: IEEE, 2017. p. 960--965.
+ISBN 978-3-9815370-8-6. Dispon{\'\i}vel em:
+  \url{http://ieeexplore.ieee.org/document/7927130/}.}
+
 \bibitem[Prauzek et al. 2018]{prauzek_energy_2018}
 \abntrefinfo{Prauzek et al.}{PRAUZEK et al.}{2018}
 {PRAUZEK, M. et al. Energy {Harvesting} {Sources}, {Storage} {Devices} and

@@ -24,7 +24,7 @@ Ademais, à direita, acomoda-se os elementos envolvidos no processo de adequaç�
 
 
 \section{Taxonomia Proposta}
-A Figura apresenta em resumo a taxonomia proposta e os pontos abordados no processo de sugestão do padrão \textit{throttling} como alternativa para garantir disponibilidade nos nodes presentes em uma rede \acs{IoT} dirigida a energia. O objetivo principal é dispor os elementos ligados ao tema de maneira visual e contemplar a organização dos tópicos envolvidos. Com isso, obter:
+A Figura apresenta em resumo a taxonomia proposta e os pontos abordados no processo de uso do padrão \textit{throttling} como alternativa para garantir disponibilidade nos nodes presentes em uma rede \acs{IoT} dirigida a energia. O objetivo principal é dispor os elementos ligados ao tema de maneira visual e contemplar a organização dos tópicos envolvidos. Com isso, obter:
 
 \begin{enumerate}
     \item Visão sobre os elementos envolvidos em uma rede \acs{IoT} dirigida a energia e apresentar o \textit{Throttling} como mecanismo regulador do comportamento observando suas características energéticas;
@@ -39,30 +39,34 @@ A Figura apresenta em resumo a taxonomia proposta e os pontos abordados no proce
 \centering
 \end{figure}
 
-A taxonomia detalhada apresenta suas classes nos termos em que foram encontrados na literatura dentro campo de estudo, conforme Figura \ref{fig:taxonomia_detalhada}.
+A taxonomia detalhada apresenta suas classes nos termos em que foram encontrados na literatura dentro contexto de estudo, conforme Figura \ref{fig:taxonomia_detalhada}.
 
 \section{Agentes \acs{IoT}}
 Todo agente (node) presente é uma entidade computacional que carrega a capacidade intrínseca de interagir com outros agentes, que por definição possuem propriedades fundamentais como: funcionalidade, performance, dependabilidade e segurança como a definição já encontrada em \cite{avizienis_basic_2004}. Dado contexto, para um ambiente \acp{IoT} é fundamental considerar também a capacidade comunicar-se com outras entidades, almejando o compartilhamento de recursos \cite{li_internet_2015}, observando, além disso, suas características energéticas. 
 
 
 \subsection{Node Provedor}
-Qualquer entidade computacional no momento em que oferta um recurso ou atende uma solicitação de serviço pode ser considerada provedor. Em geral, um provedor poderá ofertar mais de uma funcionalidade através de seus serviços, sendo cada uma atendida mediante o uso de recursos durante a progressão de estados internos do provedor e seu resultado percebido como estado externo (recurso), disponível através de uma interface na forma de eventos ou a contraparte das solicitações de nodes clientes.
+Qualquer entidade computacional no momento em que oferta um estado ou atende uma solicitação de recurso pode ser considerada provedor. Em geral, um provedor poderá ofertar mais de uma funcionalidade através de serviços, sendo cada uma atendida mediante o uso dos recursos durante a progressão de estados internos do provedor e seu resultado percebido como estado externo, disponível através de uma interface na forma de eventos ou a contraparte das solicitações de nodes clientes.
 
 \noindent\includegraphics[width=3cm]{example-image} 
 
 \subsection{Node Cliente}
-Um node cliente ou usuário é uma entidade que por meio de uma interface, recebe o estado externo de nodes provedores. Clientes ocasionalmente podem consumir um ou mais recursos de um provedor, mas também é possível interagir com mais de um provedor a depender da operação em execução. Enquanto cliente, um node estará interessado em realizar operações segundo as particularidades a que se destina.
+Um node cliente ou usuário é a entidade que por meio de sua interface, recebe o estado externo de nodes provedores. Clientes ocasionalmente podem consumir um ou mais recursos de um mesmo provedor, mas também é possível interagir com mais de um provedor a depender da operação em execução. Enquanto cliente, o node estará interessado em realizar atividades segundo as particularidades a que se destina sua operação.
 
 \section{Operações}
-Operações consistem um fluxo de mensagens comunicáveis via rede entre nodes clientes e provedores. Uma operação é realizada quando um cliente através de mensagens solicita estado de um provedor, também é possível um provedor ativamente disponibilizar um estado externo para consumo independente de cliente. 
+Operações consiste no fluxo de mensagens comunicáveis entre nodes clientes e provedores. Uma operação é realizada quando um cliente através de mensagens solicita estado de um provedor, de outra maneira, também é possível um provedor ativamente disponibilizar um estado, dito externo para que um possível cliente possa utiliza-lo. 
 
-Mensagem é a unidade atômica de informação que abstraindo seu formato é utilizada para as mais diversas ações a que se destina os elementos da rede colaborativa, seja inicialização, controle, monitoramento, coleta, processamento ou armazenamento de dados. A depender do modelo funcional, quando ativo, um cliente deve enviar mensagens aos provedores os quais reativamente respondem via interface preestabelecida, caso a operação tenha seu cliente passivo, o provedor deve autonomamente disponibilizar suas informações para todos a que se interessem. 
+Mensagem é a unidade atômica de informação que independente do seu formato é utilizada para as mais diversas ações de acordo com o que se destina a rede colaborativa, uma mensagem pode carregar ações como  inicialização, controle, monitoramento, coleta, processamento ou armazenamento de dados. A depender da funcionalidade, um cliente quando ativo, deve enviar mensagens de solicitação aos provedores os quais reativamente respondem via interface preestabelecida, caso a operação aconteça através de eventos, o provedor deve autonomamente disponibilizará suas informações para todos que tenham interesse.
 
-Para atender uma operação, múltiplas mensagens podem ser solicitadas na forma de composição de serviço \cite{service_composition}, nesse cenário um node cliente solicita mensagens distintas à um ou vários nodes provedores para compor o serviço. Como encontrado na revisão escrita por \cite{kahloul_service_2019} a abordagem de operações encontrada nos serviços virtuais tradicionais não acomodam completamente a natureza operacional dos agentes IoT pois estes se encontram diretamente em um meio físico e precisam ligar diretamente com as particularidades inerentes ao ambiente dinâmico e seus desafios.
+Para cobrir uma operação, múltiplas mensagens podem ser solicitadas na forma de composição de serviço \cite{service_composition}, nesse cenário um node cliente solicita mensagens distintas à um ou vários nodes provedores para compor este serviço. Em todo caso, como encontrado na revisão \cite{kahloul_service_2019} a abordagem das operações encontrada nos serviços puramente virtuais não acomodam por completo a natureza operacional dos agentes \acp{IoT}. Para tal, precisa-se considerar o estado dos nodes e seus recursos pois estes se encontram diretamente em um meio físico e precisam lidar com as particularidades inerentes a um ambiente dinâmico e seus desafios.
 
-\section{Recursos}
+\section{Recursos Energéticos}
 
-Um Recurso descreve um componente ou capacidade que um dado node possui para realizar suas operações. Isto inclui seus componentes físicos ou virtuais que uma vez embarcados ao dispositivo desempenham em cooperação contribuindo para os mais diversos fins, coleta, monitoramento, automação industrial, assistência a medicina entre outros. Um Recurso infere sobre as capacidades dos elementos dispostos na rede, a configuração do dispositivo esta fortemente ligado à atividade fim que se deseja. Para este trabalho, os recursos como processamento, armazenamento ou capacidade de transmissão estão omitidos pois expressam diretamente o universo de possibilidades onde um agente \acs{IoT} se encontra. \textcolor{red}{Acho aqui preciso justificar melhor ao tirar alguns tipos de recurso}
+Um Recurso descreve um componente ou capacidade que um dado node possui para realizar suas operações. Isto inclui seus componentes físicos ou virtuais que uma vez embarcados ao dispositivo contribuem em cooperação para os mais diversos fins, coleta, monitoramento, automação industrial, assistência a medicina entre outros. Um Recurso infere sobre as capacidades dos elementos dispostos na rede, a configuração do dispositivo esta fortemente ligado à atividade fim que se destina. Para este trabalho, os recursos como processamento, armazenamento ou capacidade de transmissão estão omitidos pois expressam diretamente o universo de possibilidades onde um agente \acs{IoT} se encontra. Entretanto, em uma rede \acp{IoT} dirigida à energia, aspectos energéticos devem ser detalhados
+
+Recursos energéticos refere-se a dois grupos: da capacidade de coleta do node e a capacidade de armazenamento e disponibilização da energia previamente coletada. Arquitetura de sistemas dirigidos a energia com capacidade de coleta são projetados para usar estes recursos de maneira eficiente como descrito em \cite{prauzek_energy_2018} sua aplicação é especialmente útil em cenários onde a energia para alimentar os componentes eletrônicos é escassa. Um recurso energético é propriamente uma fonte natural ou artificial de energia que de maneira apropriada pode ser convertida em energia utilizável para garantir a realização das operações. 
+
+No cenário proposto, assume um papel importante pois é essencial para garantir o funcionamento continuo e autônomo dos nodes envolvidos, cabendo ao agente suas ações de coleta, transformar, armazenamento e utilização o recurso energético, projetado de maneira a aproximar-se do estado onde as operações tendem a uma neutralidade energética \acfp{EN}, conceito apresentado por \cite{kansal_power_2007} e mais a frente em \cite{merrett_energy-driven_2017} com a abordagem da neutralidade de força-energética, de acordo com suas respectivas capacidades.
 
 % \subsection{Sensores}
 % Um sensor é um recurso capaz de detectar e medir informações específicas do ambiente ao redor. Convertendo características do meio físico como temperatura, umidade, luz, pressão, movimento, som em sinais digitais que podem ser processados. 
@@ -70,21 +74,33 @@ Um Recurso descreve um componente ou capacidade que um dado node possui para rea
 % \subsection{Atuadores}
 % Por sua vez, um atuador é um componente que converte um sinal de entrada em um movimento físico ou ação. Em um sistema de controle um atuador pode receber uma entrada provida por um sensor e agir em detrimento do estimulo capturado.  Atuadores geralmente são categorizados em: elétricos, hidráulicos, pneumáticos, mecânicos (por exemplo, atuadores de engrenagens), magnéticos, piezoelétricos entre outros.
 
-\subsection{Energéticos}
 
-Recursos energéticos refere a dois grupos, a capacidade de coleta do node e a capacidade de armazenamento e disponibilização da energia previamente coletada. Arquitetura de sistemas dirigidos a energia com capacidade de coleta são projetados para usar estes recursos de maneira eficiente como descrito em \cite{prauzek_energy_2018} sua aplicação é especialmente útil em cenários onde a energia para alimentar os componentes eletrônicos é escassa. Um recurso energético é propriamente uma fonte natural ou artificial de energia que de maneira apropriada pode ser convertida em energia utilizável para garantir a realização das operações. 
 
-No cenário proposto, assume um papel importante pois é essencial para garantir o funcionamento continuo e autônomo dos nodes envolvidos, cabendo ao agente ações de coletar, transformar, armazenar e utilizar o recurso energético, projetado de maneira a aproximar-se do estado onde as operações tendem a neutralidade energética \acfp{EN}, conceito apresentado por \cite{kansal_power_2007}, de acordo com suas respectivas capacidades.
 
-\subsubsection{Capacidade de Coleta}
+
+\subsection{Capacidade de Coleta}
 De acordo com o trabalho de \cite{sudevalayam_energy_2011}, a capacidade de coleta refere-se à habilidade do elemento em extrair e transformar um recurso energético disponível no ambiente. Seu objetivo é manter ou estender o tempo de funcionamento do node, atendendo totalmente ou parcialmente às suas necessidades energéticas.
 
-Sistemas de coleta energética possuem três conceitos fundamentais: Carga, a Arquitetura de Coleta e fonte energética. A Carga é destinada a atividade que esta consumindo energia, este é oriundo de um componente demandante de  energia para operar, seja um ou mais sensores, transmissores,  atuadores, apresentados como uma composição de componentes. A Arquitetura de Coleta indica quais mecanismos são utilizados para converter a energia coletada de um ambiente em energia disponível para Carga no node. A arquitetura deve descrever seus componentes, mecanismos de conversão e unidades de armazenamento. Atualmente é possível destacar três modelos básicos de arquitetura:
+Sistemas de coleta energética possuem três conceitos fundamentais: Carga, a Arquitetura de Coleta e entrada energética. A Carga é destinada a atividade que esta consumindo energia, este é oriundo de um componente demandante de energia para operar, sejam sensores, transmissores ou  atuadores, apresentados como uma composição de recursos. A Arquitetura de Coleta indica quais mecanismos, deve descrever seus componentes, meios de conversão e unidades de armazenamento. Atualmente é possível destacar três modelos básicos de arquitetura:
 
 \begin{itemize}
-    \item Coleta e Usa (\textit{Harvest-Use}): Neste modelo, toda energia coletada é oferecida diretamente ao node. Para o node continuar operacional, a energia coletada deve satisfazer os valores mínimos de operação necessários. Sendo assim, caso a energia coletada não seja suficiente, o node será desligado. 
+    \item Coleta e Usa (\textit{Harvest-Use}): Neste modelo, toda energia coletada é oferecida diretamente ao node. Conforme \cite{merrett_energy-driven_2017}, o node não precisaria de um \textit{buffer} energético, ou apenas o minimo possível para manter o node operacional, desde que seu funcionamento respeite as características de neutralidade força-energética, neste caso a energia coletada deve satisfazer os valores mínimos de operação plena ou depreciada. Desta forma, caso a energia coletada não seja suficiente, o node prontamente adaptará sua operação para se enquadrar a disponibilidade energética na situação, adiante, caso o nível de fornecimento energético seja abaixo do necessário para o funcionamento adaptado no node, o mesmo, se necessário deverá executar suas rotinas de \textit{checkpoint} pois estará em risco de ter sua operação integralmente interrompida.
+    
+	\begin{figure}[h]
+			\centering
+			\noindent\includegraphics[width=3cm]{example-image} 
+			\caption{Aqui vou colocar uma figura power-neutral}	
+	\end{figure}   
+    
     \item Coleta, Armazena e Usa (\textit{Harvest-Store Use}): Na proposta, dispositivos inseridos em ambientes com fontes não controladas, coletam energia do meio e primariamente converte este recurso para armazena-lo em um \textit{buffer} energético daí segue disponível para carga do node, a energia armazenada pode ser utilizada como fonte secundária para adaptar a performance do node em momentos de escassez energética, o trabalho de \cite{Lee2018-iz} é um exemplo de ajustes de performance incidindo sobre o tempo de vida de nodes \ac{IoT} que coletam energia solar.
     \item Coleta, Usa e Armazena (\textit{Harvest-Use Store}): O node é alimentado diretamente pela energia coletada e transformada, todavia, em casos de abundancia energética, ou onde a energia utilizada é inferior à energia coletada, o excedente é armazenado em um dado\textit{buffer} para que em momentos de escassez ou caso exista demanda que sobreponha os valores energéticos ofertados, o node possa utilizar essa reserva como complemento garantidor dos requisitos necessários para operação.
+    
+    \begin{figure}[h]
+    	\centering
+    	\noindent\includegraphics[width=3cm]{example-image} 
+    	\caption{Aqui vou colocar uma figura energy-neutral}	
+   	\end{figure}  
+    
 \end{itemize}
 
 \begin{figure}[h]
@@ -106,7 +122,7 @@ Diversas técnicas são amplamente utilizadas para a extração de recursos, tai
     \item Parcialmente controlada: O processo de geração energética é sensível à ação de terceiros porém a quantidade exata de energia gerada não pode ser prevista com exatidão. Fontes baseadas em Radio Frequência converte a transmissão de ondas de radio em energia utilizável, por exemplo, \cite{shaikh_energy_2016} decorre como tags \acf{RFID} conseguem ser visualizadas por um leitor. Todavia, a quantidade de energia coletada sofre impactos diretos das características de propagação no meio disposto, barreira, distancia até a fonte e capacidade da antena de transmissão.
 \end{itemize}
 
-\subsubsection{Capacidade de Armazenamento}
+\subsection{Capacidade de Armazenamento}
 A capacidade de armazenamento trata de propriedades como conversão, força e taxa de carregamento e descarga em relação a fonte energética em uso com o objetivo de utilizar essa energia em momento apropriado. 
 
 É bem conhecido que o fator energético é um desafio para redes com restrições energéticas e capacidade de coleta, pois claramente caso a energia de um node seja esgotada o mesmo não será capaz de cumprir seu papel a menos que o fornecimento energético seja reestabelecido ou algum mecanismo de armazenamento possa cobrir parcial ou totalmente a diferença energética necessária para a operação.
@@ -135,13 +151,13 @@ Em sistemas colaborativos orientados a capacidade energética com coleta de ener
 
     \item Limiar constante: o valor de limiar é fixo e estabelecido enquanto o node é projetado. Este limiar pode ser determinado considerando fatores como testes de desempenho, características do ambiente onde será inserido e requisitos operacionais. Todavia, uma vez definido, o limiar permanecerá constante ao longo do tempo de uso do node. 
     
-    Por exemplo, considere um node com uma dada capacidade de processar mensagens, desprezando outros fatores como uso energético, conectividade, ou fatores de deterioração, este pode estabelecer um limiar constante para o máximo de requisições processáveis simultaneamente. Sendo assim, em toda operação, caso esse limiar de requisições seja atingido, o node irá ativamente optar por rejeitar ou atrasar o atendimento até que este valor retorne ao nível aceitado. 
+    Por exemplo, considere um node com uma dada capacidade de processar mensagens, desprezando outros fatores como uso energético, conectividade, ou fatores de deterioração, este pode estabelecer um limiar constante para o máximo de requisições processáveis simultaneamente. Sendo assim, em toda operação, caso esse limiar de requisições seja atingido, o node irá ativamente optar por rejeitar ou atrasar o atendimento até que o valor de requisições retorne ao nível aceitado. 
     
-    Esta abordagem, é bastante útil caso se conheça bem as capacidades do node e não se espera uma grande variação nas condições de operação ao longo do tempo. Embora oferte equidade do ponto de vista dos solicitantes (que tem suas requisições atendidas segundo os mesmos critérios independente do estado do node), não se garante o melhor uso dos recursos em casos de mudanças repentinas ou flutuações significativas de estado.
+    Esta abordagem, é bastante útil caso se conheça bem as capacidades do node e não se espera uma grande variação nas condições de operação ao longo do tempo. Embora oferte equidade do ponto de vista dos solicitantes (que tem suas requisições atendidas segundo os mesmos critérios independente do estado do node), não se garante que uso dos recursos será adequado caso ocorra  mudanças repentinas ou flutuações significativas de estado.
     
     \item Limiar adaptável: Nesta abordagem, o limiar é ajustado dinamicamente, por isso um node pode assumir um comportamento mais adequado em acordo com as condições que encontra seja através do monitoramento ou análise dos recursos do node, permitindo atender adequadamente solicitações dos nodes clientes. Por exemplo, dado um sistema de segurança que geralmente possui nodes equipados com câmeras. Os nodes, devem enviar imagens capturadas por seus sensores para solicitantes, seja uma central que passivamente recebe as gravações ou outro node demandante. Este node pode ser capaz de ajustar seu limiar de operação por fatores como numero de solicitações, largura de banda disponível, capacidade energética ou outro estado de recurso monitorado encontrado. 
     
-    Graças a isso, o node com limiar adaptável alcançará diferentes faixas de operações que capacitam o node para mudar seu comportamento seja para interromper ou reduzir a qualidade da transmissão e assim permanecer operando mitigando riscos funcionais, uma vez que o recurso observável se reestabeleça o node pode assumir outro comportamento pois o seu limiar também mudará para um valor apropriado. Esta capacidade de adaptação, permite que nodes provedores mantenham algum equilíbrio entre desempenho e performance, garantindo suas funcionalidades mesmo com flutuações nas condições operacionais.
+    Graças a isso, o node com limiar adaptável alcançará diferentes faixas de operações que habilitam o node a mudar seu comportamento , ou seja para interromper ou reduzir sua taxa da transmissão e assim permanecer operando mitigando riscos funcionais. Uma vez que o recurso observável se restabeleça, o node pode assumir outro comportamento pois o seu limiar também mudará ao valor apropriado. Esta capacidade de adaptação, permite que nodes provedores mantenham algum equilíbrio entre desempenho e performance, garantindo suas funcionalidades mesmo com flutuações nas condições operacionais.
     
 \end{itemize}
 
