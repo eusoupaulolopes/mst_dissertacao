@@ -35,7 +35,7 @@
 \contentsline {subsection}{\numberline {4.5.1}Capacidade de Coleta}{21}{subsection.4.5.1}%
 \contentsline {subsection}{\numberline {4.5.2}Capacidade de Armazenamento}{23}{subsection.4.5.2}%
 \contentsline {section}{\numberline {4.6}\textit {Throttling}}{24}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Atuação: Limiar, Carga e Meios}{24}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.1}Atuação: Limiar, Carga e Meios}{25}{subsection.4.6.1}%
 \contentsline {subsection}{\numberline {4.6.2}Implementação: Observáveis e Motivadores}{26}{subsection.4.6.2}%
 \contentsline {chapter}{Capítulo 5}{27}{subsection.4.6.2}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
