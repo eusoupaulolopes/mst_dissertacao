@@ -92,8 +92,7 @@ Sistemas de coleta energética possuem três conceitos fundamentais: Carga, a Ar
 			\caption{Aqui vou colocar uma figura power-neutral}	
 	\end{figure}   
     
-    \item Coleta, Armazena e Usa (\textit{Harvest-Store Use}): Nesta abordagem, dispositivos inseridos em ambientes com fontes não controladas, coletam energia do meio e primariamente converte este recurso para armazena-lo em um \textit{buffer} energético daí segue disponível para carga do node, a energia armazenada pode ser utilizada como fonte secundária para adaptar a performance do node em momentos de escassez energética, o trabalho de \cite{Lee2018-iz} é um exemplo de ajustes de performance incidindo sobre o tempo de vida de nodes \ac{IoT} que coletam energia solar.
-    \item Coleta, Usa e Armazena (\textit{Harvest-Use Store}): O node é alimentado diretamente pela energia coletada e transformada, todavia, em casos de abundancia energética, ou onde a energia utilizada é inferior à energia coletada, o excedente é armazenado em um dado\textit{buffer} para que em momentos de escassez ou caso exista demanda que sobreponha os valores energéticos ofertados, o node possa utilizar essa reserva como complemento garantidor dos requisitos necessários para operação.
+    \item Coleta, Armazena e Usa (\textit{Harvest-Store Use}): Dispositivos inseridos em um dado ambiente coletam energia do meio para seu uso. Todavia, estes nodes precisam lidar com o dinamismo da natureza energética coletada. Para tal, embarca-se ao node a capacidade de armazenar a energia coletada em um \textit{buffer} para posteriormente disponibilizar esta entrada para uso nos ciclos de carga do node. Este modelo visa contornar os dados problemas com variações em performance encontradas pelo \acs{EHS} seja pela depreciação do modelo de coleta ou até mesmo devido à escassez de energia disponível para coleta no meio em dado momento.
     
     \begin{figure}[h]
     	\centering
@@ -103,13 +102,8 @@ Sistemas de coleta energética possuem três conceitos fundamentais: Carga, a Ar
     
 \end{itemize}
 
-\begin{figure}[h]
-\noindent\includegraphics[width=3cm]{example-image} 
-\caption{Aqui vou colocar uma figura com um esboço dos modelos encontrados}
-\centering
-\end{figure}
 
-Diversas técnicas podem ser utilizadas para a extração de recursos, tais como a conversão de energia renovável solar e eólica, a captura da força \textit{piezo-elétrica}, entre outros. A adequação da estratégia e detalhes de coleta devem ser projetados de acordo com o meio onde node se encontra e a natureza da fonte energética que visa-se coletar. Em geral, a divisão das características dos ambientes já descrito em \cite{kansal_power_2007} é utilizada para categorizar as fontes energéticas em seus ambientes como:
+Sobre os ambientes onde nos nodes operam, diversas técnicas podem ser utilizadas para a extração de energia disponível, a conversão de energia renovável solar e eólica, a captura da força \textit{piezo-elétrica}, termodinâmica, entre outros. A adequação da estratégia de coleta e seus detalhes devem ser projetados de acordo com o meio onde node se encontra e a natureza da fonte energética que visa-se coletar. Em geral, a divisão das características dos ambientes já descrito em \cite{shaikh_energy_2016} pode ser utilizada para categoriza-las de acordo com seus ambientes, sendo assim se encontram em:
 
 \begin{itemize}
 
@@ -130,41 +124,43 @@ A capacidade de armazenamento trata de propriedades como conversão, força e ta
 Baterias, super capacitores ou modelos híbridos estão presentes no contexto de dispositivos com fortes restrições energéticas e capacidade de coleta, para estes a atuação busca estar de acordo com as condições físicas e necessidade de conservação da energia. É possível distinguir três padrões de armazenamento para as capacidade energética presente em um dispositivo que busca o estado de operação neutra onde se observa a relação entre a saída energética e o gasto energético do node dado o momento. Segundo o modelo de uso proposto, a habilidade para coleta e a necessidade de disponibilidade definida no \acs{SLA}, os nodes provedores encontram sua capacidade de armazenamento em um dos casos:
 
 \begin{itemize}
-    \item Node provedor sem reserva energética: Aqui não existe a necessidade estrita de gestão de recursos elétricos pois caso não exista energia suficiente o node irá adaptar-se reduzindo o uso de recursos ou até mesmo interromper sua operação. \textcolor{red}{BUSCAR ALGUM TRABALHO QUE SIRVA COMO EXEMPLO.}
+    \item Node provedor sem reserva energética: Aqui não existe a necessidade estrita da gestão de recursos elétricos pois caso não exista energia suficiente o node irá adaptar-se na tentativa de alinhar a necessidade energética ao fornecido momentaneamente, em outros casos, sua operação se comportará como um sistema transiente, preparados para interromper suas atividades e, ao reestabelecer sua entrada energética disponível, retornar a partir de um ponto previamente estabelecido. Neste caso, é considerável existir uma pequena reserva, suficiente para conseguir armazenar um estado adequado ou ação semelhante.
     
-    \item Node provedor com reserva energética: Em alguns casos, um node pode se encontrar em um cenário de abundancia energética além do suficiente para sua operação, nestes, é possível incrementar os nodes com a capacidade de armazenar essa entrada energética que sobre e assim, reutiliza-la como suplemento em momento de escassez na coleta. Para tal, estes nodes devem carregar um componente \textit{buffer} energético capaz de fornecer a energia armazenada quando necessário.
-    
+    \item Node provedor com reserva energética: Neste caso, um node carrega em si a capacidade de armazenar energia coletada em um \textit{buffer}. A gestão energética deve ocorrer para que a energia coletada seja previamente armazenada para ai sim, ser disponibilizado em ciclos de carga. Aqui os nodes operam em um regime de Coleta, Armazenamento e Uso, já descrito anteriormente.
 \end{itemize}
 
 \section{\textit{Throttling}}
 
+Aplicar o padrão \textit{Throttling} consiste basicamente em restringir o uso de recursos de acordo com limiares de utilização estabelecidos. Seu objetivo é proteger um dispositivo do estado de sobrecarga, evitando que consumidores excessivamente solicitantes coloquem um node provedor em um estado de sobrecarga, evitando possíveis falhas e a exaustão prematura de recursos \cite{martinekuan_throttling_nodate}. Com isso, a estratégia permite que provedores consigam operar dentro de termos definidos por um acordo de funcionamento conhecido como \acf{SLA}, protegendo este provedor de assumir um estado de sobrecarga onde precise atender mais solicitações do que o adequado para sua capacidade.
 
-A aplicação do padrão \textit{Throttling} consiste em restringir o uso de recursos através de limiares de utilização, de maneira à coibir que o comportamento de consumidores solicitantes por excessivas mensagens demandantes possam colocar em risco o funcionamento ou o dispêndio acima do esperado dos recursos do node provedor \cite{martinekuan_throttling_nodate}. A estratégia permite que provedores consigam operar dentro de seus termos definidos por um \acf{SLA}, protegendo o mesmo de assumir um estado onde precise atender mais solicitações do que sua capacidade.
+Na taxonomia, o uso do \textit{Throttling} é candidato à colaborar nas atividades que buscam aumentar disponibilidade do node provedor, conservando  recursos energéticos e suas observações a respeito de características ou limitações do próprio dispositivo. Para tal, é preciso que limiares sejam estritamente adequados ao que se aplica, capacidade de transmissão, recursos disponíveis ou esperados pelo node. Definir limiares de operação realísticos para o node provedor é um desafio relevante para sistemas com estratégia de coleta de energia \cite{khairnar_discrete-rate_2015}, \cite{liu_energy_2016} e \cite{zhang_toward_2018}, entregando capacidade de decisão sobre ciclos de carga enquanto se objetiva maximizar o tempo de vida do próprio node.
 
- Na taxonomia apresentada, o uso de \textit{Throttling} é sugerido como adequado para colaborar as atividades que buscam aumentar a disponibilidade do node provedor, através da busca de neutralidade no uso de recursos e suas observações a respeito de suas características energéticas. Para tal, é preciso definir limiares adequados que se aplicam de acordo as regras de negócio, capacidade de transmissão e seus recursos disponíveis ou esperados no node. Definir limiares de operação realísticos para node provedor é um desafio relevante para sistemas com estratégia de coleta de energia em busca de incrementar a autonomia de atuação, observados em \cite{khairnar_discrete-rate_2015}, \cite{liu_energy_2016} e \cite{zhang_toward_2018}.
-
-\subsection{Atuação: Limiar, Carga e Meios}
-Em sistemas colaborativos orientados a capacidade energética com coleta de energia, o padrão atua gerenciando a taxa de solicitações no decorrer de um espaço de tempo em que um node cliente pode fazer requisições à um dado node provedor. Sob o ponto de vista da definição do limiar (\textit{Threshold}) de atuação, pode ser aplicado uma abordagem orientada à equidade, onde a disponibilização dos recursos por todo ciclo de vida do node provedor é constante e igualitariamente distribuído entre todos solicitantes em potencial, cabendo ao provedor apenas limitar as operações à uma mesma taxa, tolerando características que podem sofrer variação durante o ciclo de vida do node provedor, como as ligadas aos fatores energéticos de coleta e armazenamento.  Uma outra possibilidade é capacitar o node provedor para ajustar seu limiar dinamicamente, adaptando sua operação mediante as condições que se encontram. Qualquer que seja a estratégia definida deve passar pela análise cuidadosa dos recursos dos nodes  e das operações esperadas, em síntese: 
+\subsection{Atuação: Limiar, Ciclo de Carga e Meios}
+Em sistemas \acs{IoT} orientados aos fatores energéticos, a atuação do padrão é dada ao monitorar a taxa de solicitações no decorrer de um espaço de tempo, nesse intervalo, denominado Ciclo de Carga. Durante um ciclo nodes clientes podem fazer requisições ao provedor. Do ponto de vista da disponibilização dos recursos, durante um ciclo de carga, um node pode assumir abordagem de equidade entre os solicitantes ou algum critério de prioridade e privilégio, onde um solicitante qualquer teria suas requisições atendidas mediante negação do serviço para outro node cliente com menor prioridade, caso necessário. Para o comportamento dos limiares de atuação, sua ação pode ser integralmente linear, onde durante todo funcionamento do node o mesmo limiar é aplicado, independente de outros fatores, ou adaptativo, onde ao observar seu estado o node pode ajustar seu limiar de atuação para conservar seus recursos visando manter-se funcional. O comportamento do limiar de atuação passa pela analise cuidadosa da natureza do node provedor e operações esperadas. Em síntese, sobre limiares temos:
 
 \begin{itemize}
+   \begin{figure}[h]
+	\centering
+	\noindent\includegraphics[width=3cm]{example-image} 
+	\caption{Aqui vou colocar uma figura A e B com as diferentes atuações do limiar.}
+\end{figure}
 
-    \item Limiar constante: o valor de limiar é fixo e estabelecido enquanto o node é projetado. Este limiar pode ser determinado considerando fatores como testes de desempenho, características do ambiente onde será inserido e requisitos operacionais. Todavia, uma vez definido, o limiar permanecerá constante ao longo do tempo de uso do node. 
+    \item Limiar constante: Seu valor é fixado e estabelecido enquanto o node é projetado. Este limiar pode ser determinado considerando fatores como testes de desempenho, características do ambiente onde será inserido e requisitos operacionais. Todavia, uma vez definido, o limiar permanecerá constante ao longo de todo o tempo das atividades do node. 
     
-    Por exemplo, considere um node com uma dada capacidade de processar mensagens, desprezando outros fatores como uso energético, conectividade, ou fatores de deterioração, este pode estabelecer um limiar constante para o máximo de requisições processáveis simultaneamente. Sendo assim, em toda operação, caso esse limiar de requisições seja atingido, o node irá ativamente optar por rejeitar ou atrasar o atendimento até que o valor de requisições retorne ao nível aceitado. 
+    Por exemplo, considere um node com uma dada capacidade de processar mensagens, este pode estabelecer um limiar constante para o máximo de requisições processáveis simultaneamente. Sendo assim, em toda operação, caso esse limiar de requisições seja atingido, o node irá ativamente optar por rejeitar ou atrasar o atendimento até que o valor de requisições retorne ao nível aceitado. 
     
-    Esta abordagem, é bastante útil caso se conheça bem as capacidades do node e não se espera uma grande variação nas condições de operação ao longo do tempo. Embora oferte equidade do ponto de vista dos solicitantes (que tem suas requisições atendidas segundo os mesmos critérios independente do estado do node), não se garante que uso dos recursos será adequado caso ocorra  mudanças repentinas ou flutuações significativas de estado.
+    Esta abordagem, é bastante útil caso se conheça bem as capacidades do node e não se espera uma grande variação nas condições de operação ao longo do tempo. Embora oferte equidade do ponto de vista dos solicitantes (que tem suas requisições atendidas segundo os mesmos critérios independente do estado do node provedor), não se garante que uso dos recursos será adequado caso ocorra mudanças repentinas ou flutuações significativas nos termos de funcionamento deste provedor.
     
-    \item Limiar adaptável: Nesta abordagem, o limiar é ajustado dinamicamente, por isso um node pode assumir um comportamento mais adequado em acordo com as condições que encontra seja através do monitoramento ou análise dos recursos do node, permitindo atender adequadamente solicitações dos nodes clientes. Por exemplo, dado um sistema de segurança que geralmente possui nodes equipados com câmeras. Os nodes, devem enviar imagens capturadas por seus sensores para solicitantes, seja uma central que passivamente recebe as gravações ou outro node demandante. Este node pode ser capaz de ajustar seu limiar de operação por fatores como numero de solicitações, largura de banda disponível, capacidade energética ou outro estado de recurso monitorado encontrado. 
+    \item Limiar adaptável: Nesta abordagem, o comportamento do node é ajustado dinamicamente, por isso um node pode assumir um comportamento mais adequado ao observar suas condições de funcionamento através do monitoramento ou auto-análise dos recursos do node, permitindo atender as solicitações dos nodes clientes, com performance adequada aos termos de operação que se encontre. Por exemplo, dado um sistema de segurança que geralmente possui nodes equipados com câmeras. Este provedor, deve enviar imagens capturadas por seus sensores para algum solicitante, seja uma central que passivamente recebe as gravações ou outra forma de node demandante. Dado uma mudança observada em seus termos de funcionamento, o node poderá ter faixas de limiares distintas adequando-se ao estado encontrado, conservando-se e garantido seu funcionamento dentro do \acs{SLA} estabelecido.   
     
-    Graças a isso, o node com limiar adaptável alcançará diferentes faixas de operações que habilitam o node a mudar seu comportamento , ou seja para interromper ou reduzir sua taxa da transmissão e assim permanecer operando mitigando riscos funcionais. Uma vez que o recurso observável se restabeleça, o node pode assumir outro comportamento pois o seu limiar também mudará ao valor apropriado. Esta capacidade de adaptação, permite que nodes provedores mantenham algum equilíbrio entre desempenho e performance, garantindo suas funcionalidades mesmo com flutuações nas condições operacionais.
+    Graças a isso, o node com limiar adaptável será capaz de operar em diferentes faixas de operações, depreciando seus serviços com a mudança de comportamento, seja para interromper ou reduzir sua taxa da transmissão e assim permanecer operando mitigando riscos funcionais enquanto se encontre neste estado. Uma vez que os recursos observáveis se restabeleçam, o node pode assumir comportamento performático pois o seu limiar também subirá ao valor adequado. Esta capacidade de adaptação, permite que nodes provedores mantenham algum equilíbrio entre conservação de recursos e performance, garantindo suas funcionalidades nos termos das condições operacionais.
+    
+ 
     
 \end{itemize}
 
-\begin{figure}[h]
-\noindent\includegraphics[width=3cm]{example-image} 
-\caption{Aqui vou colocar uma figura A e B com as diferentes atuações.}
-\centering
-\end{figure}
+
+Ciclos de Carga
 
 
 \subsection{Implementação: Observáveis e Motivadores}
