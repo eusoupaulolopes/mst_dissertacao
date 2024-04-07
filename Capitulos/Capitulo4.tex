@@ -136,15 +136,11 @@ Aplicar o padrão \textit{Throttling} consiste basicamente em restringir o uso d
 Na taxonomia, o uso do \textit{Throttling} é candidato à colaborar nas atividades que buscam aumentar disponibilidade do node provedor, conservando  recursos energéticos e suas observações a respeito de características ou limitações do próprio dispositivo. Para tal, é preciso que limiares sejam estritamente adequados ao que se aplica, capacidade de transmissão, recursos disponíveis ou esperados pelo node. Definir limiares de operação realísticos para o node provedor é um desafio relevante para sistemas com estratégia de coleta de energia \cite{khairnar_discrete-rate_2015}, \cite{liu_energy_2016} e \cite{zhang_toward_2018}, entregando capacidade de decisão sobre ciclos de carga enquanto se objetiva maximizar o tempo de vida do próprio node.
 
 \subsection{Atuação: Limiar, Ciclo de Carga e Meios}
-Em sistemas \acs{IoT} orientados aos fatores energéticos, a atuação do padrão é dada ao monitorar a taxa de solicitações no decorrer de um espaço de tempo, nesse intervalo, denominado Ciclo de Carga. Durante um ciclo nodes clientes podem fazer requisições ao provedor. Do ponto de vista da disponibilização dos recursos, durante um ciclo de carga, um node pode assumir abordagem de equidade entre os solicitantes ou algum critério de prioridade e privilégio, onde um solicitante qualquer teria suas requisições atendidas mediante negação do serviço para outro node cliente com menor prioridade, caso necessário. Para o comportamento dos limiares de atuação, sua ação pode ser integralmente linear, onde durante todo funcionamento do node o mesmo limiar é aplicado, independente de outros fatores, ou adaptativo, onde ao observar seu estado o node pode ajustar seu limiar de atuação para conservar seus recursos visando manter-se funcional. O comportamento do limiar de atuação passa pela analise cuidadosa da natureza do node provedor e operações esperadas. Em síntese, sobre limiares temos:
+Em sistemas \acs{IoT} orientados aos fatores energéticos, a atuação do padrão é dada ao monitorar a taxa de solicitações no decorrer de um espaço de tempo, nesse intervalo, denominado Ciclo de Carga. Durante um ciclo nodes clientes podem fazer requisições ao provedor. Do ponto de vista da disponibilização dos recursos, durante um ciclo de carga, um node pode assumir abordagem de equidade entre os solicitantes ou algum critério de prioridade e privilégio, onde um solicitante qualquer teria suas requisições atendidas mediante negação do serviço para outro node cliente com menor prioridade, caso necessário.
+
+Uma vez definido um limiar de atuação, sua ação pode ser inteiramente linear ou constante, onde durante todo funcionamento do node o mesmo valor limiar é aplicado, independente de outros fatores, outra possibilidade é definir vários limiares que agem adaptativamente de acordo com os diversos estados mapeados, tão logo determinado cenário seja alcançado, o node pode ajustar seu limiar de atuação para conservar seus recursos visando manter-se funcional. O comportamento do limiar de atuação passa pela analise cuidadosa da natureza do node provedor e operações esperadas. Em síntese:
 
 \begin{itemize}
-   \begin{figure}[h]
-	\centering
-	\noindent\includegraphics[width=3cm]{example-image} 
-	\caption{Aqui vou colocar uma figura A e B com as diferentes atuações do limiar.}
-\end{figure}
-
     \item Limiar constante: Seu valor é fixado e estabelecido enquanto o node é projetado. Este limiar pode ser determinado considerando fatores como testes de desempenho, características do ambiente onde será inserido e requisitos operacionais. Todavia, uma vez definido, o limiar permanecerá constante ao longo de todo o tempo das atividades do node. 
     
     Por exemplo, considere um node com uma dada capacidade de processar mensagens, este pode estabelecer um limiar constante para o máximo de requisições processáveis simultaneamente. Sendo assim, em toda operação, caso esse limiar de requisições seja atingido, o node irá ativamente optar por rejeitar ou atrasar o atendimento até que o valor de requisições retorne ao nível aceitado. 
@@ -153,19 +149,50 @@ Em sistemas \acs{IoT} orientados aos fatores energéticos, a atuação do padrã
     
     \item Limiar adaptável: Nesta abordagem, o comportamento do node é ajustado dinamicamente, por isso um node pode assumir um comportamento mais adequado ao observar suas condições de funcionamento através do monitoramento ou auto-análise dos recursos do node, permitindo atender as solicitações dos nodes clientes, com performance adequada aos termos de operação que se encontre. Por exemplo, dado um sistema de segurança que geralmente possui nodes equipados com câmeras. Este provedor, deve enviar imagens capturadas por seus sensores para algum solicitante, seja uma central que passivamente recebe as gravações ou outra forma de node demandante. Dado uma mudança observada em seus termos de funcionamento, o node poderá ter faixas de limiares distintas adequando-se ao estado encontrado, conservando-se e garantido seu funcionamento dentro do \acs{SLA} estabelecido.   
     
-    Graças a isso, o node com limiar adaptável será capaz de operar em diferentes faixas de operações, depreciando seus serviços com a mudança de comportamento, seja para interromper ou reduzir sua taxa da transmissão e assim permanecer operando mitigando riscos funcionais enquanto se encontre neste estado. Uma vez que os recursos observáveis se restabeleçam, o node pode assumir comportamento performático pois o seu limiar também subirá ao valor adequado. Esta capacidade de adaptação, permite que nodes provedores mantenham algum equilíbrio entre conservação de recursos e performance, garantindo suas funcionalidades nos termos das condições operacionais.
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[width=3cm]{example-image} 
+    	\caption{Aqui vou colocar uma figura A e B com as diferentes atuações do limiar.}
+    \end{figure}
     
+    Graças a isso, o node com limiar adaptável será capaz de operar em diferentes faixas de operações, depreciando seus serviços com a mudança de comportamento, seja para interromper ou reduzir sua taxa da transmissão e assim permanecer operando mitigando riscos funcionais enquanto se encontre neste estado. Uma vez que os recursos observáveis se restabeleçam, o node pode assumir comportamento de uso acentuado dos recursos disponíveis permitido pelo novo valor estipulado para o limiar de consumo adequado. Esta capacidade de adaptação, permite que nodes provedores mantenham algum equilíbrio entre conservação de recursos e performance, garantindo suas funcionalidades nos termos das condições operacionais.
+    
+      
  
     
 \end{itemize}
 
 
-Ciclos de Carga
+Ciclo de Carga, refere-se as atividades suportadas que consomem algum recurso energético do node dentro de um intervalo de tempo. Dado uma sistema com coleta de energia, um ciclo de carga durará pelo menos até que a próxima entrada energética coletada esteja disponível.  Uma carga é qualquer atividade que requer o consumo energético, seja sensoriamento, atuação, transmissão de dados entre outros. O mecanismo de \textit{throttling} irá atuar regulando o uso de recursos durante um ciclo, caso necessário, depreciando ativamente as operações de acordo com o projetado, visando adequar estas atividades de carga e o consumo energético ao cenário encontrado pelo provedor até que a próxima entrada energética esteja disponível e possa ser novamente adaptado em concordância com o novo cenário a que se encontra.
+
+   \begin{figure}[h]
+	\centering
+	\noindent\includegraphics[width=3cm]{example-image} 
+	\caption{Aqui vou colocar uma figura sobre entrada energética e ciclo de carga.}
+\end{figure}
+
+
+\subsubsection{Meios}
+Um node provedor com a capacidade de adaptar seu comportamento em virtude das condições que se encontram, podem se valer de diversas estratégias para tal, as quais podem variar de acordo com a aplicação do node na rede. Para isso, os nodes podem agir: 
+\begin{enumerate}[label=(\subscript{M}{{\arabic*}})]
+	\item Rejeitando requisições individualmente de nodes clientes excessivamente demandantes.
+	\item Desabilitando ou degradar componentes não críticos em detrimento de outros essenciais. 
+	\item Executando operações em estado limitado.	
+\end{enumerate}
+
+Reconhecendo a restrição energética como característica perpetua na rede \acs{IoT}, elemento central na definição da taxonomia, duas estratégicas fundamentais podem ser elencadas, se valendo dos meios já definidos. São elas:
+
+\begin{enumerate}
+	\item Observando entrada energética.
+	\item Entrada energética aliado à capacidade de reserva.
+\end{enumerate}
+
+
 
 
 \subsection{Implementação: Observáveis e Motivadores}
 
-A implementação deve passar por decisões arquiteturais que impactam diretamente o comportamento do node provedor bem como na eficiência de toda rede \ac{IoT}. É importante destacar que a atuação dos mecanismos de ajuste do comportamento precisam ser eficientes o bastante para que dado limiar atingido, o processo de adequação de comportamento do node provedor seja devidamente alterado, mitigando, assim, perdas desnecessárias ou não previstas, causadas por ajuste inapropriados do comportamento deste agente em questão, onde este se pode se encontrar em modo de operação fora do esperado, este modo de operação tem a capacidade de criar um cenário de esgotamento energético ou sobrecarga de atividades para outros elementos da rede colaborativa, por exemplo.
+A implementação deve passar por decisões arquiteturais que impactam diretamente o comportamento do node provedor bem como na eficiência de toda rede \acs{IoT}. É importante destacar que a atuação dos mecanismos de ajuste do comportamento precisam ser eficientes o bastante para que dado limiar atingido, o processo de adequação de comportamento do node provedor seja devidamente alterado, mitigando, assim, perdas desnecessárias ou não previstas, causadas por ajuste inapropriados do comportamento deste agente em questão, onde este se pode se encontrar em modo de operação fora do esperado, este modo de operação tem a capacidade de criar um cenário de esgotamento energético ou sobrecarga de atividades para outros elementos da rede colaborativa, por exemplo.
 
 Qualquer aspecto que gere impacto ou que tenha capacidade de influenciar o comportamento neutro-energético do node com capacidade de coleta energética deve ser levado em consideração em sua implementação. Estes aspecto podem ter seus valores pré-estabelecidos, porém é comum enfrentar situações onde os valores tidos como justificadores de um comportamento não sejam suficientemente adequados, seja por uma falha na previsibilidade de um recurso ou evento não tolerável. Por exemplo, é relativamente comum um cenário onde nodes que exploram energia solar diurnalmente enfrentem alguma escassez energética motivados por eventos climáticos não previstos. Com isso, colocam em risco sua disponibilidade, pois caso seja mantido o comportamento dito adequado e previamente estabelecido podem levar o node a um alterações em sua disponibilidade não previstas ou perdas em performance. 
 
@@ -175,7 +202,7 @@ Desta forma, a mudança de comportamento do node motiva-se em: tão logo quanto 
 
 No trabalho \cite{zhang_toward_2018}, equipamentos capazes estão dispostos em cenário de disponibilidade energética previsível onde é necessário em prever a quantidade futura de energia coletável disponível para recarga. O problema foi apresentado na forma de um \ac{MDP} onde os dispositivos podem adequar seu comportamento de acordo com expectativa energética vindoura para recarga.  
 
-Por fim, na taxonomia proposta, buscar cobrir aspectos inerentes ao comportamento de operações em acordo com a neutralidade energética do node é imprescindível, a implementação das possíveis soluções que visem atender esse requisito deve observar atores estabelecidos, o contexto de uso do node, a natureza de coleta e sua finalidade ligado a capacidade e potencial de coleta para possíveis ciclos de recarga energética e por fim, sua capacidade de armazenamento, características e uso desta reserva energética.
+Por fim, na taxonomia, busca-se cobrir aspectos inerentes ao comportamento de operações em acordo com a neutralidade energética do node é imprescindível, a implementação das possíveis soluções que visem atender esse requisito deve observar atores estabelecidos, o contexto de uso do node, a natureza de coleta e sua finalidade ligado a capacidade e potencial de coleta para possíveis ciclos de recarga energética e por fim, sua capacidade de armazenamento, características e uso desta reserva energética.
 
 
 \begin{itemize}
@@ -183,11 +210,6 @@ Por fim, na taxonomia proposta, buscar cobrir aspectos inerentes ao comportament
 \item Motivadores
 \end{itemize}
 
-
-
-
-% \subsubsection{Valores de Operação}
-% \subsubsection{Ciclos de Recarga}
 
 
 
