@@ -173,15 +173,30 @@ Ciclo de Carga, refere-se as atividades suportadas que consomem algum recurso en
 
 
 \subsubsection{Meios}
-O comportamento de um node provedor pode ser ajustado de acordo com as circunstâncias, diferentes meios são usados pelo mecanismo de \textit{throttling} a depender da função do node na rede. Assim, os nodes podem agir: 
+O comportamento de um node pode ser ajustado de acordo com as circunstâncias. Diferentes meios são usados no processo de aplicação de um mecanismo \textit{throttling} a depender da função do node na rede e a intenção particular ao limitar operações. Assim, os meios de atuação decorrem sobre:
 
-\begin{enumerate}[label=(\subscript{M}{{\arabic*}})]
-	\item Rejeitando requisições individualmente de nodes clientes excessivamente demandantes.
-	\item Desabilitando ou degradando componentes não críticos em detrimento de outros essenciais. 
-	\item Executando operações em estado limitado.	
+\begin{enumerate}[label=(\subscript{Meio} {{\arabic*}})]
+	\item \label{meio1} Atuação sobre nodes clientes; 
+	\item \label{meio2} Atuação sobre atividades do node provedor;
+	\item \label{meio3} Atuação sobre degradação intencional de componentes envolvidos.
 \end{enumerate}
 
-Reconhecendo a restrição energética como característica presente na rede \acs{IoT}, elemento central na definição da taxonomia, duas estratégias fundamentais são elencadas, se valendo dos meios já definidos. Sendo elas:
+O \ref{meio1} reconhece o uso de throttling ao considerar a necessidade de observar o node cliente em relação de sua taxa de vazão ou a da criticidade das operações realizadas por este. Relativo a taxa de vazão, estima-se que o throttling poderá ser empregado quando um node cliente buscar limitar sua taxa de recebimento de mensagens de acordo com sua capacidade de lidar com tais eventos. Sendo assim, o node cliente pode optar por limitar suas atividades objetivando recuperar ou preservar-se dentro do limiar de atuação estabelecido. Sobre criticidade da operação, entende-se como o atributo que indica quão essencial é uma operação para o node. 
+
+Sendo assim, ainda sobre a atuação, cabe classificar as operações realizadas no node cliente, onde algumas podem ser consideradas com maior grau de criticidade para o cliente e por isso justificasse alivio nos limiares propostos. Dado este fator, cabe ao throttling atuar afrouxando limiar para esta operação, onde certamente neste caso será é possível buscar compensação reduzindo a capacidade de operar sobre outras demandas menos criticas caso existam.
+
+\ref{meio2} compreende o controle de atuação dado as capacidades do node atender solicitações durante um intervalo de tempo ou ciclos de carga. Para tal, as estratégias de atuação do throttling passa pela observação de sua capacidade de atendimento ou taxa de vazão, os recursos disponíveis para realizar o solicitado e a criticidade estipulada para a operação. 
+
+
+  
+   da capacidade da taxa de vazão de um node provedor ao atender as solicitações dos nodes clientes dentro de um intervalo de tempo.  Aqui, apenas a capacidade de atendimento do node provedor é observado, portanto, o throttling será aplicado conforme capacidade do node provedor em atender um universo de nodes solicitantes. 
+
+
+ caso os valores definidos como limiar sejam atingidos cons É importante destacar que o controle de solicitações respondidas pelo node provedor nem sempre buscará a igualdade no atendimento à todos nodes clientes, sendo assim, é permitido existir, caso necessário, critérios que destacam ou privilegiam dado  existir critérios que diferenciam a , onde um terá  estratégia igualitária para todos os nodes que 
+
+
+a demanda de observar a vazão disponibilizada para tal node, sendo necessário 
+Reconhecendo a restrição energética como característica presente na rede \acs{IoT}, elemento central na definição da taxonomia, deve-se decorrer sobre cada meio de atuação:
 
 \begin{enumerate}
 	\item Observando entrada energética.
