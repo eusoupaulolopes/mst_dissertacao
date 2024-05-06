@@ -66,7 +66,7 @@ Um Recurso descreve um componente ou capacidade que um dado node possui para rea
 
 Recursos energéticos refere-se a dois grupos: da capacidade de coleta do node e a capacidade de armazenamento e disponibilização da energia previamente coletada. Arquitetura de sistemas dirigidos a energia com capacidade de coleta são projetados para usar estes recursos de maneira eficiente como descrito em \cite{prauzek_energy_2018} sua aplicação é especialmente útil em cenários onde a energia para alimentar os componentes eletrônicos é escassa. Um recurso energético é propriamente uma fonte natural ou artificial de energia que de maneira apropriada pode ser convertida em energia utilizável para garantir a realização das operações. 
 
-No cenário proposto, assume um papel importante pois é essencial para garantir o funcionamento continuo e autônomo dos nodes envolvidos, cabendo ao agente suas ações de coleta, transformar, armazenamento e utilização o recurso energético, projetado de maneira a aproximar-se do estado onde as operações tendem a uma neutralidade energética \acfp{EN}, conceito apresentado por \cite{kansal_power_2007} e mais a frente em \cite{merrett_energy-driven_2017} com a abordagem da neutralidade de força-energética, de acordo com suas respectivas capacidades.
+No cenário proposto, assume um papel importante pois é essencial para garantir o funcionamento continuo e autônomo dos nodes envolvidos, cabendo ao agente suas ações de coleta, transformar, armazenamento e utilização o recurso energético, projetado de maneira a aproximar-se do estado onde as operações tendem a uma neutralidade energética \acfp{EN}, conceito apresentado por \cite{kansal_power_2007} e posteriormente em \cite{merrett_energy-driven_2017} com a abordagem da neutralidade de força-energética, em acordo com suas respectivas capacidades.
 
 % \subsection{Sensores}
 % Um sensor é um recurso capaz de detectar e medir informações específicas do ambiente ao redor. Convertendo características do meio físico como temperatura, umidade, luz, pressão, movimento, som em sinais digitais que podem ser processados. 
@@ -78,7 +78,7 @@ No cenário proposto, assume um papel importante pois é essencial para garantir
 
 
 
-\subsection{Capacidade de Coleta}
+\subsection{Capacidade de Coleta}\label{Capacidade de Coleta}
 De acordo com o trabalho de \cite{sudevalayam_energy_2011}, a capacidade de coleta refere-se à habilidade do elemento em extrair e transformar um recurso energético disponível no ambiente. Seu objetivo é manter ou estender o tempo de funcionamento do node, atendendo totalmente ou parcialmente às suas necessidades energéticas.
 
 Sistemas de coleta energética possuem três conceitos fundamentais: Carga, a Arquitetura de Coleta e entrada energética. A Carga é destinada a atividade que esta consumindo energia, este é oriundo de um componente demandante de energia para operar, sejam sensores, transmissores ou  atuadores, apresentados como uma composição de recursos. A Arquitetura de Coleta indica quais mecanismos, deve descrever seus componentes, meios de conversão e unidades de armazenamento. Atualmente é possível destacar três modelos básicos de arquitetura:
@@ -116,7 +116,7 @@ Sobre os ambientes onde nos nodes operam, diversas técnicas podem ser utilizada
     \item Parcialmente controlada: O processo de geração energética é sensível à ação de terceiros porém a quantidade exata de energia gerada não pode ser prevista com exatidão. Fontes baseadas em Radio Frequência converte a transmissão de ondas de radio em energia utilizável, por exemplo, \cite{shaikh_energy_2016} decorre como tags \acf{RFID} conseguem ser visualizadas por um leitor. Todavia, a quantidade de energia coletada sofre impactos diretos das características de propagação no meio disposto, barreira, distancia até a fonte e capacidade da antena de transmissão.
 \end{itemize}
 
-\subsection{Capacidade de Armazenamento}
+\subsection{Capacidade de Armazenamento}\label{Capacidade de Armazenamento}
 A capacidade de armazenamento trata de propriedades como conversão, força e taxa de carregamento e descarga em relação a fonte energética em uso com o objetivo de utilizar essa energia em momento apropriado. 
 
 É bem conhecido que o fator energético é um desafio para redes com restrições energéticas e capacidade de coleta, pois claramente caso a energia de um node seja esgotada o mesmo não será capaz de cumprir seu papel a menos que o fornecimento energético seja restabelecido ou algum mecanismo de armazenamento possa cobrir parcial ou totalmente a diferença energética necessária para a operação.
@@ -181,50 +181,70 @@ O comportamento de um node pode ser ajustado de acordo com as circunstâncias. D
 	\item \label{meio3} Atuação sobre degradação intencional de componentes envolvidos.
 \end{enumerate}
 
-O \ref{meio1} reconhece o uso de throttling ao considerar a necessidade de observar o node cliente em relação de sua taxa de vazão ou a da criticidade das operações realizadas por este. Relativo a taxa de vazão, estima-se que o throttling poderá ser empregado quando um node cliente buscar limitar sua taxa de recebimento de mensagens de acordo com sua capacidade de lidar com tais eventos. Sendo assim, o node cliente pode optar por limitar suas atividades objetivando recuperar ou preservar-se dentro do limiar de atuação estabelecido. Sobre criticidade da operação, entende-se como o atributo que indica quão essencial é uma operação para o node. 
+O \ref{meio1} usa de mecanismos de throttling ao considerar a necessidade de observar as capacidades dos nodes clientes em relação de sua taxa de vazão ou a criticidade de suas operações. Sobre a taxa de vazão, estipula-se um throttling aplicado a quando o node cliente buscar limitar sua taxa de recebimento de mensagens de acordo com sua capacidade de lidar com tais eventos. Sendo assim, para conseguir operar nos termos em que se encontrar, o node cliente poderá limitar sua vazão para envio ou recebimento de dados de acordo com as suas capacidades, este limite tem por objetivo recuperar ou preservar seus recursos em acordo com o estabelecido limiar de atuação.
 
-Sendo assim, ainda sobre a atuação, cabe classificar as operações realizadas no node cliente, onde algumas podem ser consideradas com maior grau de criticidade para o cliente e por isso justificasse alivio nos limiares propostos. Dado este fator, cabe ao throttling atuar afrouxando limiar para esta operação, onde certamente neste caso será é possível buscar compensação reduzindo a capacidade de operar sobre outras demandas menos criticas caso existam.
+Entende-se por criticidade de uma operação, o atributo que indica quão essencial é esta para o node. Sendo assim, sobre atuação do throttling nos nodes clientes, cabe dois cenários: um primeiro onde todas as operações tem igual importância para o node/rede, e um segundo, onde existam operações classificadas mais importantes que outras. Sendo assim, de acordo com o segundo cenário, justifica que tais operações possam encontrar alivio nos  limiares de throttling  e por isso, cabe observar e definir tais valores para que dado operações privilégiadas, exista também maior tolerância quanto ao uso de recursos para as tais. 
 
-\ref{meio2} compreende o controle de atuação dado as capacidades do node atender solicitações durante um intervalo de tempo ou ciclos de carga. Para tal, as estratégias de atuação do throttling passa pela observação de sua capacidade de atendimento ou taxa de vazão, os recursos disponíveis para realizar o solicitado e a criticidade estipulada para a operação. 
+Certamente, para que seja possível um maior gasto de recursos pelas operações criticas, cabe também ao projeto definir regras de compensação onde o node poderá reduzir seu limiar para demandas menos criticas, caso necessário.
 
+\ref{meio2} compreende o controle de atuação no node provedor. De acordo com o seu estado durante um ciclo de carga os mecanismos de throttling poderão atuar em conformidade aos recursos encontrados neste node. Para tal, as estratégias de aplicação e definição de limiares passam pela observação da capacidade de vazão das múltiplas solicitações proveniente dos clientes, bem como da criticidade das operações realizadas. 
 
-  
-   da capacidade da taxa de vazão de um node provedor ao atender as solicitações dos nodes clientes dentro de um intervalo de tempo.  Aqui, apenas a capacidade de atendimento do node provedor é observado, portanto, o throttling será aplicado conforme capacidade do node provedor em atender um universo de nodes solicitantes. 
+A taxa de vazão do um node provedor, é definida pela sua capacidade em atender demandas dos diversos nodes solicitantes durante um espaço de tempo seja por limitação da rede ou por sua capacidade computacional em realizar tais operações. Sendo assim, o mecanismo de throttling poderá se valer dos limiares estipulados através da análise dos recursos disponibilizados para operação dentro da janela de tempo, a partir daí, dado o cenário encontrado, limitar o atendimento as solicitações de nodes considerados excessivamente demandantes ou menos privilégiados.  
 
+Quanto a observação nas operações realizadas pelo node provedor, estas tem seu grau de criticidade atrelado a importância de tal operação na conjuntura ao qual se destina o node bem como quão fundamental pode ser. É importante destacar que a definição de limiares sempre busca garantir que o node não consuma seus recursos excessivamente, limiar este que deve ser revisto sempre que o panorama encontrado pelo node mude, seja pelo fim da janela de trabalho (carga) ou a medida que as atividades demandantes sejam atendidas. Com isso, dado limiar deverá atuar protegendo o node provedor no decorrer de suas trocas de estado a passo que realiza as operações. 
 
- caso os valores definidos como limiar sejam atingidos cons É importante destacar que o controle de solicitações respondidas pelo node provedor nem sempre buscará a igualdade no atendimento à todos nodes clientes, sendo assim, é permitido existir, caso necessário, critérios que destacam ou privilegiam dado  existir critérios que diferenciam a , onde um terá  estratégia igualitária para todos os nodes que 
+O limiar de atendimento de operações poderá suportar um sistema hierárquico, neste caso nodes solicitantes mais privilégiados terão suas operações realizadas mesmo em um cenário de escassez, outro ponto é que dado a criticidade da operação pode-se fazer distinção, tolerando mais operações de um tipo considerado critico ao detrimento da realização de operações menos importantes.
 
+Pode-se ainda atrelar ao conjunto de relacionado aos fatores utilizados para definição do limiar das operações, os aspectos ligados a degradação ativa nos componentes envolvidos nas operações ofertadas aos nodes clientes ou apenas de uso interno do node. Operações limitadas fornece ao node a capacidade de limitar também o uso de recurso energético de algum componente, no caso, dos componentes envolvidos com tais operações que se encontram em execução limitada. 
 
-a demanda de observar a vazão disponibilizada para tal node, sendo necessário 
-Reconhecendo a restrição energética como característica presente na rede \acs{IoT}, elemento central na definição da taxonomia, deve-se decorrer sobre cada meio de atuação:
-
-\begin{enumerate}
-	\item Observando entrada energética.
-	\item Entrada energética aliado à capacidade de reserva.
-\end{enumerate}
-
-
+Compreende os mecanismos dispostos no \ref{meio3}, a capacidade do nó em reduzir o consumo energético de algum componente embarcado mediante o cenário de escassez energética. Esta já é uma manobra conhecida; diversos dispositivos submetem-se a esta, objetivando a conservação de seus recursos energéticos em ciclos de carga, como, por exemplo, os aparelhos móveis, estes possuem a capacidade para que, dado limiar de sua reserva energética seja atingido, limita-se ativamente componentes menos críticos, como por exemplo câmeras ou alto-falantes, assim, o recurso energético usado por tais pode ser conservado e disponibilizado para componentes dito essenciais até que o cenário de escassez se resolva. 
 
 
 \subsection{Implementação: Observáveis e Motivadores}
 
-A implementação deve passar por decisões arquiteturais que impactam diretamente o comportamento do node provedor bem como na eficiência de toda rede \acs{IoT}. É importante destacar que a atuação dos mecanismos de ajuste do comportamento precisam ser eficientes o bastante para que dado limiar atingido, o processo de adequação de comportamento do node provedor seja devidamente alterado, mitigando, assim, perdas desnecessárias ou não previstas, causadas por ajuste inapropriados do comportamento deste agente em questão, onde este se pode se encontrar em modo de operação fora do esperado, este modo de operação tem a capacidade de criar um cenário de esgotamento energético ou sobrecarga de atividades para outros elementos da rede colaborativa, por exemplo.
+A implementação passa por decisões arquiteturais que impactam diretamente o comportamento do node, também deve considerar a atuação do mesmo enquanto dispositivo na rede \acs{IoT}. 
 
-Qualquer aspecto que gere impacto ou que tenha capacidade de influenciar o comportamento neutro-energético do node com capacidade de coleta energética deve ser levado em consideração em sua implementação. Estes aspecto podem ter seus valores pré-estabelecidos, porém é comum enfrentar situações onde os valores tidos como justificadores de um comportamento não sejam suficientemente adequados, seja por uma falha na previsibilidade de um recurso ou evento não tolerável. Por exemplo, é relativamente comum um cenário onde nodes que exploram energia solar diurnalmente enfrentem alguma escassez energética motivados por eventos climáticos não previstos. Com isso, colocam em risco sua disponibilidade, pois caso seja mantido o comportamento dito adequado e previamente estabelecido podem levar o node a um alterações em sua disponibilidade não previstas ou perdas em performance. 
+Qualquer aspecto que impacta ou influencie na capacidade do node em manter-se disponível deve ser levado em consideração em sua implementação. Estes, os ditos elementos observáveis, compreendem os componentes aos quais cabem a analise de estado pois justificam a ação do mecanismo throttling, que deverá ajustar o comportamento do node para mante-lo disponível mediante evitar esgotamento energético do mesmo, estes se apresentam como os garantidores das condições energéticas do node: sua condição de entrada através de uma fonte energética; a capacidade de armazenamento dessa energia coletada em eventual \textit{buffer}. 
+
+A entrada energética como citada em \ref{Capacidade de Coleta}, indica a capacidade de coleta energética do node, uma vez que um dispositivo receba uma entrada, inicia-se um ciclo de carga que por sua vez durará até a próxima oferta energética. Sobre a capacidade de armazenar energia, como disposto em \ref{Capacidade de Armazenamento} indicam sua reserva secundária, onde em momento adequado o node poderá fazer uso para manter-se operacional.  
+
+A capacidade do node em ajustar suas operações em acordo tanto com sua entrada energética e reserva, garantirá maior disponibilidade do agente. É importante destacar também, a atuação dos mecanismos de ajuste do comportamento, estes devem ocorrer de maneira suficientemente eficiente para que dado estado adequado seja alcançado o mais breve possível, refletindo o estado dos recursos observados. Assim, caso um limiar de atuação seja atingido a alteração de comportamento do node ocorra de modo adequado, mitigando, com isso, perdas desnecessárias ou não previstas, causadas por ajuste inapropriados de comportamento.
+
+Desta forma, a mudança de comportamento do node motiva-se em: tão logo quanto os fatores de tomada de decisão forem descobertos, adequar-se para que estes fatores divergentes, aqueles encontrados em execução, sejam mitigados pois encontram-se como elementos que potencializam um risco a disponibilidade mediante as condições energéticas buscada pelo node na rede.
+
+No trabalho \cite{zhang_toward_2018}, equipamentos capazes de observar seus recursos energéticos, atuam modificando seu comportamento para preservar energia motivados com a expectativa de uma entrada energética prevista. Sendo assim, para este caso, a motivação de aplicação do agente limitante é preservar alguma condição energética, prolongando a disponibilidade dos componentes ditos críticos.
+
+Portanto, a motivação dos nodes em limitar seu comportamento passa pela análise do estado dos recursos observáveis e a intenção proposta para o agente limitante.
+
+Na taxonomia, define-se intenção como sendo o propósito declarado para atuação de um agente limitante em concordância com o que se deseja. É de interesse dos aspectos relativos a restrição energética do node, que a atuação do throttling procura alcançar um dos dois objetivos:
+
+\begin{enumerate}
+	\item Preservar recursos energéticos;
+	\item Restabelecimento da condição energética.
+\end{enumerate}
+
+Quanto ao restabelecimento de sua condição energética, entende-se que o node poderá através da analise de seus observáveis, adotar comportamento limitado motivado pela expectativa de restabelecer seus recursos energéticos a valores esperados. Neste caso, pretende-se com isso operar de modo a dispender menos energia durante os próximos ciclos de carga até que seus valores estejam em acordo com o esperado ou o cenário de uso se altere. 
+
+Uma vez alcançado estado desejado, o node poderá reavaliar seu comportamento e ajustar-se para o enfim considerado adequado. 
+
+
+\begin{comment}
+	
+estão dispostos em cenário de disponibilidade energética previsível onde é necessário em prever a quantidade futura de energia coletável disponível para recarga. O problema foi apresentado na forma de um \ac{MDP} onde os dispositivos podem adequar seu comportamento de acordo com expectativa energética vindoura para recarga. 
+
+
+acima do que de fato deveriam Ocasionando até mesmo, um cenário de maior esgotamento energético do que previso
+
+coloque o agente em um modo de operação inadequado, fora do esperado. A depender de como as operações ocorrem, o modo de operação terá capacidade de criar um cenário de esgotamento energético acelerado, em outra parte, a limitação inapropriada poderá causar sobrecarga de atividades para outros elementos da rede, por exemplo.
+	
+
+Estes aspecto podem ter seus valores pré-estabelecidos, porém é comum enfrentar situações onde os valores tidos como justificadores de um comportamento não sejam suficientemente adequados, seja por uma falha na previsibilidade de um recurso ou evento não tolerável. Por exemplo, é relativamente comum um cenário onde nodes que exploram energia solar diurnalmente enfrentem alguma escassez energética motivados por eventos climáticos não previstos. Com isso, colocam em risco sua disponibilidade, pois caso seja mantido o comportamento dito adequado e previamente estabelecido podem levar o node a um alterações em sua disponibilidade não previstas ou perdas em performance. 
 
 No contexto de dispositivos com capacidade de coleta energética, fatores pré-estabelecidos são comumente encontrados, ciclos de recarga na forma de capacidade de coleta, a capacidade de armazenamento do node e a sazonalidade da fonte energética coletável. O conjunto dos valores  desses fatores presentes no node, indicam o estado energético deste agente. Dado um estado energético esperado, pode-se previamente definir como o node se comportará. Mesmo assim, também vale ressaltar que estes elementos energéticos estão relacionados às variações e toda sorte de situações que o node provedor enfrenta enquanto agente em campo. Diversos esforços foram realizados para melhorar a maneira como um agente observa seu estado energético e define seu comportamento, mas para que seja possível adequar-se concretamente à estes fatores encontrados, o agente deve ter a capacidade de analisar as operações e o cenário onde se encontra, tanto individualmente quanto, se possível, em conjunto com outros elementos colaboradores. Assim, é possível realizar ajustes prontamente nos limiares de atuação, tão logo perceba-se que os valores estimados previamente e o seu estado esperado divirjam causando comportamento fora do desejado.
 
-Desta forma, a mudança de comportamento do node motiva-se em: tão logo quanto os fatores de tomada de decisão forem descobertos, adequar-se para que estes fatores divergentes, aqueles descobertos em execução, sejam mitigados pois encontram-se como elementos que potencializam um risco a operação-neutra buscada pelo node ou rede colaborativa. 
-
-No trabalho \cite{zhang_toward_2018}, equipamentos capazes estão dispostos em cenário de disponibilidade energética previsível onde é necessário em prever a quantidade futura de energia coletável disponível para recarga. O problema foi apresentado na forma de um \ac{MDP} onde os dispositivos podem adequar seu comportamento de acordo com expectativa energética vindoura para recarga.  
-
-Por fim, na taxonomia, busca-se cobrir aspectos inerentes ao comportamento de operações em acordo com a neutralidade energética do node é imprescindível, a implementação das possíveis soluções que visem atender esse requisito deve observar atores estabelecidos, o contexto de uso do node, a natureza de coleta e sua finalidade ligado a capacidade e potencial de coleta para possíveis ciclos de recarga energética e por fim, sua capacidade de armazenamento, características e uso desta reserva energética.
+\end{comment}  
 
 
-\begin{itemize}
-\item Observáveis
-\item Motivadores
-\end{itemize}
 
 
 
