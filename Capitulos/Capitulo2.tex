@@ -7,7 +7,7 @@ Este capítulo aborda os conceitos e técnicas que proporcionam a compreensão d
 \section{Energy-Driven Computing}
 \label{cap2:energyDriven}
 
-Um sistema dirigido à energia (\textit{Energy-Driven}), é todo aquele que os fatores energéticos intrínsecos a ele são tratados como primários, desde concepção, gerenciamento e sua operação \cite{merrett_energy-driven_2017}. Computação dirigida a estes fatores, ditos energéticos, deve considerar fundamentalmente a disponibilidade energética pois primariamente precisam carregar a capacidade de adaptação as dinâmicas de captação de energia. Este paradigma tem como objetivo evidenciar as características energéticas, em potencial a respeito de dispositivos que por quaisquer motivos, não podem estar conectados diretamente em uma infraestrutura capaz de fornecer energia regularmente. 
+Um sistema dirigido à energia (\textit{Energy-Driven}), é todo aquele que os fatores energéticos intrínsecos a ele são tratados como primários, desde concepção, gerenciamento e sua operação \cite{merrett_energy-driven_2017}. Computação dirigida a estes fatores, ditos energéticos, deve considerar fundamentalmente a disponibilidade energética pois precisam carregar a capacidade de adaptação as dinâmicas de captação de energia. Este paradigma tem como objetivo evidenciar as características energéticas, em potencial a respeito de dispositivos que por quaisquer motivos, não podem estar conectados diretamente em uma infraestrutura capaz de fornecer energia virtualmente ilimitada. 
 
 Para tal, caso necessário, dispositivos podem operar coletando recursos disponíveis no ambiente. Coleta de energia refere-se a capacidade de um dispositivo em capturar e converter recursos energéticos do meio e converte-los de modo a prolongar sua vida útil mitigando um cenário de escassez energética \cite{sudevalayam_energy_2011}. 
 
@@ -27,25 +27,43 @@ Apesar de inicialmente ser previsto um cenário de uso onde apenas a fonte energ
 	Fonte: adaptado de \cite{sudevalayam_energy_2011} 
 \end{figure}
 
+A visão do cenário acima proporciona ao node a capacidade de manter seus níveis de operação, abstraindo em algum nível as variações de energia coletada. Pois seja $P_{s}(t)$ a entrada energética em dado momento e  $P_{c}(t)$ a energia consumida nos ciclos de carga, é possível encontrar a dinâmica apresentada na Figura \ref{fig:cap2energyneutraloperation}, em momento de abundancia energética o node pode armazenar a energia que supera a quantidade necessária para sua operação em decorrência de que em momentos de escassez, possa fazer uso dessa energia suplementando sua necessidade. 
 
 
-As operações dessa natureza carregam dois princípios que são apresentados no trabalho seminal de \cite{kansal_power_2007}: Manter-se operacional mesmo em cenários onde a quantidade de energia coletada fosse durante muito tempo, inferior ao necessário e como garantir que, dado um ambiente de coleta é possível obter máxima de performance ignorando variações da energia coletada. 
+Operações neutro-energéticas carregam dois princípios que são apresentados no trabalho seminal de \cite{kansal_power_2007}: Manter-se operacional mesmo em cenários onde a quantidade de energia coletada fosse durante muito tempo, inferior ao necessário e como garantir que, encontrado em um ambiente de coleta seja possível obter performance esperada tolerando variações da energia coletada. 
 
-É importante destacar ainda que este modelo de operação serve como base para os diversos avanços em computação dirigida a energia. Ao apresentar os conceitos de operação-neutra, a teoria de coleta energética e seus questionamentos, carrega intrinsecamente as bases do que posteriormente foi detalhado como \acf{PNO} sendo utilizado inclusive como referencia no seminal \cite{merrett_energy-driven_2017} introdutório do tema.
+\begin{figure}[H]
+	\centering
+	\caption{Dinâmicas de operação com coleta de energia} \label{fig:dinamicas}
+	\begin{subfigure}{0.49\textwidth}
+		\caption{Operação com buffer intermediário.}
+		\label{fig:cap2energyneutraloperation}
+		\includegraphics[width=\linewidth]{Imagens/cap2/cap2energyneutraloperation.jpg}	
+	\end{subfigure}%
+	\hspace*{\fill}  
+	\begin{subfigure}{0.49\textwidth}
+		\caption{Operação Power-Neutral.}
+		\label{fig:cap2powerneutraloperation}
+		\includegraphics[width=\linewidth]{Imagens/cap2/cap2powerneutraloperation.jpg}
+	\end{subfigure}%
+	\hspace*{\fill}   
+	
+	Fonte: elaborado pelo autor.
+\end{figure}
+
+Sendo assim, uma operação neutro-energética implica em manter sua a performance durante os ciclos de trabalho garantindo que o node não sofra por esgotamento energético. Busca-se perpetuar sua operação mediante uso da reserva energética ou adaptação motivada a expectativa de recurso futuro \cite{sudevalayam_energy_2011}. Desta forma, o dispositivo favorecido pode prolongar sua operação mesmo em decorrência da indisponibilidade ou insuficiência de fonte energética.
+
+É importante destacar que este modo de operação serviu como base para diversos avanços em computação dirigida a energia sobretudo em redes constituídas tipicamente com sensores embarcados, autônomos e distribuídos espacialmente, \acf{WSN}. Além disso, os conceitos de operação-neutra e a teoria de coleta energética foram fundamentais para o que posteriormente foi detalhado em referencia ao seminal \cite{merrett_energy-driven_2017}, introdutório ao modelo \acf{PNO}.
 
 
 
 \subsection{Operação Power-Neutral}
-\subsection{Operação Intermitente}
+A capacidade de um dispositivo em coletar energia do meio introduz inúmeros desafios principalmente enquanto ao movimento de coleta-transforma-usa e também quanto a previsibilidade de oferta. A abordagem ilustrada na Figura \ref{fig:cap2harveststoreuse} é tipica de um sistema que faz uso de um \textit{buffer} intermediário com o fundamento de que caso corretamente projetado, o subsistema aparentemente operara semelhante a um sistema alimentado por baterias. Todavia, em muitos casos, todo aparato embarcado ao dispositivo para garantir essas características incrementam custo, volume e complexidade, além disso, se mal projetado poderá dispor-se de comportamento não confiável.
 
+Segundo \cite{merrett_energy-driven_2017}, os esforços para projetar um sistema com capacidade de coleta energética devem agora considerar os casos onde há impossibilidade de embarcar um componente de armazenamento energético intermediário. Portanto, sistemas com essa indisponibilidade deverão buscar um modo de operação \textit{Power-Neutral} conforme Figura \ref{fig:cap2powerneutraloperation}.
 
+Operação \textit{Power-Neutral} descreve as ações em busca de cooperação com as dinâmicas de coleta energética através da adaptação seu consumo energético para manter-se operacional em acordo com recurso disponível \cite{sliper_energy-driven_2020}, minimizando ou até mesmo dispensando a necessidade de armazenamento intermediário. De toda maneira, é preciso considerar que caso a energia coletada seja inferior ao minimo necessário, cenário de esgotamento, conduzirá o dispositivo ao sumário desligamento.
 
-\begin{itemize}
-	% Definição, o que é? 
-	
-	% Relevancia dos conceitos
-	\item Discussão sobre a relevância desses conceitos em ambientes tecnológicos, especialmente em sistemas IoT.
-\end{itemize}
 
 \section{Redes IoT}
 \label{cap2:iot}
@@ -57,6 +75,12 @@ As operações dessa natureza carregam dois princípios que são apresentados no
 
 \section{Throttling: Padrão de Controle de Comportamento em Ambientes Distribuídos}
 \label{cap2:throttling}
+
+Como ponto de partida, é preciso destacar a importância da adoção de padrões \textit{patterns}, em especial em sistemas distribuídos. Tais padrões carregam aspectos intrínsecos a experiencia adquirida mediante a recorrência de uma dada solução à heterogeneidade de problemas apresentados, fomando o conjunto de situações onde dado padrão surge como possibilidade de resposta aos desafios encontrados. Em \cite{burns_designing_nodate}, particularmente no cenário de computação distribuído é evidenciado que apesar da diversidade de possibilidades para um dito negócio, o modo como é concebido, construído, desenvolvido e os problemas encontrados sobretudo os  aspectos não funcionais como escalabilidade, confiabilidade ou disponibilidade são notavelmente recorrentes e semelhantes. 
+
+Problemas são semelhantes
+
+
 \begin{itemize}
 	\item Conceituação de throttling e sua aplicação em sistemas computacionais distribuídos.
 	\item Exploração de diferentes técnicas de throttling e seus efeitos sobre o consumo de energia e desempenho do sistema em cenários como redes IoT.
@@ -65,26 +89,27 @@ As operações dessa natureza carregam dois princípios que são apresentados no
 
 \section{Taxonomia}
 \label{cap2:taxonomia}
-\begin{itemize}
-	\item Introdução à Taxonomia:
-	 \begin{comment}
-		 A taxonomia refere-se à classificação e organização sistemática de elementos 	dentro de um campo específico de estudo. No contexto das redes IoT, a taxonomia pode ser aplicada para classificar dispositivos, protocolos de comunicação, aplicações e outros elementos relacionados às redes IoT com base em suas características, funcionalidades e requisitos específicos.
-	\end{comment}
-	\item Benefícios da Taxonomia: 
-	\begin{comment}
-		A utilização de uma taxonomia clara e abrangente em redes IoT pode trazer uma série de benefícios, incluindo a padronização de terminologias, a simplificação da análise e comparação de sistemas, a identificação de lacunas de pesquisa e a facilitação da comunicação entre os profissionais do campo.
-	\end{comment}
-	
-	\item Desafios e Considerações:
-	\begin{comment}
-		Embora a taxonomia ofereça muitos benefícios, sua criação e manutenção podem ser desafiadoras devido à natureza dinâmica e em constante evolução das redes IoT. Além disso, é importante considerar as diferentes perspectivas e abordagens para desenvolver uma taxonomia que seja abrangente, relevante e flexível o suficiente para atender às diversas necessidades e contextos das redes IoT.
-	\end{comment}
-	
-	\item Aplicações Práticas: 
-	\begin{comment}			
-		A taxonomia pode ser aplicada em uma variedade de contextos em redes IoT, 	incluindo a classificação de dispositivos e sensores, a categorização de protocolos de comunicação, a organização de aplicações e serviços, e a definição de métricas de desempenho e segurança.
-	\end{comment}
-\end{itemize}
+
+Taxonomia refere-se ao sistema de classificação e organização de coisas. Seu modelo consiste em sistematicamente apresentar os elementos de um campo de estudo, categorizados e por conseguinte classificados de modo a apresentar os elementos dispostos em estrutura adequada.
+
+O mapeamento sistemático apresentado em \cite{usman_taxonomies_2017}, trata dos métodos e da aplicação de taxonomias em campos da engenharia de software. O procedimento classificação, definem como as instancias de um tema podem ser atribuídos a classes ou categorias. Para uma taxonomia, tais elementos podem estar relacionados e dependentes entre si. Por sua vez, é possível classificar de duas maneiras: Quantitativamente, onde os procedimentos de classificação são baseados em escalas numéricas ou Qualitativa onde uma escala nominal que expresse a categoria será utilizada. Sua estrutura, segundo \cite{kwasnik_role_nodate} poderá ser definida em quatro visões de descobrimento do conhecimento.
+
+\textbf{Hierárquico}, aqui a taxonomia é estruturada como uma única classe superior (superclasse) que abrange suas subclasses e sequencialmente as possíveis extensões destas, formando um encadeamento hierárquico entre os elementos desde o originário até os derradeiros derivados. Este modelo procura garantir a exclusão mutua entre os envolvidos além do aspecto de relacionamento hereditário, por isso não é recomendado em situações onde uma pesquisa precisa incluir múltiplos e diversos critérios de diferenciação. Por fim, o autor considera que para esta representação é mandatório bom conhecimento sobre o assunto a ser classificado., pois suas classes e critérios de separação precisam ser conhecidos desde o inicio.
+
+\textbf{Árvore} similar ao modelo hierárquico, todavia em uma estrutura árvore não existe um relacionamento do tipo herança. Aqui, o tipo de classificação que busca-se é a relação causa-efeito, processo-produto ou parte-todo. Pode-se usar a estrutura arvore para mostrar a decomposição de um tema em seus aspectos. Por exemplo, a representação em árvore parte-todo do relacionamento entre um país, seus estados e por fim, municípios. Estruturas árvores e hierárquicas compartilham das mesmas limitações.
+
+\textbf{Paradigma}, conduz a taxonomia para a capacidade de um relacionamento bi-direcional entre as classes estas, por sua vez, podem ser descritas pela combinação de dois atributos. Uma proposta de visualização para taxonomias desse tipo é a capacidade de expressar-se com matrizes bi-dimensionais cujo seus vértices apresentam os atributos de interesse.
+
+\textbf{Facetada}, esta estrutura taxonômica permite observar os assuntos classificados sob múltiplas perspectivas (facetas). O indicador fundamental em utilizar uma análise facetada é a necessidade de visualizar mais de uma perspectiva de uma entidade complexa. Cada faceta é independente e pode ter suas próprias classes, permitindo a evolução de cada uma dentro da sua perspectiva. Análise facetada é adequada para campos de conhecimento relativamente novos em constante evolução, dado que não é necessário ter o completo conhecimento do objeto de estudo. Em todo caso, pode ser desafiador encontrar o conjunto inicial de facetas para a taxonomia de modo que sejam independentes e sem aparente relacionamento significativo entre as facetas.
+
+No trabalho \cite{smite_empirically_2014}, são indicados três mecanismos como validadores de uma taxonomia: a demonstração ortogonal de perpendicularidade e dimensões das classes é demonstrada; análise de desempenho (\textit{Benchmarking}), onde a taxonomia pode ser comparada com outros esquemas de classificação similares; e, por fim, a demonstração de utilidade, validada por estudo de caso ou experimentação.
+
+O debate sobre qual visão escolher é crucial, pois interfere imediatamente sobre a maneira como representar classes e interações. Quanto à aplicação prática para Engenharia de Software, ao adotar o uso de uma taxonomia, temos os agentes facilitadores para atividades de classificar e organizar o conhecimento de uma área \cite{usman_taxonomies_2017}, auxiliando no desdobramento e acomodação do objeto de estudo, elucidação e identificação de oportunidades e trabalhos futuros.
+
+
+
+
+
 
 \section{Considerações Finais}
  \label{cap2:consideracoesFinais}
