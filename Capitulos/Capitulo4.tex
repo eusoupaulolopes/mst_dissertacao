@@ -42,16 +42,26 @@ A Figura apresenta em resumo a taxonomia proposta e os pontos abordados no proce
 A taxonomia detalhada apresenta suas classes nos termos em que foram encontrados na literatura dentro contexto de estudo, conforme Figura \ref{fig:taxonomia_detalhada}.
 
 \section{Agentes \acs{IoT}}
-Todo agente (node) presente é uma entidade computacional que carrega a capacidade intrínseca de interagir com outros agentes, que por definição possuem propriedades fundamentais como: funcionalidade, performance, dependabilidade e segurança como a definição já encontrada em \cite{avizienis_basic_2004}. Dado contexto, para um ambiente \acp{IoT} é fundamental considerar também a capacidade comunicar-se com outras entidades, almejando o compartilhamento de recursos \cite{li_internet_2015}, observando, além disso, suas características energéticas. 
+Cada agente é essencialmente uma entidade que tem a capacidade intrínseca de interagir com outros agentes digitais ou físicos. Eles possuem propriedades fundamentais, como funcionalidade, desempenho, confiabilidade e segurança \cite{avizienis_basic_2004}. No contexto da Internet das Coisas (IoT), é crucial considerar sua capacidade de se comunicar com outras entidades, atuando em conjunto através do compartilhamento de recursos, características embarcadas nos dispositivos \cite{asghari_internet_2019}.
 
 
 \subsection{Node Provedor}
-Qualquer entidade computacional no momento em que oferta um estado ou atende uma solicitação de recurso pode ser considerada provedor. Em geral, um provedor poderá ofertar mais de uma funcionalidade através de serviços, sendo cada uma atendida mediante o uso dos recursos durante a progressão de estados internos do provedor e seu resultado percebido como estado externo, disponível através de uma interface na forma de eventos ou a contraparte das solicitações de nodes clientes.
 
-\noindent\includegraphics[width=3cm]{example-image} 
+Em qualquer instância em que um node computacional oferece um estado ou responde a uma solicitação de recurso, ele assume o papel de provedor. Geralmente, um node desse tipo pode oferecer uma ou mais funcionalidades por meio de serviços, cada uma sendo atendida pelo uso de seus recursos enquanto avança em seus estados internos em busca de fornecer uma resposta à interação. O resultado disto será percebido como  estado externo, acessível por meio de uma interface provida na forma de eventos ou como resposta às solicitações motivadores por meio de nodes clientes. 
+
+Um Serviço, representa ao node provedor a maneira como o mesmo lida com seus recursos embarcados. Estes serviços motivam a dinâmica de mudanças de estado internos.  Por exemplo, tomemos um sistema de iluminação publica que solicita a seus dispositivos alimentados por baterias e dispostos em um ambiente, para que acionem um recurso do tipo lampada em razão da detecção de movimento no mesmo ambiente onde o node provedor está inserido. Tal ação é ofertada  via serviço que por sua vez impactará em algum desgaste da lambada bem como a depreciação de seus recursos energéticos.
+
+\begin{figure}[H]
+	\centering
+	\caption{Representação de Node Provedor.}
+	\label{fig:cap4nodeprovedor}
+	\includegraphics[width=0.7\linewidth]{Imagens/cap4/cap4nodeprovedor}	
+	
+	Fonte: elaborado pelo autor.
+\end{figure}
 
 \subsection{Node Cliente}
-Um node cliente ou usuário é a entidade que por meio de sua interface, recebe o estado externo de nodes provedores. Clientes ocasionalmente podem consumir um ou mais recursos de um mesmo provedor, mas também é possível interagir com mais de um provedor a depender da operação em execução. Enquanto cliente, o node estará interessado em realizar atividades segundo as particularidades a que se destina sua operação.
+Um node cliente é responsável por receber o estado externo de nodes provedores por meio de uma interface disponibilizada. Ele pode consumir recursos de um ou mais provedores, dependendo da operação em execução. O node cliente comunica-se com os provedores necessários para realizar suas operações, de acordo com suas particularidades. Tal dinâmica representada na Figura 
 
 \section{Operações}
 Operações consiste no fluxo de mensagens comunicáveis entre nodes clientes e provedores. Uma operação é realizada quando um cliente através de mensagens solicita estado de um provedor, de outra maneira, também é possível um provedor ativamente disponibilizar um estado, dito externo para que um possível cliente possa utiliza-lo. 
