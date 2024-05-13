@@ -42,7 +42,7 @@ Desde modo, dispositivos encontrados em tal cenário carregam em suas caracterí
 
 %areas de solução
 
-\section{Energy-Driven Computing}
+\section{\textit{Energy-Driven Computing}}
 \label{cap2:energyDriven}
 
 Um sistema dirigido à energia (\textit{Energy-Driven}) é todo aquele que os fatores energéticos intrínsecos a ele são tratados como primários, desde concepção, gerenciamento e sua operação \cite{merrett_energy-driven_2017}. Computação dirigida a estes fatores, ditos energéticos, deve considerar fundamentalmente a disponibilidade energética pois precisam carregar a capacidade de adaptação as dinâmicas de captação de energia. Este paradigma tem como objetivo evidenciar as características energéticas, em potencial a respeito de dispositivos que por quaisquer motivos, não podem estar conectados diretamente em uma infraestrutura capaz de fornecer energia virtualmente ilimitada. 
@@ -51,7 +51,7 @@ Para tal, caso necessário, dispositivos podem operar coletando recursos dispon�
 
 Ainda, no trabalho de \citeauthor{sliper_energy-driven_2020} (\citeyear{sliper_energy-driven_2020}) é importante destacar como os mecanismos de coleta energética e sua dinâmica são dispostos. É proposto uma organização em três categorias distintas: Neutra-Energética \ac{EN}, Neutra-Força ou Neutra em Consumo \ac{PNO} e por fim, Operações Intermitentes.
 
-\subsection{Operação Neutra-Energética}
+\subsection{Operação \textit{Neutra-Energética}}
 Uma operação neutra-energética cobre as dinâmicas dos sistemas com coleta de energia do ambiente por meio de um \textit{buffer}, uma bateria recarregável ou super capacitor capaz de armazenar parte da energia coletada \cite{kansal_power_2007}. Este recurso se encontra disposto entre a entrada energética e sua demanda, atuando secundariamente quando a energia disponibilizada não seria suficiente para manter seus critérios de qualidade de serviço \textit{QoS}.
 
 Apesar de inicialmente ser previsto um cenário de uso onde apenas a fonte energética e o dispositivo estivessem presentes, é comum o fato dos mecanismos que buscam esse tipo de operação recorrer a presença deste componente intermediário capaz de armazenar energia e disponibiliza-la para uso. Sendo assim, na Figura \ref{fig:cap2harveststoreuse} temos a visão geral em blocos de um subsistema responsável pelos recursos energéticos.
@@ -95,7 +95,7 @@ Sendo assim, uma operação neutro-energética implica em manter sua a performan
 
 
 
-\subsection{Operação Power-Neutral}
+\subsection{Operação \textit{Power-Neutral}}
 A capacidade de um dispositivo em coletar energia do ambiente apresenta diversos desafios, especialmente em relação ao processo de coleta, transformação e uso, bem como à previsibilidade da oferta de energia. A abordagem ilustrada na Figura \ref{fig:cap2harveststoreuse} é típica de um sistema que utiliza um buffer intermediário, com o objetivo de operar semelhante a um sistema tipicamente alimentado por baterias, onde as condições energéticas são resumidas apenas pela condição da reserva energética disponível. No entanto, em muitos casos, os componentes adicionais necessários para garantir essas características aumentam custos, volume e complexidade, podendo resultar em comportamento não confiável se mal projetados.
 
 De acordo com \citeauthor{merrett_energy-driven_2017}(\citeyear{merrett_energy-driven_2017}), os esforços para projetar sistemas com capacidade de coleta de energia devem agora considerar casos onde não é possível incluir um componente de armazenamento energético intermediário. Portanto, os sistemas nessas condições devem buscar o modo intermitente ou mesmo \textit{Power-Neutral}, conforme ilustrado na Figura \ref{fig:cap2powerneutraloperation}.
@@ -104,7 +104,7 @@ A Operação \textit{Power-Neutral} envolve adaptar o consumo de energia do disp
 
 
 
-\section{Throttling: Padrão de Comportamento em Ambientes Distribuídos}
+\section{\textit{Throttling}: Padrão de Comportamento em Ambientes Distribuídos}
 \label{cap2:throttling}
 
 Como ponto de partida, é preciso destacar a importância da adoção dos ditos padrões \textit{patterns}, especialmente aplicados em sistemas distribuídos. Tais soluções carregam aspectos intrínsecos à experiencia adquirida mediante a recorrência de soluções frente à heterogeneidade de problemas que corrigem, formando o conjunto de atuação onde um ou mais padrões de solução emergem como resposta. Endossado pelo trabalho de \citeauthor{burns_designing_nodate} (\citeyear{burns_designing_nodate}) e no cenário de computação distribuída, é observado que apesar da diversidade de possibilidades para um sistema qualquer, a maneira como é concebido, desenvolvido e por consequência os problemas encontrados sobretudo quanto  aspectos não funcionais como escalabilidade, confiabilidade ou disponibilidade são notavelmente recorrentes e semelhantes. 
