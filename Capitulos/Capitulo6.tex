@@ -32,7 +32,88 @@ Ao final, a Etapa 5 trata dos dados coletados para análise e avaliação,
 consistindo em: I - Medição dos valores energéticos em relação ao tempo; II - Quantidade de solicitações atendidas ou negadas; III - Valores mínimos de reserva energética atingidos. Tais resultados serão melhores descritos posteriormente e apresentam o escopo de comparação entre os elementos participantes fundamento em que se baseia a avaliação dos resultados descritos na Seção \ref{SECAO AVALIACAO RESULTADOS}.
 
 \section{Idealização}
-O cenário experimentado simula a atuação de nodes em dado ambiente externo. Estes nodes são concebidos com capacidade de coletar energia no meio onde estão inseridos, esta é considerada entrada energética para o funcionamento do node. Também é possível armazenar parte do recurso energético coletado e, por fim, a capacidade de resposta com a aferição de um dado simbólico qualquer do meio quando solicitado. Este node é considerado provedor, a medida que atende solicitações de tais aferições.
+A Etapa de Idealização é o ponto onde foi construído a base teórica e definido os objetivos principais do experimento. A idealização permitiu estruturar os parâmetros e cenários para realização dos testes bem como a analise dos dados coletados.
+
+O cenário experimentado simula a atuação de nodes em dado ambiente externo. Estes nodes são concebidos com capacidade de coletar energia no meio onde estão inseridos, esta é considerada entrada energética para o funcionamento do node. Também é possível armazenar parte do recurso energético coletado e, por fim, a capacidade de resposta dentre as solicitações realizadas. Este node, é considerado provedor, a medida que atende solicitações dos valores aferidos.
+
+
+\begin{figure}[H]
+	\centering
+	\caption{Idealização Experimento.}
+	\label{fig:cap6idealizacao}
+	\includegraphics[width=1\linewidth]{Imagens/cap6/cap6idealização.jpg}
+	
+	Fonte: elaborado pelo autor.
+\end{figure} 
+
+
+A teoria para coleta de energia baseia-se na utilização de fontes energéticas disponíveis no ambiente para suprir, parcial ou totalmente, a demanda do dispositivo. Para o experimento, não há, a princípio, a intenção de analisar os impactos dos mecanismos de throttling em relação à diversidade, a natureza ou características de cada fonte energética possível.
+
+Com isso, abstraindo o tipo de fonte energética, foi favorecido a examinação e avaliação da aderência ao mecanismo de throttling sob o objetivo proposto em detrimento de uma entrada energética qualquer. Quanto a possíveis implementações, ainda sim, caberá os ajustes na atuação do throttling a depender da especificidade das condições que o node estará submetido, assim como apresentado em \ref{cap:cap4} na classe Observáveis, esses aspectos são descritos como as questões relativas à entrada energética. 
+
+Na execução do experimento, abordamos a disponibilidade e valores quantitativos da fonte de energia como uma variável independente. Seus valores foram adotados com o uso referencial dos dados disponíveis no Atlas Brasileiro de Energia Solar \cite{martins2017atlas}. Sendo assim, a definição dos valores de energia disponível orienta-se pelos parâmetros apresentados para cidade de Natal/RN, apresentada pela média diária de irradiação solar durante os meses os valores são expressos em $Wh/m^2$, unidade de energia conforme Tabela \ref{table:cap6distribuicaonatal}.
+
+\begingroup
+
+\setlength{\tabcolsep}{10pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.5} % Default value: 1
+
+\begin{table}[h]
+	
+	\centering
+	\caption{Média da Disponibilidade Energética Solar Mensal em Natal/RN}
+	\smaller[8]
+	\tabcolsep=0.1cm
+\begin{tabular}{l c | *{13}{c} }
+	\toprule
+	Mês & $Wh/m^2$ &
+	\begin{tabular}{@{}c@{}} 05h00 \\ 0.007\end{tabular} & \begin{tabular}{@{}c@{}} 06h00 \\0.02 \end{tabular}	& 
+	\begin{tabular}{@{}c@{}} 07h00 \\0.053\end{tabular} &
+	\begin{tabular}{@{}c@{}} 08h00 \\0.087 \end{tabular}&
+	\begin{tabular}{@{}c@{}} 09h00 \\0.105 \end{tabular}&
+	\begin{tabular}{@{}c@{}} 10h00 \\0.127 \end{tabular}& 
+	\begin{tabular}{@{}c@{}} 11h00 \\0.136 \end{tabular}& 
+	\begin{tabular}{@{}c@{}} 12h00 \\0.125 \end{tabular}& 
+	\begin{tabular}{@{}c@{}} 13h00 \\0.12 \end{tabular}& 
+	\begin{tabular}{@{}c@{}} 14h00 \\0.101 \end{tabular}& 
+	\begin{tabular}{@{}c@{}} 15h00 \\0.074 \end{tabular}& 
+	\begin{tabular}{@{}c@{}} 16h00 \\0.04 \end{tabular}&
+	\begin{tabular}{@{}c@{}} 17h00 \\0.005 \end{tabular}\\
+	
+	\hline
+	Janeiro & 5674 & 39.72 & 113.48 & 300.72 & 493.64 & 595.77 & 720.6 & 771.66 & 709.25 & 680.88 & 573.07 & 419.88 & 226.96 & 28.37 \\
+	\hline
+	Fevereiro & 6017 & 42.12 & 120.34 & 318.9 & 523.48 & 631.78 & 764.16 & 818.31 & 752.12 & 722.04 & 607.72 & 445.26 & 240.68 & 30.09\\
+	\hline
+	Março & 6032 &  42.22 & 120.64 & 319.7 & 524.78 & 633.36 & 766.06 & 820.35 & 754.0 & 723.84 & 609.23 & 446.37 & 241.28 & 30.16\\
+	\hline
+	Abril & 6082 & 42.57 & 121.64 & 322.35 & 529.13 & 638.61 & 772.41 & 827.15 & 760.25 & 729.84 & 614.28 & 450.07 & 243.28 & 30.41 \\
+	\hline
+	Maio & 5561 & 38.93 & 111.22 & 294.73 & 483.81 & 583.9 & 706.25 & 756.3 & 695.12 & 667.32 & 561.66 & 411.51 & 222.44 & 27.8 \\
+	\hline
+	Junho & 5075 & 35.52 & 101.5 & 268.97 & 441.52 & 532.88 & 644.52 & 690.2 & 634.38 & 609.0 & 512.58 & 375.55 & 203.0 & 25.38 \\
+	\hline
+	Julho & 4658 & 32.61 & 93.16 & 246.87 & 405.25 & 489.09 & 591.57 & 633.49 & 582.25 & 558.96 & 470.46 & 344.69 & 186.32 & 23.29 \\
+	\hline
+	Agosto & 4773 & 33.41 & 95.46 & 252.97 & 415.25 & 501.16 & 606.17 & 649.13 & 596.62 & 572.76 & 482.07 & 353.2 & 190.92 & 23.87 \\
+	\hline
+	Setembro & 5571 & 39.0 & 111.42 & 295.26 & 484.68 & 584.95 & 707.52 & 757.66 & 696.38 & 668.52 & 562.67 & 412.25 & 222.84 & 27.86 \\
+	\hline
+	Outubro & 5971 & 41.8 & 119.42 & 316.46 & 519.48 & 626.95 & 758.32 & 812.06 & 746.38 & 716.52 & 603.07 & 441.85 & 238.84 & 29.86 \\
+	\hline
+	Novembro & 6112 & 42.78 & 122.24 & 323.94 & 531.74 & 641.76 & 776.22 & 831.23 & 764.0 & 733.44 & 617.31 & 452.29 & 244.48 & 30.56 \\
+	\hline
+	Dezembro & 6269 & 43.88 & 125.38 & 332.26 & 545.4 & 658.25 & 796.16 & 852.58 & 783.62 & 752.28 & 633.17 & 463.91 & 250.76 & 31.35 \\
+\bottomrule
+\end{tabular}
+\label{table:cap6distribuicaonatal}
+\\
+\footnotesize Fonte:\cite{martins2017atlas}
+
+\end{table}
+\endgroup
+
+
 
 \section{Definição dos dispositivos e variáveis independentes.}
 \section{Instrumentalização.}
