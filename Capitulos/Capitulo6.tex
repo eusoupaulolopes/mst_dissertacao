@@ -2,9 +2,13 @@
 \chapter{Estudo Experimental}
 \label{cap:cap6}
 
-este capítulo consiste em apresentar o estudo por meio de método experimental, envolve a concepção do contexto do experimento, da disposição e características dos elementos envolvidos, a seleção das variáveis influenciadoras, o controle e a instrumentação do experimento, sua execução, a captura de dados durante experimentação, e por fim, a análise e conclusões obtidas a partir desses resultados. 
+Este capítulo consiste em apresentar o estudo por meio do método experimental, envolve a concepção de contexto do experimento, das configurações e características dos elementos envolvidos, a seleção das variáveis influenciadoras, o controle e a instrumentação do experimento, sua execução, a captura de dados durante experimentação, e por fim, a análise e conclusões obtidas a partir desses resultados. 
 
-O objetivo do experimento é analisar a viabilidade do uso de mecanismos de \textit{throttling} já apresentados como candidato para aumentar a disponibilidade dos elementos presentes em \textit{IoT} através do ajuste de comportamento por ação de limiares de atuação que consideram seus aspectos energéticos e com isso prolongar a autonomia energética dos dispositivos. A abordagem é aderente aos elementos presentes na taxonomia proposta no Capítulo \ref{cap:cap4} e permite comparação e análise entre dispositivos que diferem sobre o fato de terem sua operação ajustada mediante \textit{throttling} ou não. 
+O objetivo do experimento é analisar a viabilidade do uso de mecanismos de \textit{throttling} como candidato para aumentar a disponibilidade dos elementos presentes em \textit{IoT} através do ajuste de comportamento por ação de limiares de atuação que consideram seus aspectos energéticos para assim,  prolongar a autonomia energética dos dispositivos. A abordagem é aderente e cobre os elementos presentes na taxonomia proposta no Capítulo \ref{cap:cap4} permitindo comparação e análise entre dispositivos que diferem sobre o fato de terem sua operação ajustada mediante \textit{throttling} ou não. 
+
+\section{Metodologia}
+
+O experimento pretende comparar os efeitos do mecanismo de \textit{throttling} em dispositivos com capacidade de coleta de energia, com foco em examinar a disponibilidade de cada um relacionada aos aspectos energéticos em condições de capacidade e atuação semelhantes.
 
 \begin{figure}[H]
 	\centering
@@ -15,14 +19,9 @@ O objetivo do experimento é analisar a viabilidade do uso de mecanismos de \tex
 	Fonte: elaborado pelo autor.
 \end{figure} 
 
+Para tal, buscou-se observar a influência do fator limitante na alteração do comportamento dos participantes em relação aos valores de energia coletada e reserva energética. Além disso, compreender sua eficiência na tomada de decisão em atender ou não às solicitações, em virtude da autoanálise de suas capacidades à medida que a variação de energia disponível ocorre. Este estudo visa analisar o uso de \textit{throttling} como possível solução para estender a disponibilidade de dispositivos com capacidade de coleta energética. 
 
-\section{Metodologia}
-
-O experimento pretende comparar os efeitos do mecanismo de \textit{throttling} em dispositivos com capacidade de coleta de energia, com foco em examinar a disponibilidade de cada um relacionada aos aspectos energéticos em condições de capacidade e atuação semelhantes.
-
-Para tal, buscou-se observar a influência do fator limitante na alteração do comportamento dos participantes em relação aos valores de energia coletada e reserva energética. Além disso, buscou-se compreender sua eficiência na tomada de decisão em atender ou não às solicitações, em virtude da autoanálise de suas capacidades à medida que a variação de energia disponível ocorre. Este estudo visa analisar o uso de \textit{throttling} como possível solução para estender a disponibilidade de dispositivos com capacidade de coleta energética. 
-
-Na Etapa 1 idealização do experimento, foi concebido quais os temos de projeto para viabilizar a análise e comparação do padrão em detrimento dos objetivos propostos.  A Figura \ref{fig:cap6metodologia} apresenta o fluxo das etapas realizadas no processo. Inicialment, foi projetado ambiente para abstrair os elementos envolvidos, visando garantir equidade de condições e ações de maneira simultânea para todos os dispositivos durante a simulação. Para alcançar isolamento e consistência, optou-se pelo uso da plataforma Docker\footnote{O Docker é uma plataforma de virtualização que simplifica o desenvolvimento, envio e execução de aplicativos em contêineres. Disponível em \url{https://www.docker.com/}.} como agente facilitador, que atende às restrições necessárias de encapsulamento para que cada aplicação e suas dependências estejam contidas. 
+A Figura \ref{fig:cap6metodologia} apresenta o fluxo de execução e ordem de todas as etapas realizadas. Na Seção \ref{cap6:idealizacao}, foi concebido quais os termos de projeto para viabilizar a análise e comparação de nodes com padrão \textit{throttling} aplicado as características energéticas, este processo caracteriza a Etapa 1. Inicialmente, foi projetado ambiente para abstrair os elementos envolvidos, visando garantir equidade de condições e ações de maneira simultânea para todos os dispositivos durante a simulação. Para alcançar isolamento e consistência, optou-se pelo uso da plataforma Docker\footnote{O Docker é uma plataforma de virtualização que simplifica o desenvolvimento, envio e execução de aplicativos em contêineres. Disponível em \url{https://www.docker.com/}.} como agente facilitador, que atende às restrições necessárias de encapsulamento para que cada aplicação e suas dependências estejam contidas. 
 
 Conforme ilustrado na Figura <DIAGRAMA DE BLOCO DO SISTEMA>, essa abordagem permite que ambos os sistemas fossem estimulados paralelamente, mantendo controle sobre seus recursos e garantindo os termos de operação (capacidade de processador, memória e disco). Sendo assim, a composição do experimento considera que:  I - Dispositivos com capacidade de coleta e armazenamento de energia estão inseridos em um dado ambiente de simulação controlada; II - Os dispositivos sempre recebem simultaneamente o mesmo valor como coleta de energia; III - Os dispositivos participantes possuem a mesma capacidade de armazenamento para energia coletada; IV - Os dispositivos são submetidos simultaneamente a mesma quantidade de solicitações, os ciclos de carga.
 
@@ -32,26 +31,69 @@ Ao final, a Etapa 5 trata dos dados coletados para análise e avaliação,
 consistindo em: I - Medição dos valores energéticos em relação ao tempo; II - Quantidade de solicitações atendidas ou negadas; III - Valores mínimos de reserva energética atingidos. Tais resultados serão melhores descritos posteriormente e apresentam o escopo de comparação entre os elementos participantes fundamento em que se baseia a avaliação dos resultados descritos na Seção \ref{SECAO AVALIACAO RESULTADOS}.
 
 \section{Idealização}
-A Etapa de Idealização é o ponto onde foi construído a base teórica e definido os objetivos principais do experimento. A idealização permitiu estruturar os parâmetros e cenários para realização dos testes bem como a analise dos dados coletados.
+\label{cap6:idealizacao}
+Uma vez definido os objetivos do experimento, a Etapa de idealização é o ponto onde foi construído as bases de execução do estudo. Assim, foram realizadas a estruturação  dos parâmetros e definição do cenário para realizar os testes, além da capacidade de coleta dos resultados e avaliação de conformidade com a taxonomia proposta.
 
-O cenário experimentado simula a atuação de nodes em dado ambiente externo. Estes nodes são concebidos com capacidade de coletar energia no meio onde estão inseridos, esta é considerada entrada energética para o funcionamento do node. Também é possível armazenar parte do recurso energético coletado e, por fim, a capacidade de resposta dentre as solicitações realizadas. Este node, é considerado provedor, a medida que atende solicitações dos valores aferidos.
+O cenário foi idealizado para simular a atuação dos nodes em dado um ambiente externo. Nele, nodes provedores realizam aferições à medida que são estimulados através de solicitações enviadas. 
 
+Decorrente desta  dinâmica, cabe ao node provedor examinar, com base nas condições energéticas, se é capaz ou não de realizar o comando solicitado. Para tal, o mecanismo de \textit{throttling} deverá atuar observando os recursos energéticos do node provedor, para que ao atingir um determinado limiar, bloquear o atendimento à solicitação realizada.
+
+Ainda nesta etapa, foi necessário considerar as entradas energéticas que seria disponibilizadas ao node provedor, pois devem ser inerentes ao ambiente idealizado onde este node poderia estar inserido. Além disso, concebeu os aspectos de armazenamento dessa entrada energética, dispositivo o qual deverá receber o recurso coletado e disponibiliza-la para uso do node provedor. A Figura \ref{fig:cap6dinamica} ilustra, em resumo, a dinâmica de funcionamento do node.
+
+\begin{figure}[H]
+	\centering
+	
+	\caption{Dinâmica do Node Provedor.}
+	\label{fig:cap6dinamica}
+	\noindent\includegraphics[width=0.75\linewidth]{Imagens/cap6/cap6dinamica.jpg} 
+		
+	Fonte: elaborado pelo autor.
+\end{figure}
+
+
+Portanto, acontecendo disponibilidade energética, cabe ao dispositivo armazena-la durante um ciclo a medida que os valores vão sendo apresentados ao node. Uma vez cumprido esta etapa, os valores são disponibilizados na forma de recurso que deverá ser dispendido a medida que realiza as atividades solicitadas.
+
+Por fim, o node deverá em todo seu ciclo de vida atuar dinamicamente em conformidade com os limiares definidos para operação, no experimento estão cobertos quatro modos de atuação a depender das capacidades energéticas:
+
+\begin{enumerate}	
+\item Modo Abundante: O Modo Abundante é ativado quando o dispositivo possui recursos energéticos amplamente disponíveis, permitindo o funcionamento completo e otimizado de todas as suas funcionalidades. Aqui, o node atenderá quaisquer solicitação enviada, aproveitando ao máximo a disponibilidade de energia;
+\item Modo Atenção: Uma vez atingido este patamar, o node recusar-se a atender algumas solicitações com a motivação de preservar parte dos recursos até que um novo cenário energético seja apresentado;
+\item Modo Alerta: O Modo Crítico é alcançado quando o dispositivo está operando com recursos energéticos extremamente limitados, mas ainda tem capacidade para atender algumas solicitações (conforme privilégios ou criticidade das operações). Este modo foi projetado para prolongar a funcionalidade básica do dispositivo enquanto tenta evitar a entrada no Modo Hibernação. 
+\item Modo Critico: Este modo é ativado quando o dispositivo não possui mais recursos energéticos suficientes para continuar atendendo qualquer solicitação. O dispositivo entra em um estado de hibernação ou equivalente a um baixo gasto energético para preservar-se até que os recursos energéticos sejam recuperados. Caso consuma toda sua reserva, o dispositivo estará esgotado energeticamente.
+\end{enumerate}
+
+É importante destacar que os modos de operação justificam-se necessário para apontar o quanto intenso é a atuação do mecanismo de \textit{throttling} e sua eficiência para preservar os recursos energéticos do node. Naturalmente, estes modos podem variar conforme a necessidade particular e natureza de cada implementação, sua definição está coberta pelas classes Meios, encontrada na Subseção \ref{cap4:atuacao_meios}.
+
+
+
+
+\begin{comment}
+	
 
 \begin{figure}[H]
 	\centering
 	\caption{Idealização Experimento.}
 	\label{fig:cap6idealizacao}
 	\includegraphics[width=1\linewidth]{Imagens/cap6/cap6idealização.jpg}
-	
 	Fonte: elaborado pelo autor.
 \end{figure} 
+\end{comment}
 
 
-A teoria para coleta de energia baseia-se na utilização de fontes energéticas disponíveis no ambiente para suprir, parcial ou totalmente, a demanda do dispositivo. Para o experimento, não há, a princípio, a intenção de analisar os impactos dos mecanismos de throttling em relação à diversidade, a natureza ou características de cada fonte energética possível.
 
-Com isso, abstraindo o tipo de fonte energética, foi favorecido a examinação e avaliação da aderência ao mecanismo de throttling sob o objetivo proposto em detrimento de uma entrada energética qualquer. Quanto a possíveis implementações, ainda sim, caberá os ajustes na atuação do throttling a depender da especificidade das condições que o node estará submetido, assim como apresentado em \ref{cap:cap4} na classe Observáveis, esses aspectos são descritos como as questões relativas à entrada energética. 
 
-Na execução do experimento, abordamos a disponibilidade e valores quantitativos da fonte de energia como uma variável independente. Seus valores foram adotados com o uso referencial dos dados disponíveis no Atlas Brasileiro de Energia Solar \cite{martins2017atlas}. Sendo assim, a definição dos valores de energia disponível orienta-se pelos parâmetros apresentados para cidade de Natal/RN, apresentada pela média diária de irradiação solar durante os meses os valores são expressos em $Wh/m^2$, unidade de energia conforme Tabela \ref{table:cap6distribuicaonatal}.
+
+
+
+
+
+\section{Definição das variáveis independentes e Nodes.}
+
+A teoria para coleta de energia baseia-se na utilização de fontes energéticas disponíveis no ambiente para suprir, parcial ou totalmente, a demanda do dispositivo. Para o experimento, não há, a princípio, a intenção de analisar os impactos dos mecanismos de \textit{throttling} em relação à diversidade, a natureza ou características de cada fonte energética possível.
+
+Com isso, abstraindo o tipo de fonte energética, foi favorecido a examinação e avaliação da aderência ao mecanismo de \textit{throttling} sob o objetivo proposto, independente da fonte provedora de entrada energética. Quanto a possíveis implementações, ainda sim, caberá os ajustes na atuação do \textit{throttling}, neste caso, a depender da especificidade das condições que o node estará submetido, assim como apresentado em \ref{cap:cap4} na classe Observáveis, esses aspectos são descritos como as questões relativas à entrada energética. 
+
+Na execução do experimento, compreende a disponibilidade e valores quantitativos da fonte de energia na forma de variável independente. Seus valores foram adotados com o uso referenciado nos dados disponibilizados no Atlas Brasileiro de Energia Solar \cite{martins2017atlas}. Sendo assim, a definição dos valores de energia disponível orienta-se pelos parâmetros apresentados para cidade de Natal/RN, nos termos da média diária de irradiação solar no decorrer  dos meses. Os valores são expressos em  $Wh/m^2$ , já abstraído a conversão dos valores para os termos de consumo conforme Tabela \ref{table:cap6distribuicaonatal}.
 
 \begingroup
 
@@ -61,7 +103,7 @@ Na execução do experimento, abordamos a disponibilidade e valores quantitativo
 \begin{table}[h]
 	
 	\centering
-	\caption{Média da Disponibilidade Energética Solar Mensal em Natal/RN}
+	\caption{Média da Disponibilidade Energética Solar Mensal, Natal/RN}
 	\smaller[8]
 	\tabcolsep=0.1cm
 \begin{tabular}{l c | *{13}{c} }
@@ -115,7 +157,7 @@ Na execução do experimento, abordamos a disponibilidade e valores quantitativo
 
 
 
-\section{Definição dos dispositivos e variáveis independentes.}
+
 \section{Instrumentalização.}
 \section{Execução.}
 \section{Avaliação.}

@@ -146,6 +146,7 @@ Aplicar o padrão \textit{Throttling} consiste basicamente em restringir o uso d
 Na taxonomia, o uso do \textit{Throttling} é candidato à colaborar nas atividades que buscam aumentar disponibilidade do node provedor, conservando  recursos energéticos e suas observações a respeito de características ou limitações do próprio dispositivo. Para tal, é preciso que limiares sejam estritamente adequados ao que se aplica, capacidade de transmissão, recursos disponíveis ou esperados pelo node. Definir limiares de operação realísticos para o node provedor é um desafio relevante para sistemas com estratégia de coleta de energia \cite{khairnar_discrete-rate_2015}, \cite{liu_energy_2016} e \cite{zhang_toward_2018}, entregando capacidade de decisão sobre ciclos de carga enquanto se objetiva maximizar o tempo de vida do próprio node.
 
 \subsection{Atuação: Limiar, Ciclo de Carga, Observáveis e Meios}
+\label{cap4:atuação}
 Em sistemas \acs{IoT} orientados aos fatores energéticos, a atuação do padrão é dada ao monitorar a taxa de solicitações no decorrer de um espaço de tempo, nesse intervalo, denominado Ciclo de Carga. Durante um ciclo nodes clientes podem fazer requisições ao provedor. Do ponto de vista da disponibilização dos recursos, durante um ciclo de carga, um node pode assumir abordagem de equidade entre os solicitantes ou algum critério de prioridade e privilégio, onde um solicitante qualquer teria suas requisições atendidas mediante negação do serviço para outro node cliente com menor prioridade, caso necessário.
 
 Uma vez definido um limiar de atuação, sua ação pode ser inteiramente linear ou constante, onde durante todo funcionamento do node o mesmo valor limiar é aplicado, independente de outros fatores, outra possibilidade é definir vários limiares que agem adaptativamente de acordo com os diversos estados mapeados, tão logo determinado cenário seja alcançado, o node pode ajustar seu limiar de atuação para conservar seus recursos visando manter-se funcional. O comportamento do limiar de atuação passa pela analise cuidadosa da natureza do node provedor e operações esperadas. Em síntese:
@@ -175,7 +176,7 @@ Uma vez definido um limiar de atuação, sua ação pode ser inteiramente linear
 
 Ciclo de Carga, refere-se as atividades suportadas que consomem algum recurso energético do node dentro de um intervalo de tempo. Dado uma sistema com coleta de energia, um ciclo de carga durará pelo menos até que a próxima entrada energética coletada esteja disponível.  Uma carga é qualquer atividade que requer o consumo energético, seja sensoriamento, atuação, transmissão de dados entre outros. O mecanismo de \textit{throttling} irá atuar regulando o uso de recursos durante um ciclo, caso necessário, depreciando ativamente as operações de acordo com o projetado, visando adequar estas atividades de carga e o consumo energético ao cenário encontrado pelo provedor até que a próxima entrada energética esteja disponível e possa ser novamente adaptado em concordância com o novo cenário a que se encontra.
 
-   \begin{figure}[h]
+\begin{figure}[h]
 	\centering
 	\noindent\includegraphics[width=3cm]{example-image} 
 	\caption{Aqui vou colocar uma figura sobre entrada energética e ciclo de carga.}
@@ -184,6 +185,7 @@ Ciclo de Carga, refere-se as atividades suportadas que consomem algum recurso en
 Qualquer aspecto que impacte ou influencie na capacidade do node em manter-se disponível deve ser considerado em sua atuação. Estes, ditos elementos observáveis, compreendem os componentes aos quais cabem a analise de estado, pois justificam a ação do mecanismo throttling, que deverá indicar o comportamento do node para mante-lo adequado mediante evitar seu esgotamento energético. Para tal, se apresentam como os garantidores das condições energéticas do node: sua condição de entrada através de uma fonte energética; a capacidade de armazenamento dessa energia coletada em eventual \textit{buffer}. 
 
 \subsubsection{Meios}
+\label{cap4:atuacao_meios}
 O comportamento de um node pode ser ajustado de acordo com as circunstâncias. Diferentes meios são usados no processo de aplicação de um mecanismo \textit{throttling} a depender da função do node na rede e a intenção particular ao limitar operações. Assim, os meios de atuação decorrem sobre:
 
 \begin{enumerate}[label=(\subscript{Meio} {{\arabic*}})]
