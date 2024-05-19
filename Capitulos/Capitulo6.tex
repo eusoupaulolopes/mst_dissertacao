@@ -28,7 +28,7 @@ Conforme ilustrado na Figura <DIAGRAMA DE BLOCO DO SISTEMA>, essa abordagem perm
 Na Etapa 3, abordado-se o processo de instrumentalização do ambiente simulado, essencial meio para apresentar os resultados durante a execução do experimento e posterior resumo dos dados obtidos, seus detalhes estão descritos na Seção \ref{SECAO INSTRUMENTACAO}. A Seção \ref{SECAO EXECUCAO} descreve os processos de execução do experimento Etapa 4, aqui todas as etapas planejadas anteriormente ja estão implementadas. Sendo assim, os procedimentos são realizados conforme o protocolo estabelecido, e aplicação dos estímulos definidos  (carga de solicitações e disponibilização de recursos na forma de coleta energética). Durante esta fase, a precisão e a consistência são fundamentais para garantir a validade dos resultados analisados na próxima fase. 
 
 Ao final, a Etapa 5 trata dos dados coletados para análise e avaliação,
-consistindo em: I - Medição dos valores energéticos em relação ao tempo; II - Quantidade de solicitações atendidas ou negadas; III - Valores mínimos de reserva energética atingidos. Tais resultados serão melhores descritos posteriormente e apresentam o escopo de comparação entre os elementos participantes fundamento em que se baseia a avaliação dos resultados descritos na Seção \ref{SECAO AVALIACAO RESULTADOS}.
+consistindo o grupo de variáveis dependentes: I - Medição dos valores energéticos em relação ao tempo; II - Quantidade de solicitações atendidas ou negadas; III - Valores mínimos de reserva energética atingidos. Tais resultados serão melhores descritos posteriormente e apresentam o escopo de comparação entre os elementos participantes fundamento em que se baseia a avaliação dos resultados descritos na Seção \ref{SECAO AVALIACAO RESULTADOS}.
 
 \section{Idealização}
 \label{cap6:idealizacao}
@@ -53,47 +53,48 @@ Ainda nesta etapa, foi necessário considerar as entradas energéticas que seria
 
 Portanto, acontecendo disponibilidade energética, cabe ao dispositivo armazena-la durante um ciclo a medida que os valores vão sendo apresentados ao node. Uma vez cumprido esta etapa, os valores são disponibilizados na forma de recurso que deverá ser dispendido a medida que realiza as atividades solicitadas.
 
-Por fim, o node deverá em todo seu ciclo de vida atuar dinamicamente em conformidade com os limiares definidos para operação, no experimento estão cobertos quatro modos de atuação a depender das capacidades energéticas:
+Por fim, o node deverá em todo seu ciclo de vida atuar dinamicamente em conformidade com os modo de operação que represente os valores de recursos energéticos que possui. No experimento estão cobertos quatro modos de atuação a depender das capacidades energéticas:
 
 \begin{enumerate}	
-\item Modo Abundante: O Modo Abundante é ativado quando o dispositivo possui recursos energéticos amplamente disponíveis, permitindo o funcionamento completo e otimizado de todas as suas funcionalidades. Aqui, o node atenderá quaisquer solicitação enviada, aproveitando ao máximo a disponibilidade de energia;
+\item Modo Abundante: O Modo Abundante representa o dispositivo que possui recursos energéticos amplamente disponíveis, permitindo o funcionamento completo e otimizado de todas as suas funcionalidades. Aqui, o node atenderá quaisquer solicitação enviada, sem atuação do mecanismo limitante, aproveitando ao máximo a disponibilidade de energia;
 \item Modo Atenção: Uma vez atingido este patamar, o node recusar-se a atender algumas solicitações com a motivação de preservar parte dos recursos até que um novo cenário energético seja apresentado;
 \item Modo Alerta: O Modo Crítico é alcançado quando o dispositivo está operando com recursos energéticos extremamente limitados, mas ainda tem capacidade para atender algumas solicitações (conforme privilégios ou criticidade das operações). Este modo foi projetado para prolongar a funcionalidade básica do dispositivo enquanto tenta evitar a entrada no Modo Hibernação. 
 \item Modo Critico: Este modo é ativado quando o dispositivo não possui mais recursos energéticos suficientes para continuar atendendo qualquer solicitação. O dispositivo entra em um estado de hibernação ou equivalente a um baixo gasto energético para preservar-se até que os recursos energéticos sejam recuperados. Caso consuma toda sua reserva, o dispositivo estará esgotado energeticamente.
 \end{enumerate}
 
-É importante destacar que os modos de operação justificam-se necessário para apontar o quanto intenso é a atuação do mecanismo de \textit{throttling} e sua eficiência para preservar os recursos energéticos do node. Naturalmente, estes modos podem variar conforme a necessidade particular e natureza de cada implementação, sua definição está coberta pelas classes Meios, encontrada na Subseção \ref{cap4:atuacao_meios}.
 
+Os modos de operação representam o estado energético do node e a atuação do mecanismo de \textit{throttling}, assim evidenciando sua eficiência para o objetivo a medida que pode ou não amortizar o uso energético do node a medida que este reduz a sua capacidade de atendimento as solicitações. Naturalmente, estes modos podem variar, dois modos, tres ou mais podem ser descritos facilmente conforme a especificidade e natureza de cada implementação, sua definição está coberta pelas classes Meios, encontrada na Subseção \ref{cap4:atuacao_meios}.
 
+Estes modos de operação guiam a atuação do mecanismo de \textit{throttling} à medida que baseado nos limiares de atuação, induz uma mudança de estado do nó. A dinâmica dos estados do node pode ser visualizada na Figura \ref{fig:cap6maquinaestados}. De maneira geral, os estados possíveis para o dispositivo são representados como:
 
-
-\begin{comment}
+\begin{itemize}
+	\item Estado Inativo: Aqui o node estará consumindo a menor quantidade de recurso energético possível. Um node inativo se encontra ocioso, sem realizar nenhuma tarefa enquanto aguarda novas solicitações.
+	\item Estado Ativo: Um node é considerado ativo enquanto executa solicitações. Nesse estado o node utilizará os recursos energéticos necessários para realização  das atividades mediante o consumo de seus recursos energéticos. 
+	\item Estado Desligado: No experimento, o estado desligado é a indicação que o node não tem mais capacidade de assumir qualquer outro estado enquanto não receber recursos energéticos particularmente em decorrência do esgotamento de suas reservas. Portanto, neste estado, um node não realizará qualquer atividade.	
 	
+\end{itemize}
+
+
+
 
 \begin{figure}[H]
 	\centering
-	\caption{Idealização Experimento.}
-	\label{fig:cap6idealizacao}
-	\includegraphics[width=1\linewidth]{Imagens/cap6/cap6idealização.jpg}
+	
+	\caption{Maquina de estados do Node.}
+	\label{fig:cap6maquinaestados}
+	\noindent\includegraphics[width=0.75\linewidth]{Imagens/cap6/cap6maquinaestados.jpg} 
+	
 	Fonte: elaborado pelo autor.
-\end{figure} 
-\end{comment}
+\end{figure}
 
 
+\section{Definição da variáveis independentes e Dispositivos.}
 
+A teoria de coleta de energia baseia-se na utilização de fontes energéticas disponíveis no ambiente para suprir, parcial ou totalmente, a demanda de um dispositivo. Para o experimento, não há, a princípio, a intenção de analisar cada fonte energética, sua natureza e características particulares de uso ou eficiência energética. 
 
+Com isso, abstraindo sua fonte energética, foi evidenciado para examinação e avaliação da aderência ao mecanismo de \textit{throttling} sob o objetivo proposto, independente da fonte provedora de entrada energética. Quanto a possíveis outras implementações, ainda sim, caberá os ajustes na atuação do \textit{throttling}, neste caso, a depender da especificidade das condições que o node estará submetido, assim como apresentado em \ref{cap:cap4} na classe Observáveis, esses aspectos são descritos como as questões relativas à entrada energética. 
 
-
-
-
-
-\section{Definição das variáveis independentes e Nodes.}
-
-A teoria para coleta de energia baseia-se na utilização de fontes energéticas disponíveis no ambiente para suprir, parcial ou totalmente, a demanda do dispositivo. Para o experimento, não há, a princípio, a intenção de analisar os impactos dos mecanismos de \textit{throttling} em relação à diversidade, a natureza ou características de cada fonte energética possível.
-
-Com isso, abstraindo o tipo de fonte energética, foi favorecido a examinação e avaliação da aderência ao mecanismo de \textit{throttling} sob o objetivo proposto, independente da fonte provedora de entrada energética. Quanto a possíveis implementações, ainda sim, caberá os ajustes na atuação do \textit{throttling}, neste caso, a depender da especificidade das condições que o node estará submetido, assim como apresentado em \ref{cap:cap4} na classe Observáveis, esses aspectos são descritos como as questões relativas à entrada energética. 
-
-Na execução do experimento, compreende a disponibilidade e valores quantitativos da fonte de energia na forma de variável independente. Seus valores foram adotados com o uso referenciado nos dados disponibilizados no Atlas Brasileiro de Energia Solar \cite{martins2017atlas}. Sendo assim, a definição dos valores de energia disponível orienta-se pelos parâmetros apresentados para cidade de Natal/RN, nos termos da média diária de irradiação solar no decorrer  dos meses. Os valores são expressos em  $Wh/m^2$ , já abstraído a conversão dos valores para os termos de consumo conforme Tabela \ref{table:cap6distribuicaonatal}.
+Para execução, compreende a disponibilidade e valores quantitativos da fonte de energia na forma de uma variável independente numérica. Seus valores foram adotados com o auxilio da referencia dos dados disponibilizados no Atlas Brasileiro de Energia Solar \cite{martins2017atlas}. Sendo assim, a definição dos valores de energia disponível orienta-se pelos parâmetros apresentados para cidade de Natal/RN, nos termos da média diária de irradiação solar no decorrer  dos meses. Os valores são expressos em  $Wh/m^2$ , já abstraído a conversão para os termos de consumo conforme Tabela \ref{table:cap6distribuicaonatal}.
 
 \begingroup
 
@@ -108,8 +109,9 @@ Na execução do experimento, compreende a disponibilidade e valores quantitativ
 	\tabcolsep=0.1cm
 \begin{tabular}{l c | *{13}{c} }
 	\toprule
-	Mês & $Wh/m^2$ &
-	\begin{tabular}{@{}c@{}} 05h00 \\ 0.007\end{tabular} & \begin{tabular}{@{}c@{}} 06h00 \\0.02 \end{tabular}	& 
+	Momento & $Wh/m^2$ &
+	\begin{tabular}{@{}c@{}} 05h00 \\ 0.007\end{tabular} &
+	\begin{tabular}{@{}c@{}} 06h00 \\0.02 \end{tabular}	& 
 	\begin{tabular}{@{}c@{}} 07h00 \\0.053\end{tabular} &
 	\begin{tabular}{@{}c@{}} 08h00 \\0.087 \end{tabular}&
 	\begin{tabular}{@{}c@{}} 09h00 \\0.105 \end{tabular}&
@@ -150,10 +152,35 @@ Na execução do experimento, compreende a disponibilidade e valores quantitativ
 \end{tabular}
 \label{table:cap6distribuicaonatal}
 \\
-\footnotesize Fonte:\cite{martins2017atlas}
+\footnotesize Fonte: adaptado de \citeauthor{martins2017atlas}, (\citeyear{martins2017atlas})
 
 \end{table}
 \endgroup
+
+A variável independente que representa a entrada energética é provida pela distribuição dos valores médios encontrados em decorrência dos pesos atribuídos para cada ciclo de recarga aqui representado em horas. O peso atribuído para cada horário representa o impacto da incidência solar naquele momento em relação ao todo capturado. Os horários suprimidos na Tabela \ref{table:cap6distribuicaonatal} não geram entradas energéticas para o experimento fazendo com que o node receba zero como valor de entrada.
+
+\subsection{Dispositivos}
+
+Para cobrir a dinâmica idealizada ao node provedor, foi construído utilizando Python e algumas bibliotecas auxiliares um dispositivo com a capacidade de atuação do \textit{throttling} bem como cobrir cenários de restrições energéticas, uma visão geral do componente pode ser visto na Figura \ref{fig:cap6providernode}.
+
+
+Para cobrir a dinâmica idealizada do node provedor, foi construído um dispositivo utilizando Python e algumas bibliotecas auxiliares. Todo código fonte está disponível no repositório Git para análise e colaboração.\footnote{Código-Fonte do Node Provedor em \url{https://github.com/eusoupaulolopes/mst_experiments}.}  Este dispositivo possui a capacidade de atuação do \textit{throttling}, ao receber novas solicitações, o mecanismo de throttling observara sua reserva energética (\textit{storage}) com isso, poderá restringir o acesso ao sensor, permitindo ou não a atividade solicitada  Uma visão geral do componente pode ser vista na Figura \ref{fig:cap6providernode}."
+
+
+\begin{figure}[H]
+	\centering
+	
+	\caption{Componentes do Node Provedor.}
+	\label{fig:cap6providernode}
+	\noindent\includegraphics[width=0.75\linewidth]{Imagens/cap6/cap6providernode.png} 
+	
+	Fonte: elaborado pelo autor.
+\end{figure}
+
+\textbf{\\ power supply \\
+storage \\
+sensor \\ 
+interface.}
 
 
 
