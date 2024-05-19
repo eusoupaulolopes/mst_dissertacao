@@ -157,15 +157,15 @@ Para execução, compreende a disponibilidade e valores quantitativos da fonte d
 \end{table}
 \endgroup
 
-A variável independente que representa a entrada energética é provida pela distribuição dos valores médios encontrados em decorrência dos pesos atribuídos para cada ciclo de recarga aqui representado em horas. O peso atribuído para cada horário representa o impacto da incidência solar naquele momento em relação ao todo capturado. Os horários suprimidos na Tabela \ref{table:cap6distribuicaonatal} não geram entradas energéticas para o experimento fazendo com que o node receba zero como valor de entrada.
+A variável independente que representa a entrada energética é provida pela distribuição dos valores médios encontrados em decorrência dos pesos atribuídos para cada ciclo de recarga aqui representado em horas. Os horários suprimidos na Tabela \ref{table:cap6distribuicaonatal} não geram entradas energéticas para o experimento fazendo com que o node receba zero como valor de entrada.
+
+O fator de distribuição atribuído a cada horário representa uma referencia ao impacto da incidência solar naquele momento em relação ao total capturado num intervalo de 24 horas. Para sua realização, foi utilizada a referencia disponibilizada em \citeonline{tutiempo2023} para o dia 12 de dezembro de 2023. A limitação de adotar a distribuição solar para um dia especifico é justificada, pois sua intenção é apenas conceber uma forma para como os dados distribuídos, aproximados das características reais de uma fonte energética solar. Os valores são utilizados como estimulo ao node no decorrer do tempo, e de modo geral, é garantido que, independentemente da distribuição, o montante energético total será disponibilizado integralmente para o node conforme recebe estas entradas. Com isso, dado o montante energético esperando para um momento, o node receberá seus valores aplicados aos fatores de incidência indicados na  \ref{table:cap6distribuicaonatal} distribuídos em 24 blocos que representam as horas de um dia (00h00 até 23h00).
+
+
 
 \subsection{Dispositivos}
 
-Para cobrir a dinâmica idealizada ao node provedor, foi construído utilizando Python e algumas bibliotecas auxiliares um dispositivo com a capacidade de atuação do \textit{throttling} bem como cobrir cenários de restrições energéticas, uma visão geral do componente pode ser visto na Figura \ref{fig:cap6providernode}.
-
-
-Para cobrir a dinâmica idealizada do node provedor, foi construído um dispositivo utilizando Python e algumas bibliotecas auxiliares. Todo código fonte está disponível no repositório Git para análise e colaboração.\footnote{Código-Fonte do Node Provedor em \url{https://github.com/eusoupaulolopes/mst_experiments}.}  Este dispositivo possui a capacidade de atuação do \textit{throttling}, ao receber novas solicitações, o mecanismo de throttling observara sua reserva energética (\textit{storage}) com isso, poderá restringir o acesso ao sensor, permitindo ou não a atividade solicitada  Uma visão geral do componente pode ser vista na Figura \ref{fig:cap6providernode}."
-
+Para cobrir a dinâmica idealizada ao node provedor, foi construído os elementos que representam o dispositivo com a capacidade de atuação e os mecanismos do \textit{throttling} inserido em um cenário de restrição energética, uma visão geral do componente pode ser visto na Figura \ref{fig:cap6providernode}. Todo código fonte está disponível no repositório Git para análise e colaboração.\footnote{Código-Fonte do Node Provedor em \url{https://github.com/eusoupaulolopes/mst_experiments}.} 
 
 \begin{figure}[H]
 	\centering
