@@ -21,7 +21,7 @@ O experimento pretende comparar os efeitos do mecanismo de \textit{throttling} e
 
 Para tal, buscou-se observar a influência do fator limitante na alteração do comportamento dos participantes em relação aos valores de energia coletada e reserva energética. Além disso, compreender sua eficiência na tomada de decisão em atender ou não às solicitações, em virtude da autoanálise de suas capacidades à medida que a variação de energia disponível ocorre. Este estudo visa analisar o uso de \textit{throttling} como possível solução para estender a disponibilidade de dispositivos com capacidade de coleta energética. 
 
-A Figura \ref{fig:cap6metodologia} apresenta o fluxo de execução e ordem para as etapas realizadas. Na Seção \ref{cap6:idealizacao}, foi concebido quais os termos de projeto para viabilizar a análise e comparação de nodes com padrão \textit{throttling} aplicado as características energéticas, Etapa 1 - Idealização. Partindo daí, foi projetado ambiente para abstrair os elementos envolvidos, visando garantir equidade de condições e ações de maneira simultânea para todos os dispositivos durante a simulação. Para alcançar isolamento e consistência, optou-se pelo uso da plataforma Docker\footnote{O Docker é uma plataforma de virtualização que simplifica o desenvolvimento, envio e execução de aplicativos em contêineres. Disponível em \url{https://www.docker.com/}.} como agente facilitador, que atende às restrições necessárias de encapsulamento para que cada aplicação e suas dependências estejam contidas. 
+A Figura \ref{fig:cap6metodologia} apresenta o fluxo de execução e ordem para as etapas realizadas. Na Seção \ref{cap6:idealizacao}, foi concebido quais os termos de projeto para viabilizar a análise e comparação de dispositivos com padrão \textit{throttling} aplicado as características energéticas, Etapa 1 - Idealização. Partindo daí, foi projetado ambiente para abstrair os elementos envolvidos, visando garantir equidade de condições e ações de maneira simultânea para todos os dispositivos durante a simulação. Para alcançar isolamento e consistência, optou-se pelo uso da plataforma Docker\footnote{O Docker é uma plataforma de virtualização que simplifica o desenvolvimento, envio e execução de aplicativos em contêineres. Disponível em \url{https://www.docker.com/}.} como agente facilitador, que atende às restrições necessárias de encapsulamento para que cada aplicação e suas dependências estejam contidas. 
 
 A abordagem utilizando  \textit{containers} permitiu que os sistemas fossem estimulados simultaneamente, mantendo controle sobre recursos e garantindo os termos da operação: recursos energéticos e taxa de requisições solicitadas. Sendo assim, a composição do experimento considera que:  I - Dispositivos simulados com capacidade de coleta e armazenamento de energia estão inseridos em um dado ambiente semelhante ao uso real; II - Os dispositivos sempre recebem, ao mesmo tempo, um valor como coleta de energia; III - Os dispositivos participantes possuem a mesma capacidade para armazenar energia coletada; IV - Os dispositivos são submetidos simultaneamente aos mesmos ciclos de carga, compostos por uma quantidade fixa de solicitações.
 
@@ -34,7 +34,7 @@ consistindo o grupo das variáveis dependentes: I - Medição dos valores energ�
 \label{cap6:idealizacao}
 Uma vez definido os objetivos do experimento, a Etapa de idealização é o ponto onde foi construído as bases de execução do estudo. Assim, foram realizadas a estruturação  dos parâmetros e definição do cenário para realizar os testes, além da capacidade de coleta dos resultados e avaliação de conformidade com a taxonomia proposta.
 
-O cenário foi idealizado para simular a atuação dos nodes em dado um ambiente externo. Nele, nodes provedores realizam aferições à medida que são estimulados através de solicitações enviadas. 
+O cenário foi idealizado para simular a atuação de dispositivos em dado um ambiente externo. Nele, estes dispositivos provedores realizam aferições à medida que são estimulados através de solicitações enviadas. 
 
 Decorrente desta  dinâmica, cabe ao node provedor examinar, com base nas condições energéticas, se é capaz ou não de realizar o comando solicitado. Para tal, o mecanismo de \textit{throttling} deverá atuar observando os recursos energéticos do node provedor, para que ao atingir um determinado limiar, bloquear o atendimento à solicitação realizada.
 
@@ -62,17 +62,9 @@ Por fim, o node deverá em todo seu ciclo de vida atuar dinamicamente em conform
 \item Modo Hibernação: Este modo é ativado quando o dispositivo não possui mais recursos energéticos suficientes para continuar atendendo qualquer solicitação. O dispositivo entra em um estado de hibernação ou equivalente até que recursos energéticos sejam recuperados. Portanto, caso consuma toda sua reserva, o dispositivo estará esgotado energeticamente.
 \end{enumerate}
 
-Um modo de operação representa como o mecanismo de \textit{throttling} agirá em detrimento do valor disposto em sua reserva energética, assim contribui para reduzir o uso de recursos, amortizando ou interrompendo o uso energético nos serviços ofertados no node a medida que limita à capacidade de atendimento as solicitações. Naturalmente, estes modos de operação podem sofrer variação, cabe a análise de especificidade e natureza que se destina cada implementação, para isto, a analise desses fatores repousa classe Meios, encontrada na Subseção \ref{cap4:atuacao_meios}. Com isso, os modos de operação guiam a mudança de estados do dispositivo, uma vez que justificados por tal modo, reduz a quantidade de solicitações atendidas, proporcionando maiores momentos em um perfil de inatividade ou equivalente que indique um uso reduzido de recursos. De maneira geral, a dinâmica dos estados do node pode ser visualizada na Figura \ref{fig:cap6maquinaestados}. Por fim, os estados possíveis para o dispositivo são descritos como:
+Um modo de operação representa como o mecanismo de \textit{throttling} agirá em detrimento do valor disposto em sua reserva energética, assim podendo contribuir para reduzir o uso de recursos, amortizando ou interrompendo o uso energético nos serviços ofertados no node a medida que limita à capacidade de atendimento as solicitações. 
 
-\begin{itemize}
-	\item Estado Inativo: Aqui o node estará consumindo a menor quantidade de recurso energético possível. Um node inativo se encontra ocioso, sem realizar nenhuma tarefa enquanto aguarda novas solicitações ou caso necessário, aguarde nova entrada energética disponível.
-	\item Estado Ativo: Um node é considerado ativo enquanto executa solicitações. Nesse estado o node utilizará os recursos energéticos necessários para realização das atividades mediante o consumo de seus recursos energéticos. 
-	\item Estado Desligado: No experimento, o estado desligado é a indicação que o node não tem mais capacidade de assumir qualquer outro estado enquanto não receber recursos energéticos particularmente em decorrência do esgotamento de suas reservas. Portanto, neste estado, um node não realizará qualquer atividade.	
-	
-\end{itemize}
-
-
-
+Naturalmente, os modos de operação podem sofrer variação, cabendo a análise das especificidades e natureza que se destina cada implementação, para isto, o exame desses fatores repousa na classe Meios da taxonomia, encontrada na Subseção \ref{cap4:atuacao_meios}. Com isso, os modos de operação guiam a mudança de estados do dispositivo, uma vez que são justificados por tal modo, reduz a quantidade de solicitações atendidas, proporcionando momentos em um perfil de inatividade forçada que indique um uso reduzido de recursos. De maneira geral, a dinâmica dos estados do node pode ser visualizada na Figura \ref{fig:cap6maquinaestados}. 
 
 \begin{figure}[H]
 	\centering
@@ -83,6 +75,21 @@ Um modo de operação representa como o mecanismo de \textit{throttling} agirá 
 	
 	Fonte: elaborado pelo autor.
 \end{figure}
+
+Por fim, os estados possíveis para o dispositivo são descritos como:
+\begin{itemize}
+	\item Estado Inativo: Aqui o node estará consumindo a menor quantidade de recurso energético possível. Um node inativo se encontra ocioso, sem realizar nenhuma tarefa enquanto aguarda novas solicitações ou caso necessário, aguarde nova entrada energética disponível.
+	\item Estado Ativo: Um node é considerado ativo enquanto executa solicitações. Nesse estado o node utilizará os recursos energéticos necessários para realização das atividades mediante o consumo de seus recursos energéticos. 
+	\item Estado Hibernando: No experimento, o estado hibernando é a indicação que o node não tem mais capacidade de assumir qualquer outro estado enquanto não receber recursos energéticos, particularmente em decorrência do esgotamento de suas reservas. Portanto, neste estado, um node não realizará qualquer atividade.	
+	
+\end{itemize}
+
+A relação entre modos de operação e estados fica implícita à presença e atuação do mecanismo limitante implementado em cada modo operacional, contribuindo para que o dispositivo permaneça em um estado de inatividade à depender do modo em que se encontra com a motivação de preservar ou restabelecer sua condição energética. Sendo assim, em determinado modo, o dispositivo terá uma faixa de solicitações prevista, estas solicitações colocam o dispositivo em um estado ativo, Caso atinja valor limitador do modo, novas solicitações passam a ser negadas, e por sua vez, o dispositivo entrará em inatividade, reduzindo seu gasto energético.
+
+
+
+
+
 
 
 \section{Definição da variáveis independentes e Dispositivos.}
@@ -187,13 +194,13 @@ Os elementos idealizados que constituem o node provedor são referentes aos segu
 
 \section{Instrumentalização.}
 \label{cap6:instrumentalizacao}
-Para garantir a precisão e a confiabilidade dos dados coletados no experimento, alguns instrumentos de medição foram utilizados escolhido com base em sua adequação às necessidades específicas do experimento. 
+Os processos executados para instrumentalização foram fundamentais para garantir a precisão e confiabilidade dos dados gerados durante a execução do experimento. Para isso, foram utilizadas algumas soluções e o processo de decisão e escolha entre as ferramentas se deu com base na adequação à necessidade especifica do experimento realizado. Além de cobrir os aspectos de coleta dos dados de forma objetiva, também foi essencial para os critérios de visualização e análise dos resultados.
 
-A coleta de dados foi realizada em intervalos regulares de 10 segundos definidos no plano experimental. Dada também a necessidade de armazenamento dos dados capturados, optou-se pelo sistema de coleta e monitoramento encontrado na solução Prometheus\footnote{Disponível em \url{https://prometheus.io/}.}, capaz de entregar os dados de maneira estruturada em um formato que facilita acompanhar a execução do experimento através dos logs gerados bem como análise futura do resultados. 
+O processo de coleta dos dados deve acontecer em intervalos regulares de 10 segundos definidos no plano experimental, assim, todos os dados gerados são coletados simultaneamente em todos dispositivos. Cabe também a necessidade de armazenamento dos dados capturados para análise, que pode acontecer sincronizadamente durante execução ou em momento posterior. Para isso, justifica-se a preferencia de uso por uma ferramenta de uso livre, que fosse capaz de agregar em sua estrutura operacional aspectos para coleta de dados, armazenamento e consultas. A solução Prometheus\footnote{Disponível em \url{https://prometheus.io/}.}, foi capaz de atender os pontos elencados, alem de ser aderente a estrutura criada para execução do experimento.
 
-Para tanto, de maneira transparente é embarcado no dispositivo um cliente Prometheus \textit{Exporter} com a capacidade de expor os dados observáveis e de interesse periodicamente a um agente externo chamado \textit{Collector}. Durante atividade de coleta, cabe ao agente coletor as ações de solicitar os dados providos no cliente e também armazenar os dados na forma de séries temporais em um modelo que permite consultas em um formato especifico chamado PromQL - \textit{Prometheus Query Language} e com isso possibilitando a visualização dos dados em gráficos customizáveis ou a criação de alertas, caso necessário.
+Para tanto, de maneira transparente é embarcado no dispositivo um cliente Prometheus chamado \textit{Exporter}, este é responsável por expor os dados observáveis e de interesse no dispositivo. Periodicamente, a cada 10 segundos, um agente externo Prometheus \textit{Collector} irá realizar chamadas com o objetivo de capturar os dados expostos pelo \textit{Exporter}. Assim, durante atividade de coleta, cabe ao agente coletor as ações de solicitar os dados providos no cliente para conversão e armazenamento destes na forma de séries temporal. 
 
-Todos os dados recuperados pelo coletor são disponibilizados e mantidos no Prometheus. A Figura \ref{fig:cap6instrumentalizacao} ilustra a dinâmica entre node e agente externo coletor e por sua vez a disponibilidade dos dados para uma \textit{dashboard}. 
+Todos os dados recuperados pelo coletor são disponibilizados e mantidos em uma estrutura temporal no serviço Prometheus. Graças a essa estrutura, qualquer visualizador capaz de realizar consultas em um formato PromQL - \textit{Prometheus Query Language} estará habilitado para acessar os dados coletados. A Figura \ref{fig:cap6instrumentalizacao} ilustra a dinâmica entre dispositivos e seus \textit{Exporters} embarcados e o agente externo coletor, e, por sua, vez a disponibilidade dos dados em uma \textit{dashboard}. 
 
 \begin{figure}[H]
 	\centering
@@ -205,7 +212,8 @@ Todos os dados recuperados pelo coletor são disponibilizados e mantidos no Prom
 	Fonte: elaborado pelo autor.
 \end{figure}
 
-A concepção do quadro - \textit{dashboard} para visualização dos dados é destinado para realizar consultas sobre os valores coletados ou acompanhar o comportamento dos nodes provedores ainda em tempo de execução do experimento, a Figura \ref{fig:cap6bashboard} apresenta o aspecto da interface de acesso.
+
+Com a necessidade de visualização dos dados de execução, foi criado uma \textit{dashboard}  para apresentar os resultados obtidos de forma gráfica. Logo, com o auxilio da ferramenta Grafana, uma plataforma de análise e visualização de dados que permite monitorar e visualizar dados através de quadros - \textit{dashboards} personalizáveis, foi criada a interface de análise do experimento. a Figura \ref{fig:cap6bashboard} apresenta o aspecto de interface criado.
 
 \begin{figure}[H]
 	\centering
@@ -217,11 +225,47 @@ A concepção do quadro - \textit{dashboard} para visualização dos dados é de
 	Fonte: elaborado pelo autor.
 \end{figure}
 
-Vale destacar que o processo de instrumentalização não exerce influencia sobre a capacidade energética do node. Seu uso e custos são transparentes para a implementação em si, funcionando como um agente independente que não interfere nas dinâmicas energéticas colocadas em análise.
-
+É pertinente ressaltar que os processos realizados para instrumentalização, em especial o \textit{Exporter}, não deve exercer influência sobre a gasto energético simulado do dispositivo durante execução do experimento. Seu uso e custos são transparentes para a implementação, funcionando como um agente independente que não interfere nas dinâmicas energéticas colocadas em análise.
 
 \section{Execução.}
 \label{cap6:execucao}
+
+A execução foi conduzida para garantir a confiabilidade e relevância do experimento e resultados obtidos. O estudo experimental foi realizado em etapas conforme descritos em referencia a Figura \ref{fig:cap6metodologia}, As variáveis independentes utilizadas foram controladas para minimizar possíveis viés e garantir a consistência e replicabilidade do experimento. Durante a execução, os processos de instrumentalização atuaram em conformidade para que enquanto os dados necessários eram coletados, nenhuma variavel externa pudesse influenciar nos resultados.
+
+
+No inicio da execução, o valor atribuído como reserva energética disponível no \textit{Storage} é equivalente a sua capacidade máxima de armazenamento, a partir disso, os valores de entradas energéticas disponibilizadas pelo \textit{Power Supply} seguem a referencia apresentada na Tabela \ref{table:cap6distribuicaonatal}, estes são submetidos a medida que se inicia um novo ciclo $c_0, c_1,...,c_{23}$ relativos cada jornada $J_1, J_2, ..., J_{12}$. Dado controle do experimento, a execução atende as características gerais com certa previsibilidade previsto na Tabela \ref{table:cap6:execucaocaracteristicas}.
+
+\begingroup
+
+\begin{table}[h]
+	
+	\centering
+	\caption{Características da execução}
+%	\smaller[8]
+%	\tabcolsep=0.05cm
+	\begin{tabular}{ l | c c }
+		
+		    & Duração (seg)	& Requisições\\
+		\hline
+		1 ciclo  & 6 & 60 \\
+		24 ciclos  & 144& 1440 \\
+		1 Jornada  & 144& 1440 \\
+		12 Jornadas  & 1728& 17280 \\
+		\bottomrule
+	\end{tabular}
+	\label{table:cap6:execucaocaracteristicas}
+	\\
+	\footnotesize Fonte: elaborado pelo autor.
+	
+\end{table}
+\endgroup
+
+Portanto, ao iniciar um ciclo $c_n$, o valor de entrada energética referente ao ciclo é entregue e, por sua vez, armazenado em componente adequado, passados 6 segundos previstos, um novo ciclo $c_{n1}$ inicia-se encerrando o anterior e por consequência uma nova entrada energética é disponibilizada. Este processo, deve acontecer em 1728 segundos totais, tempo necessário para que sequencialmente a execução estimule todos os ciclos das 12 jornadas.
+
+Em detrimento disso, um ciclo de carga tem duração delimitada no inicio e término do ciclo $c$. Assim, um dispositivo é projetado para atender até 60 requisições durante um ciclo caracterizando assim o ciclo de carga, ao fim da execução 17280 requisições foram realizadas simultaneamente em cada dispositivo analisado. O gasto energético é obtido a partir da dinâmica Ativo-Inativo e a escolha por permanecer em um determinado estado conforme Figura \ref{fig:cap6maquinaestados}, sendo assim, um dispositivo que permanecer Ativo durante todo ciclo de carga despenderá sua reserva energética de maneira mais acentuada em relação a outro dispositivo que optou permanecer parcialmente Inativo. Este fluxo é ajustado mediante a condição energética apresentada e o modo de operação do limiar atuador. Um dispositivo sem capacidade de operação por falta de recurso energético estará em estado Desligado e por consequência não fará uso de nenhum recurso energético enquanto assim permanecer.
+
+
+
 \section{Avaliação.}
 \label{cap6:avaliacao}
  
