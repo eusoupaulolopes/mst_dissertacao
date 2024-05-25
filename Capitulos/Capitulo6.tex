@@ -34,16 +34,14 @@ consistindo o grupo das variáveis dependentes: I - Medição dos valores energ�
 \label{cap6:idealizacao}
 Uma vez definido os objetivos do experimento, a Etapa de idealização é o ponto onde foi construído as bases de execução do estudo. Assim, foram realizadas a estruturação  dos parâmetros e definição do cenário para realizar os testes, além da capacidade de coleta dos resultados e avaliação de conformidade com a taxonomia proposta.
 
-O cenário foi idealizado para simular a atuação de dispositivos em dado um ambiente externo. Nele, estes dispositivos provedores realizam aferições à medida que são estimulados através de solicitações enviadas. 
+O cenário foi idealizado para simular a atuação de dispositivos em dado um ambiente externo. Nele, provedores devem atender as solicitações de operações à medida que são providos energeticamente. Decorrente desta dinâmica, cabe ao provedor, com base nas condições energéticas, decidir se é capaz ou não de realizar a operação solicitada. Para atingir esse objetivo, o mecanismo de \textit{throttling} deverá atuar observando os recursos energéticos disponíveis.
 
-Decorrente desta  dinâmica, cabe ao node provedor examinar, com base nas condições energéticas, se é capaz ou não de realizar o comando solicitado. Para tal, o mecanismo de \textit{throttling} deverá atuar observando os recursos energéticos do node provedor, para que ao atingir um determinado limiar, bloquear o atendimento à solicitação realizada.
-
-Ainda nesta etapa, foi necessário considerar as entradas energéticas que seria disponibilizadas ao node provedor, pois devem ser inerentes ao ambiente idealizado onde este node poderia estar inserido. Além disso, concebeu os aspectos de armazenamento dessa entrada energética, dispositivo o qual deverá receber o recurso coletado e disponibiliza-la para uso do node provedor. A Figura \ref{fig:cap6dinamica} ilustra, em resumo, a dinâmica de funcionamento do node.
+Ainda nesta etapa, foi necessário considerar uma configuração de componentes adequadas que pudessem representar minimamente um dispositivo com capacidade de coleta energética. Com esse objetivo, concebeu os aspectos de armazenamento (\textit{Storage}) e sua entrada energética simulando um valor coletado através de um \textit{Power Supply}. Assim, a dinâmica energética segue-se ao passo que um valor energético é apresentado em ciclos ao \textit{Storage}, que armazena e fornece os valores armazenados uso dos demais componentes presentes. A Figura \ref{fig:cap6dinamica} ilustra, a dinâmica energética de funcionamento do dispositivo.
 
 \begin{figure}[H]
 	\centering
 	
-	\caption{Dinâmica do Node Provedor.}
+	\caption{Dinâmica do fornecimento energético Dispositivo Provedor.}
 	\label{fig:cap6dinamica}
 	\noindent\includegraphics[width=0.75\linewidth]{Imagens/cap6/cap6dinamica.jpg} 
 		
@@ -51,25 +49,25 @@ Ainda nesta etapa, foi necessário considerar as entradas energéticas que seria
 \end{figure}
 
 
-Portanto, acontecendo disponibilidade energética, cabe ao dispositivo armazena-la durante um ciclo a medida que os valores vão sendo apresentados ao node. Uma vez cumprido esta etapa, os valores são disponibilizados na forma de recurso que deverá ser dispendido a medida que realiza as atividades solicitadas.
+Em consequência, acontecendo disponibilidade energética, cabe ao dispositivo armazena-la a medida que os valores vão sendo apresentados. Paralelamente, os valores energéticos são disponibilizados na forma de recurso que deverá ser dispendido a medida que realiza as operações solicitadas.
 
-Por fim, o node deverá em todo seu ciclo de vida atuar dinamicamente em conformidade com os modo de operação que represente os valores de recursos energéticos que possui. No experimento estão cobertos quatro modos de atuação a depender das capacidades energéticas:
+Finalmente, o dispositivo deverá em todo seu funcionamento atuar dinamicamente em conformidade com os modo de operação projetados que representem os valores de recursos energéticos que possui. No experimento estão cobertos quatro modos de atuação a depender das capacidades energéticas:
 
 \begin{enumerate}	
-\item Modo Abundante: O Modo Abundante representa o dispositivo que possui recursos energéticos amplamente disponíveis, permitindo o funcionamento completo e otimizado de todas as suas funcionalidades. Aqui, o node atenderá quaisquer solicitação enviada, sem atuação do mecanismo limitante, aproveitando ao máximo a disponibilidade de energia;
-\item Modo Atenção: Uma vez atingido este patamar, o node recusar-se a atender algumas solicitações com a motivação de preservar parte dos recursos até que um novo cenário energético seja apresentado;
-\item Modo Alerta: O Modo Crítico é alcançado quando o dispositivo está operando com recursos energéticos extremamente limitados, mas ainda tem capacidade para atender algumas solicitações (conforme privilégios ou criticidade das operações). Este modo foi projetado para prolongar a funcionalidade básica do dispositivo enquanto tenta evitar a entrada no Modo Hibernação. 
-\item Modo Hibernação: Este modo é ativado quando o dispositivo não possui mais recursos energéticos suficientes para continuar atendendo qualquer solicitação. O dispositivo entra em um estado de hibernação ou equivalente até que recursos energéticos sejam recuperados. Portanto, caso consuma toda sua reserva, o dispositivo estará esgotado energeticamente.
+\item Modo Abundante: O Modo Abundante representa o dispositivo que possui recursos energéticos amplamente disponíveis, permitindo o funcionamento completo e otimizado de todas as suas funcionalidades. Aqui, atenderá quaisquer solicitação enviada, sem atuação do mecanismo limitante, aproveitando ao máximo a disponibilidade de energia;
+\item Modo Atenção: Uma vez atingido este patamar, o dispositivo ainda apresenta condição energética razoável, porém moderadamente restringirá algumas operações atendidas com a motivação de preservar parte dos recursos até que um novo cenário energético seja apresentado;
+\item Modo Alerta: É alcançado quando o dispositivo está operando com recursos energéticos extremamente limitados. Algumas operações ainda podem ser realizadas (conforme privilégios das operações ou solicitantes). Este modo motiva-se na intenção de prolongar a funcionalidade básica do dispositivo a todo custo enquanto tenta evitar a entrada no Modo Hibernação. 
+\item Modo Hibernação: Este modo é ativado quando não possui mais recursos energéticos disponíveis para realizar operações. O dispositivo entrará em um estado de hibernação ou equivalente até que recursos energéticos sejam recuperados. Nenhuma ação de limitação acontecerá durante esse modo, caso hiberne,  o dispositivo encontra-se esgotado energeticamente.
 \end{enumerate}
 
-Um modo de operação representa como o mecanismo de \textit{throttling} agirá em detrimento do valor disposto em sua reserva energética, assim podendo contribuir para reduzir o uso de recursos, amortizando ou interrompendo o uso energético nos serviços ofertados no node a medida que limita à capacidade de atendimento as solicitações. 
+Um modo de operação representa como o mecanismo de \textit{throttling} agirá em detrimento do valor disposto em sua reserva energética, assim pode contribuir reduzindo a utilização dos recursos, amortizando ou interrompendo o uso energético nos serviços ofertados no dispositivo a medida que limita à capacidade de atendimento as solicitações. 
 
-Naturalmente, os modos de operação podem sofrer variação, cabendo a análise das especificidades e natureza que se destina cada implementação, para isto, o exame desses fatores repousa na classe Meios da taxonomia, encontrada na Subseção \ref{cap4:atuacao_meios}. Com isso, os modos de operação guiam a mudança de estados do dispositivo, uma vez que são justificados por tal modo, reduz a quantidade de solicitações atendidas, proporcionando momentos em um perfil de inatividade forçada que indique um uso reduzido de recursos. De maneira geral, a dinâmica dos estados do node pode ser visualizada na Figura \ref{fig:cap6maquinaestados}. 
+Naturalmente, os modos de operação podem sofrer variação, cabe a análise das especificidades e natureza que se destina cada implementação, para assim, dado o exame desses fatores que repousa na classe Meios da taxonomia Subseção \ref{cap4:atuacao_meios}, definir apropriadamente quais modos serão necessários para o dispositivo. Estes modos guiam a capacidade de mudança dos estados do dispositivo. Uma vez que, são justificados por tal modo a reduzir a quantidade de solicitações atendidas, proporcionando momentos em um estado de inatividade forçada contribuindo a utilização reduzida de recursos. De maneira geral, a dinâmica dos estados do dispositivo pode ser visualizada na Figura \ref{fig:cap6maquinaestados}. 
 
 \begin{figure}[H]
 	\centering
 	
-	\caption{Maquina de estados do Node.}
+	\caption{Maquina de estados do Dispositivo.}
 	\label{fig:cap6maquinaestados}
 	\noindent\includegraphics[width=0.75\linewidth]{Imagens/cap6/cap6maquinaestados.jpg} 
 	
@@ -78,27 +76,22 @@ Naturalmente, os modos de operação podem sofrer variação, cabendo a análise
 
 Por fim, os estados possíveis para o dispositivo são descritos como:
 \begin{itemize}
-	\item Estado Inativo: Aqui o node estará consumindo a menor quantidade de recurso energético possível. Um node inativo se encontra ocioso, sem realizar nenhuma tarefa enquanto aguarda novas solicitações ou caso necessário, aguarde nova entrada energética disponível.
-	\item Estado Ativo: Um node é considerado ativo enquanto executa solicitações. Nesse estado o node utilizará os recursos energéticos necessários para realização das atividades mediante o consumo de seus recursos energéticos. 
-	\item Estado Hibernando: No experimento, o estado hibernando é a indicação que o node não tem mais capacidade de assumir qualquer outro estado enquanto não receber recursos energéticos, particularmente em decorrência do esgotamento de suas reservas. Portanto, neste estado, um node não realizará qualquer atividade.	
+	\item Estado Inativo: Aqui o dispositivo estará consumindo a menor quantidade de recurso energético possível. Enquanto inativo, encontra-se ocioso sem realizar nenhuma tarefa à medida que aguarda novas solicitações ou seja o caso necessário, aguarde nova entrada energética disponível, para atender solicitações anteriormente recusadas.
+	\item Estado Ativo: Um dispositivo é considerado ativo enquanto atende solicitações. Nesse estado o dispositivo utilizará os recursos energéticos necessários para realização das atividades mediante o consumo desses recursos. 
+	\item Estado Hibernando: No experimento, o estado hibernando é a indicação que o dispositivo não tem mais capacidade de assumir qualquer outro estado enquanto não receber recursos energéticos, seja por modo contundente de preservação ou em decorrência do esgotamento de suas reservas. Portanto, neste estado, um dispositivo não realizará qualquer atividade.	
 	
 \end{itemize}
 
-A relação entre modos de operação e estados fica implícita à presença e atuação do mecanismo limitante implementado em cada modo operacional, contribuindo para que o dispositivo permaneça em um estado de inatividade à depender do modo em que se encontra com a motivação de preservar ou restabelecer sua condição energética. Sendo assim, em determinado modo, o dispositivo terá uma faixa de solicitações prevista, estas solicitações colocam o dispositivo em um estado ativo, Caso atinja valor limitador do modo, novas solicitações passam a ser negadas, e por sua vez, o dispositivo entrará em inatividade, reduzindo seu gasto energético.
-
-
-
-
-
+A relação entre modos de operação e estados deixa implícita presença do mecanismo limitante e atuação implementada em cada modo, contribuindo para que o dispositivo permaneça em um estado de inatividade à depender das condições estabelecidas em que se encontra com a motivação de preservar ou restabelecer sua condição energética. Sendo assim, uma vez em determinado modo, o dispositivo terá uma quantidade potencial de atendimento das operações, estas, colocam o dispositivo em um estado ativo. Caso atinja valor limitador do modo, novas operações passam a ser negadas, e por sua vez, o dispositivo entrará em inatividade, reduzindo seu gasto energético.
 
 
 \section{Definição da variáveis independentes e Dispositivos.}
 
 A teoria de coleta de energia baseia-se na utilização de fontes energéticas disponíveis no ambiente para suprir, parcial ou totalmente, a demanda de um dispositivo inserido neste ambiente. Para o experimento, não há, a princípio, a intenção de analisar as particularidades para cada fonte energética, sua natureza e características de uso ou eficiência. 
 
-Com isso, foi necessário para examinação e avaliação da aderência ao mecanismo de \textit{throttling} proposto abstração de fonte energética, uma vez que os recursos energéticos não seriam provenientes da dinâmica das condições de uma fonte qualquer. Quanto as possíveis novas implementações, ainda sim, caberá os ajustes necessários para atuação do \textit{throttling},  a depender da especificidade das condições submetidas ao node, assim como apresentado em \ref{cap:cap4} na classe Observáveis, esses aspectos são descritos como as questões relativas à entrada energética. 
+Com isso, foi necessário para examinação e avaliação da aderência ao mecanismo de \textit{throttling} proposto abstração de fonte energética, uma vez que os recursos energéticos não seriam provenientes da dinâmica das condições de uma fonte qualquer. Quanto as possíveis novas implementações, ainda sim, caberá os ajustes necessários para atuação do \textit{throttling},  a depender da especificidade das condições submetidas ao dispositivo, assim como apresentado em \ref{cap:cap4} na classe Observáveis, esses aspectos são descritos como as questões relativas à entrada energética. 
 
-Todavia, para a execução do experimento é necessário a compreensão sobre à disponibilidade e termos quantitativos de uma fonte de energia que represente valores de entrada para a coleta energética e assim utilizar esses dados como entrada para uma variável independente numérica. Sob tais restrições, os valores utilizados são semelhantes ao comportamento observado por um fonte de energia solar, para isto, seus valores foram concebidos com o auxilio dos dados disponibilizados no Atlas Brasileiro de Energia Solar \cite{martins2017atlas}. Particularmente, a definição dos valores de energia disponível orienta-se pelos parâmetros disponibilizados e apresentados para cidade de Natal/RN, nos termos da média diária de irradiação solar no decorrer  dos meses, o que rotulou-se uma Jornada $J_i$ (para $i = 1,2,...,12$). Os valores são expressos em  $Wh$ , já abstraído a conversão para os termos de consumo conforme Tabela \ref{table:cap6distribuicaonatal} onde cada valor representa o montante energético disponibilizado em uma respectiva jornada.
+Todavia, para a execução do experimento é necessário a compreensão sobre à disponibilidade e termos quantitativos de uma fonte de energia que represente valores de entrada para a coleta energética e assim utilizar esses dados como entrada para uma variável independente numérica. Sob tais restrições, os valores utilizados são semelhantes ao comportamento observado por um fonte de energia solar, para isto, seus valores foram concebidos com o auxilio dos dados disponibilizados no Atlas Brasileiro de Energia Solar \cite{martins2017atlas}. Particularmente, a definição dos valores de energia disponível orienta-se pelos parâmetros disponibilizados e apresentados para cidade de Natal/RN, nos termos da média diária de irradiação solar no decorrer  dos meses, o que rotulou-se uma Jornada $J_i$ (para $i = 1,2,...,12$). Os valores originários são expressos em  $Wh$, todavia para abstração criada a unidade de medida é utilizada apenas para manter a grandeza de comparação entre os ditos valores de consumo conforme Tabela \ref{table:cap6distribuicaonatal} onde cada valor representa o montante energético disponibilizado em uma respectiva jornada.
 
 \begingroup
 
@@ -161,33 +154,35 @@ Todavia, para a execução do experimento é necessário a compreensão sobre à
 \end{table}
 \endgroup
 
-O fator de distribuição atribuído a cada ciclo representa o fator da incidência solar em um dado instante em relação ao total disponível em uma jornada num intervalo de 24 ciclos. Para atribuição dos pesos dispostos em cada ciclo, foi utilizada a referencia disponibilizada em \citeonline{tutiempo2023} para o dia 12 de dezembro de 2023. Aqui cabe destacar que a limitação de adotar a distribuição solar para um dia especifico é justificada pela intenção de apenas conceber os valores capazes de cobrir o propósito do experimento, a medida que paralelamente aproxima-se dos termos característicos de  uma fonte energética solar. Assim, obteve-se a definição dos valores ofertados, com a determinação valores atribuídos em referencia as jornadas aplicados aos fatores de incidência encontrados em cada intervalo (ciclo). Particularmente, os ciclos $c_0, c_1,... c_4$ e $c_{18}, c_{19},... c_{23}$ possuem peso atribuído zero, pois representam ciclos onde não existe energia coletável significante, em conformidade com a referencia solar e suas características utilizada.
+O fator de distribuição atribuído a cada ciclo $c_i$ (para $i=0,1,2,...,23$) representa o aspecto da incidência solar em  dado instante $i$ em relação ao total esperado para uma jornada $J$ (na totalidade dos 24 ciclos). Para atribuição dos pesos dispostos, foi utilizada a referencia disponibilizada em \citeonline{tutiempo2023} para o dia 12 de dezembro de 2023. Aqui destaca-se que a limitação de adotar a distribuição solar para um dia especifico é justificada pela intenção de apenas conceber os valores capazes de cobrir o objetivo do experimento, a medida que aparentemente aproxima-se de termos que caracterizam fonte energética solar. 
 
-Os valores de cada ciclo são ofertados como estimulo ao node provedor no decorrer do experimento, e ao fim do ciclo 23 de uma dada jornada, inicia-se a jornada seguinte até que todos os 24 ciclos das 12 jornadas sejam ofertadas. Esta abordagem garante que todos os cenários previstos para o experimento foram cobertos em sua execução e seus resultados analisados na Seção \ref{cap6:avaliacao}.
+Sendo assim, obteve-se a valoração das quantidades ofertadas como entrada energética, em referencia as jornadas aplicados aos fatores de incidência encontrados em cada ciclo. Finalmente, os ciclos $c_0, c_1,... c_4$ e $c_{18}, c_{19},... c_{23}$ possuem peso atribuído nulo, representam ciclos onde não existe energia coletável significante, em conformidade com a referencia solar e suas características utilizadas, motivo para estarem suprimidas na Tabela \ref{table:cap6distribuicaonatal}.
+
+Os valores de cada ciclo são ofertados como estimulo ao dispositivo provedor no decorrer do experimento, e ao fim do ciclo $c_{23}$ de uma dada jornada $J_i$, inicia-se jornada $J_{i+1}$ seguinte até que todos os ciclos presentes nas em 12 sejam ofertadas. Esta abordagem garante que todos os cenários previstos para o experimento são cobertos em sua execução e possibilita a geração e analise dos resultados obtidos.
 
 \subsection{Dispositivos}
 
-Foi construído um modelo capaz de representar um dispositivo sensor embarcado com os mecanismos do \textit{throttling}, este node é uma abstração que deverá receber estímulos como entradas energéticas em um cenário simulado, a medida que utiliza esses recursos para atender solicitações continuas em uam interface de acesso provisionada. A visão geral do node provedor e componentes pode ser visto na Figura \ref{fig:cap6providernode}. Além disso, o código fonte do mesmo está disponível no repositório Git\footnote{Código-Fonte do Node Provedor em \url{https://github.com/eusoupaulolopes/mst_experiments}.}  para análise e colaboração.
+Foi construído um modelo capaz de representar um dispositivo sensor embarcado com os mecanismos do \textit{throttling}, este dispositivo é uma abstração que deverá receber estímulos como entradas energéticas em um cenário simulado, a medida que utiliza esses recursos para atender solicitações continuas em uam interface de acesso provisionada. A visão geral do dispositivo provedor e componentes pode ser visto na Figura \ref{fig:cap6providernode}. Além disso, o código fonte do mesmo está disponível no repositório Git\footnote{Código-Fonte do dispositivo provedor em \url{https://github.com/eusoupaulolopes/mst_experiments}.}  para análise e colaboração.
 
 \begin{figure}[H]
 	\centering
 	
-	\caption{Componentes do Node Provedor.}
+	\caption{Componentes do dispositivo Provedor.}
 	\label{fig:cap6providernode}
 	\noindent\includegraphics[width=0.75\linewidth]{Imagens/cap6/cap6providernode.png} 
 	
 	Fonte: elaborado pelo autor.
 \end{figure}
 
-Os elementos idealizados que constituem o node provedor são referentes aos seguintes componentes:
+Os elementos idealizados que constituem o dispositivo provedor são referentes aos seguintes componentes:
 
 \textbf{\textit{Power Supply}}, é responsável por fornecer a energia necessária para o funcionamento do dispositivo, simulando a coleta de energia de acordo com os ciclos descritos na Tabela \ref{table:cap6distribuicaonatal}. O componente atuará em paralelo a outras atividades realizadas. Caso o armazenamento do dispositivo esteja completamente cheio, ainda assim os valores de entrada serão entregues, representando desperdício energético. O esgotamento energético do dispositivo não representa a incapacidade de receber novas entradas energéticas e com isso, assumir novos estados de operação.  
 
-\textbf{\textit{Storage}}, responsável por armazenar os valores energéticos oferecidos mediante sua capacidade e a partir disso, oferecer a energia coletada, sendo um componente suplementar com o objetivo de manter disponibilidade energética do dispositivo sob certas circunstancias. A capacidade definida para o \textit{Storage} do node provedor pode ser ajustada e deve representar a aderência da configuração proposta para um \textit{buffer} energético no cenário de uso.  
+\textbf{\textit{Storage}}, responsável por armazenar os valores energéticos oferecidos mediante sua capacidade e a partir disso, oferecer a energia coletada, sendo um componente suplementar com o objetivo de manter disponibilidade energética do dispositivo sob certas circunstancias. A capacidade definida para o \textit{Storage} do dispositivo provedor pode ser ajustada e deve representar a aderência da configuração proposta para um \textit{buffer} energético no cenário de uso.  
 
-\textbf{\textit{Sensor}}, cabe a este componente simular as atividades executadas pelo dispositivo. Dentre as características presentes em Sensor, esta a indicação do gasto energético momentâneo mediante o estado que se encontra em referencia aos possíveis estados já apresentados na Figura \ref{fig:cap6maquinaestados}. Assim, é possível configurar um node para embarcar um ou mais sensores, mediante implementação da especificação de seus custos energéticos operacionais em cada estado possível. Assim, o dispositivo é capaz de simular um ou mais sensores diversos, temperatura, umidade, pressão, luminosidade, presença, entre outros, caso necessário.
+\textbf{\textit{Sensor}}, cabe a este componente simular as atividades executadas pelo dispositivo. Dentre as características presentes em Sensor, esta a indicação do gasto energético momentâneo mediante o estado que se encontra em referencia aos possíveis estados já apresentados na Figura \ref{fig:cap6maquinaestados}. Assim, é possível configurar um dispositivo para embarcar um ou mais sensores, mediante implementação da especificação de seus custos energéticos operacionais em cada estado possível. Assim, o dispositivo é capaz de simular um ou mais sensores diversos, temperatura, umidade, pressão, luminosidade, presença, entre outros, caso necessário.
 
-\textbf{\textit{Interface}} é o ponto de entrada para recebimento das solicitações de sensoriamento, componente de interação com o dispositivo. O mecanismo de \textit{throttling} atuará acoplado a interface provida, controlando a vazão de atendimento a medida que permite ou bloqueia as requisições recebidas em garantia de manter o modo de operação em sincronismo ao estado das suas capacidades energéticas. Assim, uma vez atingido um limiar observado, instantaneamente o dispositivo poderá negar novas requisições ainda na interface, impedindo assim a propagação da mensagem que estimularia o seu grupo de sensores para atender a demanda solicitada, e através disso amortizando o gasto energético total do node.
+\textbf{\textit{Interface}} é o ponto de entrada para recebimento das solicitações de sensoriamento, componente de interação com o dispositivo. O mecanismo de \textit{throttling} atuará acoplado a interface provida, controlando a vazão de atendimento a medida que permite ou bloqueia as requisições recebidas em garantia de manter o modo de operação em sincronismo ao estado das suas capacidades energéticas. Assim, uma vez atingido um limiar observado, instantaneamente o dispositivo poderá negar novas requisições ainda na interface, impedindo assim a propagação da mensagem que estimularia o seu grupo de sensores para atender a demanda solicitada, e através disso amortizando o gasto energético total do dispositivo.
 
 
 
@@ -205,7 +200,7 @@ Todos os dados recuperados pelo coletor são disponibilizados e mantidos em uma 
 \begin{figure}[H]
 	\centering
 	
-	\caption{Componentes do Node Provedor.}
+	\caption{Coleta e visualização dos dados.}
 	\label{fig:cap6instrumentalizacao}
 	\noindent\includegraphics[width=0.75\linewidth]{Imagens/cap6/cap6instrumentalizacao.jpg} 
 	
@@ -243,8 +238,8 @@ No inicio da execução, o valor atribuído como reserva energética disponível
 	\caption{Características da execução}
 %	\smaller[8]
 %	\tabcolsep=0.05cm
-	\begin{tabular}{ l | c c }
-		
+	\begin{tabular}{ c c c }
+		\toprule
 		    & Duração (seg)	& Requisições\\
 		\hline
 		1 ciclo  & 6 & 60 \\
@@ -260,9 +255,46 @@ No inicio da execução, o valor atribuído como reserva energética disponível
 \end{table}
 \endgroup
 
-Portanto, ao iniciar um ciclo $c_n$, o valor de entrada energética referente ao ciclo é entregue e, por sua vez, armazenado em componente adequado, passados 6 segundos previstos, um novo ciclo $c_{n1}$ inicia-se encerrando o anterior e por consequência uma nova entrada energética é disponibilizada. Este processo, deve acontecer em 1728 segundos totais, tempo necessário para que sequencialmente a execução estimule todos os ciclos das 12 jornadas.
+Portanto, ao iniciar um ciclo $c_n$, o valor de entrada energética referente é entregue e, por sua vez, armazenado em componente adequado, passados 6 segundos previstos, um novo ciclo $c_{n1}$ inicia-se encerrando o anterior mediante uma nova entrada energética disponibilizada. Este processo, de ativar todos os ciclos de todas as jornadas acontece em em 1728 segundos totais, tempo necessário para que o experimento apresente a atuação completa da dinâmica de estados e modos de operação possíveis.
 
-Em detrimento disso, um ciclo de carga tem duração delimitada no inicio e término do ciclo $c$. Assim, um dispositivo é projetado para atender até 60 requisições durante um ciclo caracterizando assim o ciclo de carga, ao fim da execução 17280 requisições foram realizadas simultaneamente em cada dispositivo analisado. O gasto energético é obtido a partir da dinâmica Ativo-Inativo e a escolha por permanecer em um determinado estado conforme Figura \ref{fig:cap6maquinaestados}, sendo assim, um dispositivo que permanecer Ativo durante todo ciclo de carga despenderá sua reserva energética de maneira mais acentuada em relação a outro dispositivo que optou permanecer parcialmente Inativo. Este fluxo é ajustado mediante a condição energética apresentada e o modo de operação do limiar atuador. Um dispositivo sem capacidade de operação por falta de recurso energético estará em estado Desligado e por consequência não fará uso de nenhum recurso energético enquanto assim permanecer.
+Apoiado nisso, as requisições utilizadas contra os dispositivos são referenciadas na duração dos ciclos $c$. Assim, serão sempre realizadas 60 requisições ininterruptas em cada ciclo, todas atendidas caso dispositivo esteja em modo abundante. Os dispositivos iram ser submetidos a estas requisições. Para isto, três simulações foram utilizadas, a referencia das caracteristicas são encontradas na Tabela \ref{table:cap6:dispositivosutilizados} e indicam a composição dos dispositivos simulados respeito as classes taxonomicas de Atuação do mecanismo \textit{throttling}. 
+
+
+\begingroup
+
+\begin{table}[h]
+	
+	\centering
+	\caption{Dispositivos Simulados}
+	\small
+%	\tabcolsep=0.05cm
+	\begin{tabular}{ c c c c c c c}
+		\toprule
+		Dispositivo & Nome & \textit{Throttling} & \multicolumn{4}{c}{Atuação}\\\cline{4-7}		
+		& & & Limiar & Ciclos & Meios & Observáveis\\
+		\hline
+		disp$_1$ & no-throttling  & Não & - & 288 & - & - \\
+		disp$_2$ & fixed-throttling  & Sim & Fixo & 288 & Vazão & - \\
+		disp$_3$ & dynamic-throttling  & Sim & Adaptativo & 288 & Vazão & Reserva \\
+		\bottomrule
+	\end{tabular}
+	\label{table:cap6:dispositivosutilizados}
+	\\
+	\footnotesize Fonte: elaborado pelo autor.
+	
+\end{table}
+\endgroup
+
+Para o dispositivo disp$_1$, concebe-se a natureza de dispositivos sem nenhum mecanismo de limitação das operações, seu objetivo é servir como base de comparação para o consumo energético a medida que atende as requisições disparadas contra o mesmo.
+
+
+Por sua vez, disp$_2$ carrega a capacidade de limitar suas operações. A atuação do mecanismo \textit{throttling} é realizado a medida que um valor fixo de solicitações é estipulado sem a necessidade de adequação com o cenário energético mediante controle da vazão de atendimento as solicitações, 
+
+
+
+ e devem ter seu modo de operação variando entre os estabelecidos  \textit{throttling}, 
+
+Assim, um dispositivo é projetado para atender até 60 requisições durante um ciclo caracterizando assim o ciclo de carga, ao fim da execução 17280 requisições foram realizadas simultaneamente em cada dispositivo analisado. O gasto energético é obtido a partir da dinâmica Ativo-Inativo e a escolha por permanecer em um determinado estado conforme Figura \ref{fig:cap6maquinaestados}, sendo assim, um dispositivo que permanecer Ativo durante todo ciclo de carga despenderá sua reserva energética de maneira mais acentuada em relação a outro dispositivo que optou permanecer parcialmente Inativo. Este fluxo é ajustado mediante a condição energética apresentada e o modo de operação do limiar atuador. Um dispositivo sem capacidade de operação por falta de recurso energético estará em estado Desligado e por consequência não fará uso de nenhum recurso energético enquanto assim permanecer.
 
 
 
