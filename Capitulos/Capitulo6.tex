@@ -36,6 +36,17 @@ Uma vez definido os objetivos do experimento, a Etapa de idealização é o pont
 
 O cenário foi idealizado para simular a atuação de dispositivos em dado um ambiente externo. Nele, provedores devem atender as solicitações de operações à medida que são providos energeticamente. Decorrente desta dinâmica, cabe ao provedor, com base nas condições energéticas, decidir se é capaz ou não de realizar a operação solicitada. Para atingir esse objetivo, o mecanismo de \textit{throttling} deverá atuar observando os recursos energéticos disponíveis.
 
+Descreve-se \( C_a \) como o valor energético consumido pelo dispositivo quando estado ativo, \( C_i \), o consumo enquanto estado inativo e \( C_h \) representa dispositivos sem capacidade energética, com custo zero e portanto hibernando. Estima-se que, a duração de um ciclo $T(c)$ é obtida pela soma dos tempos onde o dispositivo esta ativo \( t_a \), que permanece inativo \( t_i \) e por fim o tempo que hiberna \( t_h \), possibilitando expressar o tempo total do ciclo em razão de $T(c_n) = $ \( t_a + t_i + t_h \).
+
+O consumo total durante um ciclo é dado por:
+\[C = C_a \cdot t_a + C_i \cdot t_i + C_h \cdot t_h \quad (\text{Sendo }C_h = 0)\]
+\[C_{total} = C_a \cdot t_a + C_i \cdot t_i\]
+Considerando um dispositivo que permanece ativo durante todo o ciclo \( t_a = T \), \( t_i = 0 \), \( t_h = 0 \):
+\[ C_{total} = C_a \cdot T \]
+De outra forma um dispositivo que permanece hibernando durante todo o ciclo \( t_h = T \) :
+\[ C_{total} = C_t \cdot T = 0 \]
+Assim, um dispositivo com ação do mecanismo \textit{throttling} deverá ter seu comportamento adequado ao modo de atuação projetado, através da recusa de solicitações, favorecendo manter-se em inatividade, cooperando para que reduza seu consumo durante um ciclo, assim conduz o dispositivo ao cenário onde \( t_a < T \) enquanto busca manter $t_h \approx 0$.
+
 Ainda nesta etapa, foi necessário considerar uma configuração de componentes adequadas que pudessem representar minimamente um dispositivo com capacidade de coleta energética. Com esse objetivo, concebeu os aspectos de armazenamento (\textit{Storage}) e sua entrada energética simulando um valor coletado através de um \textit{Power Supply}. Assim, a dinâmica energética segue-se ao passo que um valor energético é apresentado em ciclos ao \textit{Storage}, que armazena e fornece os valores armazenados uso dos demais componentes presentes. A Figura \ref{fig:cap6dinamica} ilustra, a dinâmica energética de funcionamento do dispositivo.
 
 \begin{figure}[H]
@@ -228,50 +239,33 @@ Com a necessidade de visualização dos dados de execução, foi criado uma \tex
 As execuções foram conduzidas para garantir a confiabilidade e relevância do experimento e resultados obtidos. O estudo experimental foi realizado em etapas conforme descritos em referencia a Figura \ref{fig:cap6metodologia}, As variáveis independentes utilizadas foram controladas para minimizar possíveis viés e garantir a consistência e replicabilidade do experimento. Durante a execução, os processos de instrumentalização atuaram em conformidade para que enquanto os dados necessários eram coletados, nenhuma variável externa pudesse influenciar nos resultados.
 
 
-No inicio de uma execução, o valor atribuído como reserva energética disponível no \textit{Storage} é equivalente a sua capacidade máxima de armazenamento, a partir disso, os valores de entradas energéticas disponibilizadas pelo \textit{Power Supply} seguem a referencia apresentada na Tabela \ref{table:cap6distribuicaonatal}, submetidos a medida que se inicia um novo ciclo $c_0, c_1,...,c_{23}$ relativos cada jornada $J_1, J_2, ..., J_{12}$. Dado controle do experimento, a execução atende as características gerais com certa previsibilidade e após 3 execuções, foram identificados os valores conforme descrito na Tabela \ref{table:cap6:execucaocaracteristicas}.
+No inicio de uma execução, o valor atribuído como reserva energética disponível no \textit{Storage} é equivalente a sua capacidade máxima de armazenamento, a partir disso, os valores de entradas energéticas disponibilizadas pelo \textit{Power Supply} seguem a referencia apresentada na Tabela \ref{table:cap6distribuicaonatal}, submetidos a medida que se inicia um novo ciclo $c_0, c_1,...,c_{23}$ relativos cada jornada $J_1, J_2, ..., J_{12}$. Dado controle do experimento, a execução atende as características gerais com certa previsibilidade e após 3 execuções, foram identificados os valores conforme descrito na Tabela \ref{table:cap7:execucaocaracteristicas}.
 
-\begingroup
-
-\begin{table}[h]
-	
-	\centering
-	\caption{Característica das execuções}
-	\begin{tabular}{ c c c c c}
-		\toprule
-		    &   & \multicolumn{3}{c}{Solicitações}\\\cline{3-5} & Duração&
-		    \begin{tabular}{@{}c@{}} Exec1\end{tabular} & \begin{tabular}{@{}c@{}} Exec2\end{tabular} & \begin{tabular}{@{}c@{}} Exec3\end{tabular}\\
-		\hline
-		1 ciclo  & 6 & 30 & & \\
-		24 ciclos  & 144& 717 & & \\
-		1 Jornada  & 144& 717& & \\
-		12 Jornadas  & 1728 & 8604 & 8605 & 8605\\
-		\bottomrule
-	\end{tabular}
-	\label{table:cap6:execucaocaracteristicas}
-	\\
-	\footnotesize Fonte: elaborado pelo autor.
-	
-\end{table}
-\endgroup
 
 Portanto, ao iniciar um ciclo $c_n$, o valor de entrada energética referente é entregue e, por sua vez, armazenado em componente adequado, passados 6 segundos previstos, um novo ciclo $c_{n1}$ inicia-se encerrando o anterior mediante uma nova entrada energética disponibilizada. Este processo, de ativar todos os ciclos de todas as jornadas acontece em em 1728 segundos totais, tempo necessário para que o experimento apresente a atuação completa da dinâmica de estados e modos de operação possíveis.
 
-Apoiado nisso, as solicitações requeridas são disparadas contra os dispositivos durante os ciclos $c$. Assim, ininterruptamente, todas solicitações devem ser atendidas caso dispositivo esteja em modo semelhante ao abundante. Para isto, três simulações foram utilizadas, a referencia das características são encontradas na Tabela \ref{table:cap6:dispositivosutilizados} e indicam a composição dos dispositivos simulados respeito as classes taxonomicas de Atuação do mecanismo \textit{throttling}. 
+Apoiado nisso, as solicitações requeridas são disparadas contra os dispositivos durante os ciclos $c$. Assim, ininterruptamente, todas solicitações devem ser atendidas caso dispositivo esteja em modo semelhante ao abundante. Para isto, três simulações foram utilizadas, a referencia das características são encontradas na Tabela \ref{table:cap6:dispositivosutilizados} e indicam a composição dos dispositivos simulados respeito as classes taxonômicas de Atuação do mecanismo \textit{throttling}. 
 
 
 \begingroup
 
-\begin{table}[h]
+
+O dispositivo disp$_1$, representa o comportamento de dispositivos sem nenhum mecanismo de limitação das solicitações, seu objetivo é servir como base de comparação para o consumo energético a medida que deverá atender todas as demandas solicitadas enquanto não se encontrar em estado hibernando.
+
+Por sua vez, disp$_2$  e disp$_3$ foram implementados com a capacidade de limitar suas operações. Entretanto a atuação do mecanismo \textit{throttling} é distinta entre eles, para o disp$_2$ é realizada restrição mediante limiar fixado em razão de uma vazão de atendimento estipulada previamente sem observar adequação ao cenário energético. Já para o disp$_3$ o limiar irá atuar adaptativamente regulando a taxa de vazão de atendimento observando as condições de sua Reserva energética.
+
+\begin{table}[htbp]
 	
 	\centering
-	\caption{Dispositivos Simulados}
+	\caption{Instancia taxonômica para os dispositivos.}
 	\small
-%	\tabcolsep=0.05cm
+	%	\tabcolsep=0.05cm
 	\begin{tabular}{ c c c c c c c}
 		\toprule
 		Dispositivo & Nome & \textit{Throttling} & \multicolumn{4}{c}{Atuação}\\\cline{4-7}		
 		& & & Limiar & Ciclos & Meios & Observáveis\\
-		\hline
+		\midrule
+		%		\hline
 		disp$_1$ & no-throttling  & Não & - & 288 & - & - \\
 		disp$_2$ & fixed-throttling  & Sim & Fixo & 288 & Vazão & - \\
 		disp$_3$ & dynamic-throttling  & Sim & Adaptativo & 288 & Vazão & Reserva \\
@@ -284,13 +278,67 @@ Apoiado nisso, as solicitações requeridas são disparadas contra os dispositiv
 \end{table}
 \endgroup
 
-Para o dispositivo disp$_1$, concebe-se a natureza de dispositivos sem nenhum mecanismo de limitação das operações, seu objetivo é servir como base de comparação para o consumo energético a medida que deverá atender todas as demandas solicitadas a si.
+Sendo assim, a relação entre os modos de operação e o comportamento dos limitador, quando presente, esta referenciado na Tabela \ref{table:cap6:expectativasolicitacoes}.
 
-Por sua vez, disp$_2$  e disp$_3$ foram implementados com a capacidade de limitar suas operações. Entretanto a atuação do mecanismo \textit{throttling} é distinta entre eles, para o disp$_2$ é realizada restrição mediante limiar fixado em razão de uma vazão de atendimento estipulada previamente sem a necessidade de adequação ao cenário energético. Já para o disp$_3$ o limiar irá atuar adaptativamente regulando a taxa de vazão de atendimento observando as condições de sua Reserva energética.
+\begingroup
+\begin{table}[h] \centering
+	\caption{Expectativa de atendimento das solicitações durante um ciclo}
+	\small
+%	\tabcolsep=0.05cm
+	\begin{threeparttable}
+	\begin{tabular}{ l c c c c c}
+		\toprule
+			Nome &
+			\textit{Throttling   } & 
+			\multicolumn{4}{c}{Modo de Operação}\\\cline{3-6}
+			& &  \begin{tabular}{@{}c@{}} Abundante \\ {\tiny(\textit{S\tnote{*}} $\ge$ 70\% )} \end{tabular} &
+			\begin{tabular}{@{}c@{}} Atenção \\ {\tiny(70\% > \textit{S} $\ge$ 50\%)} \end{tabular} &
+			\begin{tabular}{@{}c@{}} Alerta \\ {\tiny(50\% > \textit{S} $\ge$ 10\%)} \end{tabular} &
+			\begin{tabular}{@{}c@{}} Hibernando \\ {\tiny(\textit{S} $\le$ 10\%)} \end{tabular} \\
+		\midrule
+		 no-throttling &Não & 30 sol\tnote{**} & 30 sol & 30 sol & 0 sol \\
+		 fixed-throttling & Sim & 15 sol & 15 sol & 15 sol & 0 sol\\
+		 dynamic-throttling & Sim & 30 sol & 22 sol & 15 sol & 0 sol\\
+		
+		\bottomrule 
+	\end{tabular}
+	\begin{tablenotes}\footnotesize
+		\item[*] \textit{S} representa o percentual energético presente no \textit{Storage} no momento observado.
+		\item[**] sol é a abreviação para solicitações, refere-se aos pedidos atendidos pelo dispositivo.
+	\end{tablenotes}
+\end{threeparttable}
+	\label{table:cap6:expectativasolicitacoes}
+	\\
+	\footnotesize Fonte: elaborado pelo autor.
+\end{table}
+\endgroup
 
-Finalmente, toda execução do experimento durará os 288 ciclos, necessários para cobrir completamente as 12 jornadas de operações idealizadas. Ao fim, conforme estipulado, devem ser disparados em média 8605 solicitações na razão de 30 por ciclo (uma requisição a cada 0.2 segundos). 
+Partindo disso, a execução do experimento durará 1728 segundos que convertidos totalizam 28 minutos e 48 segundos. Este é tempo necessário para processar os 288 ciclos necessários em razão das 12 jornadas de operações idealizadas. Em resumo, obtemos as características de execução conforme os itens abaixo:
 
-O gasto energético é obtido a partir da dinâmica ativo-inativo e a escolha por permanecer em um determinado estado conforme Figura \ref{fig:cap6maquinaestados}, sendo assim, ao logo de um ciclo, o dispositivo que permanecer ativo durante todo o período despenderá sua reserva energética de maneira mais acentuada em relação a outro dispositivo que optou permanecer parcialmente inativo. Toda requisição realizada enquanto um dispositivo esteja em estado Hibernando, ou seja, sem reserva energética suficiente, será considerada não atendida em razão da indisponibilidade do dispositivo.
+\begin{enumerate}
+	
+	\item \textbf{Total de ciclos:} 288 ciclos
+	\[
+	\text{Total de Ciclos} = 12 \, \text{jornadas} \times 24 \, ciclos/jornada = 288 ciclos
+	\]
+	\item \textbf{Razão das Solicitações:} $\approx$ 5 \,\text{solicitações/s} 
+	\[
+	\text{Razão de Solicitações} = \frac{30 \, \text{solicitações}}{6 \, \text{s}} \approx 5 \, \text{solicitações/s}
+	\]
+	\item \textbf{Total de solicitações:} $\approx$ 8640 solicitações
+	\[
+	\text{Total de Solicitações simultâneas} = 288 \, \text{ciclos} \times 30 \, \frac{\text{solicitações}}{\text{ciclo}} \approx 8640 \, \text{solicitações}
+	\]
+	
+	\item \textbf{Tempo de Execução:} $1728 \ seg = 28min \ 48seg$
+	
+
+\end{enumerate}
+
+
+Finalmente, o gasto energético é obtido a partir da dinâmica ativo-inativo e a escolha por permanecer em um determinado estado conforme Figura \ref{fig:cap6maquinaestados}, sendo assim, ao logo de um ciclo, o dispositivo que permanecer ativo durante todo o período despenderá sua reserva energética de maneira mais acentuada em relação a outro dispositivo que optou permanecer parcialmente inativo. Toda requisição realizada enquanto um dispositivo esteja em estado Hibernando, ou seja, sem reserva energética suficiente, será considerada não atendida em razão da indisponibilidade do dispositivo.
+
+
 
 
 \section{Avaliação.}
