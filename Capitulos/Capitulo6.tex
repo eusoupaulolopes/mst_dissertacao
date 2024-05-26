@@ -23,7 +23,7 @@ Para tal, buscou-se observar a influência do fator limitante na alteração do 
 
 A Figura \ref{fig:cap6metodologia} apresenta o fluxo de execução e ordem para as etapas realizadas. Na Seção \ref{cap6:idealizacao}, foi concebido quais os termos de projeto para viabilizar a análise e comparação de dispositivos com padrão \textit{throttling} aplicado as características energéticas, Etapa 1 - Idealização. Partindo daí, foi projetado ambiente para abstrair os elementos envolvidos, visando garantir equidade de condições e ações de maneira simultânea para todos os dispositivos durante a simulação. Para alcançar isolamento e consistência, optou-se pelo uso da plataforma Docker\footnote{O Docker é uma plataforma de virtualização que simplifica o desenvolvimento, envio e execução de aplicativos em contêineres. Disponível em \url{https://www.docker.com/}.} como agente facilitador, que atende às restrições necessárias de encapsulamento para que cada aplicação e suas dependências estejam contidas. 
 
-A abordagem utilizando  \textit{containers} permitiu que os sistemas fossem estimulados simultaneamente, mantendo controle sobre recursos e garantindo os termos da operação: recursos energéticos e taxa de requisições solicitadas. Sendo assim, a composição do experimento considera que:  I - Dispositivos simulados com capacidade de coleta e armazenamento de energia estão inseridos em um dado ambiente semelhante ao uso real; II - Os dispositivos sempre recebem, ao mesmo tempo, um valor como coleta de energia; III - Os dispositivos participantes possuem a mesma capacidade para armazenar energia coletada; IV - Os dispositivos são submetidos simultaneamente aos mesmos ciclos de carga, compostos por uma quantidade fixa de solicitações.
+A abordagem utilizando  \textit{containers} permitiu que os sistemas fossem estimulados simultaneamente, mantendo controle sobre recursos e garantindo os termos da operação: recursos energéticos e taxa de solicitações. Sendo assim, a composição do experimento considera que:  I - Dispositivos simulados com capacidade de coleta e armazenamento de energia estão inseridos em um dado ambiente semelhante ao uso real; II - Os dispositivos sempre recebem, ao mesmo tempo, um valor como coleta de energia; III - Os dispositivos participantes possuem a mesma capacidade para armazenar energia coletada; IV - Os dispositivos são submetidos simultaneamente aos mesmos ciclos de carga, compostos por uma quantidade fixa de solicitações.
 
 Na Etapa 3 - Instrumentalização, capacita o experimento para capturar e apresentar os resultados durante sua execução e posterior resumo dos dados obtidos, os detalhes estão descritos na Seção \ref{cap6:instrumentalizacao}. A Seção \ref{cap6:execucao} descreve os processos realizados na Etapa 4 - execução do experimento. Assim neste ponto, todas as etapas planejadas anteriormente ja estão implementadas. Em decorrência disso, habilita-se o experimento a realizar os procedimentos conforme o protocolo estabelecido, e aplicação dos estímulos já definidos (carga de solicitações e disponibilização de recursos energéticos).
 
@@ -182,7 +182,7 @@ Os elementos idealizados que constituem o dispositivo provedor são referentes a
 
 \textbf{\textit{Sensor}}, cabe a este componente simular as atividades executadas pelo dispositivo. Dentre as características presentes em Sensor, esta a indicação do gasto energético momentâneo mediante o estado que se encontra em referencia aos possíveis estados já apresentados na Figura \ref{fig:cap6maquinaestados}. Assim, é possível configurar um dispositivo para embarcar um ou mais sensores, mediante implementação da especificação de seus custos energéticos operacionais em cada estado possível. Assim, o dispositivo é capaz de simular um ou mais sensores diversos, temperatura, umidade, pressão, luminosidade, presença, entre outros, caso necessário.
 
-\textbf{\textit{Interface}} é o ponto de entrada para recebimento das solicitações de sensoriamento, componente de interação com o dispositivo. O mecanismo de \textit{throttling} atuará acoplado a interface provida, controlando a vazão de atendimento a medida que permite ou bloqueia as requisições recebidas em garantia de manter o modo de operação em sincronismo ao estado das suas capacidades energéticas. Assim, uma vez atingido um limiar observado, instantaneamente o dispositivo poderá negar novas requisições ainda na interface, impedindo assim a propagação da mensagem que estimularia o seu grupo de sensores para atender a demanda solicitada, e através disso amortizando o gasto energético total do dispositivo.
+\textbf{\textit{Interface}} é o ponto de entrada para recebimento das solicitações de sensoriamento, componente de interação com o dispositivo. O mecanismo de \textit{throttling} atuará acoplado a interface provida, controlando a vazão de atendimento a medida que permite ou bloqueia as solicitações recebidas em garantia de manter o modo de operação em sincronismo ao estado das suas capacidades energéticas. Assim, uma vez atingido um limiar observado, instantaneamente o dispositivo poderá negar novas solicitações ainda na interface, impedindo assim a propagação da mensagem que estimularia o seu grupo de sensores para atender a demanda solicitada, e através disso amortizando o gasto energético total do dispositivo.
 
 
 
@@ -225,27 +225,26 @@ Com a necessidade de visualização dos dados de execução, foi criado uma \tex
 \section{Execução.}
 \label{cap6:execucao}
 
-A execução foi conduzida para garantir a confiabilidade e relevância do experimento e resultados obtidos. O estudo experimental foi realizado em etapas conforme descritos em referencia a Figura \ref{fig:cap6metodologia}, As variáveis independentes utilizadas foram controladas para minimizar possíveis viés e garantir a consistência e replicabilidade do experimento. Durante a execução, os processos de instrumentalização atuaram em conformidade para que enquanto os dados necessários eram coletados, nenhuma variavel externa pudesse influenciar nos resultados.
+As execuções foram conduzidas para garantir a confiabilidade e relevância do experimento e resultados obtidos. O estudo experimental foi realizado em etapas conforme descritos em referencia a Figura \ref{fig:cap6metodologia}, As variáveis independentes utilizadas foram controladas para minimizar possíveis viés e garantir a consistência e replicabilidade do experimento. Durante a execução, os processos de instrumentalização atuaram em conformidade para que enquanto os dados necessários eram coletados, nenhuma variável externa pudesse influenciar nos resultados.
 
 
-No inicio da execução, o valor atribuído como reserva energética disponível no \textit{Storage} é equivalente a sua capacidade máxima de armazenamento, a partir disso, os valores de entradas energéticas disponibilizadas pelo \textit{Power Supply} seguem a referencia apresentada na Tabela \ref{table:cap6distribuicaonatal}, estes são submetidos a medida que se inicia um novo ciclo $c_0, c_1,...,c_{23}$ relativos cada jornada $J_1, J_2, ..., J_{12}$. Dado controle do experimento, a execução atende as características gerais com certa previsibilidade previsto na Tabela \ref{table:cap6:execucaocaracteristicas}.
+No inicio de uma execução, o valor atribuído como reserva energética disponível no \textit{Storage} é equivalente a sua capacidade máxima de armazenamento, a partir disso, os valores de entradas energéticas disponibilizadas pelo \textit{Power Supply} seguem a referencia apresentada na Tabela \ref{table:cap6distribuicaonatal}, submetidos a medida que se inicia um novo ciclo $c_0, c_1,...,c_{23}$ relativos cada jornada $J_1, J_2, ..., J_{12}$. Dado controle do experimento, a execução atende as características gerais com certa previsibilidade e após 3 execuções, foram identificados os valores conforme descrito na Tabela \ref{table:cap6:execucaocaracteristicas}.
 
 \begingroup
 
 \begin{table}[h]
 	
 	\centering
-	\caption{Características da execução}
-%	\smaller[8]
-%	\tabcolsep=0.05cm
-	\begin{tabular}{ c c c }
+	\caption{Característica das execuções}
+	\begin{tabular}{ c c c c c}
 		\toprule
-		    & Duração (seg)	& Requisições\\
+		    &   & \multicolumn{3}{c}{Solicitações}\\\cline{3-5} & Duração&
+		    \begin{tabular}{@{}c@{}} Exec1\end{tabular} & \begin{tabular}{@{}c@{}} Exec2\end{tabular} & \begin{tabular}{@{}c@{}} Exec3\end{tabular}\\
 		\hline
-		1 ciclo  & 6 & 60 \\
-		24 ciclos  & 144& 1440 \\
-		1 Jornada  & 144& 1440 \\
-		12 Jornadas  & 1728& 17280 \\
+		1 ciclo  & 6 & 30 & & \\
+		24 ciclos  & 144& 717 & & \\
+		1 Jornada  & 144& 717& & \\
+		12 Jornadas  & 1728 & 8604 & 8605 & 8605\\
 		\bottomrule
 	\end{tabular}
 	\label{table:cap6:execucaocaracteristicas}
@@ -257,7 +256,7 @@ No inicio da execução, o valor atribuído como reserva energética disponível
 
 Portanto, ao iniciar um ciclo $c_n$, o valor de entrada energética referente é entregue e, por sua vez, armazenado em componente adequado, passados 6 segundos previstos, um novo ciclo $c_{n1}$ inicia-se encerrando o anterior mediante uma nova entrada energética disponibilizada. Este processo, de ativar todos os ciclos de todas as jornadas acontece em em 1728 segundos totais, tempo necessário para que o experimento apresente a atuação completa da dinâmica de estados e modos de operação possíveis.
 
-Apoiado nisso, as requisições utilizadas contra os dispositivos são referenciadas na duração dos ciclos $c$. Assim, serão sempre realizadas 60 requisições ininterruptas em cada ciclo, todas atendidas caso dispositivo esteja em modo abundante. Os dispositivos iram ser submetidos a estas requisições. Para isto, três simulações foram utilizadas, a referencia das caracteristicas são encontradas na Tabela \ref{table:cap6:dispositivosutilizados} e indicam a composição dos dispositivos simulados respeito as classes taxonomicas de Atuação do mecanismo \textit{throttling}. 
+Apoiado nisso, as solicitações requeridas são disparadas contra os dispositivos durante os ciclos $c$. Assim, ininterruptamente, todas solicitações devem ser atendidas caso dispositivo esteja em modo semelhante ao abundante. Para isto, três simulações foram utilizadas, a referencia das características são encontradas na Tabela \ref{table:cap6:dispositivosutilizados} e indicam a composição dos dispositivos simulados respeito as classes taxonomicas de Atuação do mecanismo \textit{throttling}. 
 
 
 \begingroup
@@ -285,17 +284,13 @@ Apoiado nisso, as requisições utilizadas contra os dispositivos são referenci
 \end{table}
 \endgroup
 
-Para o dispositivo disp$_1$, concebe-se a natureza de dispositivos sem nenhum mecanismo de limitação das operações, seu objetivo é servir como base de comparação para o consumo energético a medida que atende as requisições disparadas contra o mesmo.
+Para o dispositivo disp$_1$, concebe-se a natureza de dispositivos sem nenhum mecanismo de limitação das operações, seu objetivo é servir como base de comparação para o consumo energético a medida que deverá atender todas as demandas solicitadas a si.
 
+Por sua vez, disp$_2$  e disp$_3$ foram implementados com a capacidade de limitar suas operações. Entretanto a atuação do mecanismo \textit{throttling} é distinta entre eles, para o disp$_2$ é realizada restrição mediante limiar fixado em razão de uma vazão de atendimento estipulada previamente sem a necessidade de adequação ao cenário energético. Já para o disp$_3$ o limiar irá atuar adaptativamente regulando a taxa de vazão de atendimento observando as condições de sua Reserva energética.
 
-Por sua vez, disp$_2$ carrega a capacidade de limitar suas operações. A atuação do mecanismo \textit{throttling} é realizado a medida que um valor fixo de solicitações é estipulado sem a necessidade de adequação com o cenário energético mediante controle da vazão de atendimento as solicitações, 
+Finalmente, toda execução do experimento durará os 288 ciclos, necessários para cobrir completamente as 12 jornadas de operações idealizadas. Ao fim, conforme estipulado, devem ser disparados em média 8605 solicitações na razão de 30 por ciclo (uma requisição a cada 0.2 segundos). 
 
-
-
- e devem ter seu modo de operação variando entre os estabelecidos  \textit{throttling}, 
-
-Assim, um dispositivo é projetado para atender até 60 requisições durante um ciclo caracterizando assim o ciclo de carga, ao fim da execução 17280 requisições foram realizadas simultaneamente em cada dispositivo analisado. O gasto energético é obtido a partir da dinâmica Ativo-Inativo e a escolha por permanecer em um determinado estado conforme Figura \ref{fig:cap6maquinaestados}, sendo assim, um dispositivo que permanecer Ativo durante todo ciclo de carga despenderá sua reserva energética de maneira mais acentuada em relação a outro dispositivo que optou permanecer parcialmente Inativo. Este fluxo é ajustado mediante a condição energética apresentada e o modo de operação do limiar atuador. Um dispositivo sem capacidade de operação por falta de recurso energético estará em estado Desligado e por consequência não fará uso de nenhum recurso energético enquanto assim permanecer.
-
+O gasto energético é obtido a partir da dinâmica ativo-inativo e a escolha por permanecer em um determinado estado conforme Figura \ref{fig:cap6maquinaestados}, sendo assim, ao logo de um ciclo, o dispositivo que permanecer ativo durante todo o período despenderá sua reserva energética de maneira mais acentuada em relação a outro dispositivo que optou permanecer parcialmente inativo. Toda requisição realizada enquanto um dispositivo esteja em estado Hibernando, ou seja, sem reserva energética suficiente, será considerada não atendida em razão da indisponibilidade do dispositivo.
 
 
 \section{Avaliação.}
