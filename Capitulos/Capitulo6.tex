@@ -25,10 +25,12 @@ A Figura \ref{fig:cap6metodologia} apresenta o fluxo de execução e ordem para 
 
 A abordagem utilizando  \textit{containers} permitiu que os sistemas fossem estimulados simultaneamente, mantendo controle sobre recursos e garantindo os termos da operação: recursos energéticos e taxa de solicitações. Sendo assim, a composição do experimento considera que:  I - Dispositivos simulados com capacidade de coleta e armazenamento de energia estão inseridos em um dado ambiente semelhante ao uso real; II - Os dispositivos sempre recebem, ao mesmo tempo, um valor como coleta de energia; III - Os dispositivos participantes possuem a mesma capacidade para armazenar energia coletada; IV - Os dispositivos são submetidos simultaneamente aos mesmos ciclos de carga, compostos por uma quantidade fixa de solicitações.
 
-Na Etapa 3 - Instrumentalização, capacita o experimento para capturar e apresentar os resultados durante sua execução e posterior resumo dos dados obtidos, os detalhes estão descritos na Seção \ref{cap6:instrumentalizacao}. A Seção \ref{cap6:execucao} descreve os processos realizados na Etapa 4 - execução do experimento. Assim neste ponto, todas as etapas planejadas anteriormente ja estão implementadas. Em decorrência disso, habilita-se o experimento a realizar os procedimentos conforme o protocolo estabelecido, e aplicação dos estímulos já definidos (carga de solicitações e disponibilização de recursos energéticos).
+Na Etapa 3 - Instrumentalização, capacita o experimento para capturar, apresentar e disponibilizar os resultados durante sua execução e posterior resumo dos dados obtidos, os detalhes estão descritos na Seção \ref{cap6:instrumentalizacao}. A Seção \ref{cap6:execucao} descreve os processos realizados na Etapa 4 - execução do experimento. Assim neste ponto, todas as etapas planejadas anteriormente ja estão implementadas. Em decorrência disso, habilita-se o experimento a executar seus procedimentos conforme um protocolo estabelecido, aplicando os estímulos já definidos (carga de solicitações e disponibilização de recursos energéticos) e coletando os resultados obtidos.
 
-Ao final, a Etapa 5 - Avaliação dos Resultados trata dos dados coletados para análise,
-consistindo o grupo das variáveis dependentes: I - Medição dos valores energéticos em relação ao tempo; II - Quantidade de solicitações atendidas ou negadas; III - Valores mínimos de reserva energética atingidos. Tais resultados serão apresentados posteriormente na Seção \ref{cap6:avaliacao} mediante comparação entre os dispositivos participantes e na avaliação dos resultados obtidos durante a experimentação.
+Ao final, a Seção \ref{cap6:avaliacao}, apresenta a avaliação dos resultados, que consiste na descrição e análise dos dados obtidos durante a execução. Os dados analisados são compostos pelo grupo de variáveis independentes que representam: Dos valores energéticos disponibilizados; da quantidade de solicitações realizadas. A análise se fundamenta em observar como o mecanismo \textit{throttling} implementado no dispositivo se colocará como agente atenuante do gasto energético utilizado a medida seus limiares de atuação são atingidos de acordo com o modo de operação previsto para determinados fatores observáveis presentes.
+
+Ao fim da execução do experimento, as variáveis dependentes são obtidas para avaliação: a performance em relação a Quantidade total de solicitações atendidas ao fim da execução do experimento ea quantidade de solicitações impedidas mediante indisponibilidade de recursos em \textit{storage}. Ao aprofundar a análise, é preciso ainda, contrapor os dados temporais de oferta energética em relação a quantidade presente no dispositivo, o que justificará a atuação de limitadores e sua capacidade em manter um dispositivo operacional do ponto de vista energético.
+
 
 \section{Idealização}
 \label{cap6:idealizacao}
@@ -38,12 +40,12 @@ O cenário foi idealizado para simular a atuação de dispositivos em dado um am
 
 Descreve-se \( C_a \) como o valor energético consumido pelo dispositivo quando estado ativo, \( C_i \), o consumo enquanto estado inativo e \( C_h \) representa dispositivos sem capacidade energética, com custo zero e portanto hibernando. Estima-se que, a duração de um ciclo $T(c)$ é obtida pela soma dos tempos onde o dispositivo esta ativo \( t_a \), que permanece inativo \( t_i \) e por fim o tempo que hiberna \( t_h \), possibilitando expressar o tempo total do ciclo em razão de $T(c_n) = $ \( t_a + t_i + t_h \).
 
-O consumo total durante um ciclo é dado por:
-\[C = C_a \cdot t_a + C_i \cdot t_i + C_h \cdot t_h \quad (\text{Sendo }C_h = 0)\]
+O consumo total $C_{total}$, durante um ciclo é calculado com base em:
+\[C_{total} = C_a \cdot t_a + C_i \cdot t_i + C_h \cdot t_h \quad (\text{Sendo }C_h = 0)\]
 \[C_{total} = C_a \cdot t_a + C_i \cdot t_i\]
-Considerando um dispositivo que permanece ativo durante todo o ciclo \( t_a = T \), \( t_i = 0 \), \( t_h = 0 \):
+Considerando um dispositivo que permaneça ativo durante todo o ciclo \( t_a = T \), \( t_i = 0 \), \( t_h = 0 \):
 \[ C_{total} = C_a \cdot T \]
-De outra forma um dispositivo que permanece hibernando durante todo o ciclo \( t_h = T \) :
+De outra forma, caso permaneça hibernando durante todo o ciclo \( t_h = T \), teremos seu consumo total:
 \[ C_{total} = C_t \cdot T = 0 \]
 Assim, um dispositivo com ação do mecanismo \textit{throttling} deverá ter seu comportamento adequado ao modo de atuação projetado, através da recusa de solicitações, favorecendo manter-se em inatividade, cooperando para que reduza seu consumo durante um ciclo, assim conduz o dispositivo ao cenário onde \( t_a < T \) enquanto busca manter $t_h \approx 0$.
 
@@ -96,8 +98,8 @@ Por fim, os estados possíveis para o dispositivo são descritos como:
 A relação entre modos de operação e estados deixa implícita presença do mecanismo limitante e atuação implementada em cada modo, contribuindo para que o dispositivo permaneça em um estado de inatividade à depender das condições estabelecidas em que se encontra com a motivação de preservar ou restabelecer sua condição energética. Sendo assim, uma vez em determinado modo, o dispositivo terá uma quantidade potencial de atendimento das operações, estas, colocam o dispositivo em um estado ativo. Caso atinja valor limitador do modo, novas operações passam a ser negadas, e por sua vez, o dispositivo entrará em inatividade, reduzindo seu gasto energético.
 
 
-\section{Definição da variáveis independentes e Dispositivos.}
-
+\section{Definição das Variáveis Independentes e Dispositivos.}
+\label{cap6:variaveisdispositivos}
 A teoria de coleta de energia baseia-se na utilização de fontes energéticas disponíveis no ambiente para suprir, parcial ou totalmente, a demanda de um dispositivo inserido neste ambiente. Para o experimento, não há, a princípio, a intenção de analisar as particularidades para cada fonte energética, sua natureza e características de uso ou eficiência. 
 
 Com isso, foi necessário para examinação e avaliação da aderência ao mecanismo de \textit{throttling} proposto abstração de fonte energética, uma vez que os recursos energéticos não seriam provenientes da dinâmica das condições de uma fonte qualquer. Quanto as possíveis novas implementações, ainda sim, caberá os ajustes necessários para atuação do \textit{throttling},  a depender da especificidade das condições submetidas ao dispositivo, assim como apresentado em \ref{cap:cap4} na classe Observáveis, esses aspectos são descritos como as questões relativas à entrada energética. 
@@ -112,7 +114,7 @@ Todavia, para a execução do experimento é necessário a compreensão sobre à
 \begin{table}[h]
 	
 	\centering
-	\caption{Valor disponibilizado por entrada}
+	\caption{Valores ofertados por ciclo}
 	\smaller[8]
 	\tabcolsep=0.05cm
 \begin{tabular}{ c l | *{13}{c} }
@@ -171,6 +173,15 @@ Sendo assim, obteve-se a valoração das quantidades ofertadas como entrada ener
 
 Os valores de cada ciclo são ofertados como estimulo ao dispositivo provedor no decorrer do experimento, e ao fim do ciclo $c_{23}$ de uma dada jornada $J_i$, inicia-se jornada $J_{i+1}$ seguinte até que todos os ciclos presentes nas em 12 sejam ofertadas. Esta abordagem garante que todos os cenários previstos para o experimento são cobertos em sua execução e possibilita a geração e analise dos resultados obtidos.
 
+Com a definição dos ciclos e jornadas, determina-se também como acontecerá os processos de oferta energética. Partindo disso, surge a necessidade para definir como se dará o processo de utilização desses recursos já armazenados. Uma segunda variável independente é necessária, o objetivo é realizar solicitações ao dispositivo de modo a estimular demanda ao mesmo. Assim, é preciso adotar algumas práticas para garantir que todos os dispositivos, além de receber a oferta energética estipulada como projetado, também sejam capazes de receber a mesma carga de solicitações, aproximadamente ao mesmo tempo. 
+
+Ao atender uma solicitação, o dispositivo é conduzido para ingressar ou permanecer em estado ativo, este intensifica a utilização de recursos quando comparado com um estado inativo ou enquanto hiberna, conforme mencionado na Seção \ref{cap6:idealizacao}. Para cobrir essa dinâmica, após os dispositivos recebem a primeira oferta energética, no inicio da execução do experimento, a partir daí, serão solicitados simultaneamente aos dispositivos 5 solicitações por segundo. na razão aproximada de 1 solicitação a cada 0.2 segundos. Caso dispositivo não consiga receber uma solicitação, na janela de tempo, será considerado indisponível para aquele estimulo. 
+
+Considera-se que os termos necessários para transmissão ou as características da interface de comunicação podem exercer influência na razão de transmissão das solicitações, por este motivo é previsto que dada a quantidade total de solicitações realizadas possam ter pequena variação ao fim da execução do experimento. Em todo caso, é garantido em que todos os dispositivos foram estimulados ao mesmo valor total de solicitações bem como foram solicitadas simultaneamente.
+
+Finalmente, esta variável independente numérica, solicitações realizadas, carrega os valores totais de requisições, em decorrência dela, observa-se os valores encontrados para a quantidade total de solicitações atendidas e o total de solicitações realizadas que encontraram o dispositivo indisponível. 
+
+
 \subsection{Dispositivos}
 
 Foi construído um modelo capaz de representar um dispositivo sensor embarcado com os mecanismos do \textit{throttling}, este dispositivo é uma abstração que deverá receber estímulos como entradas energéticas em um cenário simulado, a medida que utiliza esses recursos para atender solicitações continuas em uam interface de acesso provisionada. A visão geral do dispositivo provedor e componentes pode ser visto na Figura \ref{fig:cap6providernode}. Além disso, o código fonte do mesmo está disponível no repositório Git\footnote{Código-Fonte do dispositivo provedor em \url{https://github.com/eusoupaulolopes/mst_experiments}.}  para análise e colaboração.
@@ -186,16 +197,16 @@ Foi construído um modelo capaz de representar um dispositivo sensor embarcado c
 \end{figure}
 
 Os elementos idealizados que constituem o dispositivo provedor são referentes aos seguintes componentes:
-
-\textbf{\textit{Power Supply}}, é responsável por fornecer a energia necessária para o funcionamento do dispositivo, simulando a coleta de energia de acordo com os ciclos descritos na Tabela \ref{table:cap6distribuicaonatal}. O componente atuará em paralelo a outras atividades realizadas. Caso o armazenamento do dispositivo esteja completamente cheio, ainda assim os valores de entrada serão entregues, representando desperdício energético. O esgotamento energético do dispositivo não representa a incapacidade de receber novas entradas energéticas e com isso, assumir novos estados de operação.  
-
-\textbf{\textit{Storage}}, responsável por armazenar os valores energéticos oferecidos mediante sua capacidade e a partir disso, oferecer a energia coletada, sendo um componente suplementar com o objetivo de manter disponibilidade energética do dispositivo sob certas circunstancias. A capacidade definida para o \textit{Storage} do dispositivo provedor pode ser ajustada e deve representar a aderência da configuração proposta para um \textit{buffer} energético no cenário de uso.  
-
-\textbf{\textit{Sensor}}, cabe a este componente simular as atividades executadas pelo dispositivo. Dentre as características presentes em Sensor, esta a indicação do gasto energético momentâneo mediante o estado que se encontra em referencia aos possíveis estados já apresentados na Figura \ref{fig:cap6maquinaestados}. Assim, é possível configurar um dispositivo para embarcar um ou mais sensores, mediante implementação da especificação de seus custos energéticos operacionais em cada estado possível. Assim, o dispositivo é capaz de simular um ou mais sensores diversos, temperatura, umidade, pressão, luminosidade, presença, entre outros, caso necessário.
-
-\textbf{\textit{Interface}} é o ponto de entrada para recebimento das solicitações de sensoriamento, componente de interação com o dispositivo. O mecanismo de \textit{throttling} atuará acoplado a interface provida, controlando a vazão de atendimento a medida que permite ou bloqueia as solicitações recebidas em garantia de manter o modo de operação em sincronismo ao estado das suas capacidades energéticas. Assim, uma vez atingido um limiar observado, instantaneamente o dispositivo poderá negar novas solicitações ainda na interface, impedindo assim a propagação da mensagem que estimularia o seu grupo de sensores para atender a demanda solicitada, e através disso amortizando o gasto energético total do dispositivo.
-
-
+\begin{enumerate}
+	\item \textit{Power Supply}, é responsável por fornecer a energia necessária para o funcionamento do dispositivo, simulando a coleta de energia de acordo com os ciclos descritos na Tabela \ref{table:cap6distribuicaonatal}. O componente atuará em paralelo a outras atividades realizadas. Caso o armazenamento do dispositivo esteja completamente cheio, ainda assim os valores de entrada serão entregues, representando desperdício energético. O esgotamento energético do dispositivo não representa a incapacidade de receber novas entradas energéticas e com isso, assumir novos estados de operação.  
+	
+	\item \textit{Storage}, responsável por armazenar os valores energéticos oferecidos mediante sua capacidade e a partir disso, oferecer a energia coletada, sendo um componente suplementar com o objetivo de manter disponibilidade energética do dispositivo sob certas circunstancias. A capacidade definida para o \textit{storage} do dispositivo provedor pode ser ajustada e deve representar a aderência da configuração proposta para um \textit{buffer} energético no cenário de uso.
+	
+	 \item \textit{Sensor}, cabe a este componente simular as atividades executadas pelo dispositivo. Dentre as características presentes em Sensor, esta a indicação do gasto energético momentâneo mediante o estado que se encontra em referencia aos possíveis estados já apresentados na Figura \ref{fig:cap6maquinaestados}. Assim, é possível configurar um dispositivo para embarcar um ou mais sensores, mediante implementação da especificação de seus custos energéticos operacionais em cada estado possível. Assim, o dispositivo é capaz de simular um ou mais sensores diversos, temperatura, umidade, pressão, luminosidade, presença, entre outros, caso necessário.
+	 
+	 \item \textit{Interface} é o ponto de entrada para recebimento das solicitações de sensoriamento, componente de interação com o dispositivo. O mecanismo de \textit{throttling} atuará acoplado a interface provida, controlando a vazão de atendimento a medida que permite ou bloqueia as solicitações recebidas em garantia de manter o modo de operação em sincronismo ao estado das suas capacidades energéticas. Assim, uma vez atingido um limiar observado, instantaneamente o dispositivo poderá negar novas solicitações ainda na interface, impedindo assim a propagação da mensagem que estimularia o seu grupo de sensores para atender a demanda solicitada, e através disso amortizando o gasto energético total do dispositivo.
+	 
+\end{enumerate}
 
 
 \section{Instrumentalização.}
@@ -206,12 +217,12 @@ O processo de coleta dos dados deve acontecer em intervalos regulares de 10 segu
 
 Para tanto, de maneira transparente é embarcado no dispositivo um cliente Prometheus chamado \textit{Exporter}, este é responsável por expor os dados observáveis e de interesse no dispositivo. Periodicamente, a cada 10 segundos, um agente externo Prometheus \textit{Collector} irá realizar chamadas com o objetivo de capturar os dados expostos pelo \textit{Exporter}. Assim, durante atividade de coleta, cabe ao agente coletor as ações de solicitar os dados providos no cliente para conversão e armazenamento destes na forma de séries temporal. 
 
-Todos os dados recuperados pelo coletor são disponibilizados e mantidos em uma estrutura temporal no serviço Prometheus. Graças a essa estrutura, qualquer visualizador capaz de realizar consultas em um formato PromQL - \textit{Prometheus Query Language} estará habilitado para acessar os dados coletados. A Figura \ref{fig:cap6instrumentalizacao} ilustra a dinâmica entre dispositivos e seus \textit{Exporters} embarcados e o agente externo coletor, e, por sua, vez a disponibilidade dos dados em uma \textit{dashboard}. 
+Todos os dados recuperados pelo coletor são disponibilizados e mantidos em uma estrutura temporal no serviço Prometheus. Graças a essa estrutura, qualquer visualizador capaz de realizar consultas em um formato PromQL - \textit{Prometheus Query Language} estará habilitado para acompanhar execuções em andamento. A Figura \ref{fig:cap6instrumentalizacao} ilustra a dinâmica entre dispositivos e seus \textit{Exporters} embarcados e o agente externo coletor, e, por consequência, a disponibilidade dos dados para uma \textit{dashboard} de acompanhamento e posterior análise dos resultados. 
 
 \begin{figure}[H]
 	\centering
 	
-	\caption{Coleta e visualização dos dados.}
+	\caption{Coleta e visualização da Execução do Experimento.}
 	\label{fig:cap6instrumentalizacao}
 	\noindent\includegraphics[width=0.75\linewidth]{Imagens/cap6/cap6instrumentalizacao.jpg} 
 	
@@ -219,7 +230,7 @@ Todos os dados recuperados pelo coletor são disponibilizados e mantidos em uma 
 \end{figure}
 
 
-Com a necessidade de visualização dos dados de execução, foi criado uma \textit{dashboard}  para apresentar os resultados obtidos de forma gráfica. Logo, com o auxilio da ferramenta Grafana, uma plataforma de análise e visualização de dados que permite monitorar e visualizar dados através de quadros - \textit{dashboards} personalizáveis, foi criada a interface de análise do experimento. a Figura \ref{fig:cap6bashboard} apresenta o aspecto de interface criado.
+Com a necessidade de visualização dos dados durante execução, foi criado uma \textit{dashboard}  para apresentar os resultados obtidos de forma gráfica. Logo, com o auxilio da ferramenta Grafana, uma plataforma de análise e visualização de dados através de quadros - \textit{dashboards} personalizáveis, foi criado a interface de acompanhamento do experimento. a Figura \ref{fig:cap6bashboard} apresenta o configuração da interface criada. Para avaliação  posterior após a execução do experimento, os dados foram coletados através os logs gerados, e submetidos a uma planilha eletrônica capaz de produzir os gráficos necessários para análise dos resultados. 
 
 \begin{figure}[H]
 	\centering
@@ -239,7 +250,7 @@ Com a necessidade de visualização dos dados de execução, foi criado uma \tex
 As execuções foram conduzidas para garantir a confiabilidade e relevância do experimento e resultados obtidos. O estudo experimental foi realizado em etapas conforme descritos em referencia a Figura \ref{fig:cap6metodologia}, As variáveis independentes utilizadas foram controladas para minimizar possíveis viés e garantir a consistência e replicabilidade do experimento. Durante a execução, os processos de instrumentalização atuaram em conformidade para que enquanto os dados necessários eram coletados, nenhuma variável externa pudesse influenciar nos resultados.
 
 
-No inicio de uma execução, o valor atribuído como reserva energética disponível no \textit{Storage} é equivalente a sua capacidade máxima de armazenamento, a partir disso, os valores de entradas energéticas disponibilizadas pelo \textit{Power Supply} seguem a referencia apresentada na Tabela \ref{table:cap6distribuicaonatal}, submetidos a medida que se inicia um novo ciclo $c_0, c_1,...,c_{23}$ relativos cada jornada $J_1, J_2, ..., J_{12}$. Dado controle do experimento, a execução atende as características gerais com certa previsibilidade e após 3 execuções, foram identificados os valores conforme descrito na Tabela \ref{table:cap7:execucaocaracteristicas}.
+No inicio de uma execução, o valor atribuído como reserva energética disponível no \textit{Storage} é equivalente a sua capacidade máxima de armazenamento, a partir disso, os valores de entradas energéticas disponibilizadas pelo \textit{Power Supply} seguem a referencia apresentada na Tabela \ref{table:cap6distribuicaonatal}, submetidos a medida que se inicia um novo ciclo $c_0, c_1,...,c_{23}$ relativos cada jornada $J_1, J_2, ..., J_{12}$. Dado controle do experimento, a execução atende as características gerais com certa previsibilidade e após 3 execuções, foram identificados os valores conforme descrito na Tabela \ref{table:cap6:execucaocaracteristicas}.
 
 
 Portanto, ao iniciar um ciclo $c_n$, o valor de entrada energética referente é entregue e, por sua vez, armazenado em componente adequado, passados 6 segundos previstos, um novo ciclo $c_{n1}$ inicia-se encerrando o anterior mediante uma nova entrada energética disponibilizada. Este processo, de ativar todos os ciclos de todas as jornadas acontece em em 1728 segundos totais, tempo necessário para que o experimento apresente a atuação completa da dinâmica de estados e modos de operação possíveis.
@@ -282,7 +293,7 @@ Sendo assim, a relação entre os modos de operação e o comportamento dos limi
 
 \begingroup
 \begin{table}[h] \centering
-	\caption{Expectativa de atendimento das solicitações durante um ciclo}
+	\caption{Expectativa de atendimento das solicitações ($sol$) por ciclo ($c$)}
 	\small
 %	\tabcolsep=0.05cm
 	\begin{threeparttable}
@@ -296,15 +307,14 @@ Sendo assim, a relação entre os modos de operação e o comportamento dos limi
 			\begin{tabular}{@{}c@{}} Alerta \\ {\tiny(50\% > \textit{S} $\ge$ 10\%)} \end{tabular} &
 			\begin{tabular}{@{}c@{}} Hibernando \\ {\tiny(\textit{S} $\le$ 10\%)} \end{tabular} \\
 		\midrule
-		 no-throttling &Não & 30 sol\tnote{**} & 30 sol & 30 sol & 0 sol \\
-		 fixed-throttling & Sim & 15 sol & 15 sol & 15 sol & 0 sol\\
-		 dynamic-throttling & Sim & 30 sol & 22 sol & 15 sol & 0 sol\\
+		 no-throttling &Não & 30 $sol/c$ & 30 $sol/c$ & 30 $sol/c$l & 0 $sol/c$ \\
+		 fixed-throttling & Sim & 15 $sol/c$ & 15 $sol/c$ & 15 $sol/c$ & 0 $sol/c$\\
+		 dynamic-throttling & Sim & 30 $sol/c$ & 22 $sol/c$ & 15 $sol/c$ & 0 $sol/c$\\
 		
 		\bottomrule 
 	\end{tabular}
 	\begin{tablenotes}\footnotesize
-		\item[*] \textit{S} representa o percentual energético presente no \textit{Storage} no momento observado.
-		\item[**] sol é a abreviação para solicitações, refere-se aos pedidos atendidos pelo dispositivo.
+		\item[*] \textit{S} representa o percentual da capacidade energética armazenada em componente \textit{Storage} no momento observado.
 	\end{tablenotes}
 \end{threeparttable}
 	\label{table:cap6:expectativasolicitacoes}
@@ -313,7 +323,7 @@ Sendo assim, a relação entre os modos de operação e o comportamento dos limi
 \end{table}
 \endgroup
 
-Partindo disso, a execução do experimento durará 1728 segundos que convertidos totalizam 28 minutos e 48 segundos. Este é tempo necessário para processar os 288 ciclos necessários em razão das 12 jornadas de operações idealizadas. Em resumo, obtemos as características de execução conforme os itens abaixo:
+Partindo disso, a execução do experimento durará 1728 segundos que convertidos totalizam 28 minutos e 48 segundos. Este é tempo necessário para processar os 288 ciclos necessários em razão das 12 jornadas de operações idealizadas. Em resumo, cada execução do experimento carrega as características conforme os itens abaixo:
 
 \begin{enumerate}
 	
@@ -321,11 +331,11 @@ Partindo disso, a execução do experimento durará 1728 segundos que convertido
 	\[
 	\text{Total de Ciclos} = 12 \, \text{jornadas} \times 24 \, ciclos/jornada = 288 ciclos
 	\]
-	\item \textbf{Razão das Solicitações:} $\approx$ 5 \,\text{solicitações/s} 
+	\item \textbf{Razão das Solicitações:} $\approx$5 \,\text{solicitações/s} 
 	\[
 	\text{Razão de Solicitações} = \frac{30 \, \text{solicitações}}{6 \, \text{s}} \approx 5 \, \text{solicitações/s}
 	\]
-	\item \textbf{Total de solicitações:} $\approx$ 8640 solicitações
+	\item \textbf{Total de solicitações:} $\approx$8640 solicitações
 	\[
 	\text{Total de Solicitações simultâneas} = 288 \, \text{ciclos} \times 30 \, \frac{\text{solicitações}}{\text{ciclo}} \approx 8640 \, \text{solicitações}
 	\]
@@ -341,6 +351,141 @@ Finalmente, o gasto energético é obtido a partir da dinâmica ativo-inativo e 
 
 
 
-\section{Avaliação.}
+\section{Avaliação dos Resultados}
 \label{cap6:avaliacao}
+
+
+
+Nesta subseção, examina-se em detalhes os resultados obtidos a partir do experimento realizado. Descreve-se os dados coletados que compõe as variáveis independentes, e também apresenta-se os valores obtidos nas variáveis dependentes com o objetivo de avaliar o desempenho e a eficácia do experimento. 
+Parte da avaliação se concentra em apresentar a análise descritiva dos dados coletados, a interpretação dos resultados e por fim, as limitações do estudo experimental.
+
+
+
+\subsection{Descrição dos Dados Coletados}
+\begin{comment}
+	Comece descrevendo os dados que foram coletados durante o experimento. Inclua detalhes sobre as variáveis ​​independentes e dependentes, bem como quaisquer variáveis ​​de controle que foram medidas.
+\end{comment}
+A Figura \ref{fig:cap6valoresofertados}, apresenta a distribuição para os valores utilizados como recursos ofertados aos dispositivos durante o experimento. Estes valores quantificam a primeira variável independente e é utilizada para fomentar a disponibilização de recursos no decorrer dos ciclos por meio do componente \textit{power supply} ao \textit{storage} do dispositivo, são entregues no inicio de cada ciclo. Sendo o primeiro valor no ciclo $c_{0}$ da Jornada $J_1$ e, por sua vez, o ultimo transmitido no inicio do ciclo $c_{23}$ da Jornada $J_{12}$. Decorrido o tempo do ultimo ciclo, finda-se a execução do experimento.
+
+\begin{figure}[H]
+	\centering
+	
+	\caption{Valores energéticos ofertados, durante o experimento} 
+	\label{fig:cap6valoresofertados}
+	\noindent\includegraphics[width=1\linewidth]{Imagens/cap6/cap6valoresofertados.png} 
+	
+	Fonte: elaborado pelo autor.
+\end{figure}
+
+Dada a natureza do experimento, qualquer execução obterá o mesmo comportamento e distribuição para seus valores ofertados, pois são definidos antes da execução e não sofrem impacto diante das caracteristicas dos dispositivos dentro do contexto de uma ou outra execução.
+
+A segunda variável independente utilizada, representa as solicitações disparadas contra a interface do dispositivo provedor. Este estimulo tem características tais que, ao atender-las, o provedor intensifica seu consumo energético, pois encontra-se em estado ativo, demandando mais recursos. Isso implica que, à medida que a quantidade das solicitações atendidas aumenta, o consumo de energia do provedor também aumentará proporcionalmente, resultando em um impacto significativo na disponibilidade do dispositivo em relação com seu desempenho energético. A Tabela \ref{table:cap6:execucaocaracteristicas}, apresenta os valores utilizados para as requisições em cada execução do experimento. A precisão indica a distribuição da relação entre total de solicitações em cada execução em referencia para 12 jornadas (8640 solicitações) descrito na Seção \ref{cap6:execucao}
+
+\begingroup
+
+\begin{table}[h]
+	
+	\centering
+	\caption{Solicitaçoes realizadas}
+	\begin{threeparttable}
+	\begin{tabular}{ l c c c c }
+		\toprule
+		&   & \multicolumn{3}{c}{Solicitações}\\\cline{3-5} & Duração&
+		\begin{tabular}{@{}c@{}} Exec 1\end{tabular} & \begin{tabular}{@{}c@{}} Exec 2\end{tabular} & \begin{tabular}{@{}c@{}} Exec 3\end{tabular}\\
+		\bottomrule
+		1 ciclo  				& 6 $seg$ 	& 29,875 	& 29,86 & 29,88 \\
+		1 Jornada (24 ciclos)  	& 144 $seg$	& 717 & 716,75 &  717,16\\
+		12 Jornadas  			& 1728 $seg$& 8604  & 8601 & 8606 \\
+		\bottomrule
+	\end{tabular}
+
+	\end{threeparttable}
+	\label{table:cap6:execucaocaracteristicas}
+	\\
+	\footnotesize Fonte: elaborado pelo autor.
+	
+\end{table}
+\endgroup
+
+
+Dando prosseguimento à execução do experimento, as variáveis dependentes são obtidas para avaliação: A Quantidade total de solicitações atendidas ao fim da execução do experimento e a evolução desses valores; a quantidade de solicitações impedidas mediante indisponibilidade do dispositivo. Para analisar a quantidade de solicitações impedidas, é preciso contrapor os dados temporais da variável independente oferta energética em relação a quantidade presente no dispositivo, o que justificará a atuação de limitadores.
+
+Ainda sobre os dados coletados, ao final de cada execução foi coletado o total de requisições atendidas por cada dispositivo. Conforme Figura \ref{fig:cap6solicitacoesatendidas}, é possível comparar o desempenho dos dispositivos sob a ponto de vista das solicitações atendidas.
+
+\begin{figure}[H]
+	\centering	
+	\caption{Quantidade de solicitações atendidas por dispositivo.} 
+	\label{fig:cap6solicitacoesatendidas}
+	\noindent\includegraphics[width=0.8\linewidth]{Imagens/cap6/cap6solicitaçoesatendidas_execs.png} 
+	
+	Fonte: elaborado pelo autor.
+\end{figure}
+
+Apenas o dispositivo "no-throttling" apresentou-se como resultado um quadro de indisponibilidade em função de esgotamento energético, de modo geral a Tabela \ref{table:cap6:quadrogeralobtido} apresenta a performance dos dispositivos para atender as solicitações e quando necessário apresentar o quadro de indisponibilidade em razão do total de solicitações realizadas.
+
+\begingroup
+\begin{table}[H]
+	\centering
+	\caption{Quadro das solicitações realizadas aos dispositivos}
+	\begin{tabular}{|c |c |c|c|c|}
+		\hline
+		\multirow{2}{*}{Execução} & 
+		\multirow{2}{*}{Dispositivo} &
+		\multicolumn{2}{c|}{Solicitações} & 
+		\multirow{2}{*}{\% indisponíveis} \\
+		& & atendidas & indisponíveis & \\
+		\midrule
+		1& 	no-throttling 	&  7043&1561 & 0.1814\\
+		1& 	fixed-throttling &  3414&0 & -\\
+		1&	dynamic-throttling & 5098 & 0 &-\\
+		
+		2& no-throttling &  7105&1496 & 0.1739\\
+		2& fixed-throttling & 3436& 0 & -\\
+		2& dynamic-throttling & 5118& 0 &-\\
+		
+	   3  &	no-throttling & 7105& 1504& 0.1747\\
+	   3	& fixed-throttling &3441 & 0& -\\
+	   3	& dynamic-throttling & 5123& 0&-\\
+		
+		\bottomrule
+	\end{tabular}
+		\label{table:cap6:quadrogeralobtido}
+		\\
+		\footnotesize Fonte: elaborado pelo autor.
+\end{table}
+\endgroup
+
+Parte da análise é obtida ao observar o gráfico de comportamento referente às capacidades energéticas encontradas no \textit{storage} do dispositivo. A Figura \ref{fig:cap6recortecomportamentostorage} apresenta um recorte dos dados, oferecendo informações suficientes para analisar a dinâmica entre a coleta e o consumo de recursos realizada por todos os dispositivos envolvidos. Essa visualização permite identificar padrões de consumo e tendências de eficiência especialmente nas áreas destacadas onde a quantidade de recurso disponibilizado é mínima.
+
+\begin{figure}[H]
+	\centering	
+	\caption{Recorte do comportamento de uso dos recursos durante Execução 3.} 
+	\label{fig:cap6recortecomportamentostorage}
+	\noindent\includegraphics[width=1\linewidth]{Imagens/cap6/cap6recortecomportamentostorage.jpg} 
+	
+	Fonte: elaborado pelo autor.
+\end{figure}
+
+Ainda sobre a Figura \ref{fig:cap6recortecomportamentostorage}, ela permite a análise do comportamento do dispositivo \textit{dynamic-throttling} enquanto a atuação é adaptada para cada modo de operação em referencia a sua condição apresentada em \textit{storage}, este processo é notável através da variação na tendencia da linha de consumo enquanto alterna-se as faixas horizontais limitadas pela relação de cores e modos da seguinte forma:
+
+\begin{itemize}
+	\item Verde : Modo Abundante.
+	\item Amarelo : Modo Atenção.
+	\item Vermelho : Modo Alerta.
+	\item Cinza : Modo Hibernação.
+\end{itemize} 
+
+\subsection{Interpretação dos Resultados}
+\begin{comment}
+	Descreva os resultados dos testes de uma maneira que seja compreensível para o leitor. Discuta se os resultados foram estatisticamente significativos e o que isso significa em termos do seu experimento.
+\end{comment}
+
+\subsection{Limitações do Estudo}
+\begin{comment}
+	Reconheça quaisquer limitações do seu estudo que possam ter afetado os resultados. Isso pode incluir limitações metodológicas, questões de amostragem, viéses potenciais ou qualquer outra consideração importante.
+\end{comment}
+
+
+
+
  

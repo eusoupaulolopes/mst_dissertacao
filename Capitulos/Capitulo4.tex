@@ -95,20 +95,8 @@ Sistemas de coleta energética possuem três conceitos fundamentais: Carga, a Ar
 
 \begin{itemize}
     \item Coleta e Usa (\textit{Harvest-Use}): Neste modelo, toda energia coletada é oferecida diretamente ao dispositivo continuamente. Conforme \cite{merrett_energy-driven_2017}, um dispositivo não precisaria de um \textit{buffer} energético, desde que seu funcionamento fosse orientado as características \textit{Power-Neutral}. Assim, a energia coletada deve satisfazer os valores de operação plena ou pelo menos o minimo necessário para o funcionamento depreciado. Assim, caso a energia coletada não seja suficiente, o dispositivo prontamente adaptará o fornecimento dos seus recursos buscando enquadrar-se a disponibilidade energética corrente para, posteriormente, caso o nível de fornecimento energético se restabeleça, tenha sua operação normalizada. Em alguns casos, quando prontamente é detectado níveis energéticos abaixo do necessário até para o funcionamento circunstanciado do dispositivo, é possível com alguma antecipação do cenário realizar rotina que vise preservar seu estado mediante criação de \textit{checkpoints}, assim restabelecida as condições energéticas, retornar para um estado desejado, característica de um sistema intermitente apresentado por \citeauthor{sliper_energy-driven_2020} (\citeyear{sliper_energy-driven_2020}).
-    
-	\begin{figure}[h]
-			\centering
-			\noindent\includegraphics[width=3cm]{example-image} 
-			\caption{Aqui vou colocar uma figura power-neutral}	
-	\end{figure}   
-    
+        
     \item Coleta, Armazena e Usa (\textit{Harvest-Store Use}): Dispositivos inseridos em um dado ambiente coletam energia do meio para seu uso. Todavia, precisam lidar com o dinamismo da natureza energética coletada, embarca-se a capacidade de armazenar energia coletada em um \textit{buffer} e assim, disponibilizar esta entrada para uso nos ciclos do dispositivo. Este modelo tem objetivo reduzir problemas derivados da variação do montante energético coletado pelo \acs{EHS}, seja pela momentaneamente pela escassez de energia disponível ou depreciação do modelo de coleta.
-    
-    \begin{figure}[h]
-    	\centering
-    	\noindent\includegraphics[width=3cm]{example-image} 
-    	\caption{Aqui vou colocar uma figura energy-neutral}	
-   	\end{figure}  
     
 \end{itemize}
 
@@ -131,7 +119,7 @@ A capacidade de armazenamento trata das propriedades como conversão, força e t
 
 É bem conhecido que o fator energético é um desafio para dispositivos com restrições energéticas e capacidade de coleta, pois claramente caso o recurso energético deste seja esgotado o mesmo não será capaz de cumprir seu papel, sob a condição do restabelecimento deste recurso ou algum mecanismo de armazenamento possa cobrir parcial ou totalmente a diferença energética necessária para a operação.
 
-Baterias, super capacitores ou modelos híbridos estão presentes no contexto de dispositivos com fortes restrições energéticas e capacidade de coleta, para estes a atuação busca estar de acordo com as condições físicas e necessidade de conservação da energia na forma de conceber este \textit{buffer} denominado \textit{Storage}. É possível distinguir dois padrões de armazenamento para as capacidade energética presente em um dispositivo que busca observar a relação entre a saída energética e o gasto energético do dispositivo. Segundo o modelo, a habilidade para coletar e a necessidade de disponibilidade devem ser definidas em um acordo de serviço \acs{SLA}. Portanto, um dispositivo deve ter sua capacidade de armazenamento definida em:
+Baterias, super capacitores ou modelos híbridos atuam como \textit{buffer} e estão presentes no contexto de dispositivos com fortes restrições energéticas com capacidade de coletar recursos energéticos do ambiente, assim a atuação busca estar de acordo com as condições e necessidade de conservação da energia a medida que faz uso de recursos armazenados em \textit{buffer} denominado \textit{Storage}. É possível distinguir dois padrões de armazenamento para as capacidade energética presente em um dispositivo que busca observar a relação entre a saída energética e o custo de operação do dispositivo. Segundo o modelo, a habilidade para coletar e a necessidade de disponibilidade devem ser definidas em um acordo com o nível de serviço proposto. Portanto, um dispositivo deve ter sua capacidade de armazenamento definida:
 
 \begin{itemize}
     \item dispositivo provedor sem \textit{Storage}: Aqui não existe a necessidade estrita da gestão de recursos elétricos pois caso não exista energia suficiente o dispositivo poderá adaptar-se na tentativa de alinhar a necessidade energética ao fornecido no momento, em outros casos, sua operação se assemelhará a operação transientes ja caraterizado por  \citeauthor{sliper_energy-driven_2020} (\citeyear{sliper_energy-driven_2020}), preparados para interromper suas atividades e, ao restabelecer sua entrada energética disponível, retornar a partir de um ponto previamente estabelecido (\textit{checkpoint}). 
