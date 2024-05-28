@@ -102,9 +102,7 @@ A relação entre modos de operação e estados deixa implícita presença do me
 \label{cap6:variaveisdispositivos}
 A teoria de coleta de energia baseia-se na utilização de fontes energéticas disponíveis no ambiente para suprir, parcial ou totalmente, a demanda de um dispositivo inserido neste ambiente. Para o experimento, não há, a princípio, a intenção de analisar as particularidades para cada fonte energética, sua natureza e características de uso ou eficiência. 
 
-Com isso, foi necessário para examinação e avaliação da aderência ao mecanismo de \textit{throttling} proposto abstração de fonte energética, uma vez que os recursos energéticos não seriam provenientes da dinâmica das condições de uma fonte qualquer. Quanto as possíveis novas implementações, ainda sim, caberá os ajustes necessários para atuação do \textit{throttling},  a depender da especificidade das condições submetidas ao dispositivo, assim como apresentado em \ref{cap:cap4} na classe Observáveis, esses aspectos são descritos como as questões relativas à entrada energética. 
-
-Todavia, para a execução do experimento é necessário a compreensão sobre à disponibilidade e termos quantitativos de uma fonte de energia que represente valores de entrada para a coleta energética e assim utilizar esses dados como entrada para uma variável independente numérica. Sob tais restrições, os valores utilizados são semelhantes ao comportamento observado por um fonte de energia solar, para isto, seus valores foram concebidos com o auxilio dos dados disponibilizados no Atlas Brasileiro de Energia Solar \cite{martins2017atlas}. Particularmente, a definição dos valores de energia disponível orienta-se pelos parâmetros disponibilizados e apresentados para cidade de Natal/RN, nos termos da média diária de irradiação solar no decorrer  dos meses, o que rotulou-se uma Jornada $J_i$ (para $i = 1,2,...,12$). Os valores originários são expressos em  $Wh$, todavia para abstração criada a unidade de medida é utilizada apenas para manter a grandeza de comparação entre os ditos valores de consumo conforme Tabela \ref{table:cap6distribuicaonatal} onde cada valor representa o montante energético disponibilizado em uma respectiva jornada.
+Todavia, para a execução do experimento é necessário a compreensão sobre à disponibilidade em termos quantitativos de uma fonte energética que represente seus valores de oferta e assim ser capaz de utilizar esses valores como entrada na forma de variável independente numérica. Sob tais restrições, os dados utilizados se assemelham ao comportamento observado por um fonte de energia solar, para isto, foram concebidos a partir da adaptação dos dados disponibilizados no Atlas Brasileiro de Energia Solar \cite{martins2017atlas}. Particularmente, a definição dos valores orienta-se pela referencia apresentada para cidade de Natal/RN no decorrer dos meses, como média diária de irradiação solar, cada quantidade apresentada compreende uma Jornada $J_i$ (para $i = 1,2,...,12$). Os valores originários foram expressos na unidade  $Wh/m^2$, todavia, para abstração criada a unidade de medida é desprezada e tratada apenas para representar o quantitativo de recurso para um ciclo, mantendo assim a grandeza de comparação entre os ditos valores de oferta. Conforme Tabela \ref{table:cap6distribuicaonatal} onde cada valor representa o montante energético disponibilizado em uma respectiva jornada distribuídos em ciclos.
 
 \begingroup
 
@@ -116,11 +114,11 @@ Todavia, para a execução do experimento é necessário a compreensão sobre à
 	\centering
 	\caption{Valores ofertados por ciclo}
 	\smaller[8]
-	\tabcolsep=0.05cm
-\begin{tabular}{ c l | *{13}{c} }
+	\tabcolsep=0.1cm
+\begin{tabular}{ r | *{13}{c} }
 	\toprule
-	Jornada & $Wh$ & \multicolumn{13}{c}{Disponibilizado no Ciclo (c)}\\\cline{3-15}
-	& & \begin{tabular}{@{}c@{}} c05 \\(0.007)\end{tabular} &
+        &  \multicolumn{13}{c}{Disponibilizado no Ciclo (c)}\\\cline{2-14}
+	Jornada (J) & \begin{tabular}{@{}c@{}} c05 \\(0.007)\end{tabular} &
 	\begin{tabular}{@{}c@{}} c06 \\(0.02) \end{tabular}	& 
 	\begin{tabular}{@{}c@{}} c07 \\(0.053)\end{tabular} &
 	\begin{tabular}{@{}c@{}} c08 \\(0.087) \end{tabular}&
@@ -135,29 +133,29 @@ Todavia, para a execução do experimento é necessário a compreensão sobre à
 	\begin{tabular}{@{}c@{}} c17 \\(0.005)\end{tabular}\\
 	
 	\hline
-	J01 & 5674 & 39.72 & 113.48 & 300.72 & 493.64 & 595.77 & 720.6 & 771.66 & 709.25 & 680.88 & 573.07 & 419.88 & 226.96 & 28.37\\
+	J01 5674 & 39.72 & 113.48 & 300.72 & 493.64 & 595.77 & 720.6 & 771.66 & 709.25 & 680.88 & 573.07 & 419.88 & 226.96 & 28.37\\
 	\hline
-	J02 & 6017 & 42.12 & 120.34 & 318.9 & 523.48 & 631.78 & 764.16 & 818.31 & 752.12 & 722.04 & 607.72 & 445.26 & 240.68 & 30.09 \\
+	J02 6017 & 42.12 & 120.34 & 318.9 & 523.48 & 631.78 & 764.16 & 818.31 & 752.12 & 722.04 & 607.72 & 445.26 & 240.68 & 30.09 \\
 	\hline
-	J03 & 6032 &  42.22 & 120.64 & 319.7 & 524.78 & 633.36 & 766.06 & 820.35 & 754.0 & 723.84 & 609.23 & 446.37 & 241.28 & 30.16 \\
+	J03 6032 &  42.22 & 120.64 & 319.7 & 524.78 & 633.36 & 766.06 & 820.35 & 754.0 & 723.84 & 609.23 & 446.37 & 241.28 & 30.16 \\
 	\hline
-	J04 & 6082 & 42.57 & 121.64 & 322.35 & 529.13 & 638.61 & 772.41 & 827.15 & 760.25 & 729.84 & 614.28 & 450.07 & 243.28 & 30.41 \\
+	J04 6082 & 42.57 & 121.64 & 322.35 & 529.13 & 638.61 & 772.41 & 827.15 & 760.25 & 729.84 & 614.28 & 450.07 & 243.28 & 30.41 \\
 	\hline
-	J05 & 5561 & 38.93 & 111.22 & 294.73 & 483.81 & 583.9 & 706.25 & 756.3 & 695.12 & 667.32 & 561.66 & 411.51 & 222.44 & 27.8\\
+	J05 5561 & 38.93 & 111.22 & 294.73 & 483.81 & 583.9 & 706.25 & 756.3 & 695.12 & 667.32 & 561.66 & 411.51 & 222.44 & 27.8\\
 	\hline
-	J06 & 5075 & 35.52 & 101.5 & 268.97 & 441.52 & 532.88 & 644.52 & 690.2 & 634.38 & 609.0 & 512.58 & 375.55 & 203.0 & 25.38 \\
+	J06 5075 & 35.52 & 101.5 & 268.97 & 441.52 & 532.88 & 644.52 & 690.2 & 634.38 & 609.0 & 512.58 & 375.55 & 203.0 & 25.38 \\
 	\hline
-	J07 & 4658 & 32.61 & 93.16 & 246.87 & 405.25 & 489.09 & 591.57 & 633.49 & 582.25 & 558.96 & 470.46 & 344.69 & 186.32 & 23.29 \\
+	J07 4658 & 32.61 & 93.16 & 246.87 & 405.25 & 489.09 & 591.57 & 633.49 & 582.25 & 558.96 & 470.46 & 344.69 & 186.32 & 23.29 \\
 	\hline
-	J08 & 4773 & 33.41 & 95.46 & 252.97 & 415.25 & 501.16 & 606.17 & 649.13 & 596.62 & 572.76 & 482.07 & 353.2 & 190.92 & 23.87\\
+	J08 4773 & 33.41 & 95.46 & 252.97 & 415.25 & 501.16 & 606.17 & 649.13 & 596.62 & 572.76 & 482.07 & 353.2 & 190.92 & 23.87\\
 	\hline
-	J09 & 5571 & 39.0 & 111.42 & 295.26 & 484.68 & 584.95 & 707.52 & 757.66 & 696.38 & 668.52 & 562.67 & 412.25 & 222.84 & 27.86\\
+	J09 5571 & 39.0 & 111.42 & 295.26 & 484.68 & 584.95 & 707.52 & 757.66 & 696.38 & 668.52 & 562.67 & 412.25 & 222.84 & 27.86\\
 	\hline
-	J10 & 5971 & 41.8 & 119.42 & 316.46 & 519.48 & 626.95 & 758.32 & 812.06 & 746.38 & 716.52 & 603.07 & 441.85 & 238.84 & 29.86 \\
+	J10 5971 & 41.8 & 119.42 & 316.46 & 519.48 & 626.95 & 758.32 & 812.06 & 746.38 & 716.52 & 603.07 & 441.85 & 238.84 & 29.86 \\
 	\hline
-	J11 & 6112 & 42.78 & 122.24 & 323.94 & 531.74 & 641.76 & 776.22 & 831.23 & 764.0 & 733.44 & 617.31 & 452.29 & 244.48 & 30.56 \\
+	J11 6112 & 42.78 & 122.24 & 323.94 & 531.74 & 641.76 & 776.22 & 831.23 & 764.0 & 733.44 & 617.31 & 452.29 & 244.48 & 30.56 \\
 	\hline
-	J12 & 6269 & 43.88 & 125.38 & 332.26 & 545.4 & 658.25 & 796.16 & 852.58 & 783.62 & 752.28 & 633.17 & 463.91 & 250.76 & 31.35 \\
+	J12 6269 & 43.88 & 125.38 & 332.26 & 545.4 & 658.25 & 796.16 & 852.58 & 783.62 & 752.28 & 633.17 & 463.91 & 250.76 & 31.35 \\
 \bottomrule
 \end{tabular}
 \label{table:cap6distribuicaonatal}
@@ -167,19 +165,19 @@ Todavia, para a execução do experimento é necessário a compreensão sobre à
 \end{table}
 \endgroup
 
-O fator de distribuição atribuído a cada ciclo $c_i$ (para $i=0,1,2,...,23$) representa o aspecto da incidência solar em  dado instante $i$ em relação ao total esperado para uma jornada $J$ (na totalidade dos 24 ciclos). Para atribuição dos pesos dispostos, foi utilizada a referencia disponibilizada em \citeonline{tutiempo2023} para o dia 12 de dezembro de 2023. Aqui destaca-se que a limitação de adotar a distribuição solar para um dia especifico é justificada pela intenção de apenas conceber os valores capazes de cobrir o objetivo do experimento, a medida que aparentemente aproxima-se de termos que caracterizam fonte energética solar. 
+O fator de distribuição atribuído a cada ciclo $c_i$ (para $i=0,1,2,...,23$) representa o aspecto da oferta em  dado instante $i$ em relação ao total esperado para uma jornada $J$ (na totalidade dos 24 ciclos). Para atribuição dos pesos dispostos, foi utilizada a referencia disponibilizada em \citeonline{tutiempo2023} para irradiação solar no dia 12 de dezembro de 2023. Aqui, a limitação de adotar a distribuição solar para um dia especifico é justificada pela intenção de apenas conceber os valores capazes de cobrir o objetivo do experimento, mesmo que aparentemente aproxima-se de termos que caracterizam fonte energética solar. 
 
-Sendo assim, obteve-se a valoração das quantidades ofertadas como entrada energética, em referencia as jornadas aplicados aos fatores de incidência encontrados em cada ciclo. Finalmente, os ciclos $c_0, c_1,... c_4$ e $c_{18}, c_{19},... c_{23}$ possuem peso atribuído nulo, representam ciclos onde não existe energia coletável significante, em conformidade com a referencia solar e suas características utilizadas, motivo para estarem suprimidas na Tabela \ref{table:cap6distribuicaonatal}.
+Sendo assim, obteve-se a valoração das quantidades ofertadas como entrada energética, em referencia as jornadas e aplicados aos fatores de incidência encontrados em cada ciclo. Ainda assim, os ciclos $c_0, c_1,... c_4$ e $c_{18}, c_{19},... c_{23}$ possuem peso atribuído nulo, porque representam ciclos onde não é possível ofertar energia coletável significante (em similaridade às características diurnas e noturnas da fonte solar). para visualização Tabela \ref{table:cap6distribuicaonatal}, os valores desses ciclos em questão foram suprimidos.
 
-Os valores de cada ciclo são ofertados como estimulo ao dispositivo provedor no decorrer do experimento, e ao fim do ciclo $c_{23}$ de uma dada jornada $J_i$, inicia-se jornada $J_{i+1}$ seguinte até que todos os ciclos presentes nas em 12 sejam ofertadas. Esta abordagem garante que todos os cenários previstos para o experimento são cobertos em sua execução e possibilita a geração e analise dos resultados obtidos.
+O processo realizado para ofertar os valores inicia-se pela entrega, a partir do ciclo $c_{00}$ da jornada $J01$, até o ciclo $c_{23}$ quando encerra-se a jornada. Por sua vez, a próxima oferta representará o inicio da jornada $J02$, realizando a mesma dinâmica dos ciclos, o processo termina quando todos os ciclos presentes nas 12 jornadas sejam ofertadas. Esta abordagem garante que todos os cenários previstos para o experimento são cobertos em sua execução e possibilita a geração e analise dos resultados obtidos.
 
-Com a definição dos ciclos e jornadas, determina-se também como acontecerá os processos de oferta energética. Partindo disso, surge a necessidade para definir como se dará o processo de utilização desses recursos já armazenados. Uma segunda variável independente é necessária, o objetivo é realizar solicitações ao dispositivo de modo a estimular demanda ao mesmo. Assim, é preciso adotar algumas práticas para garantir que todos os dispositivos, além de receber a oferta energética estipulada como projetado, também sejam capazes de receber a mesma carga de solicitações, aproximadamente ao mesmo tempo. 
+Com a definição dos ciclos e jornadas, determina-se também os processos realizados na dinâmica de oferta energética. Partindo disso, surge a necessidade agora de definir como será o processo de utilização desses recursos já armazenados. Uma segunda variável independente é necessária, o objetivo é realizar solicitações ao dispositivo de modo a estimular demanda para uso dos recursos. Assim, é preciso adotar algumas práticas para garantir que todos os dispositivos, além de receber a oferta energética estipulada como projetado, também sejam capazes de receber a mesma carga de solicitações, aproximadamente ao mesmo tempo. 
 
-Ao atender uma solicitação, o dispositivo é conduzido para ingressar ou permanecer em estado ativo, este intensifica a utilização de recursos quando comparado com um estado inativo ou enquanto hiberna, conforme mencionado na Seção \ref{cap6:idealizacao}. Para cobrir essa dinâmica, após os dispositivos recebem a primeira oferta energética, no inicio da execução do experimento, a partir daí, serão solicitados simultaneamente aos dispositivos 5 solicitações por segundo. na razão aproximada de 1 solicitação a cada 0.2 segundos. Caso dispositivo não consiga receber uma solicitação, na janela de tempo, será considerado indisponível para aquele estimulo. 
+Ao atender uma solicitação, o dispositivo é conduzido para iniciar ou permanecer em estado ativo, este estado intensifica a utilização de recursos quando comparado com estado inativo ou enquanto hiberna, já mencionado na Seção \ref{cap6:idealizacao}. Para cobrir essa dinâmica, após os dispositivos receberem a primeira oferta energética, no inicio da execução do experimento, inicia-se simultaneamente o processo continuo de envio de solicitações para cada dispositivo. Na razão aproximada de 1 solicitação a cada 0.2 segundos. Caso dispositivo não consiga receber uma solicitação, na janela de tempo, será considerado indisponível para aquele estimulo. 
 
-Considera-se que os termos necessários para transmissão ou as características da interface de comunicação podem exercer influência na razão de transmissão das solicitações, por este motivo é previsto que dada a quantidade total de solicitações realizadas possam ter pequena variação ao fim da execução do experimento. Em todo caso, é garantido em que todos os dispositivos foram estimulados ao mesmo valor total de solicitações bem como foram solicitadas simultaneamente.
+Considera-se que os termos necessários para transmissão ou as características da interface de comunicação podem exercer influência na razão de transmissão das solicitações, por este motivo é previsto que a quantidade total de solicitações realizadas sofra uma variação ao fim de cada execução do experimento. Em todo caso, é garantido em que todos os dispositivos foram estimulados ao mesmo valor total de solicitações obtidas na execução bem como foram solicitadas simultaneamente.
 
-Finalmente, esta variável independente numérica, solicitações realizadas, carrega os valores totais de requisições, em decorrência dela, observa-se os valores encontrados para a quantidade total de solicitações atendidas e o total de solicitações realizadas que encontraram o dispositivo indisponível. 
+Finalmente, esta variável independente numérica, as solicitações realizadas, carrega o totais de requisições e em decorrência dela, e a partir disso, observa-se os resultados obtidos para  quantidade total de solicitações realizadas que foram atendidas ou que encontraram o dispositivo indisponível.
 
 
 \subsection{Dispositivos}
@@ -337,19 +335,14 @@ Partindo disso, a execução do experimento durará 1728 segundos que convertido
 	\]
 	\item \textbf{Total de solicitações:} $\approx$8640 solicitações
 	\[
-	\text{Total de Solicitações simultâneas} = 288 \, \text{ciclos} \times 30 \, \frac{\text{solicitações}}{\text{ciclo}} \approx 8640 \, \text{solicitações}
+	\text{Total de Solicitações} = 288 \, \text{ciclos} \times 30 \, \frac{\text{solicitações}}{\text{ciclo}} \approx 8640 \, \text{solicitações}
 	\]
 	
-	\item \textbf{Tempo de Execução:} $1728 \ seg = 28min \ 48seg$
-	
+	\item \textbf{Tempo de Execução:} $1728 \ seg = 28min \ 48seg$	
 
 \end{enumerate}
 
-
-Finalmente, o gasto energético é obtido a partir da dinâmica ativo-inativo e a escolha por permanecer em um determinado estado conforme Figura \ref{fig:cap6maquinaestados}, sendo assim, ao logo de um ciclo, o dispositivo que permanecer ativo durante todo o período despenderá sua reserva energética de maneira mais acentuada em relação a outro dispositivo que optou permanecer parcialmente inativo. Toda requisição realizada enquanto um dispositivo esteja em estado Hibernando, ou seja, sem reserva energética suficiente, será considerada não atendida em razão da indisponibilidade do dispositivo.
-
-
-
+Finalmente, o gasto dos recursos é obtido a partir da dinâmica ativo-inativo e a escolha por permanecer em um determinado estado conforme Figura \ref{fig:cap6maquinaestados}, sendo assim, ao logo de um ciclo, o dispositivo que permanecer ativo durante todo o período despenderá sua reserva de maneira mais acentuada em relação a outro dispositivo que optou permanecer parcialmente inativo. Toda requisição realizada enquanto um dispositivo esteja em estado Hibernando, ou seja, sem reserva suficiente para manter-se operacional, será considerada não atendida em razão da indisponibilidade do dispositivo.
 
 \section{Avaliação dos Resultados}
 \label{cap6:avaliacao}
@@ -427,27 +420,27 @@ Apenas o dispositivo "no-throttling" apresentou-se como resultado um quadro de i
 \begin{table}[H]
 	\centering
 	\caption{Quadro das solicitações realizadas aos dispositivos}
-	\begin{tabular}{|c |c |c|c|c|}
+	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		\multirow{2}{*}{Execução} & 
 		\multirow{2}{*}{Dispositivo} &
 		\multicolumn{2}{c|}{Solicitações} & 
 		\multirow{2}{*}{\% indisponíveis} \\
 		& & atendidas & indisponíveis & \\
-		\midrule
-		1& 	no-throttling 	&  7043&1561 & 0.1814\\
-		1& 	fixed-throttling &  3414&0 & -\\
-		1&	dynamic-throttling & 5098 & 0 &-\\
-		
-		2& no-throttling &  7105&1496 & 0.1739\\
-		2& fixed-throttling & 3436& 0 & -\\
-		2& dynamic-throttling & 5118& 0 &-\\
-		
-	   3  &	no-throttling & 7105& 1504& 0.1747\\
-	   3	& fixed-throttling &3441 & 0& -\\
-	   3	& dynamic-throttling & 5123& 0&-\\
-		
-		\bottomrule
+		\hline\addlinespace[1pt]
+		\multirow{3}{*}{1} & 	no-throttling 	&  7043&1561 & 0.1814\\
+		& 	fixed-throttling &  3414&0 & -\\
+		&	dynamic-throttling & 5098 & 0 &-\\
+		\hdashline\addlinespace[1pt]
+		\multirow{3}{*}{2}& no-throttling &  7105&1496 & 0.1739\\
+		& fixed-throttling & 3436& 0 & -\\
+		& dynamic-throttling & 5118& 0 &-\\
+		\hdashline\addlinespace[1pt]
+	   \multirow{3}{*}{3}  &	no-throttling & 7105& 1504& 0.1747\\
+	   	& fixed-throttling &3441 & 0& -\\
+	   	& dynamic-throttling & 5123& 0&-\\
+		\hline
+
 	\end{tabular}
 		\label{table:cap6:quadrogeralobtido}
 		\\
@@ -455,11 +448,11 @@ Apenas o dispositivo "no-throttling" apresentou-se como resultado um quadro de i
 \end{table}
 \endgroup
 
-Parte da análise é obtida ao observar o gráfico de comportamento referente às capacidades energéticas encontradas no \textit{storage} do dispositivo. A Figura \ref{fig:cap6recortecomportamentostorage} apresenta um recorte dos dados, oferecendo informações suficientes para analisar a dinâmica entre a coleta e o consumo de recursos realizada por todos os dispositivos envolvidos. Essa visualização permite identificar padrões de consumo e tendências de eficiência especialmente nas áreas destacadas onde a quantidade de recurso disponibilizado é mínima.
+Parte da análise é obtida ao observar o gráfico de comportamento referente às capacidades energéticas encontradas no \textit{storage} do dispositivo. A Figura \ref{fig:cap6recortecomportamentostorage} apresenta um recorte dos dados da execução 3, oferecendo informações suficientes para inferências sobre a dinâmica entre a coleta e a forma de consumo de recursos realizada por todos os dispositivos envolvidos. Essa visualização permite identificar alguns padrões de consumo e tendências de eficiência especialmente nas áreas em destaques verticais que destacam a quantidade minima de recurso disponibilizado.
 
 \begin{figure}[H]
 	\centering	
-	\caption{Recorte do comportamento de uso dos recursos durante Execução 3.} 
+	\caption{Recorte do comportamento de uso dos recursos durante execução 3.} 
 	\label{fig:cap6recortecomportamentostorage}
 	\noindent\includegraphics[width=1\linewidth]{Imagens/cap6/cap6recortecomportamentostorage.jpg} 
 	
@@ -469,10 +462,10 @@ Parte da análise é obtida ao observar o gráfico de comportamento referente à
 Ainda sobre a Figura \ref{fig:cap6recortecomportamentostorage}, ela permite a análise do comportamento do dispositivo \textit{dynamic-throttling} enquanto a atuação é adaptada para cada modo de operação em referencia a sua condição apresentada em \textit{storage}, este processo é notável através da variação na tendencia da linha de consumo enquanto alterna-se as faixas horizontais limitadas pela relação de cores e modos da seguinte forma:
 
 \begin{itemize}
-	\item Verde : Modo Abundante.
-	\item Amarelo : Modo Atenção.
-	\item Vermelho : Modo Alerta.
-	\item Cinza : Modo Hibernação.
+	\item Zona Verde, representa faixa considerada modo Abundante;
+	\item Zona Amarelo, representa faixa considerada modo Atenção;
+	\item Zona Vermelho, representa faixa considerada modo Alerta;
+	\item Zona Cinza, representa faixa considerada modo Hibernação e seu esgotamento energético.
 \end{itemize} 
 
 \subsection{Interpretação dos Resultados}

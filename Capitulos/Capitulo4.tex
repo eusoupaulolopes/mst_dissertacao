@@ -2,142 +2,150 @@
 \chapter{Taxonomia}
 \label{cap:cap4}
 
-Seguindo a análise dos trabalhos mencionados no Capítulo \ref{cap:cap3}, verifica-se a necessidade de classificar dos conceitos mais recorrentes atrelados ao uso do padrão \textit{throttling} em redes IoT com dirigidas energética. Além disso, é preciso levar em consideração a orientação do trabalho junto aos critérios de disponibilidade definidos por \cite{avizienis_basic_2004}, base para categorização dos elementos propostos nesta taxonomia. 
+Prosseguindo a análise dos trabalhos mencionados no Capítulo \ref{cap:cap3}, verifica-se a necessidade de classificar dos conceitos mais recorrentes atrelados ao uso do padrão \textit{throttling} em especial aos dispositivos em computação dirigida à energia. Além disso, é preciso levar em consideração a orientação do trabalho junto aos critérios de confiabilidade, em especialmente ao concentrar sobre o atributo disponibilidade, elemento participante nos critérios de confiabilidade apresentados na taxonomia proposta por \citeauthor{avizienis_basic_2004} (\citeyear{avizienis_basic_2004}). Por definição temos que disponibilidade é um indicador da capacidade de um equipamento, sistema ou serviço estar em um estado que possa desempenhar certa função solicitada quando necessário \cite{ISO9000}. 
+
 
 \section{Organização}
 
-Inicialmente, as classes foram distribuídos acomodando os elementos envolvidos de acordo com os critérios que os definem, a seguir, conforme apresenta a Figura \ref{fig:taxonomia_geral}.
+As classes descritas foram categorizadas para acomodar os elementos envolvidos de acordo com os critérios que representam. À esquerda, apresenta-se as características dos dispositivos \acs{IoT} encontrados em cenários de restrições energéticas. Primeiramente, as classes foram projetadas para organizar os elementos em destaque considerando as especificidades e limitações à operar em ambientes com recursos energéticos limitados. Estes critérios, auxiliam na compreensão mais precisa em relação as categorias e podem ser visualizados na divisão básica dos elementos presentes na taxonomia, Figura \ref{fig:divisaobasetaxonomia}. 
+
+%agentes
+Enquanto ao fator que caracteriza um agente, o destacado trabalho de \citeauthor{avizienis_basic_2004} (\citeyear{avizienis_basic_2004}) aplica a dinâmica de definição por papéis, proporciona clara divisão entre agentes em referencia ao que desempenha em relação ao ambiente inserido. Sendo assim, são propostos dois grupos: clientes, que atua ativamente realizando solicitações ou de forma passiva solicitando recursos ou quando notificado; e um segundo grupo, provedores, para estes cabe a responsabilidade de compartilhar seus recursos com outros consumidores através de uma interface conhecida de acordo com o protocolo pré-estabelecido entre as partes.
+
+%Operaçoes
+Toda interação segue um padrão denominado operação, esta é realizada de acordo com o qual se destina, como visto no trabalho de \cite{khairnar_discrete-rate_2015} operações podem ser medidas pela quantidade de mensagens trocadas entre dispositivos contribuindo para um determinado fim. Sendo assim, os elementos classificadores foram: \textit{Agentes}, \textit{Recursos} e \textit{Operações}.
+
+%recursos
+Percebeu-se a necessidade de classificar as características energéticas dos elementos participantes, ao passo que agentes fazem uso de um fator energético para realizar suas capacidades, colocando esses recursos energéticos como classe fundamental de analise, impulsionada pelos fatores gerais dos elementos ligados à \acs{IoT}, especialmente aderente aos conceitos de sistemas com  capacidade de coleta energética (\aclp{EHS}) relacionados com computação dirigida à energia.
 
 
-\begin{figure}[h]
-\noindent\includegraphics[width=3cm]{example-image} 
-\caption{Aqui vou colocar uma figura apresentando os dois grupos da taxonomia}
-\label{fig:taxonomia_geral}
-\centering
-\end{figure}
-
-Nas ramificações à esquerda, encontram-se categorias que representam as características principais relacionadas aos elementos presentes em ambientes \acf{IoT} com restrições significativas de energia. Em \cite{kansal_power_2007}  percebeu-se a necessidade de classificar estes elementos como pertencentes a uma relação de compartilhamento dos recursos disponíveis, sensores, atuadores e até mesmo os energéticos. Para isto, na taxonomia de \cite{avizienis_basic_2004} há uma divisão clara entre os agentes envolvidos e sua natureza em dois agrupamentos principais: um grupo denominado usuários ou clientes, que atua ativamente ou de forma passiva solicitando recursos ou quando notificado, consumindo os estados ofertados do segundo grupo, os provedores. Aos dispositivos provedores, cabe a responsabilidade de compartilhar seus recursos com outros consumidores através de uma interface conhecida de acordo com o protocolo de comunicação pré-estabelecido entre as partes.
-
-Toda interação deve seguir um padrão de operação, esta é realizada de acordo com o qual se destina, como visto no trabalho de \cite{khairnar_discrete-rate_2015} é apresentado uma operação medida pela quantidade de mensagens trocadas entre dispositivos para um determinado fim. Sendo assim, os elementos classificadores encontrados são: \textit{Agentes}, \textit{Recursos} e \textit{Operações}.
-
-Ademais, à direita, acomoda-se os elementos envolvidos no processo de adequação do comportamento de um dispositivo através da adoção do padrão \textit{Throttling}. Nesta, dois ramos principais são apresentados, \textit{Atuação} e \textit{Implementação} respectivamente. Sobre \textit{Atuação}, agrupa-se os elementos envolvidos no processo de controle do consumo dos recursos do dispositivo: \textit{Limiar} - \textit{Thresholding}, \textit{Ciclos de Carga} e \textit{Meios} estado diretamente relacionados à ação de limitar a taxa de resposta dos serviços,  \cite{khairnar_discrete-rate_2015}, \cite{khan_energy_2015} e \cite{sudevalayam_energy_2011} abordam questões que podem particularmente serem observadas para os elementos orientados energeticamente. A \textit{Implementação} é sugerida de maneira à assegurar que os critérios  \textit{Observáveis} e seus \textit{Motivadores} sejam agentes orientadores no processo de restrição às operações e incremento de disponibilidade. 
-
-
-\section{Taxonomia Proposta}
-A Figura\ref{label} ilustra a taxonomia proposta e os pontos abordados no processo de uso do padrão \textit{throttling} como alternativa para garantir disponibilidade nos dispositivos presentes em um ambiente  \acs{IoT} dirigida a energia. O objetivo principal é dispor os elementos ligados ao tema de maneira visual e contemplar a organização dos tópicos envolvidos. Com isso, obter:
-
-\begin{enumerate}
-    \item Visão sobre os elementos envolvidos em uma rede \acs{IoT} dirigida a energia e apresentar o \textit{Throttling} como mecanismo regulador do comportamento observando suas características energéticas;
-    \item Organizar as classes de conhecimento relacionadas acomodando-as de acordo com o contexto de inserção;
-    \item Suporte às definições de uso do padrão \textit{Throttling} ligados ao contexto de redes \acs{IoT} dirigida a energia. 
-\end{enumerate}
-
-\begin{figure}[h]
-\noindent\includegraphics[width=3cm]{example-image} 
-\caption{Aqui vou colocar uma figura da taxonomia proposta}
-\label{fig:taxonomia_detalhada}
-\centering
-\end{figure}
-
-A taxonomia detalhada apresenta suas classes nos termos em que foram encontrados na literatura dentro contexto de estudo, conforme Figura \ref{fig:taxonomia_detalhada}.
-
-\section{Agentes \acs{IoT}}
-Cada agente é essencialmente uma entidade que tem a capacidade intrínseca de interagir com outros agentes digitais ou físicos. Eles possuem propriedades fundamentais, como funcionalidade, desempenho, confiabilidade e segurança \cite{avizienis_basic_2004}. No contexto da Internet das Coisas (IoT), é crucial considerar sua capacidade de se comunicar com outras entidades, atuando em conjunto através do compartilhamento de recursos, características embarcadas nos dispositivos \cite{asghari_internet_2019}.
-
-
-\subsection{Dispositivo Provedor}
-
-Em qualquer instância onde um dispositivo oferece um estado ou responde a uma solicitação de recurso, ele assume o papel de provedor. Geralmente, um dispositivo desse tipo pode oferecer uma ou mais funcionalidades por meio de serviços, cada uma sendo atendida pelo uso de seus recursos enquanto avança em seus estados internos em busca de fornecer uma resposta à interação. O resultado disto será percebido como  estado externo, acessível por meio de uma interface provida na forma de eventos ou como resposta às solicitações motivadores por meio de clientes. 
-
-Um Serviço, representa ao dispositivo provedor a forma como este lida com seus recursos embarcados. Os serviços motivam a dinâmica de mudanças de estado internos e por sua vez impactam diretamente na dinâmica de operação do dispositivo.  Por exemplo, tomemos um sistema de iluminação publica que solicita ações  a seus dispositivos encontrados dispostos em um ambiente motivados por algum evento. Assim, este sistema atua de tal forma que solicita ao dispositivo para que acione um recurso em razão de tal evento no mesmo ambiente onde o agente com capacidade de iluminação está inserido. Tal ação é ofertada pelo dispositivo via serviço que por sua vez impactará em algum desgaste dos componentes envolvidos e a utilização de seus recursos energéticos necessários.
-
-\begin{figure}[H]
+\begin{figure}[hbt]
 	\centering
-	\caption{Representação dispositivo Provedor.}
-	\label{fig:cap4bolotaprovedor}
-	\includegraphics[width=0.7\linewidth]{Imagens/cap4/cap4nodeprovedor}	
+	\caption{Divisão Base da Taxonomia}
+	\label{fig:divisaobasetaxonomia}
+	\includegraphics[width=0.7\linewidth]{Imagens/cap4/cap4taxonomia_primeironivel.jpg}	
 	
 	Fonte: elaborado pelo autor.
 \end{figure}
 
-\subsection{dispositivo Cliente}
-Um dispositivo cliente é responsável por receber o estado externo de provedores por meio da interface disponibilizada. Ele pode consumir recursos de um ou mais provedores, dependendo da operação em execução. O dispositivo cliente comunica-se com os provedores necessários para realizar suas operações, de acordo com suas particularidades. 
+Ademais, acomoda-se os elementos envolvidos no processo de gestão do comportamento de um dispositivo através do padrão \textit{Throttling}. Nesta classe, dois ramos principais são derivados, Atuação e Motivadores respectivamente. Sobre a classe Atuação, agrupa-se os elementos envolvidos no processo de ajuste de comportamento do: Limiar (\textit{Thresholding}), Ciclos, Meios e Observáveis. Finalmente, a classe Motivação é sugerida de maneira à assegurar as intenções enquanto busca incremento de disponibilidade. 
+
+\begin{figure}[hbt]
+	\centering
+	\caption{Visão Geral da Taxonomia.}
+	\label{fig:visaogeraltaxonomia}
+	\includegraphics[width=\textwidth]{Imagens/anexos/anexo_visaogeraltaxonomia.png}	
+	
+	Fonte: elaborado pelo autor.
+\end{figure}
+
+\section{Taxonomia Proposta}
+A Figura \ref{fig:visaogeraltaxonomia} ilustra a taxonomia visualmente com os pontos abordados no processo de escolha do padrão \textit{throttling} como alternativa para garantir disponibilidade nos agentes \acs{IoT} presentes em um ambiente. O objetivo principal é dispor os elementos ligados ao tema de maneira visual e contemplar a organização dos tópicos envolvidos. Com isso, compreende os objetivos almejados ao criar a taxonomia:
+
+\begin{enumerate}
+    \item Auxiliar a compreensão dos conceitos relacionados aos agentes \acs{IoT} em computação dirigida à energia e os tópicos inerentes à possibilidade de uso do padrão \textit{throttling} como elemento colaborador à disponibilidade desses agentes. Acomodadas em função de cada contexto e necessidade;
+  	\item Oferecer suporte às definições de uso do padrão \textit{Throttling} ligados ao contexto \acs{IoT} dirigida a energia. 
+  	\item Facilitar a descoberta das relações entre os elementos do campo de análise.
+\end{enumerate}
+
+\section{Agentes \acs{IoT}}
+Cada agente é essencialmente uma entidade que tem a capacidade intrínseca de interagir com outros agentes sejam digitais ou agentes físicos, chamados dispositivos. Eles possuem propriedades fundamentais, como funcionalidade, desempenho e segurança \cite{avizienis_basic_2004}. No contexto da Internet das Coisas, é crucial considerar a capacidade de se comunicar com outras entidades, atuando em conjunto mediante compartilhamento de recursos, características intrínsecas nos dispositivos \acs{IoT} \cite{asghari_internet_2019}.
+
+
+\subsection{Dispositivo Provedor}
+
+Em qualquer instância onde um dispositivo oferece estados ou atende solicitações de recurso, assume o papel de provedor. Para isso, o dispositivo oferece uma ou mais funcionalidades denominadas operações, sendo cada uma, realizada através do uso de seus recursos a medida que avança em seus estados internos buscando fornecer resposta as solicitações. O resultado disto será percebido como estado externo, acessível por meio de sua interface em resposta às solicitações ou provida na forma de eventos acessíveis aos clientes. 
+
+A medida que solicitações se apresentam ao dispositivo provedor, tais eventos interagem na forma como este lida com seus recursos. Através disso, motivam a dinâmica de mudanças de estado internos e por sua vez impactam diretamente na dinâmica dos custos operacionais do dispositivo.  Por exemplo, tomemos um sistema de iluminação urbana que pode, por meio de solicitações, interagir com dispositivos encontrados em um ambiente. Assim, este sistema atua solicitando aos dispositivos a mudança de estado para que acione um recurso em razão de um evento qualquer. Tal ação impactará no uso  dos componentes necessários em decorrência do atendimento das solicitações e assim, impactando na forma como o provedor utiliza seus recursos.
+
+
+\subsection{Dispositivo Cliente}
+Um dispositivo cliente é um agente físico que realiza o papel responsável por receber o estado externo de dispositivos provedores por meio de uma interface de interação disponibilizada. Ele pode consumir recursos provenientes de um ou mais provedores, dependendo da operação que precisa realizar. De forma ativa, cabe ao cliente, através de solicitações, comunicar-se com os provedores necessários para atender suas operações. Todavia, caso reativo, um cliente pode permanecer inativo enquanto aguarda evento necessário para, mediante estimulo, ativar-se motivado a realizar alguma operação. 
+
 
 \section{Operações}
-Operações consiste no fluxo de mensagens comunicáveis trocadas entre dispositivos clientes e provedores. Uma operação é realizada de duas formas: quando um cliente através de mensagens solicita estado de um provedor. De outra maneira, um provedor ativamente pode disponibilizar um estado, dito externo para que um cliente possa utiliza-lo. 
+Operações consiste no fluxo de mensagens comunicáveis trocadas entre dispositivos clientes e provedores. Igualmente à dinâmica encontrada em dispositivos clientes, uma operação poderá ser realizada enquanto: um cliente através de mensagens solicita estado de um provedor; ou quando um provedor ativamente disponibiliza um estado.
 
-Mensagem é uma unidade atômica de informação que independente do seu formato é utilizado para as mais diversas ações de acordo com o que se destina a colaboração entre dispositivos, uma mensagem pode carregar ações como  inicialização, controle, monitoramento, coleta, processamento ou armazenamento de dados. A depender da funcionalidade, um cliente quando ativo, deve enviar mensagens de solicitação aos provedores os quais reativamente respondem via interface preestabelecida, caso a operação aconteça através de eventos, o provedor deve autonomamente disponibilizará suas informações para todos que tenham interesse.
+Mensagem é uma unidade atômica de informação utilizada para as mais diversas ações de acordo com o objetivo da colaboração entre dispositivos, uma mensagem pode carregar ações como inicialização, controle, monitoramento, coleta, processamento ou armazenamento de dados. Os dispositivos envolvidos devem ser capazes de interpreta-las mutualmente. 
 
-Para cobrir uma operação, múltiplas mensagens podem ser solicitadas na forma de composição de serviço \cite{service_composition}, nesse cenário um dispositivo cliente solicita mensagens distintas à um ou vários dispositivos provedores para compor este serviço. Em todo caso, como encontrado na revisão \cite{kahloul_service_2019} a abordagem das operações encontrada nos serviços puramente virtuais não acomodam por completo a natureza operacional dos agentes \acp{IoT}. Para tal, precisa-se considerar o modo de operação dos dispositivos, seus estados e recursos pois se encontram diretamente em um meio físico e precisam lidar com as particularidades inerentes a um ambiente dinâmico e seus desafios.
+Para uma operação, múltiplas mensagens também podem ser solicitadas, na forma de  composição de serviço \citeauthor{kahloul_service_2019}(\citeyear{kahloul_service_2019}), nesse cenário um dispositivo cliente executa solicitações distintas à um ou vários dispositivos provedores para compor sua operação.
 
 \section{Recursos Energéticos}
 
-Um Recurso descreve um componente ou capacidade que um dispositivo possui para realizar suas operações. Isto inclui seus componentes físicos ou virtuais que uma vez embarcados ao dispositivo contribuem em cooperação para os mais diversos fins, coleta, monitoramento, automação industrial, assistência a medicina entre outros. Um Recurso infere sobre as capacidades dos elementos dispostos na rede, a configuração do dispositivo esta fortemente ligado à atividade fim que se destina. Para esta taxonomia, características como capacidade de processamento, armazenamento ou transmissão de dados estão omitidos pois expressam diretamente o universo de possibilidades onde um agente \acs{IoT} se encontra. Entretanto, em uma rede \acp{IoT} dirigida à energia, aspectos energéticos devem ser detalhados.
+Um recurso descreve um componente ou capacidade utilizada de tal forma que possibilita dispositivos à realizar suas operações. Isto inclui seus componentes físicos ou virtuais que uma vez embarcados ao dispositivo contribuem cooperando para os mais diversos fins, coleta, monitoramento, automação industrial, assistência a medicina entre outros. Recursos sinalizam as capacidades dos dispositivos \acs{IoT}, assim configuração dos recursos embarcados dispositivo esta fortemente ligado à atividade que se destina. 
 
-Recursos energéticos, por sua vez refere-se a dois grupos: da capacidade de coleta do dispositivo e a da capacidade de armazenamento e disponibilização dessa energia previamente coletada. Arquitetura de sistemas dirigidos a energia com capacidade de coleta são projetados para usar recursos energéticos de maneira eficiente como descrito em \cite{prauzek_energy_2018} sua aplicação é especialmente útil em cenários onde a energia para alimentar os dispositivos é escassa. Um recurso energético é uma fonte natural ou artificial de energia que apropriadamente pode ser convertida em energia utilizável suplementando as necessidades para realizar operações.
+Para a taxonomia, características como capacidade de processamento, armazenamento de dados ou suas particularidades quanto sensores e componentes embarcados são omitidos pois expressam diretamente a diversidade de possibilidades ligadas o universo de atuação do dispositivo. Entretanto, os aspectos energéticos estão recorrentemente presentes a medida que se reduz o universo de análise para a computação dirigida à energia e portanto justificam seu detalhamento. Logo, recursos energéticos, por sua vez refere-se aos grupos: da capacidade de coleta do dispositivo; da capacidade de armazenamento dessa energia previamente coletada. 
 
-No cenário proposto, observar esses recursos energéticos assume um papel importante pois é essencial para garantir o funcionamento continuo e autônomo dos dispositivos envolvidos, cabendo ao agente embarcado suas ações de coleta, transformação, armazenamento e utilização o recurso energético, projetado de maneira a capacitar o dispositivo a operar enquanto busca um cenário de neutralidade energética.
+A arquitetura dos dispositivos dirigidos a energia com capacidade de coleta são projetados para usar seus recursos energéticos de maneira eficiente  \cite{prauzek_energy_2018}, sua aplicação é especialmente útil em cenários onde a energia para alimentar os dispositivos é escassa ou o fornecimento energético é inviável. Um recurso energético propriamente é uma fonte natural ou artificial de energia que pode ser convertida em forma utilizável destinada à cobrir as demandas energéticas para que o dispositivo permaneça operacional.
 
-% \subsection{Sensores}
-% Um sensor é um recurso capaz de detectar e medir informações específicas do ambiente ao redor. Convertendo características do meio físico como temperatura, umidade, luz, pressão, movimento, som em sinais digitais que podem ser processados. 
+No cenário proposto, observar as classes recursos energéticos assume um papel importante pois é essencial para garantir o funcionamento continuo e autônomo dos dispositivos envolvidos, cabendo ao agente as ações de coleta, e armazenamento para posterior utilização do recurso energético, projetando de maneira a capacitar o dispositivo a operar enquanto busca um cenário minimamente sustentável e caso impossibilitado, conseguir arquivar seus estados de maneira a recupera-se em momento oportuno, restabelecidas as restrições impostas.
 
-% \subsection{Atuadores}
-% Por sua vez, um atuador é um componente que converte um sinal de entrada em um movimento físico ou ação. Em um sistema de controle um atuador pode receber uma entrada provida por um sensor e agir em detrimento do estimulo capturado.  Atuadores geralmente são categorizados em: elétricos, hidráulicos, pneumáticos, mecânicos (por exemplo, atuadores de engrenagens), magnéticos, piezoelétricos entre outros.
+\subsection{Capacidade de Coleta}
+\label{Capacidade de Coleta}
+De acordo com o trabalho de \citeauthor{sudevalayam_energy_2011}(\citeyear{sudevalayam_energy_2011}), a capacidade de coleta refere-se à habilidade do elemento em extrair e transformar um recurso energético disponível no ambiente. Seu objetivo é manter ou estender o tempo de funcionamento do dispositivo, atendendo integralmente ou parcialmente às suas necessidades energéticas.
 
-
-
-
-
-\subsection{Capacidade de Coleta}\label{Capacidade de Coleta}
-De acordo com o trabalho de \cite{sudevalayam_energy_2011}, a capacidade de coleta refere-se à habilidade do elemento em extrair e transformar um recurso energético disponível no ambiente. Seu objetivo é manter ou estender o tempo de funcionamento do dispositivo, atendendo totalmente ou parcialmente às suas necessidades energéticas.
-
-Sistemas de coleta energética possuem três conceitos fundamentais: Carga, a Arquitetura de Coleta e entrada energética. A Carga é destinada a atividade que esta consumindo energia, este é oriundo de um componente demandante de energia para operar, sejam sensores, transmissores ou  atuadores, apresentados como uma composição de recursos. A Arquitetura de Coleta indica quais mecanismos, deve descrever seus componentes, meios de conversão e unidades de armazenamento. Atualmente é possível destacar três modelos básicos de arquitetura:
+Sistemas de coleta energética possuem três conceitos fundamentais: Carga, a Arquitetura de Coleta e entrada energética. A Carga é destinada a atividade que esta consumindo energia, este é oriundo de um componente demandante de energia no dispositivo necessário para realizar uma operação, sejam sensores, transmissores ou  atuadores. A Arquitetura de Coleta descreve quais mecanismos envolvidos, seus componentes, meios para conversão e unidades para armazenamento. Os modelos arquiteturais são fundamentados em três propostas principais:
 
 \begin{itemize}
-    \item Coleta e Usa (\textit{Harvest-Use}): Neste modelo, toda energia coletada é oferecida diretamente ao dispositivo continuamente. Conforme \cite{merrett_energy-driven_2017}, um dispositivo não precisaria de um \textit{buffer} energético, desde que seu funcionamento fosse orientado as características \textit{Power-Neutral}. Assim, a energia coletada deve satisfazer os valores de operação plena ou pelo menos o minimo necessário para o funcionamento depreciado. Assim, caso a energia coletada não seja suficiente, o dispositivo prontamente adaptará o fornecimento dos seus recursos buscando enquadrar-se a disponibilidade energética corrente para, posteriormente, caso o nível de fornecimento energético se restabeleça, tenha sua operação normalizada. Em alguns casos, quando prontamente é detectado níveis energéticos abaixo do necessário até para o funcionamento circunstanciado do dispositivo, é possível com alguma antecipação do cenário realizar rotina que vise preservar seu estado mediante criação de \textit{checkpoints}, assim restabelecida as condições energéticas, retornar para um estado desejado, característica de um sistema intermitente apresentado por \citeauthor{sliper_energy-driven_2020} (\citeyear{sliper_energy-driven_2020}).
+    \item Coleta e Usa (\textit{Harvest-Use}): Neste modelo, toda energia coletada é oferecida diretamente ao dispositivo. Conforme \citeauthor{merrett_energy-driven_2017}(\citeyear{merrett_energy-driven_2017}), um dispositivo com capacidade de coleta energética pode ser concebido de tal forma que não necessite de um \textit{buffer} energético para suplementar operações, desde que seu funcionamento fosse orientado conforme operação neutra-potencia (\acl{PNO}). Assim, a energia coletada deve satisfazer os valores de operação plena ou pelo menos o minimo necessário para funcionamento depreciado.
+    
+     Outra possibilidade é concebida em modo de operação intermitente (\acl{ICS}), onde o dispositivo deve armazenar incrementalmente seu ultimo estado (\textit{checkpoint}) para que dada paralisação no fornecimento energético e posterior restabelecimento, o mesmo consiga retornar ao estado prévio antes da iminente interrupção. 
         
-    \item Coleta, Armazena e Usa (\textit{Harvest-Store Use}): Dispositivos inseridos em um dado ambiente coletam energia do meio para seu uso. Todavia, precisam lidar com o dinamismo da natureza energética coletada, embarca-se a capacidade de armazenar energia coletada em um \textit{buffer} e assim, disponibilizar esta entrada para uso nos ciclos do dispositivo. Este modelo tem objetivo reduzir problemas derivados da variação do montante energético coletado pelo \acs{EHS}, seja pela momentaneamente pela escassez de energia disponível ou depreciação do modelo de coleta.
+    \item Coleta, Armazena e Usa (\textit{Harvest-Store Use}): Dispositivos inseridos em um dado ambiente coletam energia do meio para seu uso e, como resposta ao dinamismo da natureza energética coletada, embarca-se a capacidade de armazenar energia coletada em um \textit{buffer} e assim, disponibilizar esta entrada para uso nos ciclos do dispositivo. Este modelo tem objetivo de reduzir problemas derivados da variação do montante energético ofertado pelo sistema de coleta, seja pela momentaneamente pela escassez de energia disponível ou depreciação na performance do modelo de coleta.
     
 \end{itemize}
 
 
-A depender da especificidade dos ambientes onde os dispositivos se encontram, técnicas podem ser utilizadas para a extração de energia disponível, a conversão de fontes renováveis solar e eólica, a captura da força \textit{piezo-elétrica}, termodinâmica, entre outros. A adequação da estratégia de coleta e seus detalhes devem ser projetados de acordo com o meio, capacidade do dispositivo e a natureza da fonte energética que objetiva-se coletar. Em geral, a divisão das características dos ambientes já descrito em \cite{shaikh_energy_2016} é referencia utilizada para categoriza-las de acordo com seus ambientes, assim a analisar as características das fontes energéticas, temos:
+ A adequação da estratégia de coleta e seus detalhes devem ser projetados de acordo com o ambiente e a natureza da fonte energética que objetiva-se coletar. Em geral, a divisão das características dos ambientes descritos em \cite{shaikh_energy_2016} é referencia utilizada para categoriza-las de acordo com os ambientes, assim a analisar as características dos tipos de fontes energéticas. Para isso, temos:
 
 \begin{itemize}
 
-    \item Não controladas mas previsíveis: A produção energética não pode ser controlada nos momentos desejados, mas o comportamento pode ser modelado para prever a disponibilidade num dado momento com alguma margem de acerto. Por exemplo, no trabalho de  \cite{lee_energy_2018} fontes energéticas baseadas em energia energia solar, que tem sua origem não controladas, todavia existem modelos capazes de prever  disponibilidade energética para colheita de acordo com sua sazonalidade durante ciclos diurnos.
+    \item Não controladas mas previsíveis: A produção energética não pode ser controlada, mas seu comportamento pode ser modelado com o objetivo de prever sua disponibilidade em dado momento com alguma margem de acerto. Por exemplo, o trabalho  \cite{lee_energy_2018} aborda a gestão da gestão de recursos energéticos em dispositivos alimentados via energia solar através de análise da previsibilidade de oferta (\textit{energy forecasting}).
     
-    \item Não controladas e não previsíveis: A fonte energética não pode ser controlada para gerar energia quando desejado e não é fácil prever usando um modelo quando será possível. A extração energética originada pela vibração de ambientes internos é um exemplo de tal fonte energética como descrito em \cite{wei_comprehensive_2017}, todavia definir padrões de sazonalidade das vibrações pode tornar o processo de coleta impraticável;
     
-    \item Completamente controlada: Neste contexto, a energia é gerada apenas quando necessário, como visto em alguns sistemas \textit{piezoelétrico} onde através da interação humana para geram energia quando necessário.
+    \item Não controladas e não previsíveis: A fonte energética não pode ser controlada para gerar energia quando desejado e não é fácil alcançar previsibilidade para quando a oferta energética ocorrerá. A extração energética originada pela vibração de ambientes internos é um exemplo das características dessas fontes descrito em \cite{wei_comprehensive_2017} uma vez que definir padrões de sazonalidade das vibrações pode tornar o processo de coleta impraticável;
     
-    \item Parcialmente controlada: O processo de geração energética é sensível à ação de terceiros porém a quantidade exata de energia gerada não pode ser prevista com exatidão. Fontes baseadas em Radio Frequência converte a transmissão de ondas de radio em energia utilizável, por exemplo, \cite{shaikh_energy_2016} decorre como tags \acf{RFID} conseguem ser visualizadas por um leitor. Todavia, a quantidade de energia coletada sofre impactos diretos das características de propagação no meio disposto, barreira, distancia até a fonte e capacidade da antena de transmissão.
+    \item Completamente controlada: Neste contexto, a energia é gerada apenas quando necessário, como visto em alguns sistemas que extraem energia \textit{piezoelétrico} através da interação humana para suprir necessidade energia quando oportuno.
+    
+    \item Parcialmente controlada: O processo de geração energética é sensível à ação de terceiros porém a quantidade exata de energia gerada não pode ser prevista com exatidão. Fontes baseadas em Radio Frequência converte a transmissão de ondas de radio em energia utilizável, por exemplo, na dinâmica realizada em tags \acf{RFID} que conseguem ser visualizadas por um leitor mediante a oferta energética provida pela antena e capturada pelo dispositivo. Todavia, a quantidade de energia coletada sofre impactos diretos das características de propagação no meio disposto, barreiras, distancia até a fonte originária, capacidade de transmissão.
 \end{itemize}
 
-\subsection{Capacidade de Armazenamento}\label{Capacidade de Armazenamento}
-A capacidade de armazenamento trata das propriedades como conversão, força e taxa de carregamento e descarga em relação a fonte energética em uso com o objetivo de utilizar essa energia em momento apropriado. 
+\subsection{Capacidade de Armazenamento}
+\label{Capacidade de Armazenamento}
+A capacidade de armazenamento trata das propriedades como conversão, taxa de carregamento e descarga além de eventuais perdas em relação a fonte energética com o objetivo de utilizar essa energia em momento apropriado. 
 
-É bem conhecido que o fator energético é um desafio para dispositivos com restrições energéticas e capacidade de coleta, pois claramente caso o recurso energético deste seja esgotado o mesmo não será capaz de cumprir seu papel, sob a condição do restabelecimento deste recurso ou algum mecanismo de armazenamento possa cobrir parcial ou totalmente a diferença energética necessária para a operação.
+É bem conhecido que o fator energético é um desafio para dispositivos com restrições energéticas, pois claramente caso o recurso energético deste seja esgotado o mesmo não será capaz de cumprir seu papel, sob a condição do restabelecimento deste recurso ou algum mecanismo de armazenamento capaz de atender parcial ou totalmente a diferença energética necessária para as operações. Baterias, super capacitores ou modelos híbridos atuam como \textit{buffer} e podem estar presentes no contexto de dispositivos com capacidade de coletar recursos energéticos do ambiente.
 
-Baterias, super capacitores ou modelos híbridos atuam como \textit{buffer} e estão presentes no contexto de dispositivos com fortes restrições energéticas com capacidade de coletar recursos energéticos do ambiente, assim a atuação busca estar de acordo com as condições e necessidade de conservação da energia a medida que faz uso de recursos armazenados em \textit{buffer} denominado \textit{Storage}. É possível distinguir dois padrões de armazenamento para as capacidade energética presente em um dispositivo que busca observar a relação entre a saída energética e o custo de operação do dispositivo. Segundo o modelo, a habilidade para coletar e a necessidade de disponibilidade devem ser definidas em um acordo com o nível de serviço proposto. Portanto, um dispositivo deve ter sua capacidade de armazenamento definida:
+Assim a capacidade de atuação do dispositivo buscará primariamente estar de acordo com as condições e necessidade de conservação da energia a medida que faz uso de recursos armazenados em um componente \textit{Storage}. Um acordo de nível de serviço (\acl{SLA}) estabelecido é fundamental para decidir e optar sobre a presença e as características desse \textit{Storage}. Portanto, quanto a capacidade de armazenamento energético um dispositivo deve encontrar-se como: 
 
 \begin{itemize}
-    \item dispositivo provedor sem \textit{Storage}: Aqui não existe a necessidade estrita da gestão de recursos elétricos pois caso não exista energia suficiente o dispositivo poderá adaptar-se na tentativa de alinhar a necessidade energética ao fornecido no momento, em outros casos, sua operação se assemelhará a operação transientes ja caraterizado por  \citeauthor{sliper_energy-driven_2020} (\citeyear{sliper_energy-driven_2020}), preparados para interromper suas atividades e, ao restabelecer sua entrada energética disponível, retornar a partir de um ponto previamente estabelecido (\textit{checkpoint}). 
+    \item Dispositivo sem \textit{Storage}: Aqui não existe a necessidade estrita da gestão de recursos elétricos armazenados pois caso não exista energia suficiente o dispositivo poderá adaptar-se continuamente na tentativa de manter sua necessidade energética em acordo ao fornecido no momento, ou encerrar suas operações por interrupção por valor coletado insuficiente. Neste caso é fundamental que o dispositivo esteja ciente das caracteristicas energéticas do ambiente onde está inserido.
     
-    \item dispositivo provedor com \textit{Storage}: Neste caso, um dispositivo carrega em si a capacidade de armazenar energia coletada em um \textit{buffer}. A gestão energética deve ocorrer para que a energia coletada seja previamente armazenada para assim, ser disponibilizada em ciclos. Aqui os dispositivos operam em um regime de Coleta, Armazenamento e Uso.
+    \item Dispositivo com \textit{Storage}: Neste caso, um dispositivo carrega em si a capacidade de armazenar energia coletada em um \textit{buffer}. A gestão energética deve ocorrer para que a energia coletada seja previamente armazenada e assim, disponibilizada a medida que os ciclos de funcionamento decorrem. Aqui os dispositivos operam em um regime de Coleta, Armazenamento e Uso e não necessariamente adotam um comportamento em decorrencia do comportamento exclusivo dos valores coletados. Ao equipar dispositivos com \textit{Storage} pontos como custo, volume, capacidade desse componente e as questões ambientais em decorrencia disso devem ser ponderados conforme mecionado por \citeauthor{merrett_energy-driven_2017}(\citeyear{merrett_energy-driven_2017}).
+
 \end{itemize}
 
 \section{\textit{Throttling}}
 
-Aplicar o padrão \textit{Throttling} consiste basicamente em restringir o uso de recursos de acordo com limiares de utilização estabelecidos. Seu objetivo é proteger um dispositivo do estado de sobrecarga, evitando que consumidores excessivamente solicitantes coloquem um dispositivo provedor em um estado de sobrecarga, evitando possíveis falhas e a exaustão prematura de recursos \cite{martinekuan_throttling_nodate}. Com isso, a estratégia permite que provedores consigam operar dentro de termos definidos por um acordo de funcionamento conhecido como \acf{SLA}, protegendo este provedor de assumir um estado de sobrecarga onde precise atender mais solicitações do que o adequado para sua capacidade.
+Aplicar o padrão \textit{Throttling} consiste basicamente em restringir o uso de recursos em acordo com limiares de utilização estabelecidos. Seu objetivo é proteger um dispositivo contra um estado de sobrecarga, evitando que consumidores excessivamente solicitantes coloquem um dispositivo provedor em um estado de critico, evitando possíveis falhas e a exaustão prematura de recursos \cite{martinekuan_throttling_nodate}. Com isso, a solução concentra-se em permitir que provedores consigam operar dentro de termos definidos por um acordo de funcionamento conhecido e detalhado em \acs{SLA}, protegendo este dispositivo descontroladamente encontrar-se em situação onde precise atender mais solicitações do que o adequado para sua capacidade.
 
-Na taxonomia, o uso do \textit{Throttling} é candidato à colaborar nas atividades que buscam aumentar disponibilidade do provedor, conservando  recursos energéticos e suas observações a respeito de características ou limitações do próprio dispositivo. Para tal, é preciso que limiares sejam estritamente adequados ao que se aplica, capacidade de transmissão, recursos disponíveis ou esperados pelo dispositivo. Definir limiares de operação realísticos que atendam as necessidades de um dispositivo provedor é um desafio relevante para sistemas com estratégia de coleta de energia \cite{khairnar_discrete-rate_2015}, \cite{liu_energy_2016} e \cite{zhang_toward_2018}, entregando capacidade de decisão sobre as atidades realizadas nos ciclos enquanto se objetiva conservar-se.
+Na taxonomia, o \textit{Throttling} é candidato à colaborar nas atividades que buscam aumentar disponibilidade dos dispositivos, conservando recursos energéticos em observações das características ou limitações do próprio dispositivo. Para tal, é preciso que limiares sejam estritamente adequados ao que se aplica, sua capacidade de transmissão, recursos disponíveis e esperados pelo dispositivo. Definir limiares de operação realísticos que atendam as necessidades de um dispositivo provedor é um desafio para sistemas com estratégia de coleta de energia \cite{khairnar_discrete-rate_2015}, \cite{liu_energy_2016} e \cite{zhang_toward_2018}, entregando a capacidade de decisão sobre as atividades realizadas nos ciclos enquanto objetiva sua conservação.
 
-\subsection{Atuação: Limiar, Ciclo de Carga, Observáveis e Meios}
+\subsection{Atuação}
 \label{cap4:atuação}
-Em sistemas \acs{IoT} orientados aos fatores energéticos, a atuação do padrão é dada ao monitorar a taxa de solicitações no decorrer de um espaço de tempo, nesse intervalo, denominado Ciclo de Carga. Durante um ciclo clientes podem fazer requisições ao dispositivo provedor. Do ponto de vista da disponibilização dos recursos, durante um ciclo de carga, um dispositivo pode assumir abordagem de equidade entre os solicitantes ou algum critério de prioridade e privilégio, onde um solicitante qualquer teria suas requisições atendidas mediante negação do serviço para outro cliente com menor prioridade, caso necessário.
 
-Uma vez definido um limiar de atuação, sua ação pode ser constante durante todo funcionamento do dispositivo, assim o mesmo valor limiar é aplicado independente de outros fatores, outra possibilidade é definir vários limiares que agem adaptativamente de acordo com os modos de operação mapeados, tão logo determinado cenário seja alcançado, o dispositivo pode ajustar seu limiar de atuação para conservar seus recursos visando manter-se funcional. O comportamento do limiar de atuação passa pela analise cuidadosa da natureza das operações esperadas para o dispositivo. Em síntese:
+\begin{figure}[hbt]
+	\centering
+	\caption{Throttling:Atuação.}
+	\label{fig:taxonomia_atuacao}
+	\includegraphics[width=1\textwidth]{Imagens/cap4/cap4taxonomia_throttling_atuacao.jpg}	
+	
+	Fonte: elaborado pelo autor.
+\end{figure}
+
+Em dispositivos \acs{IoT} orientados aos fatores energéticos, a atuação do padrão é dada ao monitorar a taxa de solicitações durante um espaço de tempo, esta janela temporal denomina-se Ciclo e esta disposito com categoria mais à esquerda no recorte disponivel na Figura \ref{fig:taxonomia_atuacao}. Durante um ciclo, clientes e provedores atuam realizando solicitações ou disponibilizando seus estados. Do ponto de vista da disponibilização dos recursos, durante um ciclo de carga, um dispositivo provedor configurado para tal, pode assumir abordagem de equidade entre os solicitantes ou algum critério de prioridade e privilégio. Em virtude disso, caso necessário um solicitante qualquer teria suas requisições atendidas enquanto acontece a negação do serviço para outro cliente com menor prioridade.
+
+\textit{Throttling} utiliza mecanismos limitadores baseado em limiares, através da restrição no atendimento de solicitações. Uma vez definido limiar de atuação, a ação do limitador pode ser constante durante todo funcionamento do dispositivo, assim o mesmo valor limiar é aplicado independente de outros fatores durante todo o tempo, outra possibilidade é definir vários limiares que agem de maneira adaptativa de acordo com os modos de operação mapeados, tão logo determinado cenário seja alcançado, o dispositivo pode ajustar seu limiar de atuação para conservar seus recursos visando manter-se funcional. O comportamento do limiar de atuação passa pela analise cuidadosa da natureza das operações esperadas para o dispositivo e possui influencia sobre como o dispositivo irá se comportar. Quanto aos limiares, são classificados  como:
 
 \begin{itemize}
     \item Limiar constante: Seu valor é fixado e estabelecido enquanto o dispositivo é projetado. Este limiar pode ser determinado considerando fatores como testes de desempenho, características do ambiente onde será inserido e requisitos operacionais. Todavia, uma vez definido, o limiar permanecerá constante ao longo de todo o momento em que  atividades são realizadas.
@@ -148,77 +156,67 @@ Uma vez definido um limiar de atuação, sua ação pode ser constante durante t
     
     \item Limiar adaptável: Nesta abordagem, o comportamento do dispositivo é ajustado dinamicamente, por isso pode assumir um comportamento mais adequado ao observar suas condições de funcionamento através do monitoramento ou análise dos seus recursos. Permitindo atender as solicitações dos clientes, com performance adequada aos termos de operação que se encontre. Por exemplo, dado um sistema de segurança que geralmente possui dispositivos equipados com câmeras. Este provedor, deve enviar imagens capturadas por seus sensores para algum solicitante, seja uma central que passivamente recebe as gravações ou outra forma de demandante devidamente conhecido. Seja uma mudança observada em seus termos de funcionamento, o dispositivo poderá ter faixas de limiares distintas adequando-se ao estado encontrado, por exemplo, operações diurnas ou noturnas, conservando-se e garantido seu funcionamento dentro do acordo de serviço estabelecido.   
     
-    \begin{figure}[h]
-    	\centering
-    	\includegraphics[width=3cm]{example-image} 
-    	\caption{Aqui vou colocar uma figura A e B com as diferentes atuações do limiar.}
-    \end{figure}
-    
-    
 \end{itemize}
 
-Graças a isso, o dispositivo com limiares de atuação adaptáveis será capaz de adequar seu modo de operação em diferentes zonas de uso, depreciando seus serviços como mudança de comportamento, seja para interromper ou reduzir sua taxa da transmissão, aumentando seu tempo de inatividade e assim mitigar riscos funcionais enquanto se encontra em um modo mais ou menos parcialmente restrito. Uma vez que os recursos energéticos observáveis se restabeleçam, pode-se assumir um comportamento de uso que acentua o uso dos recursos disponíveis, incentivado pelo novo valor estipulado para o limiar de consumo. Esta capacidade de adaptação, permite que dispositivos mantenham algum equilíbrio entre conservação de recursos e performance, sustentado pela adaptação promovida pelos modos de operação definidos, garantindo suas funcionalidades em termos das condições operacionais.
+O dispositivo com limiar(es) de atuação, indica para o mecanismo \textit{throttling} em qual momento irá ser acionado, sendo capaz de adequar o modo de operação do dispositivo, depreciando seus serviços como mudança de comportamento, seja para interromper operações conforme Figura \ref{fig:cap2throttlingexample} ou reduzir sua taxa da transmissão. Com isso, aumentando seu tempo de inatividade e assim mitigando riscos enquanto se encontra em um modo restrito. 
+
+Uma vez que os recursos energéticos observáveis se restabeleçam, pode-se assumir um comportamento de uso acentuado mediantes solicitações e a capacidade do dispositivo utilizar mais recursos disponíveis, incentivado pelo novo valor estipulado para o limiar de consumo. Esta capacidade de adaptação, permite que dispositivos mantenham algum equilíbrio enquanto conservam recursos e buscam performance, sustentado pela adaptação promovida pelos modos de operação definidos, garantindo assim suas disponibilidade nos termos das condições operacionais.
 
 
-Qualquer aspecto que impacte ou influencie na capacidade do dispositivo em manter-se disponível deve ser considerado em sua atuação. Estes, ditos elementos observáveis, compreendem os componentes aos quais cabem a analise de estado, pois justificam a ação do mecanismo throttling, que deverá indicar o comportamento do dispositivo para mante-lo adequado mediante evitar seu esgotamento energético. Para tal, se apresentam como os garantidores das condições energéticas do dispositivo: sua condição de entrada através de uma fonte energética; a capacidade de armazenamento dessa energia coletada em eventual \textit{buffer}. 
+Qualquer aspecto que impacte ou influencie na capacidade do dispositivo em manter-se disponível deve ser considerado em sua atuação. Estes, ditos elementos observáveis, compreendem os componentes aos quais cabem a analise de estado, pois justificam a ação do mecanismo \textit{throttling}, que deverá indicar o comportamento do dispositivo para mante-lo adequado buscando evitar seu esgotamento energético. Para tal, se apresentam como os garantidores das condições energéticas do dispositivo: sua condição de entrada através da coleta de fonte energética e a capacidade de armazenamento dessa energia coletada em eventual \textit{buffer}. 
 
-\subsubsection{Meios}
-\label{cap4:atuacao_meios}
-O comportamento de um dispositivo pode ser ajustado de acordo com as circunstâncias. Diferentes meios são usados no processo de construção do mecanismo \textit{throttling} a depender das características de atuação do dispositivo executará e a intenção particular ao limitar suas operações. Assim, os meios de atuação decorrem sobre:
+%\subsubsection{Meios}
+%\label{cap4:atuacao_meios}
+O comportamento de um dispositivo pode ser ajustado de acordo com suas circunstâncias. Diferentes meios são usados no processo de construção do mecanismo \textit{throttling} participante na adequação do comportamento à depender das características de atuação e a intenção ao limitar operações. Em detrimento disso, cabe observar papel à desempenhar pelo dispositivo pois, cada um deles apresentam em suas particularidades indicações sobre como agente limitador deverá atuar. Sendo assim, compõe os meios utilizados pelo agente limitador:
 
 \begin{itemize}
-	\item Meio 1: Atuação sobre dispositivos clientes; 
-	\item Meio 2:\label{meio2} Atuação sobre atividades do dispositivos provedor;
-	\item Meio 3:\label{meio3} Atuação sobre degradação intencional de componentes envolvidos.
+	\item Meio 1: Da limitação sobre dispositivos clientes; 
+	\item Meio 2: Da limitação sobre atividades do dispositivos provedor;
+	\item Meio 3: Aspectos da degradação intencional de componentes demandantes.
 \end{itemize}
 
-O Meio 1 utiliza os mecanismos de throttling ao considerar a necessidade de observar as capacidades dos clientes em relação de sua taxa de vazão ou a criticidade de suas operações. Sobre a taxa de vazão, espera que o limitador aplicado atue sobre a taxa de recebimento das mensagens em acordo com a capacidade e suas restrições para lidar com tais eventos. Sendo assim, o dispositivo cliente poderá limitar sua vazão para envio de novas solicitações ou a sua disponibilidade para recebimento de novas informações de acordo com o modo de operação encontrado em decorrência das capacidades observadas que classificam o modo.
+Configura-se o Meio 1 a utilização dos mecanismos de throttling operam em referencia da  capacidade dos clientes em relação de sua taxa de vazão (\textit{throughput}) ou sobre a criticidade de suas operações. Sobre a taxa de vazão, é esperado que o limitador aplicado atue sobre a taxa de recebimento das mensagens em acordo com a capacidade do cliente para lidar com tais eventos. Sendo assim, o dispositivo cliente poderá limitar o envio de novas solicitações ou a sua disponibilidade para recebimento de novas informações de acordo com o modo de operação encontrado em decorrência das capacidades observadas que o colocam em tal modo.
 
-Entende-se por criticidade de um cliente, o atributo que indica fundamentalmente a importância das operações realizadas por este dispositivo em detrimento as consequências da não realização de uma operação dita critica. Assim, é previsto dois cenários: um primeiro onde todas as operações tem igual importância para este dispositivo, e um segundo, onde existam operações classificadas mais importantes ou criticas que outras. Sendo assim, de acordo com o segundo cenário, justifica-se que tais operações possam encontrar um cenário com limiar de \textit{throttling} aliviado e por isso, cabe observar e definir tais valores para que dado aconteça operações privilégiadas, exista também a justificativa de maior tolerância quanto ao uso de recursos para o cumprimento destas. 
+Entende-se por criticidade para um cliente, o atributo que indica a importância das operações realizadas por este dispositivo em detrimento das consequências obtidas pela não realização de uma operação dita critica no cenário de atuação do dispositivo. Assim, é previsto dois cenários: um primeiro onde todas as operações tem igual importância, e um segundo, onde existam operações classificadas como criticas. Assim, de acordo com o segundo cenário, justifica-se que tais operações possam encontrar um modo com limiar de \textit{throttling} aliviado e por isso, cabe observar e definir tais valores para que caso ocorram operações privilégiadas, exista também a justificativa de maior tolerância quanto ao uso de recursos para o cumprimento destas. 
 
-Certamente, para que seja possível um maior gasto de recursos pelas operações criticas, cabe também ao projeto definir regras de compensação onde caso necessário, o dispositivo poderá reduzir seu limiar para outras demandas, motivados a preservar parte do seus recursos que em outro momento seria utilizado por estas demandas menos privilegiadas.
+Certamente, para que seja possível um maior gasto de recursos pelas operações criticas, cabe também à fase concepção do dispositivo definir suas regras de compensação onde caso necessário, o dispositivo pode limitar outras operações, motivados a preservar parte do seus recursos que em outro momento seria utilizado por estas demandas menos privilegiadas.
 
-Meio 2 compreende o controle de atuação no dispositivo provedor. De acordo com o seu estado durante um ciclo os mecanismos de throttling poderão atuar em conformidade aos recursos encontrados. Para tal, as estratégias de aplicação e definição de limiares passam pela observação da capacidade de vazão das múltiplas solicitações proveniente dos clientes, bem como da criticidade das operações realizadas. 
+Meio 2 compreende o controle de atuação no dispositivo provedor. De acordo com o seu estado durante um ciclo os mecanismos de throttling poderão atuar em conformidade aos recursos encontrados. Para tal, as estratégias de aplicação e definição de limiares passam pela observação da capacidade de vazão das múltiplas solicitações dos clientes, bem como da criticidade das operações realizadas. 
 
-A taxa de vazão do um dispositivo provedor, é definida pela sua capacidade em atender demandas dos diversos solicitantes durante um espaço de tempo, seja por limitação de transmissão ou por sua capacidade computacional em realizar tais operações ou mesmo seu modo de operação definidos em relação aos recursos energéticos. Sendo assim, o mecanismo de throttling poderá se valer dos limiares estipulados através da análise dos recursos para operação e, a partir daí, dado o cenário encontrado, limitar o atendimento as solicitações de solicitantes considerados excessivamente demandantes ou menos privilégiados.  
+A taxa de vazão do um dispositivo provedor, é definida pela sua capacidade em atender demandas dos diversos solicitantes durante um ciclo, seja por limitação de transmissão (\textit{throughput}), por sua capacidade computacional em realizar tais operações ou mesmo seu modo de operação definidos em relação aos observáveis. Sendo assim, o mecanismo de throttling presente no provedor poderá se valer dos limiares estipulados através da análise dos recursos para operação e, em similaridade aos dispositivos clientes. A partir daí, caso o cenário encontrado seja apropriado, limitar o atendimento as solicitações de solicitantes considerados excessivamente demandantes ou não privilégiados.  
 
-Quanto a observação das operações realizadas pelo dispositivo provedor, estas tem seu grau de criticidade atrelado a importância de tal operação na conjuntura ao que se destina o dispositivo. É importante destacar que a definição de limiares sempre busca garantir que o dispositivo não consuma seus recursos de maneira desnecessária, aqui considerado um gasto excessivo. O Limiar de atuação deveria ser revisto idealmente a todo momento que o panorama encontrado pelo dispositivo mude, seja pelo fim de um ciclo de atividades ou a medida que solicitantes sejam atendidos. Com isso, dado limiar deverá atuar protegendo o dispositivo provedor no decorrer de sua mudança de estado ao passo que realiza as operações. 
+O limiar de atendimento de operações poderá suportar um sistema hierárquico, similar ao já definido sobre a criticidade das operações dos dispositivos clientes. Neste caso, é de conhecimento do dispositivo provedor quais solicitações são privilégiadas pois suas operações devem ser realizadas mesmo em um cenário mais restrito.
 
-O limiar de atendimento de operações poderá suportar um sistema hierárquico, similar ao já definido sobre a criticidade das operações dos dispositivos clientes. Neste caso, é de conhecimento do dispositivo provedor quais solicitantes privilégiados terão suas operações realizadas mesmo em um cenário mais restrito, outro ponto é que dado a criticidade da operação pode-se fazer distinções, tolerando mais operações de um tipo considerado privilégiado.
+Quanto a observação das operações realizadas pelo dispositivo provedor, estas tem seu grau de criticidade atrelada a importância de tal operação na conjuntura ao que se destina o dispositivo. É importante destacar que a definição de limiares sempre busca garantir que o dispositivo não consuma seus recursos desnecessariamente, considerado um gasto excessivo. O Limiar de atuação deve ser revisto idealmente para atuar a todo momento que o panorama encontrado pelo dispositivo mude, seja pelo fim de um ciclo de atividades ou a medida que solicitantes sejam atendidos. Com isso, dado limiar deverá atuar protegendo o dispositivo provedor no decorrer de sua mudança de estado ao passo que realiza as operações. 
 
-Pode-se ainda, anexar ao conjunto relacionado aos fatores utilizados para definição do limiar das operações, os aspectos ligados a degradação ativa nos componentes envolvidos nas operações ofertadas ou apenas de uso interno do dispositivo. Ao limitar alguma operação, apresenta-se a oportunidade para que o \textit{throttling} no dispositivo também possa restringir o uso de recurso energético de algum componente inativo, neste caso, cercear parcial ou totalmente a utilização energética dos componentes envolvidos com tais operações limitadas. 
+Pode-se ainda, anexar ao conjunto relacionado aos fatores utilizados para definição do limiar das operações, os aspectos ligados a degradação ativa nos componentes envolvidos nas operações  ou apenas de uso interno do dispositivo. Ao limitar alguma operação, apresenta-se a oportunidade para que o \textit{throttling} no dispositivo também possa restringir o uso de recurso energético de algum componente inativo, neste caso, encerra-se parcial ou totalmente a utilização energética dos componentes envolvidos com tais operações limitadas. 
 
-Compreende os mecanismos dispostos no Meio 3, a capacidade do nó em reduzir o consumo energético de algum componente embarcado mediante o cenário de escassez energética. Esta já é uma manobra conhecida; diversos dispositivos submetem-se a esta, objetivando a conservação de seus recursos energéticos durante ciclos, especialmente quando não existe uma previsibilidade de uma nova oferta energética. Por exemplo, os aparelhos móveis possuem a capacidade para que, dado limiar de  sua reserva energética (\textit{Storage}) seja atingido, limita-se ativamente os componentes menos críticos, por exemplo câmeras de alta definição ou alto-falantes, assim, o recurso energético usado por tais pode ser conservado e disponibilizado para componentes dito essenciais até que o cenário de escassez se resolva. 
+Compreendendo os mecanismos dispostos no Meio 3, encontra-se a capacidade do nó em reduzir o consumo energético de algum componente embarcado mediante o cenário de escassez energética. Esta é uma manobra conhecida, diversos dispositivos submetem-se a esta manobra objetivando a conservação de seus recursos energéticos durante ciclos, especialmente quando não existe uma previsibilidade de uma nova oferta energética. Por exemplo, os aparelhos móveis adotam tal comportamento para que, quando um determinado valor energético em \textit{Storage} seja atingido, limitar ativamente os componentes menos críticos, por exemplo câmeras de alta definição ou alto-falantes, assim, o recurso energético usado por tais componentes podem ser conservados e disponibilizados para manter outros componentes dito essenciais até que o cenário de escassez se resolva. 
+
+A entrada energética descrita na Subseção \ref{Capacidade de Coleta}, indica a capacidade do dispositivo em captar recursos energéticos através de mecanismo de coleta, uma vez que um dispositivo receba esta entrada, dará inicio um ciclo que por sua vez durará até a próxima oferta energética. Sobre a capacidade de armazenar energia, como decorrido na Subseção \ref{Capacidade de Armazenamento} é o indicativo do potencial que sua sua reserva energética (\textit{Storage}) pode chegar, para que em momento adequado, os valores armazenados sejam disponibilizados para suprir a demanda energética operacional.
+
+A capacidade do dispositivo em entender a dinâmica dos fatores que interagem com os valores coletados na forma de entrada energética através do seu \textit{Power Supply} e reserva (\textit{Storage}) são fundamentais para garantir maior disponibilidade. Estes fatores compreende os observáveis, grupo motivador do ajuste de comportamento dos mecanismos providos pela atuação do \textit{throttling}. 
 
 
 \subsection{Motivadores}
 
 Além das operações realizadas, a implementação do padrão throttling passa por avaliar os agentes que impactam diretamente o comportamento do dispositivo. Este, também deve considerar a atuação do mesmo enquanto dispositivo \acs{IoT}. 
 
-A entrada energética em \ref{Capacidade de Coleta}, indica a capacidade do dispositivo em captar recursos energéticos através de um mecanismo de coleta, uma vez que um dispositivo receba esta entrada, dará inicio um novo ciclos que por sua vez durará até a próxima oferta energética. Sobre a capacidade de armazenar energia, como decorrido em \ref{Capacidade de Armazenamento} indica sua reserva energética (\textit{Storage}) onde, em momento adequado, poderá fazer uso para manter-se operacional.  
-
-A capacidade do dispositivo em entender a dinâmica dos fatores que interagem com os valores coletados na forma de entrada energética através do seu \textit{Power Supply} e reserva (\textit{Storage}) é fundamental para garantir maior disponibilidade. Estes fatores compreende os observáveis, grupo motivador do ajuste de comportamento dos mecanismos providos pela atuação do \textit{throttling}. 
-
 Desta forma, a mudança de comportamento do dispositivo motiva-se em: tão logo os fatores de tomada de decisão forem alcançados, adequar-se para que estes fatores agora considerados divergentes, sejam superados motivados pela mudança de modo de operação buscando retornar ao cenário que representa as capacidades de atendimento do dispositivo.   Por isso, o agente limitador deve agir de maneira suficientemente rápida para que a mudança de estados seja alcançada o mais brevemente possível, referente à capacidade do dispositivo em dispender recursos para realizar operações. 
 
-No trabalho \cite{zhang_toward_2018}, equipamentos capazes de observar seus recursos energéticos, atuam modificando seu comportamento para preservar energia motivados com a expectativa de uma entrada energética prevista. Sendo assim, para este caso, a motivação de aplicação do agente limitante é preservar alguma condição energética, prolongando a disponibilidade dos componentes ditos críticos. Portanto, a motivação dos dispositivos em limitar seu comportamento passa pela análise do estado dos recursos observáveis e a intenção que se deseja alcançar em acordo com agente limitante.
+No trabalho \cite{zhang_toward_2018}, equipamentos capazes de observar seus recursos energéticos, atuam modificando seu comportamento para preservar energia enquanto permanecem na expectativa de uma entrada energética prevista. Sendo assim, a motivação de aplicação do agente limitante é preservar alguma condição energética, prolongando a disponibilidade dos componentes ditos críticos. Portanto, a motivação dos dispositivos em limitar seu comportamento passa pela análise do estado dos recursos observáveis e a intenção que se deseja alcançar em acordo com agente limitante. Por sua vez em, \cite{gong_sleep_2022} aborda a capacidade de decidir se os dispositivos devem hibernar, realizar operações ou transmitir seus resultados. Estas operações são realizadas motivadas pela analise dos recursos energéticos de maneira que dado um cenário o dispositivo permaneça inativo por mais tempo, ou realize mais medições.
 
-Assim, caso um limiar de atuação seja atingido a alteração de comportamento precisa ocorrer de modo adequado, mitigando, com isso, perdas desnecessárias ou não previstas, causadas por ajuste inapropriados de comportamento. Considerando que o ajuste demorado potencialmente coloca o dispositivo em não ter um modo de operação adequando às suas condições reais.
+No contexto de computação dirigida à energia, em quaisquer cenário que o dispositivo se encontrar, caso um limiar de atuação seja atingido a alteração de comportamento precisa ocorrer de modo adequado, mitigando, com isso, perdas desnecessárias ou não previstas, causadas por ajuste inapropriados de comportamento. Considerando que o ajuste demorado potencialmente coloca o dispositivo em não ter um modo de operação adequando às suas condições reais.
 
-
-Para justificar a atuação dos mecanismos de limitação, é preciso definir quais os motivadores, Sendo estes o propósito declarado para restringir operações em concordância com a causa motivadora. Assim, é de interesse dos aspectos relativos a considerações das capacidades energéticas do dispositivo, que a atuação do \textit{throttling} procure alcançar um dos dois objetivos, sendo estes os motivadores:
+Para justificar a atuação dos mecanismos de limitação, é preciso definir quais são seus  motivadores, estes carregam o propósito declarado para restringir operações em concordância com a causa motivadora. Assim, é de interesse da observação das capacidades energéticas, ajustar o comportamento do dispositivo motivado do que pretende-se obter através disso, os motivadores para uso de \textit{throttling} sob essas circunstancias são:
 
 \begin{enumerate}
 	\item Preservar recursos energéticos. 
-	Evitar gasto excessivo ou inadequado é primeiro motivador de um agente limitante embarcado em dispositivos com restrições energéticas, pretende-se com isso manter o dispositivo em um estado adequado em relação das capacidades energéticas dispendendo recursos de maneira inferior ou próximos a zona neutro-energética onde a energia coletada é suficiente para todas operações realizadas na duração do ciclos de carga.
+	Evitar gasto excessivo ou inadequado é primeiro motivador de um agente limitante embarcado em dispositivos com restrições energéticas, pretende-se com isso manter o dispositivo operando adequadamente em relação das capacidades energéticas e com isso dispendendo recursos de maneira sustentada ao passo que a energia coletada durante os ciclos anteriores seja suficiente para todas operações realizadas, enquanto preserva seus recursos presentes.
 	
 	\item Restabelecimento da condição energética.
-	Quanto a recuperar seus recursos energéticos, entende-se que o dispositivo poderá através da analise de seus observáveis, adotar comportamento limitado motivado pela expectativa de restabelecer seus recursos energéticos a valores esperados. Neste caso, pretende-se com isso manter-se em modo de operação que favoreça dispender menos energia durante os próximos ciclos de carga até que seus recursos observáveis retornem em acordo com o esperado ou seu cenário de uso seja alterado. Uma vez alcançado um estado desejado, o dispositivo poderá reavaliar seu comportamento e ajustar-se para o modo de operação considerado adequado. 
+	Quanto a recuperar seus recursos energéticos, entende-se que o dispositivo poderá através da analise de seus observáveis, adotar comportamento limitado motivado pela expectativa de restabelecer seus recursos energéticos a patamar acima do encontrado em \textit{storage}. Neste caso, pretende-se manter-se em modo de operação que favoreça dispender menos recurso possível durante os próximos ciclos até que seus recursos observáveis retornem aos valores desejados. Uma vez alcançado um estado desejado, o dispositivo poderá reavaliar seu comportamento e ajustar-se para o modo de operação considerado adequado. 
 \end{enumerate}
-
-
-
-
 
 \begin{comment}
 	
