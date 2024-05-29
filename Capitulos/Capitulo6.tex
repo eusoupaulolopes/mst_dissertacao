@@ -398,7 +398,7 @@ A Figura \ref{fig:cap6valoresofertados}, apresenta o aspecto da distribuição d
 	Fonte: elaborado pelo autor.
 \end{figure}
 
-Dada a natureza do experimento, toda execução obtêm o mesmo comportamento e distribuição para esta oferta, pois são definidos antes da execução e não sofrem impacto diante das características dos dispositivos no contexto relativo à uma ou outra execução. Além disso, é garantido ao dispositivo receber este valor mesmo que esteja momentaneamente esgotado, pois não configura uma solicitação.
+Dada a natureza do experimento, toda execução obtêm o mesmo comportamento da oferta energética conforme distribuição definida. Assim os valores já seguem definidos antes da execução e não sofrem impacto diante das características dos dispositivos no contexto de uma ou outra execução. Além disso, é garantido ao dispositivo receber este valor mesmo que esteja momentaneamente esgotado, pois não configura uma solicitação.
 
 A segunda variável independente utilizada, representa as solicitações disparadas contra a interface do dispositivo provedor. Este estimulo tem características tais que, ao atender-las, o provedor intensifica seu consumo energético, pois encontra-se em estado ativo, demandando mais recursos. Isso implica que, à medida que a quantidade das solicitações atendidas aumenta, o consumo de energia do provedor também aumentará proporcionalmente, resultando em um impacto significativo na disponibilidade do dispositivo em relação com seu desempenho energético. A Tabela \ref{table:cap6:execucaocaracteristicas}, apresenta os valores utilizados para as requisições em cada execução do experimento. A precisão indica a distribuição da relação entre total de solicitações em cada execução em referencia para 12 jornadas (8640 solicitações) descrito na Seção \ref{cap6:execucao}.
 
@@ -429,9 +429,7 @@ A segunda variável independente utilizada, representa as solicitações dispara
 \endgroup
 
 
-Ao finalizar uma execução, as variáveis dependentes obtidas são colhidas para avaliação: a quantidade total de solicitações atendidas ao fim da execução do experimento e a evolução desses valores; a quantidade de solicitações impedidas mediante indisponibilidade do dispositivo por esgotamento. Para analisar a diferença na quantidade de solicitações atendidas, é necessário contrapor dados de reserva em \textit{storage} com os valores ofertados pelo \textit{power supply}, assim buscará justificará na atuação de limitadores.
-
-	
+Ao finalizar uma execução, as variáveis dependentes obtidas são colhidas para avaliação: a quantidade total de solicitações atendidas ao fim da execução do experimento e a evolução desses valores; a quantidade de solicitações impedidas mediante indisponibilidade do dispositivo por esgotamento. Para analisar a diferença na quantidade de solicitações atendidas, é necessário contrapor dados de reserva em \textit{storage} com os valores ofertados pelo \textit{power supply}, assim buscará justificará na atuação de limitadores.	
 
 Ainda sobre os dados coletados, ao final de cada execução é obtido o total de requisições atendidas evidenciando como as características dos agentes limitantes agem sobre a performance dos dispositivos. Na Figura \ref{fig:cap6solicitacoesatendidas}, é possível comparar o desempenho dos dispositivos sob a ponto de vista das solicitações atendidas.
 
@@ -504,10 +502,66 @@ A análise realizada sobre a Figura \ref{fig:cap6recortecomportamentostorage} pe
 	Descreva os resultados dos testes de uma maneira que seja compreensível para o leitor. Discuta se os resultados foram estatisticamente significativos e o que isso significa em termos do seu experimento.
 \end{comment}
 
+Com as execuções realizadas, é possível inferir sobre como os dispositivos são afetados pelas características dos fatores energéticos aos quais estão expostos. Através dessas execuções, podemos analisar de que forma a energia ofertada durante o experimento impactou no desempenho dos dispositivos permitindo uma compreensão aprofundado profunda dos seus comportamentos e limitações principalmente em ambientes em condições menos preditivas ou controladas.
+
+Ao categorizar um dispositivo \acs{IoT} com capacidade de coleta, é preciso fazer menção sobre o papel que este irá desempenhar. Para isso, o experimento atuou gerando cenário para que os agentes examinados pudessem cumprir o papel de provedor desde o momento que este dispositivo é configurado para atender solicitações.
+
+Os resultados obtidos, descrevem a importância dos elementos categorizados em função das características encontradas nos trabalhos relacionados à dispositivos para computação dirigida à energia, a medida que observam-se o comportamento fatores energéticos e os impactos relacionados a busca por evitar um esgotamento energético.
+
+Sobre a capacidade de atender solicitações, a análise do uso de recursos utilizados pelo dispositivo 'no-throttling' na Figura \ref{fig:cap6nothrottling} destaca que a continuidade no seu desempenho para atender solicitações é fortemente impactada pelos valores energéticos coletados. Por não possuir nenhum agente limitador experimentado, o dispositivo tem a capacidade de utilizar seus recursos de forma irrestrita, mesmo em cenários de escassez. No entanto, isso pode conduzi-lo à estado de esgotamento, onde ele perde a capacidade de realizar qualquer ação, mesmo um eventual contingenciamento dos efeitos da indisponibilidade, o que pode ter consequências graves.
+
+\begingroup
+\begin{figure}[htb]
+	
+	\centering
+	\caption{Aqui vou colocar uma figura para isolar o comportamento do no-throttling.}
+	\label{fig:cap6nothrottling}
+	\noindent\includegraphics[width=0.3\linewidth]{example-image} 
+	
+	Fonte: elaborado pelo autor.
+\end{figure}
+\endgroup
+
+
+
+Posteriormente, ao instanciar os dois dispositivos com diferentes limitadores, com o pretexto de validar a aderência dos conceitos classificados na taxonomia proposta. Os dados obtidos oriundos da experimentação colaboram com o entendimento dos elementos envolvidos no processo de concepção de um dispositivo sobretudo dada necessidade de implementar os mecanismos de limitação para lidar com os aspectos de disponibilidade.
+
+Em relação ao comportamento esperado dos dispositivos, nota-se que o mecanismo \textit{throttling} exerceu influência ativa como candidato para adequação de comportamento, sobretudo quando considera-se os aspectos dos recursos energéticos envolvidos, necessários para alcançar um grau de disponibilidade estimado em requisito de qualidade do serviço (\acl{QoS}). Ainda sobre estes termos, confrontam-se o desempenho obtido pelos dispositivos 'fixed-throttling' e 'dynamic-throttling', na Figura \ref{fig:cap6fixedxdynamic} percebe-se a necessidade de alinhamento sobre a forma como o limitador deverá agir em respeito aos meios possíveis em concordância com resultados esperados.
+
+Graças a isso, é possível perceber que o dispositivo 'fixed-throttling' obteve menor variação de sua reserva energética, porque se valendo da periodicidade da condição de oferta, teve o \textit{throttling} atuando fixamente durante os ciclos, e assim, de maneira constante consumiu seus recursos ao passo que também atendia as solicitações em termos dos limites da taxa de vazão sobre os meios desse dispositivo provedor sem observar necessariamente nenhum critério observável categorizado. 
+ 
+\begingroup
+\begin{figure}[htb]
+	
+	\centering
+	\caption{Comparação comportamento das estratégias de throttling aplicadas.}
+	\label{fig:cap6fixedxdynamic}
+	\noindent\includegraphics[width=0.3\linewidth]{example-image} 
+	
+	Fonte: elaborado pelo autor.
+\end{figure}
+\endgroup
+
+Ainda em relação à Figura \ref{fig:cap6fixedxdynamic} é correto afirmar também que a diferença de comportamento do dispositivo 'dynamic-throttling' em relação à outra implementação com limites fixos, foi proporcionada pela capacidade incrementada ao \textit{throttling} em observar os fatores de sua reserva energética. Com isso incrementou sua habilidade de gerenciamento sobre os recursos apoiando por simples \acs{QoS} presente e atuante na forma de modo de operação, característica viabilizante da capacidade adaptativa. De modo que, apesar dos momentos de escassez, o dispositivo foi capaz de manter-se disponível energeticamente e ainda obter o total de solicitações atendidas superiores aos obtidos pela abordagem do dispositivo que utiliza limitador fixo em função unicamente da vazão de atendimento.
+ 
+
+Em todo caso, é prematuro afirmar com base apenas na experimentação, que um dispositivo é simplesmente mais disponível que outro, e de fato não é objetivo do experimento encontrar a melhor implementação. Pois, o numero superior de solicitações atendidas atribuídas ao dispositivo 'no-throttling' não reflete outros critérios de disponibilidade não experimentados e possivelmente descritos na forma de \acs{SLA}.
+
+Entretando, o simples fato de apresentar intermitência de operação, recorrentemente presente periodicamente quando submetido em cenário de escassez da fonte energética gera indícios que podem ser consideravelmente indesejados ou não tolerados. Caberá o apoio do agente definidor dos termos de operação esperados para fundamentalmente descrever a criticidade e a tolerância para os momentos de indisponibilidade energética bem como da operação como todo. 
+
+Finalmente, as instancias experimentadas apresentam, evidenciado pelos resultados obtidos, as referências aos atributos listados para o uso de throttling como atuador em busca de atender critérios de disponibilidade, especialmente para computação dirigida à energia necessária para dispositivos \acs{IoT}. Por isso,  clarifica a ideia de atenção sobre os elementos ligados taxonomicamente ao \textit{throttling} quanto a aplicação mediante analise cuidadosa dos termos de serviço necessários para definir uma configuração de atuação para alcançar disponibilidade esperada.
+
+
+
 \subsection{Limitações do Estudo}
 \begin{comment}
 	Reconheça quaisquer limitações do seu estudo que possam ter afetado os resultados. Isso pode incluir limitações metodológicas, questões de amostragem, viéses potenciais ou qualquer outra consideração importante.
 \end{comment}
+
+As limitações do experimento, passam especialmente pela não examinação de cenários derivados dos estados fundamentais atribuídos para um dispositivo conforme descrito. Apesar de expressar bem a intenção proposta, um dispositivo pode ter níveis de atividades diferentes os quais poderiam ser melhor evidenciados pelo uso de mais de uma interface de acesso ao dispositivo, de tal forma que a configuração de custo teria mais possibilidades mediante nivel de atividade empregado no dispositivo.
+
+Algumas características da taxonomia não foram cobertas totalmente no experimento, não é possível examinar o ponto de vista do consumo energético dos agentes enquanto clientes. A definição de protocolo de comunicação também acabou por inviabilizar alguns cenários.
+
 
 
 
