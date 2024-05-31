@@ -224,7 +224,7 @@ Os elementos idealizados que constituem o dispositivo provedor são referentes a
 			Abundante & $S \ge 70\% $\\\hline
 			Atenção & $70\% > S \ge 50\% $\\\hline
 			Alerta & $ 50\% > S \ge 10\%$ \\\hline
-			Hibernando & $10\% > S \ge 0\%$  \\ \hline
+			Hibernando & $10\% > S \ge 0\%$  \\ \hline\addlinespace[1pt]
 		\end{tabular}
 		\label{table:cap6:modos}
 		\\
@@ -294,14 +294,14 @@ Portanto, ao iniciar um ciclo $c$, o valor referente é entregue e, por sua vez,
 	%	\tabcolsep=0.05cm
 	\begin{tabular}{ c c c c c c c}
 		\toprule
-		Dispositivo & Nome & \textit{Throttling} & \multicolumn{4}{c}{Atuação}\\\cline{4-7}		
+		Dispositivo & Operações & \textit{Throttling} & \multicolumn{4}{c}{Atuação}\\\cline{4-7}		
 		& & & Limiar & Ciclos & Meios & Observáveis\\
 		\midrule
 		%		\hline
-		disp$_1$ & no-throttling  & Não & - & 288 & - & - \\
-		disp$_2$ & fixed-throttling  & Sim & Fixo & 288 & Vazão & - \\
-		disp$_3$ & dynamic-throttling  & Sim & Adaptativo & 288 & Vazão & Reserva \\
-		\bottomrule
+		 no-throttling  & $\approx 8640$ &Não & - & 288 & - & - \\
+		fixed-throttling  & $\approx 8640$ &Sim & Fixo & 288 & Vazão & - \\
+		 dynamic-throttling  & $\approx 8640$ &Sim & Adaptativo & 288 & Vazão & Reserva \\
+		\bottomrule\addlinespace[1pt]
 	\end{tabular}
 	\label{table:cap6:dispositivosutilizados}
 	\\
@@ -310,9 +310,9 @@ Portanto, ao iniciar um ciclo $c$, o valor referente é entregue e, por sua vez,
 \end{table}
 \endgroup
 
-O dispositivo disp$_1$, representa o comportamento de dispositivos sem nenhum mecanismo de limitação das solicitações, seu objetivo principal é servir como base de comparação a medida que deverá atender todas as demandas solicitadas sem restrições previamente estabelecidas, com a observação de que caso seu valor armazenado em \textit{storage} seja completamente consumido, caracterizará esgotamento energético, incapacitando o dispositivo a atender qualquer tipo de solicitação.
+O dispositivo 'no-throttling', representa o comportamento de dispositivos sem nenhum mecanismo de limitação das solicitações, seu objetivo principal é servir como base de comparação a medida que deverá atender todas as demandas solicitadas sem restrições previamente estabelecidas, com a observação de que caso seu valor armazenado em \textit{storage} seja completamente consumido, caracterizará esgotamento energético, incapacitando o dispositivo a atender qualquer tipo de solicitação.
 
-Por sua vez, disp$_2$  e disp$_3$ foram implementados com a capacidade de limitar suas operações. Entretanto a atuação do mecanismo \textit{throttling} é distinta entre eles, para o disp$_2$ é realizada restrição mediante limiar fixado apenas em razão da uma vazão de atendimento estipulada previamente sem observar adequação ao cenário energético ou privilégios do solicitante. Por sua vez, cabe a atuação do limiar no disp$_3$ atuar adaptativamente assim como no anterior regulando a taxa de vazão de atendimento porém observando as condições de sua reserva em \textit{storage}.Sendo assim, a relação entre os modos de operação e o comportamento do limitador, quando presente, esta referenciado na Tabela \ref{table:cap6:expectativasolicitacoes}.
+Por sua vez, 'fixed-throttling'  e 'dynamic-throttling' foram implementados com a capacidade de limitar suas operações. Entretanto a atuação do mecanismo \textit{throttling} é distinta entre eles, para o 'fixed-throttling' é realizada restrição mediante limiar fixado apenas em razão da uma vazão de atendimento estipulada previamente sem observar adequação ao cenário energético ou privilégios do solicitante. Por sua vez, cabe a atuação do limiar no 'dynamic-throttling' atuar adaptativamente assim como no anterior regulando a taxa de vazão de atendimento porém observando as condições de sua reserva em \textit{storage}.Sendo assim, a relação entre os modos de operação e o comportamento do limitador, quando presente, esta referenciado na Tabela \ref{table:cap6:expectativasolicitacoes}.
 
 \begingroup
 \begin{table}[h] \centering
@@ -407,7 +407,7 @@ A segunda variável independente utilizada, representa as solicitações dispara
 \begin{table}[h]
 	
 	\centering
-	\caption{Solicitaçoes realizadas}
+	\caption{Solicitações realizadas}
 	\begin{threeparttable}
 	\begin{tabular}{ l c c c c }
 		\toprule

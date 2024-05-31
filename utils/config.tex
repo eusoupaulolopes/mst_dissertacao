@@ -58,7 +58,7 @@
 \usepackage{multirow}
 \usepackage{arydshln}
 \usepackage{rotating}
-
+\usepackage[table]{xcolor}
 % --- 
 % CONFIGURAÇÕES DE PACOTES
 % --- 
@@ -78,9 +78,14 @@
 		Citado #1 vezes nas páginas #2.%
 	\fi}%
 	
-	
+
 \usepackage{enumitem}
 \newcommand{\subscript}[2]{$#1 _ #2$}
 % ---
 
 \newcommand\muL{\si{\micro\liter}}
+\usepackage{pifont}
+
+\newcommand*\rot{\rotatebox{90}}
+\newcommand*\OK{\ding{51}}
+
