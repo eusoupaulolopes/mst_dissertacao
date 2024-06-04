@@ -11,8 +11,6 @@ Para esta revisão, adotaram-se práticas descritas no método apresentado por \
 O processo de \textit{snowballing} é descrito como abordagem iterativa de busca por referências em revisões de literatura \cite{wohlin_guidelines_2014}. Seu método é caracterizado através das iterações onde em cada uma é realizado análise sobre as referencias citadas nos artigos seminais (\textit{backward}) e também dos estudos que utilizaram esses artigos como referencia (\textit{forward}). Portanto, neste trabalho a abordagem de \textit{snowballing} foi executada em iterações, aplicando ambos os métodos (\textit{backward} e \textit{forward}). Os trabalhos resultantes de cada iteração  foram incluídos com base nos critérios de seleção previamente definidos na Subseção \ref{cap3:criteriosinclusaoexclusao}.
 
 
-
-
 \subsection{Critérios de inclusão e exclusão} 
 \label{cap3:criteriosinclusaoexclusao}
 
@@ -78,7 +76,7 @@ Em cada iteração, são realizadas ações com o objetivo de selecionar os trab
 \end{figure}
 
 
-A dinâmica de inclusão e filtragem de trabalhos relacionados, proporcionou visitar ao todo 1171 trabalhos por método \textit{backward}, além de 3597 trabalhos por \textit{forward} gerando uma cobertura total de 4768 artigos alcançados. É previsto durante o \textit{snowballing} proporcionar rastreabilidade na inclusão dos trabalhos. A Figura apresenta esta característica enquanto proporciona visão sobre os trabalhos mencionados. 
+A dinâmica de inclusão e filtragem de trabalhos relacionados, proporcionou visitar ao todo 1132 trabalhos por método \textit{backward}, além de 3582 trabalhos por \textit{forward} gerando uma cobertura total de 4714 artigos alcançados. É previsto durante o \textit{snowballing} proporcionar rastreabilidade na inclusão dos trabalhos. A Figura apresenta esta característica enquanto proporciona visão sobre os trabalhos mencionados. 
 
 \begin{figure}[H]
 	\centering	
@@ -89,196 +87,93 @@ A dinâmica de inclusão e filtragem de trabalhos relacionados, proporcionou vis
 	Fonte: elaborado pelo autor.
 \end{figure}
 
-Finalmente o processo Snowballing proporcionou a criação do portfólio total de artigos composto por 26 trabalhos que serviram como base para o estudo, os resultados obtidos estão descritos na Seção ref{cap3:resultados}.
+Finalmente o processo Snowballing proporcionou a criação do portfólio total de artigos, composto por 25 trabalhos que serviram como base para o estudo, os resultados obtidos estão descritos na Seção \ref{cap3:resultados}.
 
 
 \section{Resultados}
 \label{cap3:resultados}
 
-Foi característico ao portfólio de trabalhos selecionados a apresentação do leitor aos desafios ligados à como os agentes \acs{IoT} com capacidade de coleta de energia, realizam suas funções em detrimento do cenário de restrições energéticas. É recorrente a presença dos mecanismo de ajuste do comportamento dos dispositivos mediante observação de termos que auxiliam ao processo de tomada de decisão sobre como o dispositivo deve atuar diante de um ou outro cenário encontrado.
+Foi característica do portfólio de trabalhos a apresentação dos desafios enfrentados pelos agentes \acs{IoT} com capacidade de coleta de energia ao realizar suas funções, mesmo diante de restrições energéticas. Nestes trabalhos, foi observada a presença de mecanismos de ajuste do comportamento que utilizam observações de determinadas variáveis para tomar decisões sobre como o dispositivo deve conduzir seus ciclos em diferentes cenários.
 
-A lista de artigos pode ser visualizado totalmente na Tabela \ref{table:cap3:trabalhosobservados}, aqui uma visão geral dos trabalhos selecionados pode ser obtida. Todavia, um ponto de destaque é que mesmo os cenários de atuação com uma abordagem transiente, como apresentados por \citeonline{merrett_energy-driven_2017} e \citeonline{sliper_energy-driven_2020}, ainda mantem a necessidade de mecanismos para limitação de gasto energético quando ocorrem os processos de ajuste a potencia energética administrada ao dispositivo. 
+Sendo assim, mediante desafios apresentados nos estudos quanto à gestão energética desses dispositivos, foi considerado categorizar dos trabalhos em função dos grupos definidos no estudo \cite{khan_energy_2015}. Por análise de atuação orientada à dados, os trabalhos apresentam a possibilidade de atividades em respeito a previsibilidade dos dados de coleta e demanda energética. Assim, a categorização puramente baseada nos ciclos (\textit{Duty-Cycle}) do dispositivo carregam os fatores de observação atrelados as aspectos energéticos de coleta e armazenamento como motivadores para ajustes no tempo de ciclos ou ocorrência destes para adaptar-se aos critérios de energéticos impostos.
 
-%falar sobre todos os trabalhos mencionam ajustes de comportamento para estar compativel com gasto energético.
+Portanto, diante dos desafios identificados nos estudos sobre a gestão energética desses dispositivos, optou-se por categorizá-los com base nos grupos definidos no estudo realizado por \cite{khan_energy_2015}. Nesse contexto, um grupo de trabalhos se concentram aos desafios de definir os ciclos de operação observando eventos relacionados aos aspectos energéticos de coleta e armazenamento respectivamente. Por sua vez, ao abordar o processo de definir seus ciclos, alguns estudos apontam avanços em tecnicas que buscam prever o comportamento do dispositivo, em especial sua demanda e capacidade de coleta de energia. 
 
-
-\begingroup
-\begin{table}[ht]
-	\centering
-	\caption{ Trabalhos observados.}
-	\smaller[1]
-	\tabcolsep=0.15cm
-	\rowcolors{1}{gray!78}{white}
-	\begin{tabular}{cp{11cm}c}
-		\toprule
-		ID &  Titulo & Tipo \\\midrule
-		SB0-0001 &	Power Management in Energy Harvesting Sensor Networks & Periódico \\
-		SB1-0001 &	 Energy-Driven Computing: Rethinking the Design of Energy Harvesting Systems & Conferência\\
-		SB1-0002 &	 Lightweight operation scheduling for self-powered IoT devices  & Conferência \\
-		SB1-0003 & Adaptive operating mode management model for efficient energy harvesting systems & Periódico\\
-		SB1-0004 &	Energy Management in Wireless Sensor Networks: A Survey  &\\
-		SB1-0005 &	Discrete-Rate Adaptation and Selection in Energy Harvesting Wireless Systems & \\
-		SB1-0006 &	Energy Harvesting Sensor Nodes: Survey and Implications &\\
-		SB2-0001 &	Energy-driven computing &\\
-		SB2-0002 &	Hibernus++: A Self-Calibrating and Adaptive System for Transiently-Powered Embedded Devices &\\
-		SB2-0003 &	Graceful Performance Modulation for Power-Neutral Transient Computing Systems &\\
-		SB2-0004 &	Energy management for solar-powered IoT devices with performance adjustment &\\
-		SB2-0005 &	Dynamic Duty-Cycle Scheduling Schemes for Energy-Harvesting Wireless Sensor Networks &\\
-		SB2-0006 & Recent advances in energy management for Green-IoT: An up-to-date and comprehensive survey &\\
-		SB2-0007 & Reducing the Data Transmission in Sensor Networks through Kruskal-Wallis Model &\\
-		SB2-0008 & Power and Discrete Rate Adaptation for Energy Harvesting Wireless Nodes  &\\
-		SB2-0009 & Adaptive Energy Management by Reinforcement Learning in Cluster-based Solarpowered WSNs& \\
-		SB2-0010 & Energy-efficient Activation/Inactivation Strategy for Long-term IoT Network Operation& \\
-		SB2-0011 &	 Towards a Perpetual IoT System: Wireless Power Management Policy with Threshold Structure&\\
-		SB2-0012 &	Energy Harvesting Wireless Sensor Networks: Delay Analysis Considering Energy Costs of Sensing and Transmission& \\
-		SB2-0013 &	Performance of Wireless-Powered Sensor Transmission Considering Energy Cost of Sensing &\\
-		SB3-0001 &  Powering the Internet of Things&\\
-		SB3-0002 & Optimal sleep time controller based on traffic prediction and residual energy in duty-cycled wireless sensor networks &\\
-		SB3-0003 & A survey and taxonomy on energy management schemes in wireless sensor networks& \\
-		SB3-0004 & Sleep, Sense or Transmit: Energy-Age Tradeoff for Status Update With Two-Threshold Optimal Policy &\\
-		SB3-0005 & A Game Theory Distributed Approach for Energy Optimization in WSNs&\\
-		SB4-0001 & Energy and relevance-aware adaptive monitoring method for wireless sensor	nodes with hard energy constraint&\\\bottomrule
-		
-	\end{tabular}
-		\label{table:cap3:trabalhosobservados}
-		
-		Fonte: Elaborado pelo autor.
-\end{table}
-\endgroup
-
-Após análise dos artigos, classifica-se os trabalhos em relação as práticas adotadas para contornar o desafios de adequar seu funcionamento à suas restrições energéticas. Sendo assim, os trabalhos foram classificados em dois grupos: aqueles que abordam estratégias ligadas a observação da capacidade energética atual para definir um comportamento e os demais trabalhos que apontam técnicas para predizer o comportamento energético futuro e assim adequar seu comportamento corrente. A identificação dos trabalhos e seus grupos de atuação pode ser visualizada na Figura \ref{fig:cap3divisaodostrabalhos}.
-
-%Para tal, a Figura \ref{fig:cap3divisaodostrabalhos} apresenta a distribuição do portfólio em detrimento de dois processos de tomada de decisão. Assim, os dispositivos devem estar capacitados com algum mecanismo que, através da análise do contexto energético que se encontra (\textit{Context-Awareness}) seja capaz de decidir como utilizar seus recursos energéticos. Esse comportamento é percebido mesmo nos trabalhos com foco em dispositivos transientes pois, mesmo tolerantes ao esgotamento energético, estes ainda utilizam os eventos de recebimento energético como agente decisivo para retomar sua operação. 
+Em última análise, todos os esforços convergem para a análise de como os estudos moldam o escopo decisório da ação do agente limitador (\textit{throttling}) sobre seus ciclos. Além disso, o portfólio alcançado inclui cinco trabalhos categorizados como filosóficos, caracterizados pela apresentação de contribuições puramente conceituais. Esses trabalhos se concentram na análise teórica dos problemas relacionados à computação voltada para a energia, sem necessariamente fornecer implementações práticas, o que se alinha ao modelo de categorização proposto por \citeonline{Wieringa2006}.
 
 
-
-
-
+Um ponto de destaque é que, à primeira vista, pode-se imaginar menor necessidade da presença dos mecanismos limitantes, especialmente onde dispositivo esta preparado para realizar operações transientes. No entanto, apesar da característica energética, ainda persiste necessidade de mecanismos limitadores, desde que o dispositivo tenha por objetivo operar seus ciclos de forma parcial, motivado pelo iminente esgotamento energético (\cite{merrett_energy-driven_2017}; \cite{sliper_energy-driven_2020}).
 
 \begin{figure}[H]
 	\centering	
-	\caption{Melhorar essa figura com a distribuição dos trabalhos} 
-	\label{fig:cap3divisaodostrabalhos}
-	\noindent\includegraphics[width=1\linewidth]{Imagens/cap3/divisaodostrabalhos.jpg} 
+	\caption{Categorização dos Trabalhos} 
+	\label{fig:cap3:divisaodosestudos}
+	\noindent\includegraphics[width=0.8\linewidth]{Imagens/cap3/classificacao.png} 
 	
 	Fonte: elaborado pelo autor.
 \end{figure}
 
-\begin{comment}
-\begingroup
-\begin{table}[htbp]
-	
+
+Devido à necessidade de caracterizar as operações realizadas pelos dispositivos, há uma uniformidade quanto ao uso do termo "ciclo" (\textit{Duty-Cycle}) quando se pretende fazer referência às janelas de operação, nas quais o dispositivo realizará as atividades a que se propõe. Mesmo os trabalhos categorizados como soluções orientadas previsão  conforme visto na categorização apresentada na Figura \ref{fig:cap3:divisaodosestudos} apoiam-se na definição proposta por \citeonline{kansal_power_2007}, que trata ciclos como a referencia do tempo de duração das atividades que induzem um dispositivo à mudança de estados e, por sua vez, requerem capacidade energética (\citeonline{jaber_reducing_2017}; \citeonline{shen_energy-efficient_2019}; \citeonline{balsamo_hibernus_2016}; \citeonline{lee_energy_2018}). 
+
+As soluções e propostas de adaptação dos ciclos podem ser categorizadas da seguinte forma: Primeiramente, destacam-se as abordagens que se concentram nos desafios relacionados à coleta de energia e, como consequência desses eventos, propõem mecanismos de controle e ajustes orientados a capacidade de coleta. Por exemplo, \citeonline{doumenis_lightweight_2022} descreve uma análise sobre o balanço energético coletado para definir a utilização energética do ciclo. Por outro lado, (\citeonline{choi_adaptive_2020}; \citeonline{balsamo_graceful_2016}; \citeonline{khairnar_discrete-rate_2015};) exploram, a partir da performance instantânea dos sistemas de coleta, a descoberta de motivadores para modelar a atuação do agente limitante, buscando ciclos com características neutro-potenciais.
+
+
+Apesar de não se concentrar em uma solução especifica, \citeonline{kansal_power_2007} apresentam os conceitos fundamentais da teoria de coleta de energia, determinante para computação dirigida à energia. No estudo realizados por (\citeonline{khairnar_power_2011}; \citeonline{sudevalayam_energy_2011}) é considerada a possibilidade de incorporar um componente de armazenamento intermediário em conjunto com as analises de coleta, para definir como o agente limitante irá agir sobre os ciclos. Nesta direção, a proposta de \citeonline{yoo_dynamic_2012} busca comparar os valores de coleta e armazenamento para estimar como deverá ser o comportamento do dispositivo nos ciclos futuros.
+
+Para \citeonline{liu_energy_2016}, a solução apresentada considera os custos de transmissão para definir o gasto energético durante os ciclos e assim decidir como operará. Em (\citeonline{ge_adaptive_2020};\citeonline{arnaiz_energy_2024}) é utilizado técnicas de aprendizado de máquina em busca de prever coleta e consumo de energia respectivamente. Ambos buscam antecipar características energéticas vindouras, bem como demandas ao passo que podem adaptar-se suavemente até alcançar patamar pretendido.
+
+Outra abordagem encontrada é a desativação de recursos conforme necessário, como apresentado por \citeonline{shen_energy-efficient_2019}. Durante os ciclos, os dispositivos podem reduzir ou desligar o consumo energético de componentes não essenciais, entrando em modo restrito para reduzir o uso de energia e se adequar aos valores armazenados. Em (\citeonline{zhang_toward_2018}; \citeonline{gong_sleep_2022}), são utilizados os processos estatísticos como tomadores de decisão, baseadas em uma certa previsibilidade no fornecimento de energia e favorecido pelas características de noção do ambiente \textit{Context-Awareness} em que o dispositivo \acs{IoT} se encontra. Finalmente, a Tabela \ref{table:cap3:solucoesparajaneladeoperacoes} apresenta um resumo dos contextos nos quais o agente limitador utiliza como motivador para atuar sobre a dinâmica dos ciclos no dispositivo.
+
+
+\begin{table}[H]
 	\centering
-	\caption{ Trabalhos observados.}
-	\smaller
-	\tabcolsep=0.15cm
-	\begin{tabular}{cp{11cm}c}
-		\toprule
-		ID &  Titulo & Tipo \\\midrule
-		SB0-0001 &	Power Management in Energy Harvesting Sensor Networks & Periódico \\
-		SB1-0001 &	 Energy-Driven Computing: Rethinking the Design of Energy Harvesting Systems & Conferência\\
-		SB1-0002 &	 Lightweight operation scheduling for self-powered IoT devices  & Conferência \\
-		SB1-0003 & Adaptive operating mode management model for efficient energy harvesting systems & Periódico\\
-		SB1-0004 &	Energy Management in Wireless Sensor Networks: A Survey  &\\
-		SB1-0005 &	Discrete-Rate Adaptation and Selection in Energy Harvesting Wireless Systems & \\
-		SB1-0006 &	Energy Harvesting Sensor Nodes: Survey and Implications &\\
-		SB2-0001 &	Energy-driven computing &\\
-		SB2-0002 &	Hibernus++: A Self-Calibrating and Adaptive System for Transiently-Powered Embedded Devices &\\
-		SB2-0003 &	Graceful Performance Modulation for Power-Neutral Transient Computing Systems &\\
-		SB2-0004 &	Energy management for solar-powered IoT devices with performance adjustment &\\
-		SB2-0005 &	Dynamic Duty-Cycle Scheduling Schemes for Energy-Harvesting Wireless Sensor Networks &\\
-		SB2-0006 & Recent advances in energy management for Green-IoT: An up-to-date and comprehensive survey &\\
-		SB2-0007 & Reducing the Data Transmission in Sensor Networks through Kruskal-Wallis Model &\\
-		SB2-0008 & Power and Discrete Rate Adaptation for Energy Harvesting Wireless Nodes  &\\
-		SB2-0009 & Adaptive Energy Management by Reinforcement Learning in Cluster-based Solarpowered WSNs& \\
-		SB2-0010 & Energy-efficient Activation/Inactivation Strategy for Long-term IoT Network Operation& \\
-		SB2-0011 &	 Towards a Perpetual IoT System: Wireless Power Management Policy with Threshold Structure&\\
-		SB2-0012 &	Energy Harvesting Wireless Sensor Networks: Delay Analysis Considering Energy Costs of Sensing and Transmission& \\
-		SB2-0013 &	Performance of Wireless-Powered Sensor Transmission Considering Energy Cost of Sensing &\\
-		SB3-0001 &  Powering the Internet of Things&\\
-		SB3-0002 & Optimal sleep time controller based on traffic prediction and residual energy in duty-cycled wireless sensor networks &\\
-		SB3-0003 & A survey and taxonomy on energy management schemes in wireless sensor networks& \\
-		SB3-0004 & Sleep, Sense or Transmit: Energy-Age Tradeoff for Status Update With Two-Threshold Optimal Policy &\\
-		SB3-0005 & A Game Theory Distributed Approach for Energy Optimization in WSNs&\\
-		SB4-0001 & Energy and relevance-aware adaptive monitoring method for wireless sensor	nodes with hard energy constraint&\\\midrule
-		 
-	\end{tabular}
-\end{table}
-\endgroup
-\end{comment}
+	\caption{Estratégias definidoras dos ciclos de operação.}
+	\small
+	\rowcolors{1}{gray!10}{white}
+	\begin{tabularx}{\textwidth}{|X|X|}
+		\hline
+		\textbf{Baseado em} &\textbf{Referência} \\
+		\hline
+		\multirow{6}{*}{Sistema de Coleta} & \citeonline{choi_adaptive_2020}  \\
+		& \citeonline{balsamo_graceful_2016} \\
+				&\citeonline{balsamo_hibernus_2016}\\
+					&	\citeonline{khairnar_discrete-rate_2015} \\
 
+		&\citeonline{benhamaid_recent_2022} \\
+		&\citeonline{doumenis_lightweight_2022}\\
 
-
-
-\begin{comment}
-
-\begingroup
-\begin{table}[ht]	
-	\centering
-	\caption{ Categorização dos Trabalhos.}
-	\smaller
-	\tabcolsep=0.1cm
-	\begin{tabular}{lccccccccccccccccccccccccccc} 
-	 & 
-\rot{\cite{kansal_power_2007}} &
-\rot{\cite{merrett_energy-driven_2017}} &
-\rot{\cite{doumenis_lightweight_2022}} &
-\rot{\cite{choi_adaptive_2020}} &
-\rot{\cite{khan_energy_2015}} &
-\rot{\cite{khairnar_discrete-rate_2015}} &
-\rot{\cite{sudevalayam_energy_2011}} &
-\rot{\cite{sliper_energy-driven_2020}} &
-\rot{\cite{balsamo_hibernus_2016}} &
-\rot{\cite{balsamo_graceful_2016}} &
-\rot{\cite{lee_energy_2018}} &
-\rot{\cite{yoo_dynamic_2012}} &
-\rot{\cite{benhamaid_recent_2022}} &
-\rot{\cite{jaber_reducing_2017}} &
-\rot{\cite{khairnar_power_2011}} &
-\rot{\cite{ge_adaptive_2020}} &
-\rot{\cite{shen_energy-efficient_2019}} &
-\rot{\cite{zhang_toward_2018}} &
-\rot{\cite{liu_energy_2016}} &
-\rot{\cite{liu_performance_2015}} &
-\rot{\cite{jayakumar_powering_2014}} &
-\rot{\cite{arnaiz_energy_2024}} &
-\rot{\cite{singh_survey_2020}} &
-\rot{\cite{gong_sleep_2022}} &
-\rot{\cite{abrardo_game_2013}} &
-\rot{\cite{arnaiz_energy_2024}} \\ \midrule
+		\hline
+		\multirow{4}{*}{Sistema de Coleta e Status Armazenamento} & \citeonline{kansal_power_2007}\\
+			& \citeonline{khairnar_power_2011} \\
+		&	\citeonline{sudevalayam_energy_2011} \\
+		&   \citeonline{yoo_dynamic_2012}\\
+		\hline
+		\multirow{3}{*}{Previsão de coleta} &\citeonline{ge_adaptive_2020}\\
+			&	\citeonline{zhang_toward_2018}\\
+			&	\citeonline{gong_sleep_2022}\\
+		\hline
+		\multirow{7}{*}{Previsão de consumo} & \citeonline{arnaiz_energy_2024}\\		
+			& \citeonline{lee_energy_2018}\\
+			& \citeonline{luo_optimal_2017} \\
+			& \citeonline{liu_energy_2016}\\
+			& \citeonline{liu_performance_2015}\\
+			& \citeonline{jaber_reducing_2017}\\
+			& \citeonline{shen_energy-efficient_2019}\\
+			\hline
+		
+		
+		
+	\end{tabularx}
+	\label{table:cap3:solucoesparajaneladeoperacoes}
 	
-	Conservação & \checkmark & \checkmark & \checkmark & \checkmark & * & *& * & \checkmark & * & *& * & *& \checkmark & *& \checkmark & \checkmark & * & *& * & *& * & *& \checkmark & *& * & \checkmark  \\
-	Otimização & \checkmark & \checkmark & * & *& \checkmark & *& * & *& \checkmark & \checkmark& \checkmark & \checkmark& \checkmark & \checkmark& \checkmark & \checkmark & * & *& \checkmark & \checkmark& * & *& * & *& * & * \\
-	Previsão & * & *& * & *& * & *& * & *& * & *& * & *& * & *& * & *& * & *& * & *& * & *& * & *& * & *   \\
-	\end{tabular}
+	Fonte: Elaborado pelo autor.
 \end{table}
 
-\end{comment}
-\section{Considerações}
-
-A revisão realizada constatou a atenção sobr
+Ao analisar as características dos dispositivos \acs{IoT} que operam em restrições energéticas, a atuação dos mecanismos limitantes e as estratégias utilizadas para definir seus ciclos de operação, surge a necessidade de uma organização sistematizada dos fatores apresentados. Essa organização em formato taxonômico permite identificar e classificar os diversos aspectos que influenciam e demandam atenção na implementação do throttling, uma alternativa no processo de controle do comportamento durante os ciclos dos dispositivos.
 
 
+Finalmente, a criação de taxonomia adequada possibilita uma compreensão clara das diferentes variáveis envolvidas, como características dos dispositivos, atividades realizadas, demandas de energia e estratégias de atuação do \textit{throttling}. Isso permitiria uma abordagem mais sistemática na implementação do padrão, garantindo uma gestão eficaz dos recursos energéticos o que favorece o incremento de disponibilidade enquanto conserva suas capacidades energéticas.
 
- primordial da adequação de comportamento alguns termos utilizados para expressar a ação de adequação de comportamento dos dispositivos, \textit{Adaptative Duty-Cycle}, 
-adaptive operating,
-lightweight operation scheduling,
-traffic patterns,
-traffic management,
-smoothing factor e
-rate-limit, são termos utilizados recorrentemente nos trabalhos para indicar ajuste de comportamento, todavia a área de atuação desses ajustes podem variar conforme contexto. Após \citeonline{kansal_power_2007} apresentar sua teoria de coleta energética, o termo \textit{duty-cycle} foi utilizado para representar os eventos que conduzem o dispositivo a gastar seus recursos energéticos.
-
-
- Assim, os trabalhos encontrados abordam o ajuste de comportamento dos dispositivos com fator para sua 
-
-
-
-Quais são os efeitos do throttling na vida útil da bateria e na durabilidade dos dispositivos IoT?
-Como o throttling pode ser integrado com outras estratégias de gerenciamento de energia, como o duty cycling, para otimizar a disponibilidade e a eficiência energética em sistemas IoT?
-Como o throttling pode ser adaptado e otimizado para diferentes tipos de dispositivos IoT e ambientes de operação?
-Qual é a eficácia do throttling na melhoria da disponibilidade de sistemas IoT impulsionados por energia?
-
-
-definem a ação de limitar a operação do dispositivo
 
 %\blindtext[2]

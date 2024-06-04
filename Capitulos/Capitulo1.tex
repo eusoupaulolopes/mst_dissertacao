@@ -2,19 +2,62 @@
 \chapter{Introdução}
 \label{cap:cap1}
 
-\textbf{Neste capítulo serão colocados textos de exemplo ou indicações para a \textit{contrução}} de uma Dissertação de mestrado em LateX. Uma parte será voltada à estrutura do documento e questões específicas relacionadas à ciência, e outra será dedicada a comandos simples e ``tricks" usados na construção do meu documento original.
+Nos últimos anos, o avanço das tecnologias de comunicação e a miniaturização dos componentes têm impulsionado significativamente o crescimento da Internet das Coisas (\acl{IoT} - \acs{IoT}). Seus dispositivos estão sendo incorporados em diversas áreas, desde residências inteligentes até cidades conectadas, transformando a forma como interagimos com o mundo ao redor. Esses dispositivos \acs{IoT}, porém, enfrentam um desafio crítico: a eficiência de uso dos recursos energéticos. Disponibilidade e  conectividade constante exigem soluções inovadoras para a gestão de energia, seus esforços resultaram no desenvolvimento de dispositivos sob novo paradigma, os sistemas dirigidos à energia (\acl{EDC}), conceito apresentado por \citeonline{merrett_energy-driven_2017} .
 
-Todo este template é apenas uma modularização e tentativa de simplificação do modelo disponível em \url{https://github.com/abntex/abntex2/wiki/Download}. Caso eu esqueça ou algum detalhe passe em branco, a dissertação inteira está disponível em \url{https://v1.overleaf.com/read/gpkgdnttndgf}.
+A possibilidade de extração energética de fontes de energia sustentáveis através dos sistemas de coleta (\acl{EHS}), permitiu aos dispositivos responderem às questões inerentes a manter-se operacional mesmo em cenários de intermitência no fornecimento de energia. As soluções comumente passam por utilizar um mecanismo intermediário capaz de armazenar energia com intenção de utilizar esse valor como suplemento nos cenários de variação da performance da coleta \cite{kansal_power_2007}.
 
-%Acredito também que este modelo sirva para outros programas, mas seu direcionamento %principal, como já citado, é para o PPgSW - IMD - UFRN \cite{xiao_study_2011}. %citação incluída para nao deixar as referencias em branco
+Embora dispositivos \acs{IoT} alimentados por um armazenamento energético sejam adequados para muitas aplicações, suas vidas úteis são limitadas pela capacidade fixa do componente embarcado \cite{sliper_energy-driven_2020}. Desafios atuais para estes dispositivos estão intrinsecamente ligados à pratica recorrente do uso de baterias como componente de armazenamento energético. Aspectos sobre o uso destes componentes, estão negativamente relacionados com custo, volume, impacto ambiental, descarte, reciclagem e vida útil dos componentes e redirecionam os esforços em busca por soluções alinhadas à sustentabilidade como visto em \citeonline{albreem_green_2017}.
 
-\section{Aqui vai uma seção da Introdução}
+Sistemas dirigidos à energia são projetados para otimizar o consumo energético, possibilitando sua operação por longos períodos mesmo com recursos limitados. Esses sistemas incorporam diversas características distintivas que os tornam essenciais no ecossistema \acs{IoT}. Estes dispositivos não são projetados apenas considerando as necessidades da aplicação, mas também levam em conta o ambiente e as características energéticas impostas em resposta a desafio energético aplicado. 
 
-\section{Sobre o \LaTeX}
+Por meio disso, é possível projetar dispositivos com capacidade de operar mesmo em cenários de intermitência no fornecimento energético, reduzindo a necessidade de componentes de armazenamento e, em alguns casos, até mesmo dispensando sua utilização. Sistemas intermitentes \acs{ICS} são projetados não sob a perspectiva de evitar falhas energéticas, mas como os dispositivos podem atuar aceitando a possibilidade de intermitência energética \citeonline{sliper_energy-driven_2020}.
+
+Ademais, é observado os esforços relacionados à maneira como os dispositivos alinham seu comportamento com as demandas operacionais e o fornecimento energético. Este equilíbrio entre disponibilidade e a necessidade de energia é fundamental para garantir o funcionamento eficiente e confiável dos dispositivos \acs{IoT} com restrições energéticas.
+
+Ao combinar essas características, os sistemas dirigidos à energia concentram esforços para que os dispositivos operem de forma eficiente e sustentável, atendendo às exigências de uma ampla gama de aplicações. Desde demandas relacionadas à saúde até automação industrial, a eficiência energética proporcionada por esses sistemas é essencial para a viabilidade e o sucesso da IoT em larga escala \cite{asghari_internet_2019}.
 
 
-Como os dispositivos IoT energy driven podem ser categorizados em uma taxonomia eficaz com base em suas características de consumo de energia?
+\section{Justificativa}
 
-Quais são as estratégias de throttling mais de acordo com o papel realizado pelos dispositivos IoT energy driven e como elas podem ser aplicadas de forma eficaz?
+Dispositivos projetados segundo computação dirigida à energia, precisam garantir certa disponibilidade à medida que adequa-se ao cenário energeticamente restrito. No entanto, alcançar disponibilidade nestes cenários representa desafios consideráveis \cite{sudevalayam_energy_2011}, especialmente quando se trata de dispositivos que dependem da coleta e gerenciamento eficiente de recursos energéticos . 
 
-Quais são os principais desafios e oportunidades associados à implementação da taxonomia proposta em função da aplicação de throttling em IoT energy driven?
+Neste contexto, a estratégia para manter-se energeticamente disponível passa pela prática de restrição da performance como visto em \citeonline{khairnar_discrete-rate_2015}; \citeonline{doumenis_lightweight_2022}; \citeonline{gong_sleep_2022}. A prática se baseia em reduzir o potencial de consumo energético do dispositivo através da restrição de atividades ou performance, adequando-se ao cenário encontrado. 
+
+Quanto a eficiência sobre o consumo energético, as soluções concentram-se especificamente em seu cenário de aplicação observado. Muito em decorrência do que \citeonline{sliper_energy-driven_2020} escreveu. No seu estudo, o autor chama atenção para a aplicabilidade dos modos de operação: intermitente, neutro-potência e neutro-energética, que, embora tratem sobre aspectos energéticos, divergem por exemplo, no entendimento sobre a presença de um componente auxiliar de armazenamento energético, impactando na definição de quais aspectos considerar para implementar um mecanismo \textit{Throttling} como ferramenta limitadora, tal qual definido em \cite{burns_designing_nodate}. 
+
+A classificação dos cenários de aplicação é essencial para identificar os elementos mínimos necessários para processo de implementar o mecanismo d\textit{throttling}, considerando as especificidades de cada contexto e os termos para disponibilidade a serem alcançadas.
+
+Além disso, a ausência de outras classificações, dificulta a possibilidade de comparação e análise dos diversos aspectos e abordagens presente nas soluções disponíveis para o desafio do consumo energético eficiente.
+
+
+
+\section{Objetivos}
+
+Este trabalho contempla como objetivo geral definir e organizar os aspectos necessários para orientar a aplicação da prática \textit{Throttling} recorrentemente presente dispositivos \acs{IoT} em computação dirigida à energia. Para isto, busca-se:
+
+\begin{itemize}
+	\item Classificar os elementos recorrentemente presentes em computação dirigida à energia quanto a prática de \textit{throttling} em busca de disponibilidade do ponto de vista energético;
+	\item Orientar o processo de implementação da classificação proposta necessários para prática de restrição \textit{Throttling}. 
+\end{itemize}
+
+\section{Metodologia}
+
+Para alcançar os objetivos propostos, foram adotados os seguintes procedimentos metodológicos:
+\begin{enumerate}
+	
+	\item Revisão da Literatura;
+	\item Classificação dos elementos presentes na forma de taxonomia;
+	\item Atividades para implementação da taxonomia proposta;
+	\item Estudo Experimental e Avaliação dos resultados.
+\end{enumerate}
+
+A revisão do estado da arte desempenhou um papel fundamental na análise dos trabalhos relacionados à adaptação do comportamento dos dispositivos \acs{IoT} em cenários de restrição energética, especialmente em relação às práticas de limitação de desempenho em busca de disponibilidade energética. 
+
+Uma vez conhecidas as características envolvidas na definição do agente limitador, deu-se início ao processo de sistematização e classificação dos aspectos observados na literatura. A abordagem sistemática foi realizada por meio de uma taxonomia, baseada no guia proposto por \citeonline{usman_taxonomies_2017}. Após a definição do modelo de classificação, foram apresentadas as classes e subclasses que estruturam a taxonomia. Essa construção tem como base os principais aspectos envolvidos na atuação do mecanismo limitador nos dispositivos \acs{IoT} em computação dirigida à energia.
+
+
+Para avaliar as etapas anteriores, foi executado um estudo experimental preliminar como prova de conceito, o qual permitiu, a partir da instanciação das classes necessárias, observar a viabilidade de implementação enquanto a atuação dos agentes limitantes em diferentes cenários de experimentação é observada. Com isso, espera-se que a taxonomia e as atividades realizadas possam ser utilizadas como apoio ao processo de implementação do mecanismo de throttling em cenários \acs{IoT} dirigidos à energia.
+
+
+\section{Organização da Dissertação }
+
